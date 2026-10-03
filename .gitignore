@@ -1,0 +1,6 @@
+node_modules/
+.pnpm-store/
+
+# Exported duplicate packages; the editable source and assets are tracked below.
+/MESOZOICO
+/MESOZOICO-abertura-triassico-inicial.zip

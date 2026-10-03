@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111815">
+  <meta name="description" content="Uma expedição visual pela abertura do Mesozoico e pelo mundo do Triássico.">
+  <title>MESOZOICO — uma viagem ao Triássico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script defer src="js/vendor/gsap.min.js"></script>
+  <script defer src="js/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="js/site.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#story">Pular para a expedição</a>
+
+  <header class="site-header" aria-label="Cabeçalho do projeto">
+    <a class="wordmark" href="#inicio" aria-label="MESOZOICO, início">MESO<span>ZOICO</span><i>·</i></a>
+    <span class="header-caption">EXPEDIÇÃO PELO TEMPO PROFUNDO</span>
+    <button class="credits-trigger" type="button" data-open-credits>CRÉDITOS <span>＋</span></button>
+  </header>
+
+  <aside class="time-rail" aria-label="Linha do tempo da expedição">
+    <div class="time-rail__heading"><span>LINHA DO TEMPO</span><span class="time-rail__current" data-current-age>AGORA</span></div>
+    <div class="time-rail__track" aria-hidden="true">
+      <span class="time-rail__fill" data-time-fill></span>
+      <span class="time-rail__band" data-time-band></span>
+      <span class="time-rail__marker" data-time-marker></span>
+      <span class="time-stop stop-now" data-stop="now"><i></i><b>AGORA</b></span>
+      <span class="time-stop stop-start" data-stop="start"><i></i><b>251,9</b></span>
+      <span class="time-stop stop-dino" data-stop="dino"><i></i><b data-slot-label>233–230</b></span>
+      <span class="time-stop stop-end" data-stop="end"><i></i><b>201,4</b></span>
+    </div>
+    <span class="time-rail__unit">MILHÕES DE ANOS ATRÁS</span>
+  </aside>
+
+  <main id="story" class="story" aria-label="Expedição pelo Triássico">
+    <div class="stage" aria-live="off">
+      <section class="panel panel--opening is-active" id="inicio" data-panel data-age="now" data-age-label="AGORA" data-stop="now" aria-label="Abertura: o mundo atual">
+        <video class="opening-video" id="opening-video" autoplay muted playsinline preload="auto" poster="assets/images/terra-poster.png">
+          <source src="assets/video/opening.mp4" type="video/mp4">
+        </video>
+        <div class="opening-vignette"></div>
+        <div class="opening-copy panel-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> UMA EXPEDIÇÃO PELO TEMPO PROFUNDO</p>
+          <h1>Este é o mundo<br>que conhecemos.<br><em>Mas ele nem sempre foi assim.</em></h1>
+          <p class="opening-lede">Antes das paisagens, dos animais e dos continentes de hoje, a Terra atravessou outros mundos.</p>
+          <button class="start-journey" type="button" data-next>INICIAR EXPEDIÇÃO <span>↓</span></button>
+          <button class="video-play" type="button" data-play-video hidden>REPRODUZIR ABERTURA <span>▶</span></button>
+        </div>
+        <div class="opening-foot"><span>VÍDEO DE ABERTURA · SEM ÁUDIO</span><span>ROLE PARA ATRAVESSAR O TEMPO</span></div>
+      </section>
+
+      <section class="panel panel--boundary" data-panel data-age="251.9" data-age-label="251,9 MA" data-stop="start" aria-label="O início do Triássico">
+        <div class="panel-image map-image"><img src="assets/images/pangeia-mapa-250ma-provisorio.webp" alt="Reconstrução paleogeográfica da Terra há cerca de 250 milhões de anos" loading="eager"></div>
+        <div class="panel-shade"></div>
+        <div class="panel-copy copy-left">
+          <p class="eyebrow"><span class="eyebrow-line"></span> 251,9 MILHÕES DE ANOS</p>
+          <h2>Um mundo<br>em recuperação.</h2>
+          <p>O Triássico começou após a maior extinção em massa conhecida. A vida voltou a ocupar os ambientes, mas essa recuperação foi desigual e se estendeu por milhões de anos.</p>
+          <details class="science-note"><summary>O que a evidência permite dizer</summary><p>O limite entre Permiano e Triássico é datado em aproximadamente 251,9 milhões de anos. A intensidade e o ritmo da recuperação variaram entre grupos e regiões.</p></details>
+          <span class="image-caption">MAPA PALEOGEOGRÁFICO · CERCA DE 250 MA · PROVISÓRIO</span>
+        </div>
+      </section>
+
+      <section class="panel panel--pangea" data-panel data-age="250" data-age-label="≈ 250 MA" aria-label="Pangeia no Triássico inicial">
+        <div class="pangea-frame"><img src="assets/images/pangeia-mapa-250ma-provisorio.webp" alt="Mapa provisório de Pangeia e dos oceanos há cerca de 250 milhões de anos" loading="eager"><span class="map-stamp">RECONSTRUÇÃO · PROVISÓRIA</span></div>
+        <div class="panel-copy copy-map">
+          <p class="eyebrow"><span class="eyebrow-line"></span> A TERRA, OUTRA VEZ</p>
+          <h2>Continentes<br>reunidos.</h2>
+          <p>Grande parte das terras emersas formava Pangeia, cercada pelo oceano Panthalassa. O mapa é uma reconstrução aproximada; ele não localiza Ischigualasto nesta etapa.</p>
+          <p class="small-note">Litorais e posições são estimativas paleogeográficas, não um registro observado diretamente.</p>
+        </div>
+      </section>
+
+      <section class="panel panel--landscape" data-panel data-age="250" data-age-label="≈ 250 MA" aria-label="Ambientes do Triássico">
+        <img class="full-bleed" src="assets/images/triassico-arido.png" alt="Representação artística de uma paisagem triássica com áreas secas e um curso d'água" loading="eager">
+        <div class="panel-shade panel-shade--bottom"></div>
+        <div class="panel-copy copy-bottom">
+          <p class="eyebrow"><span class="eyebrow-line"></span> UM PLANETA DE CONTRASTES</p>
+          <h2>Seco em alguns lugares.<br><em>Vivo em muitos outros.</em></h2>
+          <p>O interior de Pangeia podia ser árido ou semiárido. Ainda assim, o Triássico não era um deserto uniforme: rios, planícies e florestas criavam ambientes distintos.</p>
+          <span class="image-caption">RECONSTRUÇÃO ARTÍSTICA DE AMBIENTE · NÃO É UMA LOCALIDADE ESPECÍFICA</span>
+        </div>
+      </section>
+
+      <section class="panel panel--water" data-panel data-age="240" data-age-label="≈ 240 MA" aria-label="Rios e zonas úmidas">
+        <img class="full-bleed" src="assets/images/triassico-agua.png" alt="Representação artística de um ambiente úmido triássico" loading="eager">
+        <div class="panel-shade"></div>
+        <div class="panel-copy copy-left copy-mid">
+          <p class="eyebrow"><span class="eyebrow-line"></span> ÁGUA MUDA A PAISAGEM</p>
+          <h2>Onde havia água,<br>havia outros ritmos.</h2>
+          <p>Margens de rios e áreas úmidas ofereciam condições diferentes das regiões interiores mais secas. As comunidades variavam com o clima e com a disponibilidade de água.</p>
+          <span class="image-caption">RECONSTRUÇÃO ARTÍSTICA · CENÁRIO INTERPRETATIVO</span>
+        </div>
+      </section>
+
+      <section class="panel panel--forest" data-panel data-age="240" data-age-label="≈ 240 MA" aria-label="Vegetação e florestas triássicas">
+        <img class="full-bleed" src="assets/images/triassico-floresta.png" alt="Representação artística de vegetação em ambiente triássico" loading="eager">
+        <div class="panel-shade panel-shade--left"></div>
+        <div class="panel-copy copy-left copy-mid">
+          <p class="eyebrow"><span class="eyebrow-line"></span> PAISAGENS EM MOSAICO</p>
+          <h2>Nem um único<br>tipo de mundo.</h2>
+          <p>Florestas, planícies abertas e zonas próximas à água compunham um mosaico de habitats. As ilustrações ajudam a imaginar esses cenários, mas não são fotografias do passado.</p>
+          <span class="image-caption">RECONSTRUÇÃO ARTÍSTICA · NÃO REPRESENTA UMA ESPÉCIE OU LOCALIDADE IDENTIFICADA</span>
+        </div>
+      </section>
+
+      <section class="panel panel--dinosaurs" data-panel data-age="233" data-age-from="233" data-age-to="230" data-age-label="233–230 MA" data-stop="dino">
+        <div class="dino-backdrop"><img src="assets/images/triassico-arido.png" alt="" aria-hidden="true" loading="eager"></div>
+        <div class="dino-wash"></div>
+        <div class="panel-copy copy-left copy-mid">
+          <p class="eyebrow"><span class="eyebrow-line"></span> CERCA DE 233–230 MILHÕES DE ANOS</p>
+          <h2>Os dinossauros<br>entram no registro.</h2>
+          <p>Os fósseis mais antigos amplamente reconhecidos de dinossauros aparecem no Triássico Superior. Não há consenso para apontar uma única espécie como “o primeiro dinossauro”.</p>
+          <details class="science-note"><summary>Por que a data é uma faixa?</summary><p>Os registros dependem de fósseis encontrados e de sua datação geológica. Novas descobertas podem ajustar as idades; por isso, é mais rigoroso falar em intervalo do que fixar um primeiro indivíduo.</p></details>
+        </div>
+        <div class="dino-outline" aria-hidden="true"><img src="assets/images/eoraptor-reconstrucao.png" alt="" loading="eager"></div>
+        <span class="image-caption">RECONSTRUÇÃO DO EORAPTOR USADA COMO REFERÊNCIA VISUAL · A DATA DA CENA É MAIS AMPLA</span>
+      </section>
+
+      <section class="panel panel--site" data-panel data-age="231" data-age-from="233" data-age-to="230" data-age-label="233–230 MA" data-stop="dino" aria-label="Ischigualasto, Argentina">
+        <div class="site-photo"><img src="assets/images/ischigualasto-atual.jpg" alt="Paisagem atual do Parque Provincial Ischigualasto, na Argentina" loading="eager"><span>ISCHIGUALASTO · PAISAGEM ATUAL</span></div>
+        <div class="site-copy panel-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> SAN JUAN · ARGENTINA</p>
+          <h2>Uma janela<br>para o Triássico.</h2>
+          <p>As rochas de Ischigualasto preservam fósseis de ecossistemas do Triássico Superior. A paisagem que vemos hoje é atual; o mundo fossilizado precisa ser reconstruído a partir das evidências.</p>
+          <div class="evidence-pair evidence-copy"><span class="micro-label">O REGISTRO FÓSSIL</span><p>O que sabemos vem de fósseis e camadas rochosas. Eles preservam partes de organismos e pistas sobre ambientes antigos — cada evidência responde a perguntas diferentes.</p></div>
+        </div>
+      </section>
+
+      <section class="panel panel--eoraptor" data-panel data-age="230" data-age-from="231" data-age-to="229" data-age-label="231–229 MA" data-stop="dino" data-slot="231–229" aria-label="Eoraptor lunensis">
+        <div class="eoraptor-top"><span>TRIÁSSICO SUPERIOR · ISCHIGUALASTO</span><span>≈ 231–229 MA</span></div>
+        <h2 class="eoraptor-title">EORAPTOR <span>LUNENSIS</span></h2>
+        <div class="eoraptor-layout">
+          <div class="eoraptor-facts">
+            <div class="fact-row"><span>COMPRIMENTO</span><b>≈ 1–2 m</b></div>
+            <div class="fact-row"><span>LOCOMOÇÃO</span><b>BÍPEDE</b></div>
+            <div class="fact-row"><span>DIETA</span><b>INCERTA</b></div>
+            <div class="classification"><h3>CLASSIFICAÇÃO</h3><p><span>GÊNERO</span><b>Eoraptor</b></p><p><span>ESPÉCIE</span><b>E. lunensis</b></p><p><span>GRUPO</span><b>Dinosauria</b></p></div>
+            <details class="science-note science-note--dark"><summary>Explorar ciência</summary><p>O Eoraptor foi encontrado em Ischigualasto e viveu no Triássico Superior. Seu tamanho é estimado em cerca de 1–2 m. A dieta e a posição exata de alguns dinossauros iniciais na árvore evolutiva seguem em debate; não apresentamos massa corporal como dado confirmado.</p></details>
+          </div>
+          <div class="eoraptor-specimen">
+            <div class="specimen-controls" role="group" aria-label="Exibição do Eoraptor">
+              <button class="specimen-toggle is-selected" type="button" data-specimen="reconstruction" aria-pressed="true">RECONSTRUÇÃO</button>
+              <button class="specimen-toggle" type="button" data-specimen="skeleton" aria-pressed="false">ESQUELETO · PROVISÓRIO</button>
+              <button class="specimen-toggle" type="button" data-human-toggle aria-pressed="false">ESCALA HUMANA</button>
+            </div>
+            <div class="specimen-stage" data-show="reconstruction">
+              <img class="specimen specimen--reconstruction" src="assets/images/eoraptor-reconstrucao.png" alt="Reconstrução artística do Eoraptor em vista lateral" loading="eager">
+              <img class="specimen specimen--skeleton" src="assets/images/eoraptor-esqueleto.png" alt="Representação esquelética do Eoraptor, em pose diferente da reconstrução" loading="eager">
+              <img class="human-scale" src="assets/images/humano.png" alt="Figura humana usada apenas para comparação visual de escala" loading="eager">
+              <span class="scale-caption">COMPARAÇÃO VISUAL APROXIMADA · NÃO É UMA MEDIÇÃO DO ESPÉCIME</span>
+            </div>
+          </div>
+          <div class="eoraptor-context">
+            <div class="location-card"><span>LOCALIZAÇÃO FÓSSIL</span><strong>ISCHIGUALASTO<br>SAN JUAN · ARGENTINA</strong><div class="locator-map"><img src="assets/images/ischigualasto-atual.jpg" alt="Paisagem atual de Ischigualasto, sem marcador paleogeográfico" loading="eager"></div><small>FOTO ATUAL DO LOCAL</small></div>
+            <div class="age-card"><span>INTERVALO APROXIMADO</span><strong>231–229 MA</strong><div class="age-band"><i></i><span>TRIÁSSICO SUPERIOR</span></div><small>A DATA INDICA UMA FAIXA, NÃO UM INSTANTE EXATO.</small></div>
+          </div>
+        </div>
+        <p class="eoraptor-credit">RECONSTRUÇÃO E ESQUELETO: PROCEDÊNCIA/LICENÇA A CONFIRMAR · POSE DO ESQUELETO EM REVISÃO</p>
+      </section>
+
+      <section class="panel panel--boundary-end" data-panel data-age="201.4" data-age-label="201,4 MA" data-stop="end" aria-label="Fim do Triássico">
+        <div class="end-texture"></div>
+        <div class="panel-copy copy-center">
+          <p class="eyebrow"><span class="eyebrow-line"></span> 201,4 MILHÕES DE ANOS</p>
+          <h2>O Triássico<br>chega ao limite.</h2>
+          <p>Uma crise de extinção marca a passagem para o Jurássico. O vulcanismo associado à Província Magmática do Atlântico Central é uma parte importante das explicações científicas; seus mecanismos e efeitos seguem em estudo.</p>
+          <span class="end-stop">FIM DESTA ETAPA DA EXPEDIÇÃO</span>
+          <button class="restart-journey" type="button" data-go-start>VOLTAR AO INÍCIO ↑</button>
+        </div>
+        <span class="image-caption">A EXPEDIÇÃO PARA AQUI · O JURÁSSICO AINDA NÃO FOI DESENVOLVIDO</span>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="credits-dialog" aria-labelledby="credits-title">
+    <button class="dialog-close" type="button" data-close-credits aria-label="Fechar créditos">×</button>
+    <p class="eyebrow">TRANSPARÊNCIA DO PROJETO</p>
+    <h2 id="credits-title">Créditos e limites</h2>
+    <p>Os textos científicos seguem a base editorial do MESOZOICO e distinguem evidência, reconstrução e incerteza. A licença das imagens abaixo ainda precisa ser confirmada antes da publicação pública.</p>
+    <ul>
+      <li>Vídeo de abertura: arquivo fornecido pelo usuário; autoria/licença a confirmar.</li>
+      <li>Mapa paleogeográfico de 250 Ma: provisório; fonte/licença a confirmar. Não marca Ischigualasto.</li>
+      <li>Ambientes ilustrados do Triássico: reconstruções artísticas fornecidas pelo usuário; créditos/licenças a confirmar.</li>
+      <li>Ischigualasto: fotografia do parque atual; fonte/licença a confirmar.</li>
+      <li>Eoraptor e figura de escala: imagens fornecidas pelo usuário; procedência/licença a confirmar. O esqueleto está em revisão.</li>
+      <li>Base científica: MESOZOICO-base-cientifica-editorial.pdf, incluída em <code>docs/</code>.</li>
+    </ul>
+    <p class="credits-foot">A presença de um arquivo no pacote não confirma autorização de republicação.</p>
+  </dialog>
+
+  <noscript><div class="noscript-notice">Esta expedição precisa de JavaScript para as transições. A abertura continua disponível acima; ative JavaScript para percorrer as cenas.</div></noscript>
+</body>
+</html>
