@@ -9,6 +9,7 @@ ASSETS INCLUÍDOS
 - assets/images/triassico-arido.png, triassico-agua.png, triassico-floresta.png — artes de ambiente fornecidas pelo usuário; créditos e licenças a confirmar. São reconstruções, não fotografias nem registros de uma localidade específica.
 - assets/images/ischigualasto-atual.jpg — fotografia atual do local; origem/licença a confirmar. Não representa o Triássico.
 - assets/images/eoraptor-reconstrucao.png — reconstrução fornecida pelo usuário; origem/licença a confirmar.
+- assets/images/eoraptor-fossil-ischigualasto.jpg — fotografia de fóssil de Eoraptor exposto na rocha em Ischigualasto; Eamezaga, Wikimedia Commons, domínio público: https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg.
 - assets/images/eoraptor-esqueleto.png — representação esquelética fornecida pelo usuário; origem/licença a confirmar. Pose diferente da reconstrução, mantida provisoriamente para ajuste posterior.
 - assets/images/humano.png — figura de escala fornecida pelo usuário; origem/licença a confirmar. É comparação visual aproximada, não uma medida publicada.
 - js/vendor/gsap.min.js e js/vendor/ScrollTrigger.min.js — GSAP 3.15.0, distribuição minificada local.
@@ -18,7 +19,7 @@ CRITÉRIOS CIENTÍFICOS APLICADOS
 - Limite inicial do Triássico: ~251,9 Ma (escala ICS da base do projeto).
 - O Triássico começou após a extinção Permiano–Triássica; recuperação foi gradual e desigual.
 - O registro fóssil mais antigo amplamente reconhecido de dinossauros situa-se em torno de 233–230 Ma. Não apontamos uma espécie única como “o primeiro dinossauro”.
-- Eoraptor: Ischigualasto, Triássico Superior, aproximadamente 231–229 Ma; comprimento estimado em torno de 1–2 m. Dieta e posição filogenética têm incertezas; não atribuímos peso corporal.
+- Eoraptor: conhecido por fósseis de Ischigualasto, no Triássico Superior. O esqueleto descrito originalmente tinha cerca de 1 m; a escala da reconstrução é apresentada como estimativa visual. Dieta e posição filogenética têm incertezas; não atribuímos peso corporal.
 - O mapa de 250 Ma é aproximado e não é usado para assinalar San Juan/Ischigualasto.
 - Limite Triássico–Jurássico: ~201,4 Ma. O vulcanismo da Província Magmática do Atlântico Central é relacionado à crise, mas mecanismos e efeitos específicos continuam em estudo.
 
@@ -26,3 +27,11 @@ PENDÊNCIAS
 - Confirmar autoria, atribuição e licenças para vídeo, mapas, fotografia e imagens.
 - Corrigir/alinhar a pose do esqueleto do Eoraptor numa etapa futura, como combinado.
 - Fazer a revisão mobile completa no final do projeto.
+
+REFERÊNCIAS CIENTÍFICAS USADAS NO TEXTO
+- International Chronostratigraphic Chart: https://stratigraphy.org/ICSchart/ChronostratChart2024-12.pdf
+- Recuperação após a extinção Permiano–Triássica: https://www.nature.com/articles/ngeo1475
+- Clima triássico e Pangeia: https://www.sciencedirect.com/science/article/pii/S0895981124001998
+- Origem e evolução inicial dos dinossauros: https://onlinelibrary.wiley.com/doi/10.1111/j.1469-185X.2009.00094.x
+- Descrição original de Eoraptor: https://www.nature.com/articles/361064a0
+- Datação de camadas fossilíferas de Ischigualasto: https://pubmed.ncbi.nlm.nih.gov/32728077/
