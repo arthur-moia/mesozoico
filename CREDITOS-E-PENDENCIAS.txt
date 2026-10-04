@@ -9,10 +9,10 @@ ASSETS INCLUÍDOS
 - assets/images/triassico-arido.png, triassico-agua.png, triassico-floresta.png — artes de ambiente fornecidas pelo usuário; créditos e licenças a confirmar. São reconstruções, não fotografias nem registros de uma localidade específica.
 - assets/images/ischigualasto-atual.jpg — fotografia atual do local; origem/licença a confirmar. Não representa o Triássico.
 - assets/images/eoraptor-reconstrucao.png — reconstrução fornecida pelo usuário; origem/licença a confirmar.
-- assets/images/eoraptor-fossil-ischigualasto.jpg — fotografia de fóssil de Eoraptor exposto na rocha em Ischigualasto; Eamezaga, Wikimedia Commons, domínio público: https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg.
+- assets/images/eoraptor-fossil-ischigualasto.jpg — fotografia de fóssil de Eoraptor exposto na rocha em Ischigualasto. A página do Wikimedia Commons declara domínio público (PD-self), mas lista Eamezaga como autor presumido e informa que a fonte não foi fornecida de forma estruturada: https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg.
 - assets/images/eoraptor-esqueleto.png — representação esquelética fornecida pelo usuário; origem/licença a confirmar. Pose diferente da reconstrução, mantida provisoriamente para ajuste posterior.
 - assets/images/humano.png — figura de escala fornecida pelo usuário; origem/licença a confirmar. É comparação visual aproximada, não uma medida publicada.
-- js/vendor/gsap.min.js e js/vendor/ScrollTrigger.min.js — GSAP 3.15.0, distribuição minificada local.
+- js/vendor/gsap.min.js e js/vendor/ScrollTrigger.min.js — GSAP e ScrollTrigger 3.15.0, distribuição local. O uso em sites está coberto pela licença padrão sem cobrança da GSAP/Webflow: https://gsap.com/community/standard-license/.
 - docs/MESOZOICO-base-cientifica-editorial.pdf — documento de referência científica fornecido para o projeto.
 
 CRITÉRIOS CIENTÍFICOS APLICADOS
