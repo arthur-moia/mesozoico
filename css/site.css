@@ -69,7 +69,7 @@ h1 em, h2 em { color: #d5c9b2; font-family: var(--display); font-style: normal; 
 
 .panel--opening { display: grid; align-items: center; background: #111; padding-top: 112px; }
 .opening-video, .opening-vignette { position: absolute; inset: 0; width: 100%; height: 100%; }
-.opening-video { z-index: -2; object-fit: cover; background: #111 url("../assets/images/terra-poster.png") center/cover no-repeat; }
+.opening-video { z-index: -2; object-fit: cover; background: #111 url("../assets/images/opening-poster.jpg") center/cover no-repeat; }
 .opening-vignette { z-index: -1; background: linear-gradient(90deg, rgba(8,12,10,.78) 0%, rgba(8,12,10,.40) 44%, rgba(8,12,10,.06) 100%), linear-gradient(0deg, rgba(8,12,10,.54), transparent 42%, rgba(8,12,10,.1)); }
 .opening-copy { max-width: min(760px, 67vw); padding-bottom: 6vh; }
 .opening-copy h1 em { display: inline-block; margin-top: .13em; }
@@ -80,21 +80,13 @@ h1 em, h2 em { color: #d5c9b2; font-family: var(--display); font-style: normal; 
 .video-play[hidden] { display: none; }
 .opening-foot { position: absolute; right: 4.2vw; bottom: 28px; left: 4.2vw; display: flex; justify-content: space-between; color: rgba(232,229,219,.82); }
 
-.panel--boundary {
-  background:
-    radial-gradient(ellipse at 76% 48%, rgba(133, 111, 76, .12), transparent 31%),
-    radial-gradient(ellipse at 14% 80%, rgba(31, 54, 43, .3), transparent 42%),
-    linear-gradient(118deg, #111815 0%, #18211c 62%, #151b18 100%);
-}
+.panel--boundary { background: #18211c; }
 .panel-image { position: absolute; inset: 0 0 0 36%; z-index: -2; display: grid; place-items: center; }
 .panel-image img { width: min(90%, 1100px); height: 78%; object-fit: contain; filter: saturate(.88) brightness(.88); }
 .panel-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, #111815 0%, rgba(17,24,21,.94) 31%, rgba(17,24,21,.32) 72%, rgba(17,24,21,.22)); }
 .copy-left { padding-top: 8vh; }
 .panel--boundary .panel-copy { max-width: 485px; }
-.panel--boundary .panel-shade { background: linear-gradient(90deg, rgba(13,19,16,.18), transparent 70%); }
-.panel--boundary .panel-copy { max-width: min(650px, 58vw); }
-.panel--boundary .panel-copy h2 { font-size: clamp(52px, 6.4vw, 88px); }
-.panel--boundary .panel-copy > p:not(.eyebrow) { max-width: 48ch; }
+.panel--boundary .image-caption { left: auto; right: 15vw; bottom: 9vh; max-width: 34vw; text-align: right; }
 
 .panel--pangea { display: flex; align-items: center; gap: 8vw; background: #141b18; }
 .pangea-frame { position: relative; width: min(54vw, 800px); flex: 0 1 60%; padding: 0; border: 0; background: transparent; }
@@ -231,7 +223,6 @@ h1 em, h2 em { color: #d5c9b2; font-family: var(--display); font-style: normal; 
 .story.is-enhanced { height: calc(var(--panel-count, 9) * 100svh); }
 .story.is-enhanced .stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
 .story.is-enhanced .panel { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; }
-.story.is-enhanced .specimen-stage--wipe { overflow: visible; }
 
 @media (max-width: 1050px) {
   .panel { padding-right: 14vw; }
@@ -268,8 +259,7 @@ h1 em, h2 em { color: #d5c9b2; font-family: var(--display); font-style: normal; 
   .panel-image { inset: 20% 0 8%; opacity: .55; }
   .panel-shade { background: linear-gradient(90deg,rgba(17,24,21,.94),rgba(17,24,21,.55)),linear-gradient(0deg,rgba(17,24,21,.85),transparent); }
   .panel--boundary .panel-copy { margin-top: 11vh; }
-  .panel--boundary .panel-copy { max-width: min(100%, 620px); }
-  .panel--boundary .panel-copy h2 { font-size: clamp(42px, 11vw, 62px); }
+  .panel--boundary .image-caption { right: 24px; bottom: 56px; left: 24px; max-width: none; }
   .panel--pangea { display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 23px; }
   .pangea-frame { width: 100%; flex: 0 0 auto; padding: 7px; }
   .pangea-frame img { max-height: 31vh; }
@@ -328,6 +318,53 @@ h1 em, h2 em { color: #d5c9b2; font-family: var(--display); font-style: normal; 
 
 /* ---------- Animações cinematográficas e linha do tempo sincronizada ---------- */
 
+/* The opening remains readable if scripts fail; only the short bootstrap is hidden. */
+html.intro-pending .opening-copy > :not(.video-play),
+html.intro-pending .opening-foot { opacity: 0; }
+
+/* One map presentation, retaining the two existing explanatory blocks. */
+.panel--boundary .panel-copy { padding-top: 0; max-width: 500px; }
+.boundary-pangea { max-width: 445px; margin-top: 20px; }
+.boundary-pangea h3 { margin: 0; font: 500 clamp(25px,2.5vw,34px)/1.05 var(--display); letter-spacing: -.04em; }
+.boundary-pangea .eyebrow { margin: 0 0 8px; font-size: 13px; }
+.boundary-pangea > p:not(.small-note):not(.eyebrow) { margin: 10px 0 0; color: rgba(232,229,219,.82); font-size: clamp(14px,1.1vw,16px); line-height: 1.5; }
+.boundary-pangea .small-note { margin: 8px 0 0; }
+.panel--boundary .science-note { margin-top: 14px; }
+.panel--boundary .panel-copy > h2 { font-size: clamp(42px,5vw,72px); }
+.panel--boundary .panel-copy > p:not(.eyebrow) { margin-top: 18px; }
+
+/* Restore room for the specimen without changing the text/fact grid. */
+@media (min-width: 701px) {
+  .eoraptor-detail-layout { inset: 0 12vw 0 6vw; grid-template-columns: minmax(190px,1fr) minmax(0,46vw) minmax(170px,1fr); column-gap: 2vw; }
+  .specimen-stage--wipe { height: 58vh; min-height: 0; }
+}
+.story.is-enhanced .specimen-stage--wipe,
+.story.is-enhanced .skeleton-stage { overflow: visible; }
+.story.is-enhanced .specimen-wipe-line { bottom: auto; background: linear-gradient(180deg, transparent, #ead5b5 16%, #ead5b5 84%, transparent); }
+
+/* Visible alpha bounds: person y=24..1452 / 1536; animal x=192..1380,
+   y=24..1080 / 1448x1086. The old approximate 1.2m : 1.70m visual
+   comparison is retained. Projected width is NOT anatomical measurement. */
+.scale-stage { --human-height: min(73vh, calc((88vh - 390px) / .587)); --dino-height: calc(var(--human-height) * .6); --dino-left: 2vw; bottom: 12vh; height: 78vh; }
+.scale-dinosaur { bottom: calc(0px - var(--dino-height) * .005524862); left: var(--dino-left); width: auto; height: var(--dino-height); }
+.scale-person { right: 8vw; bottom: calc(0px - var(--human-height) * .0546875); height: var(--human-height); }
+.dino-length-measure { top: calc(100% + 18px); bottom: auto; left: calc(var(--dino-left) + var(--dino-height) * .17679558); width: calc(var(--dino-height) * 1.09392265); display: block; line-height: 1.3; text-align: center; }
+.dino-length-line { width: 100%; margin-bottom: 10px; }
+.scale-note { max-width: 440px; }
+.story.is-static-motion .panel-copy,
+.story.is-static-motion .site-photo,
+.story.is-static-motion .eoraptor-detail-layout,
+.story.is-static-motion .eoraptor-skeleton-copy,
+.story.is-static-motion .skeleton-stage,
+.story.is-static-motion .eoraptor-scale-copy,
+.story.is-static-motion .scale-stage { opacity: 1; transform: none; transition: none; }
+@media (max-width: 700px) {
+  .scale-stage { --human-height: min(57vh,45vw); --dino-left: 0px; }
+  .scale-person { right: 2vw; }
+  .dino-length-measure { top: calc(100% + 14px); font-size: 11px; }
+  .panel--boundary .panel-copy { margin-top: 0; }
+}
+
 /* A rolagem passa a ser conduzida por ScrollTrigger; o suavizado do navegador brigava com o snap. */
 html.is-story-enhanced { scroll-behavior: auto; overscroll-behavior-y: none; }
 
@@ -377,4 +414,611 @@ html.is-story-enhanced { scroll-behavior: auto; overscroll-behavior-y: none; }
   .story.is-static-motion .panel.is-active .eoraptor-information,
   .story.is-static-motion .panel.is-active .eoraptor-scale-copy,
   .story.is-static-motion .panel.is-active .scale-stage { opacity: 1; }
+}
+
+/* Fourteen-scene editorial copy. The assets and established visual language stay intact. */
+.scene-prose { color: rgba(232,229,219,.9); }
+.scene-prose p { max-width: 62ch; margin: 9px 0 0; font-size: clamp(14px,1.08vw,17px); line-height: 1.48; }
+.scene-prose p strong { color: #f1ede3; font-weight: 700; }
+.scene-prose p:first-child { margin-top: 16px; }
+.science-note { margin-top: 16px; }
+.opening-copy h1 { font-size: clamp(43px,5.55vw,80px); }
+.opening-copy .scene-prose p { max-width: 53ch; font-size: clamp(16px,1.35vw,19px); }
+.opening-copy .scene-prose p:first-child { margin-top: 26px; }
+.opening-copy .start-journey { margin-top: 25px; }
+
+.panel--site-present .site-copy { max-width: 600px; }
+.panel--site-present .site-copy h2 { font-size: clamp(48px,5.2vw,73px); }
+.panel--site-present .scene-prose p { margin-top: 8px; }
+.panel--site-present .science-note p { max-width: 48ch; }
+.panel--triassic-start { background: #18211c; }
+.panel--triassic-start .panel-copy { max-width: min(730px,72vw); padding-top: 5vh; }
+.panel--triassic-start h2 { font-size: clamp(42px,5.15vw,70px); }
+.panel--triassic-start .scene-prose p { font-size: clamp(16px,1.25vw,19px); }
+.panel--pangea { gap: 3vw; padding-right: 10vw; }
+.panel--pangea .pangea-frame { width: min(46vw,670px); flex: 0 1 56%; }
+.panel--pangea .copy-map { max-width: 430px; }
+.panel--pangea h2 { font-size: clamp(39px,4.25vw,59px); }
+.panel--pangea .scene-prose p { margin-top: 9px; }
+
+.panel--landscape .copy-bottom { bottom: 8vh; }
+.panel--landscape .copy-bottom h2,
+.panel--water .panel-copy h2,
+.panel--forest .panel-copy h2 { font-size: clamp(42px,5vw,67px); }
+.panel--landscape .scene-prose p,
+.panel--water .scene-prose p,
+.panel--forest .scene-prose p { max-width: 57ch; }
+.panel--dinosaurs .panel-copy { flex: 0 1 47%; max-width: 590px; }
+.panel--dinosaurs .panel-copy h2 { font-size: clamp(42px,4.6vw,62px); }
+.panel--dinosaurs .scene-prose p { font-size: clamp(14px,1vw,16px); margin-top: 7px; }
+.panel--dinosaurs .dino-fossil-visual { flex: 0 1 46%; width: 46%; }
+.dino-fossil-visual figcaption { font-size: 13px; }
+.panel--fossil { display: flex; align-items: center; background: #211a16; }
+.fossil-closeup { position: absolute; z-index: -2; inset: 0 0 0 42%; }
+.fossil-closeup img { width: 100%; height: 100%; object-fit: cover; object-position: 48% center; filter: saturate(.73) brightness(.63); }
+.panel--fossil .panel-shade--left { z-index: -1; background: linear-gradient(90deg,#171613 0%,rgba(23,22,19,.96) 35%,rgba(23,22,19,.54) 67%,rgba(23,22,19,.18)); }
+.panel--fossil .panel-copy { max-width: min(610px,48vw); }
+.panel--fossil h2 { font-size: clamp(39px,4.15vw,58px); }
+.panel--fossil .scene-prose p { margin-top: 10px; }
+
+.eoraptor-skeleton-copy,
+.eoraptor-bridge-copy { position: absolute; z-index: 4; top: 11vh; left: 6vw; right: auto; width: min(40vw,570px); text-align: left; }
+.eoraptor-skeleton-copy { width: min(22vw,320px); }
+.eoraptor-skeleton-copy h2,
+.eoraptor-bridge-copy h2 { font-size: clamp(39px,4vw,57px); line-height: 1.05; }
+.eoraptor-skeleton-copy h2 { font-size: clamp(34px,2.65vw,38px); }
+.eoraptor-skeleton-copy .scene-prose p,
+.eoraptor-bridge-copy .scene-prose p { max-width: 46ch; font-size: clamp(14px,1.04vw,16px); margin-top: 7px; }
+.eoraptor-skeleton-copy .science-note { margin-top: 10px; }
+.eoraptor-bridge-copy .scene-prose p { font-size: clamp(17px,1.4vw,21px); margin-top: 16px; }
+.eoraptor-detail-layout { grid-template-columns: minmax(230px,1.05fr) minmax(0,43vw) minmax(180px,.85fr); column-gap: 2vw; }
+.eoraptor-detail-title { font-size: clamp(47px,5.15vw,72px); }
+.eoraptor-facts-column { max-height: 64vh; overflow-y: auto; overscroll-behavior: contain; padding-right: 8px; scrollbar-width: thin; }
+.story.is-enhanced .eoraptor-facts-column { max-height: none; overflow: visible; padding-right: 0; }
+.eoraptor-support { margin: 0 0 10px; color: #f0e9dd; font-size: 16px; line-height: 1.4; }
+.eoraptor-facts-column .scene-prose p { font-size: clamp(13px,1vw,15px); line-height: 1.42; margin-top: 7px; }
+.eoraptor-facts-column .science-note { margin-top: 10px; }
+.eoraptor-context-column .eoraptor-facts { grid-template-columns: 1fr; }
+.eoraptor-context-column .eoraptor-facts div { padding: 7px 0; }
+.eoraptor-context-column .eoraptor-facts dt { font-size: 12px; }
+.eoraptor-context-column .eoraptor-facts dd { font-size: 15px; }
+.specimen-disclaimer { max-width: 78vw; }
+.eoraptor-scale-copy { top: 9vh; max-width: min(690px,50vw); }
+.eoraptor-scale-copy h2 { font-size: clamp(36px,3.2vw,46px); }
+.eoraptor-scale-copy .scene-prose p { font-size: clamp(13px,.95vw,15px); margin-top: 5px; line-height: 1.35; }
+.scale-note { right: 9vw; bottom: 2vh; max-width: 53vw; font-size: 12px; }
+.panel--boundary-end .copy-center { max-width: 800px; }
+.panel--boundary-end .copy-center h2 { font-size: clamp(45px,5vw,70px); }
+.panel--boundary-end .scene-prose p { margin: 7px auto 0; font-size: clamp(14px,1.08vw,17px); }
+.panel--boundary-end .end-stop { margin-top: 20px; }
+.panel--boundary-end .end-stop p { margin: 5px 0 0; }
+.panel--boundary-end .restart-journey { margin-top: 8px; }
+
+@media (max-width: 700px) {
+  .panel--site-present .site-copy h2 { font-size: 45px; }
+  .panel--triassic-start .panel-copy { max-width: none; }
+  .panel--pangea .pangea-frame { width: 100%; }
+  .panel--pangea .copy-map { max-width: none; }
+  .panel--fossil .panel-copy { max-width: none; }
+  .fossil-closeup { inset: 35% 0 0 0; opacity: .55; }
+  .eoraptor-skeleton-copy,
+  .eoraptor-bridge-copy { top: 10vh; left: 22px; width: calc(100% - 44px); }
+  .eoraptor-detail-layout { grid-template-columns: 1fr 1fr; }
+  .eoraptor-facts-column { max-height: 32vh; }
+  .eoraptor-scale-copy { max-width: none; }
+  .scale-note { max-width: none; }
+}
+
+/* 14-scene composition pass: desktop chapters outside the approved Eoraptor sequence. */
+@media (min-width: 1051px) {
+  .panel--site-present {
+    display: block;
+    padding: 0;
+    background: #151b18;
+  }
+  .panel--site-present .site-photo {
+    position: absolute;
+    inset: 0 25vw 0 0;
+    height: auto;
+    overflow: hidden;
+  }
+  .panel--site-present .site-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 48%;
+    filter: saturate(.97);
+  }
+  .panel--site-present .site-photo::after {
+    inset: 0;
+    background: linear-gradient(90deg, transparent 35%, rgba(15, 22, 18, .12) 56%, rgba(15, 22, 18, .74) 86%, #151b18 100%),
+                linear-gradient(0deg, rgba(9, 13, 11, .42), transparent 30%);
+  }
+  .panel--site-present .site-photo span { left: 8.2vw; bottom: 5vh; }
+  .panel--site-present .site-copy {
+    position: absolute;
+    top: 24vh;
+    left: 47vw;
+    width: 38vw;
+    max-width: none;
+  }
+  .panel--site-present .site-copy h2 { font-size: clamp(52px, 5.5vw, 78px); }
+  .panel--site-present .site-copy .scene-prose p { max-width: 45ch; font-size: clamp(15px, 1.08vw, 17px); }
+
+  .panel--triassic-start { display: block; padding: 0; background: #16211c; }
+  .panel--triassic-start .epoch-photo {
+    position: absolute;
+    z-index: -2;
+    inset: 0 25vw 0 0;
+    overflow: hidden;
+  }
+  .panel--triassic-start .epoch-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 48%;
+    filter: grayscale(.55) saturate(.68) brightness(.72);
+  }
+  .panel--triassic-start .end-texture {
+    background: linear-gradient(90deg, rgba(16, 25, 20, .10) 0%, rgba(16, 25, 20, .28) 36%, rgba(16, 25, 20, .84) 69%, #16211c 92%),
+                linear-gradient(0deg, rgba(7, 12, 9, .46), transparent 54%);
+  }
+  .panel--triassic-start .panel-copy {
+    position: absolute;
+    top: 18vh;
+    left: 43vw;
+    width: 43vw;
+    max-width: none;
+    padding: 0;
+  }
+  .panel--triassic-start h2 { font-size: clamp(46px, 4.75vw, 66px); }
+  .panel--triassic-start .scene-prose p { max-width: 45ch; font-size: clamp(15px, 1.17vw, 18px); }
+
+  .panel--pangea { display: block; padding: 0; background: #121b18; }
+  .panel--pangea::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, #121b18 0%, rgba(18, 27, 24, .94) 19%, rgba(18, 27, 24, .46) 40%, transparent 64%);
+  }
+  .panel--pangea .pangea-frame {
+    position: absolute;
+    z-index: 0;
+    top: 14vh;
+    left: 25vw;
+    width: 65vw;
+    height: 69vh;
+    display: grid;
+    place-items: center;
+    max-width: none;
+    flex: none;
+  }
+  .panel--pangea .pangea-frame img { width: 100%; max-height: 100%; object-fit: contain; }
+  .panel--pangea .map-stamp { right: 2vw; bottom: 0; }
+  .panel--pangea .copy-map {
+    position: absolute;
+    top: 18vh;
+    left: 8.2vw;
+    z-index: 3;
+    width: 32vw;
+    max-width: 440px;
+  }
+  .panel--pangea h2 { font-size: clamp(43px, 4.2vw, 59px); }
+  .panel--pangea .scene-prose p { max-width: 42ch; }
+
+  .panel--landscape .full-bleed { filter: saturate(1.02); }
+  .panel--landscape .panel-shade--bottom {
+    background: linear-gradient(0deg, rgba(8, 13, 11, .78), rgba(8, 13, 11, .26) 31%, transparent 64%),
+                linear-gradient(90deg, rgba(8, 13, 11, .22), transparent 62%);
+  }
+  .panel--landscape .copy-bottom,
+  .panel--water .panel-copy,
+  .panel--forest .panel-copy {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    max-width: none;
+    padding: 0;
+  }
+  .panel--landscape .copy-bottom h2 {
+    position: absolute;
+    top: 16vh;
+    left: 8.2vw;
+    width: 57vw;
+    font-size: clamp(53px, 5.45vw, 78px);
+  }
+  .panel--landscape .copy-bottom .scene-prose {
+    position: absolute;
+    bottom: 10vh;
+    left: 8.2vw;
+    width: 42vw;
+  }
+  .panel--landscape .copy-bottom .image-caption,
+  .panel--water .panel-copy .image-caption,
+  .panel--forest .panel-copy .image-caption {
+    position: absolute;
+    bottom: 3.5vh;
+    left: 8.2vw;
+    width: 42vw;
+    max-width: none;
+    margin: 0;
+  }
+  .panel--water .full-bleed { filter: saturate(.98) brightness(.95); }
+  .panel--water .panel-shade {
+    background: radial-gradient(ellipse at 70% 20%, rgba(7, 15, 13, .46), transparent 38%),
+                linear-gradient(90deg, rgba(7, 15, 13, .76), transparent 52%),
+                linear-gradient(0deg, rgba(7, 15, 13, .46), transparent 45%);
+  }
+  .panel--water .panel-copy h2 {
+    position: absolute;
+    top: 15vh;
+    left: 54vw;
+    width: 33vw;
+    font-size: clamp(43px, 4.55vw, 64px);
+  }
+  .panel--water .panel-copy .scene-prose {
+    position: absolute;
+    bottom: 10vh;
+    left: 8.2vw;
+    width: 40vw;
+  }
+  .panel--forest .full-bleed { filter: saturate(.96) brightness(.95); }
+  .panel--forest .panel-shade {
+    background: linear-gradient(90deg, rgba(6, 14, 10, .82), rgba(6, 14, 10, .26) 45%, transparent 70%),
+                linear-gradient(0deg, rgba(6, 14, 10, .56), transparent 45%);
+  }
+  .panel--forest .panel-copy .scene-prose {
+    position: absolute;
+    top: 18vh;
+    left: 8.2vw;
+    width: 39vw;
+  }
+  .panel--forest .panel-copy h2 {
+    position: absolute;
+    bottom: 13vh;
+    left: 8.2vw;
+    width: 45vw;
+    font-size: clamp(50px, 5.15vw, 72px);
+  }
+
+  .panel--dinosaurs { display: block; padding: 0; background: #201a15; }
+  .panel--dinosaurs .dino-fossil-visual {
+    position: absolute;
+    top: 14vh;
+    left: 39vw;
+    width: 52vw;
+    height: 72vh;
+    max-width: none;
+    margin: 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent, #000 14%, #000 100%);
+  }
+  .panel--dinosaurs .dino-fossil-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+    object-position: 50% center;
+    filter: saturate(.95);
+  }
+  .panel--dinosaurs .dino-fossil-visual figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 1.5vh;
+    left: 16%;
+    margin: 0;
+    text-shadow: 0 2px 12px #100d0a;
+  }
+  .panel--dinosaurs .panel-copy {
+    position: absolute;
+    z-index: 3;
+    top: 18vh;
+    left: 8.2vw;
+    width: 43vw;
+    max-width: 580px;
+    padding: 0;
+  }
+  .panel--dinosaurs .panel-copy h2 { font-size: clamp(45px, 4.45vw, 63px); }
+  .panel--dinosaurs .scene-prose p { max-width: 42ch; font-size: clamp(14px, 1.02vw, 16px); }
+
+  .panel--fossil { display: block; padding: 0; }
+  .panel--fossil .fossil-closeup { inset: 0; }
+  .panel--fossil .fossil-closeup img {
+    object-position: 55% 44%;
+    filter: saturate(.85) brightness(.88);
+  }
+  .panel--fossil .panel-shade--left {
+    background: linear-gradient(90deg, #171613 0%, rgba(23, 22, 19, .95) 26%, rgba(23, 22, 19, .62) 47%, rgba(23, 22, 19, .08) 75%);
+  }
+  .panel--fossil .panel-copy {
+    position: absolute;
+    top: 27vh;
+    left: 8.2vw;
+    width: 43vw;
+    max-width: 610px;
+    padding: 0;
+  }
+  .panel--fossil h2 { font-size: clamp(43px, 4.35vw, 62px); }
+
+  .panel--boundary-end {
+    display: grid;
+    place-items: center;
+    text-align: left;
+    background: #101613;
+  }
+  .panel--boundary-end .end-texture {
+    background: radial-gradient(ellipse at 76% 76%, rgba(105, 93, 69, .23), transparent 48%),
+                radial-gradient(ellipse at 18% 22%, rgba(37, 55, 43, .44), transparent 52%),
+                #101613;
+  }
+  .panel--boundary-end .copy-center {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    align-items: start;
+    gap: 1.2vh 5vw;
+    width: min(1030px, 75vw);
+    max-width: none;
+    padding: 0;
+    text-align: left;
+  }
+  .panel--boundary-end .copy-center .eyebrow {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    margin: 0 0 1vh;
+    font-size: clamp(20px, 1.65vw, 24px);
+  }
+  .panel--boundary-end .copy-center h2 {
+    grid-column: 1 / -1;
+    max-width: 950px;
+    margin-bottom: 3vh;
+    font-size: clamp(54px, 5.1vw, 74px);
+  }
+  .panel--boundary-end .copy-center > .scene-prose { grid-column: 1; grid-row: 3 / 6; }
+  .panel--boundary-end .copy-center > .scene-prose p { max-width: 51ch; margin: 7px 0 0; }
+  .panel--boundary-end .end-stop {
+    grid-column: 2;
+    grid-row: 3;
+    margin: 7px 0 0;
+  }
+  .panel--boundary-end .end-stop p:first-child {
+    margin: 0;
+    font: 600 clamp(28px, 2.6vw, 38px)/1.13 var(--display);
+    letter-spacing: -.04em;
+  }
+  .panel--boundary-end .end-stop p:last-child { margin-top: 13px; font-size: 16px; }
+  .panel--boundary-end .restart-journey { grid-column: 2; grid-row: 4; margin: 14px 0 0; }
+  .panel--boundary-end .credits-trigger--end { grid-column: 2; grid-row: 5; margin: 0; }
+}
+
+@media (min-width: 1051px) {
+  .panel--water .panel-copy,
+  .panel--forest .panel-copy {
+    top: 0;
+    bottom: auto;
+    height: 100%;
+    align-self: stretch;
+  }
+  .panel--landscape .copy-bottom h2 {
+    text-shadow: 0 2px 25px rgba(5, 10, 8, .58);
+  }
+}
+@media (max-width: 1050px) {
+  .panel--triassic-start .epoch-photo { display: none; }
+}
+
+/* Visual direction pass: clearer editorial hierarchy, brighter evidence,
+   and scene-specific compositions. Motion and the approved Eoraptor sequence
+   remain untouched. */
+@media (min-width: 1051px) {
+  .panel:not(.panel--opening):not(.panel--eoraptor) .eyebrow {
+    margin-bottom: 27px;
+    color: rgba(232,229,219,.8);
+    font-size: clamp(14px, 1.04vw, 16px);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  .panel:not(.panel--opening):not(.panel--eoraptor) .scene-prose p {
+    color: rgba(238,235,226,.9);
+    font-size: clamp(16px, 1.16vw, 18px);
+    line-height: 1.62;
+  }
+
+  /* Present-day Ischigualasto opens as a landscape; the copy sits in a calm
+     left column while the photograph owns the rest of the frame. */
+  .panel--site-present {
+    background: #171a17;
+  }
+  .panel--site-present .site-photo {
+    inset: 0 0 0 36vw;
+  }
+  .panel--site-present .site-photo img {
+    max-width: none;
+    object-position: 50% 58%;
+    filter: saturate(1.04) brightness(.94);
+  }
+  .panel--site-present .site-photo::after {
+    background: linear-gradient(90deg, #171a17 0%, rgba(23,26,23,.88) 12%, rgba(23,26,23,.28) 42%, transparent 70%),
+                linear-gradient(0deg, rgba(8,11,9,.44), transparent 35%);
+  }
+  .panel--site-present .site-copy {
+    top: 20vh;
+    left: 8.2vw;
+    width: 34vw;
+  }
+  .panel--site-present .site-copy h2 {
+    max-width: 6ch;
+    font-size: clamp(54px, 5.7vw, 80px);
+    line-height: .98;
+  }
+  .panel--site-present .site-copy .scene-prose p {
+    max-width: 39ch;
+    font-size: clamp(16px, 1.12vw, 18px);
+  }
+  .panel--site-present .site-photo span {
+    left: 4vw;
+    bottom: 5vh;
+    max-width: 25vw;
+    color: rgba(248,245,237,.9);
+    font-size: 14px;
+  }
+
+  /* The Triassic threshold reverses the previous frame: evidence on the left,
+     a quiet, readable field for the chapter statement on the right. */
+  .panel--triassic-start {
+    background: #172019;
+  }
+  .panel--triassic-start .epoch-photo {
+    inset: 0 52vw 0 0;
+  }
+  .panel--triassic-start .epoch-photo img {
+    object-position: 48% 58%;
+    filter: saturate(.82) brightness(.86);
+  }
+  .panel--triassic-start .end-texture {
+    background: linear-gradient(90deg, transparent 0%, rgba(23,32,25,.08) 34%, #172019 54%, #172019 100%),
+                linear-gradient(0deg, rgba(7,12,9,.24), transparent 45%);
+  }
+  .panel--triassic-start .panel-copy {
+    top: 17vh;
+    left: 56vw;
+    width: 34vw;
+  }
+  .panel--triassic-start h2 {
+    max-width: 11ch;
+    font-size: clamp(48px, 4.8vw, 68px);
+    line-height: 1.02;
+  }
+  .panel--triassic-start .scene-prose p { max-width: 39ch; }
+
+  /* Pangeia is the map chapter: enlarge the graphic and keep its explanatory
+     copy in a distinct, stable gutter. */
+  .panel--pangea .pangea-frame {
+    left: 29vw;
+    width: 68vw;
+    height: 72vh;
+  }
+  .panel--pangea .copy-map {
+    top: 20vh;
+    width: 29vw;
+    max-width: 420px;
+  }
+  .panel--pangea .copy-map h2 { max-width: 10ch; line-height: 1.02; }
+  .panel--pangea .map-stamp {
+    right: 3vw;
+    bottom: 1vh;
+    color: rgba(248,245,237,.78);
+    font-size: 14px;
+  }
+
+  /* Keep the environment photographs legible, with the text anchored in
+     separate zones instead of a stack of interchangeable cards. */
+  .panel--landscape .full-bleed { filter: saturate(1.08) brightness(.94); }
+  .panel--landscape .copy-bottom h2 {
+    top: 15vh;
+    max-width: 9ch;
+    line-height: 1.02;
+  }
+  .panel--landscape .copy-bottom .scene-prose {
+    width: min(39vw, 590px);
+    bottom: 11vh;
+  }
+  .panel--landscape .copy-bottom .image-caption,
+  .panel--water .panel-copy .image-caption,
+  .panel--forest .panel-copy .image-caption {
+    color: rgba(248,245,237,.82);
+    font-size: 14px;
+  }
+  .panel--water .full-bleed { filter: saturate(1.05) brightness(1); }
+  .panel--water .panel-shade {
+    background: linear-gradient(90deg, rgba(7,15,13,.72), transparent 48%),
+                linear-gradient(0deg, rgba(7,15,13,.5), transparent 45%);
+  }
+  .panel--water .panel-copy h2 {
+    top: 14vh;
+    left: 55vw;
+    width: 32vw;
+    line-height: 1.02;
+  }
+  .panel--water .panel-copy .scene-prose {
+    bottom: 11vh;
+    width: min(38vw, 560px);
+  }
+  .panel--forest .full-bleed { filter: saturate(1.04) brightness(.98); }
+  .panel--forest .panel-shade {
+    background: linear-gradient(90deg, rgba(6,14,10,.78), rgba(6,14,10,.18) 46%, transparent 72%),
+                linear-gradient(0deg, rgba(6,14,10,.52), transparent 46%);
+  }
+  .panel--forest .panel-copy .scene-prose { width: min(36vw, 540px); }
+  .panel--forest .panel-copy h2 {
+    max-width: 10ch;
+    line-height: 1.02;
+  }
+
+  /* Fossils read as physical evidence: retain the large photograph, remove the
+     harsh cutout edge, and let the next scene carry the close-up. */
+  .panel--dinosaurs .dino-fossil-visual {
+    left: 43vw;
+    width: 49vw;
+    height: 68vh;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent, #000 9%, #000 100%);
+  }
+  .panel--dinosaurs .dino-fossil-visual img {
+    object-position: 52% center;
+    filter: saturate(1.02) brightness(1.04);
+  }
+  .panel--dinosaurs .panel-copy {
+    top: 17vh;
+    width: 40vw;
+  }
+  .panel--dinosaurs .panel-copy h2 {
+    max-width: 10ch;
+    line-height: 1.02;
+  }
+  .panel--dinosaurs .scene-prose p {
+    max-width: 40ch;
+    font-size: clamp(15px, 1.08vw, 17px);
+    line-height: 1.58;
+  }
+  .panel--dinosaurs .dino-fossil-visual figcaption {
+    left: 10%;
+    right: 3%;
+    bottom: 2vh;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .panel--fossil .fossil-closeup img {
+    filter: saturate(.96) brightness(.96);
+  }
+  .panel--fossil .panel-shade--left {
+    background: linear-gradient(90deg, #171613 0%, rgba(23,22,19,.91) 27%, rgba(23,22,19,.50) 49%, rgba(23,22,19,.04) 76%);
+  }
+  .panel--fossil .panel-copy h2 { max-width: 10ch; line-height: 1.02; }
+
+  .panel--boundary-end {
+    background: #131a16;
+  }
+  .panel--boundary-end .end-texture {
+    background: radial-gradient(ellipse at 83% 52%, rgba(113,94,63,.19), transparent 42%),
+                radial-gradient(ellipse at 16% 85%, rgba(37,55,43,.32), transparent 48%),
+                #131a16;
+  }
+  .panel--boundary-end .copy-center { width: min(1080px, 76vw); }
+  .panel--boundary-end .copy-center h2 {
+    max-width: 13ch;
+    font-size: clamp(56px, 5.35vw, 78px);
+    line-height: 1.01;
+  }
+  .panel--boundary-end .copy-center > .scene-prose p {
+    font-size: clamp(16px, 1.12vw, 18px);
+    line-height: 1.6;
+  }
+  .panel--boundary-end .end-stop p:first-child { color: #f0e9dd; }
 }

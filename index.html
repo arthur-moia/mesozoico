@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    // Hide only while initialization is pending; a failed/missing script releases it.
+    document.documentElement.classList.add("intro-pending");
+    window.mesoIntroGuard = setTimeout(function () {
+      document.documentElement.classList.remove("intro-pending");
+    }, 4000);
+  </script>
   <link rel="stylesheet" href="css/site.css">
   <script defer src="js/vendor/gsap.min.js"></script>
   <script defer src="js/vendor/ScrollTrigger.min.js"></script>
@@ -39,159 +46,120 @@
   <main id="story" class="story" aria-label="Expedição pelo Triássico">
     <div class="stage" aria-live="off">
       <section class="panel panel--opening is-active" id="inicio" data-panel data-age="now" data-age-label="Agora" data-stop="now" aria-label="Abertura: o mundo atual">
-        <video class="opening-video" id="opening-video" autoplay muted playsinline preload="auto" poster="assets/images/terra-poster.png">
-          <source src="assets/video/opening.mp4" type="video/mp4">
-        </video>
+        <video class="opening-video" id="opening-video" muted playsinline preload="auto" poster="assets/images/opening-poster.jpg"><source src="assets/video/opening.mp4" type="video/mp4"></video>
         <div class="opening-vignette"></div>
         <div class="opening-copy panel-copy">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Uma expedição pelo tempo profundo</p>
-          <h1>Este é o mundo<br>que conhecemos.<br><em>Mas ele nem sempre foi assim.</em></h1>
-          <p class="opening-lede">A Terra muda sem pedir licença. Para entender como este mundo tomou forma, precisamos voltar a um tempo em que quase todas as terras estavam reunidas num só continente.</p>
+          <h1><strong>É fácil olhar para o mundo de hoje e chamá-lo de normal.</strong></h1>
+          <div class="scene-prose"><p>Como se os continentes sempre tivessem estado aqui.<br>Como se este clima fosse permanente.<br>Como se nós tivéssemos chegado ao resultado final.</p><p><strong>A natureza raramente trabalha com resultados finais.</strong></p></div>
           <button class="start-journey" type="button" data-next>Iniciar expedição <span>↓</span></button>
           <button class="video-play" type="button" data-play-video hidden>Reproduzir abertura <span>▶</span></button>
         </div>
         <div class="opening-foot"><span>Abertura sem áudio</span><span>Role para atravessar o tempo</span></div>
       </section>
 
-      <section class="panel panel--boundary" data-panel data-age="251.9" data-age-label="251,9 MA" data-stop="start" aria-label="O início do Triássico">
-        <div class="panel-shade"></div>
-        <div class="panel-copy copy-left">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Há 251,9 milhões de anos</p>
-          <h2>Um mundo<br>em recuperação.</h2>
-          <p>O Triássico começou depois da maior crise de biodiversidade conhecida no registro geológico. A vida não voltou de uma vez, nem por toda parte no mesmo ritmo.</p>
-          <details class="science-note"><summary>O que as rochas preservam</summary><p>O que se seguiu foi uma recuperação desigual, registrada em rochas que preservam apenas fragmentos de um mundo muito maior. O limite entre Permiano e Triássico é datado em cerca de 251,9 milhões de anos.</p></details>
-        </div>
-      </section>
-
-      <section class="panel panel--pangea" data-panel data-age="250" data-age-label="≈ 250 MA" aria-label="Pangeia no Triássico inicial">
-        <div class="pangea-frame"><img src="assets/images/pangeia-mapa-250ma-provisorio.webp" alt="Mapa provisório de Pangeia e dos oceanos há cerca de 250 milhões de anos" loading="eager"><span class="map-stamp">Reconstrução paleogeográfica provisória</span></div>
-        <div class="panel-copy copy-map">
-          <p class="eyebrow"><span class="eyebrow-line"></span> A Terra, outra vez</p>
-          <h2>Continentes<br>reunidos.</h2>
-          <p>Quase todas as terras emersas estavam reunidas em Pangeia, cercada pelo oceano Panthalassa. Um continente tão vasto alterava a circulação do ar e da umidade.</p>
-          <p class="small-note">Litorais e posições são reconstruções estimadas, não observações diretas.</p>
-        </div>
-      </section>
-
-      <section class="panel panel--landscape" data-panel data-age="250" data-age-label="≈ 250 MA" aria-label="Ambientes do Triássico">
-        <img class="full-bleed" src="assets/images/triassico-arido.png" alt="Representação artística de uma paisagem triássica com áreas secas e um curso d'água" loading="eager">
-        <div class="panel-shade panel-shade--bottom"></div>
-        <div class="panel-copy copy-bottom">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Um planeta de contrastes</p>
-          <h2>Seco em alguns lugares.<br><em>Vivo em muitos outros.</em></h2>
-          <p>Pangeia não era um deserto sem fim. Em muitas regiões interiores, longe do mar, predominavam condições secas; em outras, rios, chuvas sazonais e vegetação criavam paisagens muito diferentes.</p>
-          <span class="image-caption">Reconstrução artística de um ambiente possível; não representa uma localidade específica.</span>
-        </div>
-      </section>
-
-      <section class="panel panel--water" data-panel data-age="240" data-age-label="≈ 240 MA" aria-label="Rios e zonas úmidas">
-        <img class="full-bleed" src="assets/images/triassico-agua.png" alt="Representação artística de um ambiente úmido triássico" loading="eager">
-        <div class="panel-shade"></div>
-        <div class="panel-copy copy-left copy-mid">
-          <p class="eyebrow"><span class="eyebrow-line"></span> A água muda a paisagem</p>
-          <h2>Onde havia água,<br>havia outros ritmos.</h2>
-          <p>Em algumas regiões, rios e áreas úmidas criavam condições diferentes das zonas interiores mais secas. A paisagem e a vida ao redor variavam conforme a água e as estações.</p>
-          <span class="image-caption">Reconstrução artística · cenário interpretativo</span>
-        </div>
-      </section>
-
-      <section class="panel panel--forest" data-panel data-age="240" data-age-label="≈ 240 MA" aria-label="Vegetação e florestas triássicas">
-        <img class="full-bleed" src="assets/images/triassico-floresta.png" alt="Representação artística de vegetação em ambiente triássico" loading="eager">
-        <div class="panel-shade panel-shade--left"></div>
-        <div class="panel-copy copy-left copy-mid">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Paisagens em mosaico</p>
-          <h2>Nem um único<br>tipo de mundo.</h2>
-          <p>O interior seco não definia todo o continente. Rios, planícies e áreas de vegetação compunham ambientes distintos; as imagens evocam esse contraste sem retratar um lugar identificado.</p>
-          <span class="image-caption">Reconstrução artística · não representa uma localidade identificada</span>
-        </div>
-      </section>
-
-      <section class="panel panel--dinosaurs" data-panel data-age="233" data-age-from="233" data-age-to="230" data-age-label="233–230 MA" data-stop="dino">
-        <div class="panel-copy copy-left copy-mid">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Cerca de 233–230 milhões de anos atrás</p>
-          <h2>Os dinossauros<br>entram no registro.</h2>
-          <p>Os dinossauros não surgem no registro como numa cena de estreia. Os fósseis mais antigos e inequívocos conhecidos aparecem no Triássico Superior — mas não revelam o instante exato em que a linhagem surgiu.</p>
-          <details class="science-note"><summary>Por que falar em intervalo?</summary><p>Uma primeira ocorrência conhecida marca o que foi preservado e encontrado até agora. Novos fósseis e novas datações podem ampliar ou ajustar esse quadro.</p></details>
-        </div>
-        <figure class="dino-fossil-visual">
-          <img src="assets/images/eoraptor-fossil-ischigualasto.jpg" alt="Afloramento rochoso com ossos de Eoraptor expostos em Ischigualasto" loading="eager">
-          <figcaption>Fóssil de Eoraptor em rocha · Ischigualasto</figcaption>
-        </figure>
-      </section>
-
-      <section class="panel panel--site" data-panel data-age="231" data-age-from="233" data-age-to="230" data-age-label="233–230 MA" data-stop="dino" aria-label="Ischigualasto, Argentina">
+      <section class="panel panel--site panel--site-present" data-panel data-age="now" data-age-label="Agora" data-stop="now" aria-label="Ischigualasto no presente">
+      
         <div class="site-photo"><img src="assets/images/ischigualasto-atual.jpg" alt="Paisagem atual do Parque Provincial Ischigualasto, na Argentina" loading="eager"><span>Ischigualasto · paisagem atual</span></div>
-        <div class="site-copy panel-copy">
-          <p class="eyebrow"><span class="eyebrow-line"></span> San Juan, Argentina</p>
-          <h2>Uma janela<br>para o Triássico.</h2>
-          <p>Em Ischigualasto, no que hoje é a Argentina, camadas de rocha preservaram animais e ambientes do Triássico Superior. A paisagem que vemos agora é outra: para alcançar o mundo antigo, precisamos interpretar fósseis, sedimentos e as relações entre eles.</p>
-          <div class="evidence-pair evidence-copy"><span class="micro-label">O registro fóssil</span><p>Os fósseis guardam fragmentos, não o mundo inteiro. Cada descoberta acrescenta pistas e também deixa perguntas em aberto.</p></div>
-        </div>
+        <div class="site-copy panel-copy"><p class="eyebrow"><strong>SAN JUAN · ARGENTINA · PRESENTE</strong></p><h2><strong>Ischigualasto</strong></h2><div class="scene-prose"><p>Hoje, parece imóvel.</p><p>Rocha, poeira, erosão — uma paisagem que sugere permanência.</p><p><strong>É uma boa ilusão.</strong></p><p>As camadas expostas aqui registram fragmentos de um mundo muito mais antigo.</p><p>Não o mundo inteiro.</p><p><strong>A geologia nunca é tão generosa.</strong></p></div><details class="science-note"><summary>Nota</summary><p>A paisagem atual de Ischigualasto não é a paisagem do Triássico. O que vemos hoje resulta de milhões de anos de deposição, soterramento, transformação e erosão.</p></details></div>
+      
       </section>
 
-      <section class="panel panel--eoraptor panel--eoraptor-skeleton" data-panel data-age="230" data-age-from="231" data-age-to="229" data-age-label="231–229 MA" data-stop="dino" data-slot="231–229" aria-label="Esqueleto do Eoraptor">
-        <div class="eoraptor-skeleton-copy">
-          <h2>O esqueleto do Eoraptor</h2>
-          <p>Os ossos preservam pistas sobre a postura e a forma do animal; esta representação esquelética é provisória.</p>
-        </div>
-        <div class="skeleton-stage">
-          <img src="assets/images/eoraptor-esqueleto.png" alt="Representação esquelética provisória do Eoraptor, em pose ereta" loading="eager">
-        </div>
-      </section>
-
-      <section class="panel panel--eoraptor panel--eoraptor-reconstruction" data-panel data-age="230" data-age-from="231" data-age-to="229" data-age-label="231–229 MA" data-stop="dino" data-slot="231–229" aria-label="Reconstrução do Eoraptor">
-        <div class="eoraptor-detail-layout">
-          <h2 class="eoraptor-detail-title">Eoraptor <span>lunensis</span></h2>
-          <div class="eoraptor-facts-column">
-            <p class="eoraptor-intro">Conhecido por fósseis de Ischigualasto, <i>Eoraptor lunensis</i> viveu no Triássico Superior.</p>
-            <dl class="eoraptor-facts">
-              <div><dt>Comprimento do espécime descrito</dt><dd>≈ 1 m</dd></div>
-              <div><dt>Locomoção</dt><dd>Bípede</dd></div>
-              <div><dt>Dieta</dt><dd>Incerta</dd></div>
-              <div><dt>Grupo</dt><dd>Dinosauria</dd></div>
-            </dl>
-            <details class="science-note science-note--dark"><summary>O que é reconstruído?</summary><p>O esqueleto fornece evidências; tecidos, pele e cor não são preservados nessa imagem. A aparência externa é uma reconstrução artística. A posição de Eoraptor na árvore evolutiva foi revista em estudos posteriores.</p></details>
-          </div>
-          <div class="specimen-stage specimen-stage--wipe">
-            <img class="specimen specimen--reconstruction" src="assets/images/eoraptor-reconstrucao.png" alt="Reconstrução artística do Eoraptor em pose ereta" loading="eager">
-            <span class="specimen-wipe-line" aria-hidden="true"></span>
-          </div>
-          <div class="eoraptor-context-column">
-            <p class="eoraptor-location">Ischigualasto<br><span>San Juan, Argentina</span></p>
-            <div class="eoraptor-age-card"><span>Triássico Superior</span><strong>≈ 231–229 Ma</strong></div>
-          </div>
-        </div>
-        <span class="specimen-disclaimer">Reconstrução artística · procedência e licença a confirmar</span>
-      </section>
-
-      <section class="panel panel--eoraptor panel--eoraptor-scale" data-panel data-age="230" data-age-from="231" data-age-to="229" data-age-label="231–229 MA" data-stop="dino" data-slot="231–229" aria-label="Eoraptor em comparação com uma pessoa">
-        <div class="eoraptor-scale-copy">
-          <p class="eoraptor-kicker">Uma comparação de tamanho</p>
-          <h2>Um pequeno corpo<br>num mundo imenso.</h2>
-          <p>O esqueleto descrito em 1993 tinha cerca de 1 metro. A imagem é uma reconstrução artística; ao lado, uma pessoa de referência com 1,70 m ajuda a perceber a diferença de escala.</p>
-        </div>
-        <div class="scale-stage" role="img" aria-label="Comparação visual entre o comprimento estimado do Eoraptor e a altura de uma pessoa adulta de 1,70 metro">
-          <div class="scale-ground" aria-hidden="true"></div>
-          <img class="scale-dinosaur" src="assets/images/eoraptor-reconstrucao.png" alt="" loading="eager">
-          <img class="scale-person" src="assets/images/humano.png" alt="" loading="eager">
-          <div class="dino-length-measure" role="img" aria-label="Comprimento estimado do Eoraptor: cerca de 1 a 1,3 metro">
-            <span class="dino-length-line" aria-hidden="true"></span><span>≈ 1–1,3 m · comprimento estimado</span>
-          </div>
-        </div>
-        <p class="scale-note">A linha indica comprimento estimado; não mede a altura do animal.</p>
-      </section>
-
-      <section class="panel panel--boundary-end" data-panel data-age="201.4" data-age-label="201,4 MA" data-stop="end" aria-label="Fim do Triássico">
+      <section class="panel panel--boundary panel--triassic-start" data-panel data-age="251.9" data-age-label="251,9 Ma" data-stop="start" aria-label="Início do Triássico">
+      
+        <div class="epoch-photo" aria-hidden="true"><img src="assets/images/permo-triassic-frazer-beach.jpg" alt="" loading="eager"></div>
         <div class="end-texture"></div>
-        <div class="panel-copy copy-center">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Há cerca de 201,4 milhões de anos</p>
-          <h2>O Triássico<br>chega ao limite.</h2>
-          <p>Uma crise de extinção marca a passagem para o Jurássico. O vulcanismo associado à Província Magmática do Atlântico Central é uma parte importante das explicações científicas; seus mecanismos e efeitos seguem em estudo.</p>
-          <span class="end-stop">Fim desta etapa da expedição</span>
-          <button class="restart-journey" type="button" data-go-start>Voltar ao início ↑</button>
-          <button class="credits-trigger credits-trigger--end" type="button" data-open-credits>Créditos e limites <span>＋</span></button>
+        <div class="panel-copy copy-left"><p class="eyebrow"><strong>≈ 251,9 MILHÕES DE ANOS</strong></p><h2><strong>O Triássico não começou do zero. Começou do que restou.</strong></h2><div class="scene-prose"><p>No fim do Permiano, a maior extinção em massa conhecida havia transformado profundamente a vida na Terra.</p><p>Os sobreviventes herdaram o planeta.</p><p>Isso não significa que herdaram estabilidade.</p><p><strong>A vida continuou. Só não voltou ao que era.</strong></p></div><details class="science-note"><summary>Nota</summary><p>A recuperação dos ecossistemas ocorreu em ritmos diferentes. O início do Triássico ainda foi marcado por fortes perturbações ambientais.</p></details></div>
+      
+      </section>
+
+      <section class="panel panel--pangea" data-panel data-age="250" data-age-label="≈ 250 Ma" aria-label="Pangeia">
+      
+        <div class="pangea-frame"><img src="assets/images/pangeia-mapa-250ma-provisorio.webp" alt="Reconstrução paleogeográfica provisória de Pangeia" loading="eager"><span class="map-stamp">Reconstrução paleogeográfica provisória</span></div>
+        <div class="panel-copy copy-map"><p class="eyebrow"><strong>UM PLANETA DIFERENTE EXIGE OUTRO MAPA</strong></p><h2><strong>Um continente. Não um único mundo.</strong></h2><div class="scene-prose"><p>A maior parte das terras emersas estava reunida em <strong>Pangeia</strong>.</p><p>No mapa, parece simples.</p><p>Na realidade, distâncias continentais enormes, circulação atmosférica e forte sazonalidade criavam condições muito diferentes entre regiões.</p><p><strong>Unir os continentes nunca significou uniformizar a natureza.</strong></p></div><details class="science-note"><summary>Nota</summary><p>Reconstrução paleogeográfica aproximada. Posições continentais são sustentadas por evidências geológicas e paleomagnéticas; costas, relevo e detalhes regionais envolvem reconstrução.</p></details></div>
+      
+      </section>
+
+      <section class="panel panel--landscape" data-panel data-age="250" data-age-label="≈ 250 Ma" aria-label="Ambiente árido">
+      
+            <img class="full-bleed" src="assets/images/triassico-arido.png" alt="Reconstrução artística generalizada de um ambiente do Triássico" loading="eager">
+            <div class="panel-shade panel-shade--bottom"></div>
+            <div class="panel-copy copy-bottom"><h2><strong>Seco não significa vazio.</strong></h2><div class="scene-prose"><p>Grandes regiões do interior de Pangeia experimentavam condições áridas ou semiáridas e forte sazonalidade.</p><p>Mas imaginar o Triássico como um deserto interminável seria conveniente demais.</p><p>Rios existiam. Chuvas chegavam. Planícies inundavam.</p><p><strong>O ambiente mudava — às vezes depressa.</strong></p></div><span class="image-caption">Reconstrução artística generalizada de condições áridas do Triássico. Não representa uma localidade específica.</span></div>
+          
+      </section>
+
+      <section class="panel panel--water" data-panel data-age="240" data-age-label="≈ 240 Ma" aria-label="Água e rios">
+      
+            <img class="full-bleed" src="assets/images/triassico-agua.png" alt="Reconstrução artística generalizada de um ambiente do Triássico" loading="eager">
+            <div class="panel-shade "></div>
+            <div class="panel-copy copy-left copy-mid"><h2><strong>Água muda as regras. Mesmo quando não fica por muito tempo.</strong></h2><div class="scene-prose"><p>Rios e planícies de inundação alteravam a paisagem, transportavam sedimentos e criavam novas condições para a vida.</p><p>Uma região seca não precisava permanecer seca.</p><p>Um rio não precisava permanecer no mesmo lugar.</p><p><strong>Estabilidade é uma ideia confortável. A geologia oferece poucas garantias.</strong></p></div><span class="image-caption">Sistemas fluviais e áreas sujeitas a inundação são registrados em diferentes depósitos triássicos.</span></div>
+          
+      </section>
+
+      <section class="panel panel--forest" data-panel data-age="240" data-age-label="≈ 240 Ma" aria-label="Vegetação do Triássico">
+      
+            <img class="full-bleed" src="assets/images/triassico-floresta.png" alt="Reconstrução artística generalizada de um ambiente do Triássico" loading="eager">
+            <div class="panel-shade panel-shade--left"></div>
+            <div class="panel-copy copy-left copy-mid"><h2><strong>Pangeia nunca foi uma paisagem só.</strong></h2><div class="scene-prose"><p>Onde água, clima e solo permitiam, a vegetação respondia.</p><p>Regiões mais úmidas coexistiam com áreas abertas, sazonais e secas.</p><p>Tudo dentro do mesmo supercontinente.</p><p><strong>Pangeia estava unida geograficamente. A natureza não recebeu o memorando.</strong></p></div><span class="image-caption">Reconstrução artística generalizada. A vegetação representada não deve ser interpretada como um inventário exato de espécies de uma única região.</span></div>
+          
+      </section>
+
+      <section class="panel panel--dinosaurs" data-panel data-age="233" data-age-label="233–230 Ma" data-stop="dino" aria-label="Primeiros dinossauros no registro">
+      
+        <div class="panel-copy copy-left copy-mid"><p class="eyebrow"><strong>TRIÁSSICO SUPERIOR · HÁ POUCO MAIS DE 230 MILHÕES DE ANOS</strong></p><h2><strong>Em algum momento, eles começaram.</strong></h2><div class="scene-prose"><p>Seria conveniente conhecer o primeiro dinossauro.</p><p>A espécie.<br>O lugar.<br>A data.</p><p><strong>Não conhecemos.</strong></p><p>Os fósseis mais antigos bem sustentados aparecem no Triássico Superior.</p><p>Mas existe uma diferença importante entre o primeiro dinossauro que existiu e o primeiro que tivemos a sorte de encontrar.</p></div><details class="science-note"><summary>Nota</summary><p>O registro fóssil é incompleto. Os fósseis mais antigos conhecidos estabelecem uma idade mínima para a presença dos dinossauros — não o instante exato em que o grupo surgiu.</p></details></div>
+        <figure class="dino-fossil-visual"><img src="assets/images/eoraptor-fossil-ischigualasto.jpg" alt="Fóssil de Eoraptor preservado na rocha de Ischigualasto" loading="eager"><figcaption><strong>Evidência preservada não é o passado inteiro. É a parte dele que sobreviveu.</strong></figcaption></figure>
+      
+      </section>
+
+      <section class="panel panel--fossil" data-panel data-age="231" data-age-label="≈ 231 Ma" data-stop="dino" aria-label="Evidência fóssil">
+      
+        <div class="fossil-closeup"><img src="assets/images/eoraptor-fossil-ischigualasto.jpg" alt="Detalhe do fóssil de Eoraptor em rocha" loading="eager"></div>
+        <div class="panel-shade panel-shade--left"></div>
+        <div class="panel-copy copy-left copy-mid"><h2><strong>Fossilizar já é improvável. Ser encontrado é pedir ainda mais sorte.</strong></h2><div class="scene-prose"><p>Um organismo precisa morrer nas condições certas, ser enterrado, escapar da destruição, permanecer preservado por milhões de anos...</p><p>e depois ser exposto onde alguém possa encontrá-lo.</p><p>É com esse arquivo incompleto que reconstruímos mundos inteiros.</p><p><strong>Não é pouca informação. Só não é toda ela.</strong></p></div></div>
+      
+      </section>
+
+      <section class="panel panel--eoraptor panel--eoraptor-skeleton" data-panel data-age="230" data-age-label="≈ 230 Ma" data-stop="dino" data-slot="≈ 230" aria-label="Eoraptor: esqueleto">
+      
+        <div class="eoraptor-skeleton-copy"><p class="eoraptor-kicker"><i>Eoraptor lunensis</i></p><h2><strong>Um animal reduzido ao que permaneceu.</strong></h2><div class="scene-prose"><p>Material esqueletal excepcionalmente informativo revelou um pequeno dinossauro bípede de Ischigualasto.</p><p>Os ossos estabelecem limites.</p><p>Proporções. Articulações. Anatomia.</p><p>Mas eles não escolhem a pele, a cor ou os detalhes que colocamos sobre o animal.</p><p><strong>É aqui que evidência começa a encontrar interpretação.</strong></p></div><details class="science-note"><summary>Nota</summary><p>Representação esquelética do projeto. A postura apresentada é uma reconstrução baseada na anatomia conhecida e não uma posição preservada em vida.</p></details></div>
+        <div class="skeleton-stage"><img src="assets/images/eoraptor-esqueleto.png" alt="Representação esquelética provisória do Eoraptor" loading="eager"></div>
+      
+      </section>
+
+      <section class="panel panel--eoraptor panel--eoraptor-bridge" data-panel data-age="230" data-age-label="≈ 230 Ma" data-stop="dino" data-slot="≈ 230" aria-label="Do esqueleto à reconstrução">
+      
+        <div class="eoraptor-bridge-copy"><h2><strong>Ossos são evidência.</strong></h2><div class="scene-prose"><p><strong>O animal completo é uma reconstrução.</strong></p><p>Entre uma coisa e outra existem anatomia, comparação, hipóteses...</p><p><strong>e espaço para estarmos errados.</strong></p></div></div>
+        <div class="skeleton-stage"><img src="assets/images/eoraptor-esqueleto.png" alt="Representação esquelética provisória do Eoraptor" loading="eager"></div>
+      
+      </section>
+
+      <section class="panel panel--eoraptor panel--eoraptor-reconstruction" data-panel data-age="230" data-age-label="≈ 230 Ma" data-stop="dino" data-slot="≈ 230" aria-label="Eoraptor: reconstrução">
+      
+        <div class="eoraptor-detail-layout">
+          <h2 class="eoraptor-detail-title"><i>Eoraptor lunensis</i></h2>
+          <div class="eoraptor-facts-column" tabindex="0" aria-label="Texto e nota científica sobre Eoraptor"><p class="eoraptor-support"><strong>Um dos primeiros capítulos conhecidos da história dos dinossauros.</strong></p><div class="scene-prose"><p>Há cerca de <strong>230 milhões de anos</strong>, <i>Eoraptor</i> viveu onde hoje está o noroeste da Argentina.</p><p>Era pequeno, bípede e anatomicamente próximo das primeiras grandes ramificações da evolução dos dinossauros.</p><p>Sua posição exata já mudou conforme novas análises foram feitas.</p><p>O fóssil permaneceu o mesmo.</p><p><strong>Nossa interpretação, não.</strong></p></div><details class="science-note"><summary>Nota científica</summary><p><i>Eoraptor</i> já foi interpretado de maneiras diferentes dentro da árvore evolutiva dos dinossauros. Sua posição entre formas próximas à origem dos sauropodomorfos é atualmente bem sustentada por diversas análises, mas relações profundas entre os primeiros dinossauros continuam sendo investigadas.</p></details></div>
+          <div class="specimen-stage specimen-stage--wipe"><img class="specimen specimen--reconstruction" src="assets/images/eoraptor-reconstrucao.png" alt="Reconstrução artística do Eoraptor" loading="eager"><span class="specimen-wipe-line" aria-hidden="true"></span></div>
+          <div class="eoraptor-context-column"><dl class="eoraptor-facts"><div><dt>PERÍODO</dt><dd>Triássico Superior</dd></div><div><dt>IDADE</dt><dd>≈ 230 milhões de anos</dd></div><div><dt>LOCALIDADE</dt><dd>Formação Ischigualasto<br>San Juan · Argentina</dd></div><div><dt>LOCOMOÇÃO</dt><dd>Bípede</dd></div><div><dt>DIETA</dt><dd>Incerta</dd></div><div><dt>POSIÇÃO EVOLUTIVA</dt><dd>Frequentemente recuperado entre os sauropodomorfos mais basais.</dd></div></dl></div>
         </div>
-        <span class="image-caption">A expedição para aqui · o capítulo do Jurássico ainda será desenvolvido</span>
+        <div class="specimen-disclaimer"><strong><strong>Reconstrução artística.</strong></strong> Anatomia esqueletal fornece a base da imagem. Coloração, tecidos externos e diversos detalhes de aparência permanecem inferidos.</div>
+      
+      </section>
+
+      <section class="panel panel--eoraptor panel--eoraptor-scale" data-panel data-age="230" data-age-label="≈ 230 Ma" data-stop="dino" data-slot="≈ 230" aria-label="Eoraptor em comparação de escala">
+      
+        <div class="eoraptor-scale-copy"><p class="eoraptor-kicker"><strong>TAMANHO EM PERSPECTIVA</strong></p><h2><strong>A palavra “dinossauro” faz a imaginação crescer.</strong></h2><div class="scene-prose"><p>O animal, nem sempre.</p><p><i>Eoraptor</i> estava muito distante dos gigantes que apareceriam mais tarde na história dos dinossauros.</p><p>Nesta reconstrução, ele é mostrado com aproximadamente <strong>1,2 metro de comprimento</strong> ao lado de uma pessoa de <strong>1,70 metro</strong>.</p><p>Pequeno?</p><p>Comparado ao que viria depois, certamente.</p><p><strong>Irrelevante é outra questão.</strong></p></div></div>
+        <div class="scale-stage" role="img" aria-label="Comparação visual aproximada entre Eoraptor e uma pessoa de 1,70 metro">
+          <div class="scale-ground" aria-hidden="true"></div><img class="scale-dinosaur" src="assets/images/eoraptor-reconstrucao.png" alt="" loading="eager"><img class="scale-person" src="assets/images/humano.png" alt="" loading="eager">
+          <div class="dino-length-measure" role="img" aria-label="Comprimento ilustrado: aproximadamente 1,2 metro"><span class="dino-length-line" aria-hidden="true"></span><span class="dino-length-label"><strong>≈ 1,2 m</strong></span></div>
+        </div>
+        <p class="scale-note">Comparação visual aproximada. O holótipo de <i>Eoraptor</i> foi originalmente descrito com cerca de <strong>1 metro de comprimento</strong>. A medida de 1,2 m representa a escala adotada nesta reconstrução gráfica e não uma medição direta confirmada para todos os indivíduos da espécie.</p>
+      
+      </section>
+
+      <section class="panel panel--boundary-end" data-panel data-age="201.4" data-age-label="201,4 Ma" data-stop="end" aria-label="Encerramento do Triássico">
+      
+        <div class="end-texture"></div><div class="panel-copy copy-center"><p class="eyebrow"><strong>≈ 201,4 MILHÕES DE ANOS</strong></p><h2><strong>E então, as regras mudam outra vez.</strong></h2><div class="scene-prose"><p>O Triássico termina durante outra grande crise biológica.</p><p>Um episódio de extinção em massa coincide estreitamente com enorme atividade vulcânica associada à abertura inicial do Atlântico.</p><p>Os mecanismos ainda são investigados em detalhe.</p><p>O resultado, não.</p><p>Muitas linhagens desapareceram. Outras permaneceram.</p><p><strong>A vida continuou novamente — não porque o mundo tivesse se tornado mais seguro, mas porque alguma coisa conseguiu sobreviver.</strong></p></div><div class="end-stop"><div class="scene-prose"><p><strong>Aqui termina o Triássico.</strong></p><p>O que acontece depois pertence ao próximo capítulo.</p></div></div>
+        <button class="restart-journey" type="button" data-go-start>Voltar ao início ↑</button><button class="credits-trigger credits-trigger--end" type="button" data-open-credits>Créditos e limites <span>＋</span></button></div>
+      
       </section>
     </div>
   </main>
@@ -206,6 +174,7 @@
       <li>Mapa paleogeográfico de 250 Ma: provisório; fonte/licença a confirmar. Não marca Ischigualasto.</li>
       <li>Ambientes ilustrados do Triássico: reconstruções artísticas fornecidas pelo usuário; créditos/licenças a confirmar.</li>
       <li>Ischigualasto: fotografia do parque atual; fonte/licença a confirmar.</li>
+      <li>Afloramento da transição Permiano–Triássico na cena 3, fotografado em Frazer Beach, Austrália: <a href="https://commons.wikimedia.org/wiki/File:Permian-Triassic_boundary_at_Frazer_Beach,_NSW.jpg" target="_blank" rel="noreferrer">Dippiljemmy / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>. Exibido com enquadramento pela página; não representa Ischigualasto.</li>
       <li>Eoraptor e figura de escala: imagens fornecidas pelo usuário; procedência/licença a confirmar. O esqueleto está em revisão.</li>
       <li>Triássico começou há cerca de 251,9 Ma: <a href="https://stratigraphy.org/ICSchart/ChronostratChart2024-12.pdf" target="_blank" rel="noreferrer">Carta Cronoestratigráfica Internacional</a>.</li>
       <li>Recuperação após a extinção Permiano–Triássica: <a href="https://www.nature.com/articles/ngeo1475" target="_blank" rel="noreferrer">Nature Geoscience</a>.</li>
@@ -221,3 +190,5 @@
   <noscript><div class="noscript-notice">Esta expedição precisa de JavaScript para as transições. A abertura continua disponível acima; ative JavaScript para percorrer as cenas.</div></noscript>
 </body>
 </html>
+
+

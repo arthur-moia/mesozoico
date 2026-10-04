@@ -1,0 +1,51 @@
+{
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "panels": 14,
+      "duration": 13,
+      "skeletonJump": 0,
+      "scaleJump": 0.01361083984375,
+      "feetGap": 0.9940435082872909,
+      "clipped": [],
+      "errors": []
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "panels": 14,
+      "duration": 13,
+      "skeletonJump": 0,
+      "scaleJump": 0.01605224609375,
+      "feetGap": 0.99560546875,
+      "clipped": [],
+      "errors": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "panels": 14,
+      "duration": 13,
+      "skeletonJump": 0,
+      "scaleJump": 0.0133056640625,
+      "feetGap": 0.9959426795580839,
+      "clipped": [],
+      "errors": []
+    }
+  ],
+  "fallback": {
+    "reduced": {
+      "static": true,
+      "enhanced": false,
+      "panels": 14,
+      "playButtonVisible": true,
+      "videoPaused": true,
+      "errors": []
+    },
+    "blockedAutoplay": {
+      "playButtonVisible": true,
+      "enhanced": true
+    }
+  }
+}

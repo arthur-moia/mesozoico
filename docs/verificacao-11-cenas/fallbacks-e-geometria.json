@@ -1,0 +1,219 @@
+{
+  "reduced": {
+    "enhanced": false,
+    "paused": true,
+    "time": 0,
+    "manual": true,
+    "hiddenPanels": 0
+  },
+  "autoplayBlocked": "manual playback passed",
+  "missingPlugin": {
+    "static": true,
+    "opacity": "1",
+    "pending": false
+  },
+  "failedInit": {
+    "static": true,
+    "opacity": "1",
+    "dirty": 0
+  },
+  "missingSiteScript": "opening released",
+  "fonts": [
+    {
+      "family": "DM Sans",
+      "status": "unloaded"
+    },
+    {
+      "family": "DM Sans",
+      "status": "loaded"
+    },
+    {
+      "family": "DM Sans",
+      "status": "unloaded"
+    },
+    {
+      "family": "DM Sans",
+      "status": "loaded"
+    },
+    {
+      "family": "DM Sans",
+      "status": "unloaded"
+    },
+    {
+      "family": "DM Sans",
+      "status": "unloaded"
+    },
+    {
+      "family": "DM Sans",
+      "status": "unloaded"
+    },
+    {
+      "family": "DM Sans",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "loaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "loaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "loaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "loaded"
+    }
+  ],
+  "geometry": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "jump": 0.011322021484375,
+      "dinoFoot": 791.9940435082873,
+      "humanFoot": 791.9921875,
+      "ground": 792,
+      "lineTop": 810,
+      "ratio": 0.7059643958998872,
+      "copyBottom": 362,
+      "dinoTop": 408.69570096685084
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "jump": 0.01605224609375,
+      "dinoFoot": 675.8390020718232,
+      "humanFoot": 675.83935546875,
+      "ground": 675.84375,
+      "lineTop": 693.84375,
+      "ratio": 0.7059597975092704,
+      "copyBottom": 354.140625,
+      "dinoTop": 391.7533667127072
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "jump": 0.0133056640625,
+      "dinoFoot": 950.4021926795581,
+      "humanFoot": 950.4005126953125,
+      "ground": 950.40625,
+      "lineTop": 968.40625,
+      "ratio": 0.7059832847353628,
+      "copyBottom": 385.390625,
+      "dinoTop": 490.43810428176795
+    }
+  ]
+}

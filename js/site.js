@@ -17,6 +17,7 @@
   let activeIndex = -1;
   let enhanced = false;
   let storyTrigger = null;
+  let masterAnimation = null;
   let goToPanel = (index) => {
     panels[Math.max(0, Math.min(N - 1, index))]?.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth" });
   };
@@ -33,7 +34,7 @@
   }
 
   function attemptAutoplay() {
-    if (!video) return;
+    if (!video || videoFinished) return;
     video.muted = true;
     video.defaultMuted = true;
     if (reducedMotion.matches) {
@@ -73,7 +74,7 @@
     });
   }
   playButton?.addEventListener("click", () => {
-    if (!video) return;
+    if (!video || videoFinished) return;
     video.muted = true;
     video.play().then(() => setPlaybackFallback(false)).catch(() => setPlaybackFallback(true));
   });
@@ -147,7 +148,8 @@
     panels.forEach((item, itemIndex) => {
       const current = itemIndex === activeIndex;
       item.classList.toggle("is-active", current);
-      item.setAttribute("aria-hidden", String(!current));
+      item.setAttribute("aria-hidden", String(enhanced && !current));
+      item.inert = enhanced && !current;
     });
     const info = ages[activeIndex];
     setText(currentAge, info.label);
@@ -177,6 +179,8 @@
   /* Versão sem animações intensas: rolagem normal + linha do tempo      */
   /* ------------------------------------------------------------------ */
   function enableStatic() {
+    root.classList.remove("intro-pending");
+    clearTimeout(window.mesoIntroGuard);
     story?.classList.add("is-static-motion");
     updateActive(0);
     if ("IntersectionObserver" in window) {
@@ -194,21 +198,28 @@
   /* Expedição em capítulos: uma linha do tempo mestra, ligada à rolagem */
   /* ------------------------------------------------------------------ */
 
-  // Cada item: como a cena seguinte entra. "cover" = a próxima fica por cima da anterior.
-  const ENTER_ITEMS = [
-    [".opening-copy .eyebrow", ".opening-copy h1", ".opening-lede", ".start-journey"],
-    [".panel-copy .eyebrow", ".panel-copy h2", ".panel-copy > p:not(.eyebrow)", ".science-note"],
-    [".pangea-frame", ".copy-map .eyebrow", ".copy-map h2", ".copy-map > p:not(.eyebrow)"],
-    [".copy-bottom .eyebrow", ".copy-bottom h2", ".copy-bottom > p:not(.eyebrow)", ".copy-bottom .image-caption"],
-    [".panel-copy .eyebrow", ".panel-copy h2", ".panel-copy > p:not(.eyebrow)", ".panel-copy .image-caption"],
-    [".panel-copy .eyebrow", ".panel-copy h2", ".panel-copy > p:not(.eyebrow)", ".panel-copy .image-caption"],
-    [".panel-copy .eyebrow", ".panel-copy h2", ".panel-copy > p:not(.eyebrow)", ".science-note", ".dino-fossil-visual"],
-    [".site-photo", ".site-copy .eyebrow", ".site-copy h2", ".site-copy > p:not(.eyebrow)", ".evidence-pair"],
-    [".eoraptor-skeleton-copy h2", ".eoraptor-skeleton-copy p", ".skeleton-stage"],
-    [".eoraptor-detail-title", ".eoraptor-intro", ".eoraptor-facts > div", ".science-note--dark", ".eoraptor-location", ".eoraptor-age-card"],
-    [".eoraptor-scale-copy .eoraptor-kicker", ".eoraptor-scale-copy h2", ".eoraptor-scale-copy > p:last-child", ".scale-stage", ".scale-note"],
-    [".copy-center .eyebrow", ".copy-center h2", ".copy-center > p:not(.eyebrow)", ".end-stop", ".restart-journey", ".credits-trigger--end"]
-  ];
+  // Collect the visible blocks in reading order, rather than indexing selectors
+  // by a fixed editorial structure. This covers all 14 chapters and their notes.
+  const TEXT_STEPS = panels.map((panel, index) => {
+    const flow = panel.querySelector(
+      '.opening-copy, .site-copy, .panel--triassic-start .panel-copy, .copy-map, .copy-bottom, .copy-mid, .eoraptor-skeleton-copy, .eoraptor-bridge-copy, .eoraptor-detail-layout, .eoraptor-scale-copy, .copy-center'
+    );
+    if (!flow) throw new Error('Texto ausente na cena ' + (index + 1));
+    const selector = ':is(h1,h2,.eyebrow,.eoraptor-kicker,.eoraptor-support,.scene-prose > p,.science-note,.eoraptor-facts > div,.restart-journey,.credits-trigger--end,.image-caption)';
+    const steps = Array.from(flow.querySelectorAll(selector)).filter(el =>
+      !el.closest('.science-note') || el.classList.contains('science-note')
+    ).map(el => [el]);
+    if (index === 0) steps.push([panel.querySelector('.start-journey'), panel.querySelector('.video-play')], [panel.querySelector('.opening-foot')]);
+    if (index === 1) steps.push([panel.querySelector('.site-photo > span')]);
+    if (index === 7) steps.push([panel.querySelector('.dino-fossil-visual figcaption')]);
+    if (index === 11) steps.push([panel.querySelector('.specimen-disclaimer')]);
+    if (index === 12) steps.push([panel.querySelector('.scale-note')]);
+    return steps.map(group => group.filter(Boolean)).filter(group => group.length);
+  });
+  const VISUALS = [[], ['.site-photo'], [], ['.pangea-frame'], [], [], [], [], ['.fossil-closeup'], ['.skeleton-stage'], [], [], [], []];
+  const SPECIMEN_FROM = 10; // bridge → reconstruction; skeleton is scene 10
+
+  let intro = null;
 
   function enableStory() {
     gsap.registerPlugin(ScrollTrigger);
@@ -237,249 +248,274 @@
     }
 
     const master = gsap.timeline({ paused: true, defaults: { ease: "none", immediateRender: false } });
-    const fromTo = (target, from, to, at, duration = 1) => master.fromTo(target, from, Object.assign({ duration }, to), at);
+    masterAnimation = master;
+    const fromTo = (target, from, to, at, duration = 1) => {
+      if (at + duration > Math.floor(at + 1e-7) + 1 + 1e-7) {
+        throw new Error("Animação ultrapassa o intervalo da cena: " + at + " + " + duration);
+      }
+      return master.fromTo(target, from, Object.assign({ duration }, to), at);
+    };
     const FULL = "inset(0% 0% 0% 0%)";
 
-    // A reconstrução permanece na tela e encolhe até a escala final, sem a
-    // placa lateral que fazia o animal parecer deslizar junto com a página.
-    const reconstructionIndex = panels.findIndex(panel => panel.classList.contains("panel--eoraptor-reconstruction"));
-    const reconstructionPanel = panels[reconstructionIndex];
-    const scalePanel = panels[reconstructionIndex + 1];
-    const reconstructionStage = reconstructionPanel?.querySelector(".specimen-stage--wipe");
-    const reconstructionImage = reconstructionStage?.querySelector(".specimen--reconstruction");
-    const scaleStage = scalePanel?.querySelector(".scale-stage");
-    const scaleImage = scaleStage?.querySelector(".scale-dinosaur");
-    const transfer = { p: 0 };
-    const transferGeometry = { ready: false };
-    const specimenBounds = { w: 1448, h: 1086, left: 192, right: 1380, top: 24, bottom: 1080 };
+    // Cada passagem dura 1: saída do texto até .28, movimento em [.28,.64],
+    // entrada do texto em [.66,.98]. Nenhum tween atravessa a parada seguinte.
+    // Assim os dois textos nunca ficam visíveis ao mesmo tempo.
+    const PD = 0.36;
+    const PLATE_START = 0.28;
 
-    function applySpecimenTransfer() {
-      if (!transferGeometry.ready || !reconstructionImage) return;
-      const p = transfer.p;
-      reconstructionImage.style.transformOrigin = "0 0";
-      reconstructionImage.style.transform = `translate(${transferGeometry.dx * p}px, ${transferGeometry.dy * p}px) scale(${1 + (transferGeometry.ratio - 1) * p})`;
+    function groups(index, selectors) {
+      return selectors;
     }
-
-    function measureSpecimenTransfer() {
-      if (!reconstructionImage || !reconstructionStage || !scaleStage || !scaleImage) return false;
-      const oldReconstructionTransform = reconstructionPanel.style.transform;
-      const oldScaleTransform = scalePanel.style.transform;
-      const oldImageTransform = reconstructionImage.style.transform;
-      reconstructionPanel.style.transform = "none";
-      scalePanel.style.transform = "none";
-      reconstructionImage.style.transform = "none";
-
-      const sourcePanelBox = reconstructionPanel.getBoundingClientRect();
-      const sourceStageBox = reconstructionStage.getBoundingClientRect();
-      const targetStageBox = scaleStage.getBoundingClientRect();
-      let targetBox = scaleImage.getBoundingClientRect();
-      if (!sourceStageBox.width || !sourceStageBox.height || !targetBox.width || !targetBox.height) {
-        reconstructionPanel.style.transform = oldReconstructionTransform;
-        scalePanel.style.transform = oldScaleTransform;
-        reconstructionImage.style.transform = oldImageTransform;
-        return false;
+    // Saída: de baixo para cima, curta. Na volta (rolagem ao contrário) o mesmo trecho
+    // reaparece de cima para baixo, na ordem de leitura.
+    function textOut(index, at) {
+      const steps = groups(index, TEXT_STEPS[index]).reverse();
+      const gap = steps.length > 1 ? Math.min(0.05, 0.14 / (steps.length - 1)) : 0;
+      steps.forEach((els, k) => fromTo(els, { opacity: 1, y: 0 }, { opacity: 0, y: -10, ease: "power1.in" }, at + k * gap, 0.14));
+    }
+    // Entrada em etapas: identificação, título, explicação, informações complementares.
+    function textIn(index, at, { from = 0.65, dur = 0.17 } = {}) {
+      const steps = groups(index, TEXT_STEPS[index]);
+      const gap = steps.length > 1 ? Math.min(0.1, (0.99 - from - dur) / (steps.length - 1)) : 0;
+      steps.forEach((els, k) => {
+        fromTo(els, { opacity: 0, y: 20 }, { opacity: 1, y: 0, ease: "power3.out", immediateRender: true }, at + from + k * gap, dur);
+      });
+    }
+    // Imagens da cena que chega: ficam ocultas até o início da própria entrada (antes apareciam inteiras e depois sumiam).
+    function visualIn(index, at, { x = 0, y = 0, from = 0.28, duration = 0.36 } = {}) {
+      const els = VISUALS[index].flatMap((selector) => Array.from(panels[index].querySelectorAll(selector)));
+      els.forEach((el) => {
+        fromTo(el, { opacity: 0, x, y }, { opacity: 1, x: 0, y: 0, ease: "power1.out", immediateRender: true }, at + from, duration);
+      });
+    }
+    function enter(c, offsets, text) {
+      const image = c.Q.querySelector(".full-bleed");
+      if (image && c.i + 1 >= 4 && c.i + 1 <= 6) {
+        const drift = c.i + 1 === 5 ? -1.5 : 1.5;
+        fromTo(image, { scale: 1.045, xPercent: drift }, { scale: 1, xPercent: 0, ease: "power1.out" }, c.i + PLATE_START, PD);
       }
-
-      const b = specimenBounds;
-      const unit = Math.min((sourceStageBox.width - 16) / (b.right - b.left), (sourceStageBox.height - 16) / (b.bottom - b.top));
-      const visibleWidth = (b.right - b.left) * unit;
-      const visibleHeight = (b.bottom - b.top) * unit;
-      const right = (sourceStageBox.width + visibleWidth) / 2;
-      const bottom = (sourceStageBox.height + visibleHeight) / 2;
-      const frame = {
-        x: right - b.right * unit,
-        y: bottom - b.bottom * unit,
-        w: b.w * unit,
-        h: b.h * unit
-      };
-      Object.assign(reconstructionImage.style, {
-        position: "absolute",
-        left: `${frame.x}px`,
-        top: `${frame.y}px`,
-        width: `${frame.w}px`,
-        height: `${frame.h}px`,
-        objectFit: "fill"
-      });
-
-      // Centre the final-scale Eoraptor over its current position. The human
-      // reference remains to the right, so the transition reads as a shrink,
-      // not as a horizontal scroll of the specimen.
-      const alphaCenter = (b.left + b.right) / (2 * b.w);
-      const sourceCenter = sourceStageBox.left - sourcePanelBox.left + frame.x + frame.w * alphaCenter;
-      const targetCenterOffset = targetBox.width * alphaCenter;
-      const targetLeft = sourceCenter - (targetStageBox.left - sourcePanelBox.left) - targetCenterOffset;
-      scaleStage.style.setProperty("--dino-left", `${targetLeft}px`);
-      targetBox = scaleImage.getBoundingClientRect();
-
-      const targetTop = targetBox.top - scalePanel.getBoundingClientRect().top;
-      transferGeometry.dx = targetBox.left - (sourceStageBox.left + frame.x);
-      transferGeometry.dy = targetTop - (sourceStageBox.top - sourcePanelBox.top + frame.y);
-      transferGeometry.ratio = targetBox.width / frame.w;
-      transferGeometry.ready = Number.isFinite(transferGeometry.dx + transferGeometry.dy + transferGeometry.ratio) && transferGeometry.ratio > 0;
-
-      reconstructionPanel.style.transform = oldReconstructionTransform;
-      scalePanel.style.transform = oldScaleTransform;
-      applySpecimenTransfer();
-      return transferGeometry.ready;
-    }
-
-    // A abertura recebe a frase em camadas, enquanto o vídeo já está em andamento.
-    const openingItems = ENTER_ITEMS[0].flatMap((selector) => Array.from(panels[0].querySelectorAll(selector)));
-    gsap.fromTo(openingItems, { y: 18, opacity: 0 }, {
-      y: 0, opacity: 1, duration: 0.86, stagger: 0.22, ease: "power3.out", delay: 0.3, clearProps: "transform"
-    });
-
-    // A cena se revela primeiro; cada bloco de texto assenta em seguida, com deslocamento curto.
-    function enterCopy(index, at, { x = 0, y = 22, from = 0.28, stagger = 0.14, duration = 0.46 } = {}) {
-      const items = ENTER_ITEMS[index].flatMap((selector) => Array.from(panels[index].querySelectorAll(selector)));
-      items.forEach((el, k) => {
-        const start = from + k * stagger;
-        const fromVars = { x, y };
-        fromVars.opacity = 0;
-        fromTo(el, fromVars, { x: 0, y: 0, opacity: 1, ease: "power3.out" }, at + start, duration);
-      });
+      visualIn(c.i + 1, c.i, offsets);
+      textIn(c.i + 1, c.i, text);
     }
 
     function edgePulse(edge, at, peak) {
-      fromTo(edge, { opacity: 0 }, { opacity: peak }, at, 0.16);
-      fromTo(edge, { opacity: peak }, { opacity: 0 }, at + 0.84, 0.16);
+      fromTo(edge, { opacity: 0 }, { opacity: peak }, at + PLATE_START, 0.16 * PD);
+      fromTo(edge, { opacity: peak }, { opacity: 0 }, at + PLATE_START + 0.84 * PD, 0.16 * PD);
     }
 
     // Cortina: a cena atual sobe e sai; a próxima aparece por baixo, um pouco mais devagar.
     function lift(c) {
-      fromTo(c.P, { yPercent: 0 }, { yPercent: -100 }, c.i);
-      fromTo(c.Q, { yPercent: 14 }, { yPercent: 0 }, c.i);
-      fromTo(c.pv, { opacity: 0 }, { opacity: 0.32 }, c.i);
-      fromTo(c.nv, { opacity: 0.5 }, { opacity: 0 }, c.i);
+      const epoch = c.Q.querySelector(".epoch-photo");
+      if (epoch) fromTo(epoch, { opacity: .12, scale: 1.06 }, { opacity: 1, scale: 1, ease: "power1.out" }, c.i + PLATE_START, PD);
+      fromTo(c.P, { yPercent: 0 }, { yPercent: -100 }, c.i + PLATE_START, PD);
+      fromTo(c.Q, { yPercent: 14 }, { immediateRender: true, yPercent: 0 }, c.i + PLATE_START, PD);
+      fromTo(c.pv, { opacity: 0 }, { opacity: 0.32 }, c.i + PLATE_START, PD);
+      fromTo(c.nv, { opacity: 0.5 }, { opacity: 0 }, c.i + PLATE_START, PD);
       edgePulse(makeEdge(c.P, "h", "bottom", c.limit), c.i, c.limit ? 0.95 : 0.5);
-      enterCopy(c.i + 1, c.i);
+      textOut(c.i, c.i);
+      enter(c, { y: 44 });
     }
     // Placa lateral: a próxima cena entra pela direita sobre a anterior, que recua com paralaxe.
     function slab(c) {
-      fromTo(c.Q, { xPercent: 100 }, { xPercent: 0 }, c.i);
-      fromTo(c.P, { xPercent: 0 }, { xPercent: -16 }, c.i);
-      fromTo(c.pv, { opacity: 0 }, { opacity: 0.6 }, c.i);
+      fromTo(c.Q, { xPercent: 100 }, { immediateRender: true, xPercent: 0 }, c.i + PLATE_START, PD);
+      fromTo(c.P, { xPercent: 0 }, { xPercent: -16 }, c.i + PLATE_START, PD);
+      fromTo(c.pv, { opacity: 0 }, { opacity: 0.6 }, c.i + PLATE_START, PD);
       edgePulse(makeEdge(c.Q, "v", "left", c.limit), c.i, 0.5);
-      enterCopy(c.i + 1, c.i, { y: 18 });
+      textOut(c.i, c.i);
+      enter(c, { x: 70 });
     }
     // Janela horizontal: a cena abre a partir do centro, para os lados.
     function openSides(c) {
-      fromTo(c.Q, { clipPath: "inset(0% 50% 0% 50%)" }, { clipPath: FULL }, c.i);
-      fromTo(c.pv, { opacity: 0 }, { opacity: 0.55 }, c.i);
+      fromTo(c.Q, { clipPath: "inset(0% 50% 0% 50%)" }, { immediateRender: true, clipPath: FULL }, c.i + PLATE_START, PD);
+      fromTo(c.pv, { opacity: 0 }, { opacity: 0.55 }, c.i + PLATE_START, PD);
       const left = makeEdge(c.Q, "v", "left", false);
       const right = makeEdge(c.Q, "v", "right", false);
-      fromTo(left, { left: "50%" }, { left: "0%" }, c.i);
-      fromTo(right, { right: "50%" }, { right: "0%" }, c.i);
+      fromTo(left, { left: "50%" }, { left: "0%" }, c.i + PLATE_START, PD);
+      fromTo(right, { right: "50%" }, { right: "0%" }, c.i + PLATE_START, PD);
       edgePulse(left, c.i, 0.45);
       edgePulse(right, c.i, 0.45);
-      enterCopy(c.i + 1, c.i);
+      textOut(c.i, c.i);
+      enter(c, { y: 36 });
     }
     // Revelação de baixo para cima: a imagem fica parada e a cena nova sobe como uma camada.
     function riseUp(c) {
-      fromTo(c.Q, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: FULL }, c.i);
-      fromTo(c.P, { yPercent: 0 }, { yPercent: -14 }, c.i);
-      fromTo(c.pv, { opacity: 0 }, { opacity: 0.5 }, c.i);
+      fromTo(c.Q, { clipPath: "inset(100% 0% 0% 0%)" }, { immediateRender: true, clipPath: FULL }, c.i + PLATE_START, PD);
+      fromTo(c.P, { yPercent: 0 }, { yPercent: -14 }, c.i + PLATE_START, PD);
+      fromTo(c.pv, { opacity: 0 }, { opacity: 0.5 }, c.i + PLATE_START, PD);
       const top = makeEdge(c.Q, "h", "top", false);
-      fromTo(top, { top: "100%" }, { top: "0%" }, c.i);
+      fromTo(top, { top: "100%" }, { top: "0%" }, c.i + PLATE_START, PD);
       edgePulse(top, c.i, 0.45);
-      enterCopy(c.i + 1, c.i);
+      textOut(c.i, c.i);
+      enter(c, { y: 40 });
     }
     // Saída lateral: a cena atual desliza para a esquerda e deixa a próxima, por baixo, assentar.
     function slideAway(c) {
-      fromTo(c.P, { xPercent: 0 }, { xPercent: -100 }, c.i);
-      fromTo(c.Q, { xPercent: 14 }, { xPercent: 0 }, c.i);
-      fromTo(c.pv, { opacity: 0 }, { opacity: 0.3 }, c.i);
-      fromTo(c.nv, { opacity: 0.5 }, { opacity: 0 }, c.i);
+      fromTo(c.P, { xPercent: 0 }, { xPercent: -100 }, c.i + PLATE_START, PD);
+      fromTo(c.Q, { xPercent: 14 }, { immediateRender: true, xPercent: 0 }, c.i + PLATE_START, PD);
+      fromTo(c.pv, { opacity: 0 }, { opacity: 0.3 }, c.i + PLATE_START, PD);
+      fromTo(c.nv, { opacity: 0.5 }, { opacity: 0 }, c.i + PLATE_START, PD);
       edgePulse(makeEdge(c.P, "v", "right", false), c.i, 0.5);
-      enterCopy(c.i + 1, c.i, { x: 16, y: 0 });
+      textOut(c.i, c.i);
+      enter(c, { x: 60 });
     }
-    // Descida ao escuro: a floresta afunda e a cena do registro fóssil é revelada da esquerda para a direita.
-    function wipeRight(c) {
-      fromTo(c.Q, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: FULL }, c.i);
-      fromTo(c.P, { xPercent: 0 }, { xPercent: 8 }, c.i);
-      fromTo(c.pv, { opacity: 0 }, { opacity: 0.85 }, c.i);
-      const outgoingCopy = c.P.querySelector(".panel-copy");
-      if (outgoingCopy) fromTo(outgoingCopy, { x: 0, opacity: 1 }, { x: -36, opacity: 0, ease: "power1.in" }, c.i, 0.46);
-      const edge = makeEdge(c.Q, "v", "right", false);
-      fromTo(edge, { right: "100%" }, { right: "0%" }, c.i);
-      edgePulse(edge, c.i, 0.5);
-      enterCopy(c.i + 1, c.i, { x: -16, y: 0, from: 0.22, stagger: 0.14, duration: 0.46 });
+    // O ambiente perde luz enquanto a evidência fóssil se revela dentro da própria fotografia.
+    // A transição evita outra cortina atravessando todo o painel.
+    function fossilReveal(c) {
+      fromTo(c.P, { opacity: 1 }, { opacity: 0, ease: "power1.inOut" }, c.i + PLATE_START, PD);
+      fromTo(c.Q, { opacity: 0 }, { immediateRender: true, opacity: 1, ease: "power1.inOut" }, c.i + PLATE_START, PD);
+      textOut(c.i, c.i);
+      const figure = c.Q.querySelector(".dino-fossil-visual");
+      const image = figure?.querySelector("img");
+      if (figure) fromTo(figure, { opacity: 0, y: 24 }, { opacity: 1, y: 0, ease: "power2.out" }, c.i + 0.28, 0.36);
+      if (image) fromTo(image, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: FULL, ease: "power1.inOut" }, c.i + 0.28, 0.36);
+      textIn(c.i + 1, c.i, { from: 0.66, dur: 0.14 });
     }
     // Janela vertical: uma fresta no horizonte se abre para cima e para baixo.
     function openVertical(c) {
-      fromTo(c.Q, { clipPath: "inset(50% 0% 50% 0%)" }, { clipPath: FULL }, c.i);
-      fromTo(c.pv, { opacity: 0 }, { opacity: 0.5 }, c.i);
+      if (c.i === 7) {
+        const detail = c.Q.querySelector(".fossil-closeup img");
+        if (detail) fromTo(detail, { scale: 1.16, transformOrigin: "55% 44%" }, { scale: 1, ease: "power1.out" }, c.i + PLATE_START, PD);
+      }
+      fromTo(c.Q, { clipPath: "inset(50% 0% 50% 0%)" }, { immediateRender: true, clipPath: FULL }, c.i + PLATE_START, PD);
+      fromTo(c.pv, { opacity: 0 }, { opacity: 0.5 }, c.i + PLATE_START, PD);
       const top = makeEdge(c.Q, "h", "top", false);
       const bottom = makeEdge(c.Q, "h", "bottom", false);
-      fromTo(top, { top: "50%" }, { top: "0%" }, c.i);
-      fromTo(bottom, { bottom: "50%" }, { bottom: "0%" }, c.i);
+      fromTo(top, { top: "50%" }, { top: "0%" }, c.i + PLATE_START, PD);
+      fromTo(bottom, { bottom: "50%" }, { bottom: "0%" }, c.i + PLATE_START, PD);
       edgePulse(top, c.i, 0.45);
       edgePulse(bottom, c.i, 0.45);
-      enterCopy(c.i + 1, c.i);
+      textOut(c.i, c.i);
+      enter(c, { y: 30 });
     }
 
-    // A reconstrução surge como uma linha que atravessa somente a imagem do espécime.
-    function specimenWipe(c) {
-      const oldImage = c.P.querySelector(".skeleton-stage img");
-      const stage = c.Q.querySelector(".specimen-stage--wipe");
-      const reconstruction = stage?.querySelector(".specimen--reconstruction");
-      const wipeLine = stage?.querySelector(".specimen-wipe-line");
-      const oldCopy = c.P.querySelector(".eoraptor-skeleton-copy");
-      if (oldImage) fromTo(oldImage, { clipPath: "inset(0% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 100%)", ease: "power1.inOut" }, c.i + 0.06, 0.84);
-      if (reconstruction) fromTo(reconstruction, { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: FULL, ease: "power1.inOut" }, c.i + 0.06, 0.84);
-      if (wipeLine) {
-        fromTo(wipeLine, { left: "0%", opacity: 0 }, { left: "100%", opacity: 1, ease: "none" }, c.i + 0.06, 0.78);
-        fromTo(wipeLine, { opacity: 1 }, { opacity: 0 }, c.i + 0.84, 0.16);
+    /* ---------------------------------------------------------------- */
+    /* Esqueleto → reconstrução                                          */
+    /* As duas imagens ocupam exatamente o mesmo retângulo (medido a     */
+    /* partir do espécime da reconstrução). Uma linha percorre só a      */
+    /* extensão visível do animal: à esquerda dela já está a             */
+    /* reconstrução, à direita ainda está o esqueleto.                   */
+    /* ---------------------------------------------------------------- */
+    // Alpha bounds measured separately (alpha > 20) from the supplied, unchanged PNGs.
+    const BOUNDS = {
+      skeleton: { w: 1448, h: 1086, left: 61, right: 1401, top: 26, bottom: 1075 },
+      reconstruction: { w: 1448, h: 1086, left: 192, right: 1380, top: 24, bottom: 1080 }
+    };
+    const wipe = { p: 0 };
+    const transfer = { p: 0 };
+    const previousSkeletonPanel = panels[SPECIMEN_FROM - 1];
+    const previousSkeletonStage = previousSkeletonPanel.querySelector('.skeleton-stage');
+    const previousSkeletonImage = previousSkeletonStage.querySelector('img');
+    const skeletonPanel = panels[SPECIMEN_FROM];
+    const reconPanel = panels[SPECIMEN_FROM + 1];
+    const skeletonStage = skeletonPanel.querySelector('.skeleton-stage');
+    const skeletonImage = skeletonStage.querySelector('img');
+    const reconStage = reconPanel.querySelector('.specimen-stage--wipe');
+    const reconImage = reconStage.querySelector('.specimen--reconstruction');
+    const scalePanel = panels[SPECIMEN_FROM + 2];
+    const scaleImage = scalePanel.querySelector('.scale-dinosaur');
+    const wipeLine = reconStage.querySelector('.specimen-wipe-line');
+    skeletonStage.appendChild(wipeLine);
+    const geo = { ready: false };
+
+    function applyWipe() {
+      if (!geo.ready) return;
+      const x = geo.left + wipe.p * (geo.right - geo.left);
+      const r = geo.recon, s = geo.skeleton;
+      reconImage.style.clipPath = `inset(0px ${Math.max(0, r.x + r.w - x)}px 0px 0px)`;
+      skeletonImage.style.clipPath = `inset(0px 0px 0px ${Math.max(0, x - s.x)}px)`;
+      wipeLine.style.left = `${x}px`;
+      wipeLine.style.opacity = Math.max(0, Math.min(1, wipe.p / .04, (1 - wipe.p) / .04));
+    }
+
+    function applyTransfer() {
+      if (!geo.ready) return;
+      const p = transfer.p;
+      reconImage.style.transformOrigin = '0 0';
+      reconImage.style.transform = `translate(${geo.dx * p}px, ${geo.dy * p}px) scale(${1 + (geo.ratio - 1) * p})`;
+    }
+
+    function measureSpecimen() {
+      const panelBox = reconPanel.getBoundingClientRect();
+      const box = reconStage.getBoundingClientRect();
+      if (!box.width || !box.height) return;
+      const left = box.left - panelBox.left, top = box.top - panelBox.top;
+      const alignedStage = { left: `${left}px`, top: `${top}px`, width: `${box.width}px`, height: `${box.height}px`, bottom: 'auto', minHeight: '0' };
+      Object.assign(skeletonStage.style, alignedStage);
+      Object.assign(previousSkeletonStage.style, alignedStage);
+      // Preserve proportions; align the visible head/right edge and the foot baseline.
+      // The provisional skeleton's tail/limbs differ: do not stretch it into false anatomical agreement.
+      const r = BOUNDS.reconstruction, s = BOUNDS.skeleton;
+      const k = (r.bottom - r.top) / (s.bottom - s.top);
+      const unionWidth = Math.max(r.right - r.left, (s.right - s.left) * k);
+      const unit = Math.min((box.width - 16) / unionWidth, (box.height - 16) / (r.bottom - r.top));
+      const right = (box.width + unionWidth * unit) / 2;
+      const bottom = (box.height + (r.bottom - r.top) * unit) / 2;
+      function place(img, b, factor) {
+        const u = unit * factor;
+        const frame = { x: right - b.right * u, y: bottom - b.bottom * u, w: b.w * u, h: b.h * u };
+        Object.assign(img.style, { left: `${frame.x}px`, top: `${frame.y}px`, width: `${frame.w}px`, height: `${frame.h}px` });
+        return frame;
       }
-      if (oldCopy) fromTo(oldCopy, { opacity: 1, y: 0 }, { opacity: 0, y: -14, ease: "power1.in" }, c.i, 0.48);
-      enterCopy(c.i + 1, c.i, { y: 20, from: 0.2, stagger: 0.11, duration: 0.42 });
+      geo.recon = place(reconImage, r, 1);
+      geo.skeleton = place(skeletonImage, s, k);
+      place(previousSkeletonImage, s, k);
+      geo.left = right - unionWidth * unit - 2;
+      geo.right = right + 2;
+      wipeLine.style.top = `${bottom - (r.bottom - r.top) * unit - 2}px`;
+      wipeLine.style.height = `${(r.bottom - r.top) * unit + 4}px`;
+      const target = scaleImage.getBoundingClientRect();
+      const targetPanel = scalePanel.getBoundingClientRect();
+      geo.dx = target.left - targetPanel.left - left - geo.recon.x;
+      geo.dy = target.top - targetPanel.top - top - geo.recon.y;
+      geo.ratio = target.width / geo.recon.w;
+      geo.ready = true;
+      applyWipe();
+      applyTransfer();
+    }
+
+    function skeletonToBridge(c) {
+      // Both unchanged skeleton PNGs are measured into the same visible rectangle.
+      // The new copy arrives over the animal before the following wipe begins.
+      fromTo(c.Q, { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .28, .36);
+      textOut(c.i, c.i);
+      textIn(c.i + 1, c.i);
+    }
+
+    function specimenWipe(c) {
+      fromTo(c.P, { backgroundColor: 'rgba(36,29,25,1)' }, { backgroundColor: 'rgba(36,29,25,0)' }, c.i, .001);
+      textOut(c.i, c.i);
+      fromTo(wipe, { p: 0 }, { p: 1, onUpdate: applyWipe }, c.i + .28, .36);
+      textIn(c.i + 1, c.i);
     }
 
     function specimenToScale(c) {
-      if (!transferGeometry.ready && !measureSpecimenTransfer()) {
-        slab(c);
-        return;
-      }
-
-      const outgoing = [
-        c.P.querySelector(".eoraptor-detail-title"),
-        c.P.querySelector(".eoraptor-intro"),
-        ...Array.from(c.P.querySelectorAll(".eoraptor-facts > div")),
-        c.P.querySelector(".science-note--dark"),
-        c.P.querySelector(".eoraptor-context-column"),
-        c.P.querySelector(".specimen-disclaimer")
-      ].filter(Boolean);
-      outgoing.forEach((el, k) => fromTo(el, { opacity: 1, y: 0 }, { opacity: 0, y: -12, ease: "power1.in" }, c.i + k * 0.035, 0.13));
-
-      fromTo(transfer, { p: 0 }, { p: 1, ease: "power2.inOut", onUpdate: applySpecimenTransfer }, c.i + 0.22, 0.48);
-
-      const incoming = [
-        c.Q.querySelector(".eoraptor-scale-copy .eoraptor-kicker"),
-        c.Q.querySelector(".eoraptor-scale-copy h2"),
-        c.Q.querySelector(".eoraptor-scale-copy > p:last-child")
-      ].filter(Boolean);
-      incoming.forEach((el, k) => fromTo(el, { opacity: 0, y: 18 }, { opacity: 1, y: 0, ease: "power3.out", immediateRender: true }, c.i + 0.58 + k * 0.1, 0.2));
-
-      const comparison = c.Q.querySelectorAll(".scale-person, .scale-ground");
-      fromTo(comparison, { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + 0.76, 0.16);
-      fromTo(c.Q.querySelector(".dino-length-measure"), { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + 0.84, 0.12);
-      fromTo(c.Q.querySelector(".scale-note"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, ease: "power2.out", immediateRender: true }, c.i + 0.9, 0.1);
+      // The reconstruction itself moves. Only at the exact settled boundary does the
+      // identical scale image take its place; both use the same measured rectangle.
+      fromTo(c.P, { backgroundColor: 'rgba(36,29,25,1)' }, { backgroundColor: 'rgba(36,29,25,0)' }, c.i, .001);
+      textOut(c.i, c.i);
+      fromTo(transfer, { p: 0 }, { p: 1, ease: 'power2.inOut', onUpdate: applyTransfer }, c.i + .30, .34);
+      fromTo(c.Q.querySelectorAll('.scale-person, .scale-ground'), { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .66, .12);
+      fromTo(c.Q.querySelector('.dino-length-measure'), { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .79, .08);
+      textIn(c.i + 1, c.i, { from: .86, dur: .12 });
     }
 
     // Uma assinatura de movimento por passagem. "cover": a próxima cena fica por cima.
     const TRANSITIONS = [
-      { run: (c) => lift({ ...c, limit: true }), cover: false },  // abertura → limite Permiano–Triássico
-      { run: slab, cover: true },                                // limite → mapa de Pangeia
-      { run: openSides, cover: true },                           // mapa → paisagem seca
-      { run: riseUp, cover: true },                              // paisagem seca → água
-      { run: slideAway, cover: false },                          // água → floresta
-      { run: wipeRight, cover: true },                           // floresta → dinossauros
-      { run: openVertical, cover: true },                        // dinossauros → Ischigualasto
-      { run: slab, cover: true },                                // Ischigualasto → Eoraptor
-      { run: specimenWipe, cover: false },                       // esqueleto → reconstrução: corte restrito ao espécime
-      { run: specimenToScale, cover: false },                    // reconstrução → encolhe no mesmo lugar até a escala humana
-      { run: (c) => lift({ ...c, limit: true }), cover: false }   // escala → limite Triássico–Jurássico
+      { run: lift, cover: false },                                // opening → Ischigualasto today
+      { run: c => lift({ ...c, limit: true }), cover: false },   // present → Triassic boundary
+      { run: slab, cover: true },                                // recovery → the single map
+      { run: openSides, cover: true },                           // map → arid terrain
+      { run: riseUp, cover: true },                              // arid terrain → water
+      { run: slideAway, cover: false },                          // water → vegetation
+      { run: fossilReveal, cover: true },                        // vegetation → dinosaur evidence
+      { run: openVertical, cover: true },                        // record → fossil closeup
+      { run: slab, cover: true },                                // fossil → skeleton
+      { run: skeletonToBridge, cover: true },                    // skeleton → reflection on reconstruction
+      { run: specimenWipe, cover: false },                       // visible-area specimen wipe
+      { run: specimenToScale, cover: false },                    // same animal moves to human scale
+      { run: c => lift({ ...c, limit: true }), cover: false }    // scale → Jurassic boundary
     ];
+    if (TRANSITIONS.length !== N - 1) throw new Error('Número de passagens inconsistente');
 
     for (let i = 0; i < N - 1; i += 1) {
       const c = { i, P: panels[i], Q: panels[i + 1], pv: veils[i], nv: veils[i + 1] };
@@ -489,7 +525,8 @@
       const b = railState(ages[i + 1]);
       fromTo(railLive, a, Object.assign({}, b, { onUpdate: () => applyRail() }), i);
     }
-    master.set({}, {}, N - 1); // garante a duração total N - 1
+    // Every child is bounded before linking progress to panel visibility.
+    if (Math.abs(master.duration() - (N - 1)) > 1e-7) throw new Error("Duração da expedição inconsistente");
 
     applyRail();
 
@@ -515,7 +552,7 @@
         }
         panel.style.zIndex = String(z);
       });
-      if (scaleImage) scaleImage.style.visibility = position > reconstructionIndex && position < reconstructionIndex + 1 ? "hidden" : "";
+      scaleImage.style.visibility = position > 11 && position < 12 ? "hidden" : "";
       updateActive(Math.round(position));
     }
 
@@ -533,9 +570,15 @@
       end: "bottom bottom",
       animation: master,
       scrub: true,
-      onUpdate: (self) => syncState(self.progress * (N - 1)),
+      onUpdate: (self) => {
+        if (intro && self.progress > 0) {
+          intro.progress(1).kill(); intro = null;
+          self.animation.render(self.animation.time(), false, true);
+        }
+        syncState(self.progress * (N - 1));
+      },
       onRefresh: (self) => {
-        measureSpecimenTransfer();
+        measureSpecimen();
         syncState(self.progress * (N - 1));
         if (!busy) alignToActive(self);
       }
@@ -548,7 +591,9 @@
       scrollTween?.kill();
       busy = true;
       const proxy = { y: window.scrollY };
-      const duration = Math.min(3, 1.25 + 0.22 * (Math.ceil(distance) - 1));
+      const origin = nearest();
+      const special = Math.min(origin, target);
+      const duration = distance <= 1.01 && (special === 9 || special === 10 || special === 11) ? 3.8 : Math.min(5, 2.2 + 0.3 * (Math.ceil(distance) - 1));
       scrollTween = gsap.to(proxy, {
         y: yFor(target),
         duration,
@@ -644,9 +689,9 @@
     window.addEventListener("touchmove", (event) => {
       if (!touchStart || event.touches.length !== 1) return;
       if (guardDialog(event)) return;
+      const dy = touchStart.y - event.touches[0].clientY;
       event.preventDefault();
       if (touchDone) return;
-      const dy = touchStart.y - event.touches[0].clientY;
       const dx = touchStart.x - event.touches[0].clientX;
       if (Math.abs(dy) > 46 && Math.abs(dy) > Math.abs(dx)) {
         touchDone = true;
@@ -672,11 +717,18 @@
       if (!busy) window.scrollTo(0, yFor(anchorIndex));
     });
 
+    // Abertura: o vídeo começa sozinho e o texto entra por cima, em etapas.
+    const openingSteps = groups(0, TEXT_STEPS[0]);
+    intro = gsap.timeline({ delay: 0.48 });
+    openingSteps.forEach((els, k) => {
+      intro.fromTo(els, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 1.02, ease: "power3.out", immediateRender: true }, k * 0.42);
+    });
+
+    root.classList.remove("intro-pending");
+    clearTimeout(window.mesoIntroGuard);
+    document.fonts?.ready.then(() => ScrollTrigger.refresh());
+    window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
     syncState(0);
-    scaleImage?.addEventListener("load", () => {
-      measureSpecimenTransfer();
-      ScrollTrigger.refresh();
-    }, { once: true });
     ScrollTrigger.refresh();
   }
 
@@ -695,7 +747,13 @@
       root.classList.remove("is-story-enhanced");
       timeRail?.classList.remove("is-synced");
       storyTrigger?.kill();
+      masterAnimation?.kill();
+      intro?.kill();
+      gsap.killTweensOf(panels.flatMap(panel => [panel, ...panel.querySelectorAll("*")]));
       panels.forEach((panel) => {
+        panel.querySelectorAll("*").forEach((el) => { gsap.set(el, { clearProps: "opacity,transform,clipPath,backgroundColor" }); });
+        panel.removeAttribute("style");
+        panel.querySelectorAll("*").forEach(el => el.removeAttribute("style"));
         panel.style.removeProperty("visibility");
         panel.style.removeProperty("z-index");
         panel.querySelectorAll(".panel-veil, .panel-edge").forEach((layer) => layer.remove());
@@ -707,3 +765,4 @@
   init();
   reducedMotion.addEventListener?.("change", () => window.location.reload());
 })();
+

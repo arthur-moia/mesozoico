@@ -1,0 +1,119 @@
+{
+  "errors": [],
+  "network": [
+    "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED"
+  ],
+  "frames": 9191,
+  "overlaps": [],
+  "overlapCount": 0,
+  "desync": 0,
+  "final": {
+    "ended": true,
+    "time": 10.043367,
+    "duration": 10.043367,
+    "muted": true,
+    "loop": false
+  },
+  "settled": [
+    {
+      "pos": 1,
+      "active": "O início do Triássico",
+      "video": 6.025363
+    },
+    {
+      "pos": 2,
+      "active": "Ambientes do Triássico",
+      "video": 8.956562
+    },
+    {
+      "pos": 3,
+      "active": "Rios e zonas úmidas",
+      "video": 10.043367
+    },
+    {
+      "pos": 4,
+      "active": "Vegetação e florestas triássicas",
+      "video": 10.043367
+    },
+    {
+      "pos": 5,
+      "active": null,
+      "video": 10.043367
+    },
+    {
+      "pos": 6,
+      "active": "Ischigualasto, Argentina",
+      "video": 10.043367
+    },
+    {
+      "pos": 7,
+      "active": "Esqueleto do Eoraptor",
+      "video": 10.043367
+    },
+    {
+      "pos": 8,
+      "active": "Reconstrução do Eoraptor",
+      "video": 10.043367
+    },
+    {
+      "pos": 9,
+      "active": "Eoraptor em comparação com uma pessoa",
+      "video": 10.043367
+    },
+    {
+      "pos": 10,
+      "active": "Fim do Triássico",
+      "video": 10.043367
+    },
+    {
+      "pos": 9,
+      "active": "Eoraptor em comparação com uma pessoa",
+      "video": 10.043367
+    },
+    {
+      "pos": 8,
+      "active": "Reconstrução do Eoraptor",
+      "video": 10.043367
+    },
+    {
+      "pos": 7,
+      "active": "Esqueleto do Eoraptor",
+      "video": 10.043367
+    },
+    {
+      "pos": 6,
+      "active": "Ischigualasto, Argentina",
+      "video": 10.043367
+    },
+    {
+      "pos": 5,
+      "active": null,
+      "video": 10.043367
+    },
+    {
+      "pos": 4,
+      "active": "Vegetação e florestas triássicas",
+      "video": 10.043367
+    },
+    {
+      "pos": 3,
+      "active": "Rios e zonas úmidas",
+      "video": 10.043367
+    },
+    {
+      "pos": 2,
+      "active": "Ambientes do Triássico",
+      "video": 10.043367
+    },
+    {
+      "pos": 1,
+      "active": "O início do Triássico",
+      "video": 10.043367
+    },
+    {
+      "pos": 0,
+      "active": "Abertura: o mundo atual",
+      "video": 10.043367
+    }
+  ]
+}
