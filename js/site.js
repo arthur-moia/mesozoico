@@ -84,7 +84,7 @@
   /* (os atributos data-age* de cada painel).                            */
   /* ------------------------------------------------------------------ */
   const MA_TOP = 251.9;
-  const MA_BOTTOM = 201.4;
+  const MA_BOTTOM = 143.1;
   const SLOT_DEFAULT_TEXT = slotLabel ? slotLabel.textContent.trim() : "≈ 233";
 
   function railPosition(age) {
@@ -128,6 +128,7 @@
     timeRail.style.setProperty("--band-height", `${s.bandHeight.toFixed(3)}%`);
     timeRail.style.setProperty("--band-opacity", s.bandOpacity.toFixed(3));
     timeRail.style.setProperty("--slot-top", `${s.slotPos.toFixed(3)}%`);
+    timeRail.style.setProperty("--jurassic-top", `${railPosition(201.4).toFixed(3)}%`);
   }
 
   function setText(el, text) {
@@ -197,10 +198,10 @@
   /* ------------------------------------------------------------------ */
 
   // Collect the visible blocks in reading order, rather than indexing selectors
-  // by a fixed editorial structure. This covers all 14 chapters and their notes.
+  // by a fixed editorial structure. This covers the Triassic and Jurassic chapters.
   const TEXT_STEPS = panels.map((panel, index) => {
     const flow = panel.querySelector(
-      '.opening-copy, .site-copy, .panel--triassic-start .panel-copy, .copy-map, .copy-bottom, .copy-mid, .eoraptor-skeleton-copy, .eoraptor-bridge-copy, .eoraptor-detail-layout, .eoraptor-scale-copy, .copy-center'
+      '.opening-copy, .site-copy, .panel--triassic-start .panel-copy, .copy-map, .copy-bottom, .copy-mid, .eoraptor-skeleton-copy, .eoraptor-bridge-copy, .eoraptor-detail-layout, .eoraptor-scale-copy, .copy-center, .jurassic-copy'
     );
     if (!flow) throw new Error('Texto ausente na cena ' + (index + 1));
     const selector = ':is(h1,h2,.eyebrow,.eoraptor-kicker,.eoraptor-support,.eoraptor-panel-label,.scene-prose > p,.science-note,.eoraptor-facts > div,.restart-journey,.credits-trigger--end,.image-caption)';
@@ -212,12 +213,17 @@
     if (index === 7) steps.push([panel.querySelector('.dino-fossil-visual figcaption')]);
     if (index === 11) steps.push([panel.querySelector('.specimen-disclaimer')]);
     if (index === 12) steps.push([panel.querySelector('.scale-note')]);
+    if (panel.classList.contains('panel--jurassic-diplodocus')) steps.push([panel.querySelector('.jurassic-specimen-facts')], [panel.querySelector('.jurassic-visual-note')]);
+    if (panel.classList.contains('panel--jurassic-comparison')) steps.push([panel.querySelector('.jurassic-lengths')]);
     return steps.map(group => group.filter(Boolean)).filter(group => group.length);
   });
   const VISUALS = [
     [], ['.site-photo'], [], ['.pangea-frame'], [], [], [], [],
     ['.fossil-closeup'], ['.skeleton-stage'], [],
-    ['.eoraptor-facts-column', '.eoraptor-context-card'], [], []
+    ['.eoraptor-facts-column', '.eoraptor-context-card'], [], [],
+    [], ['.jurassic-rift-map'], ['.jurassic-landscape-image'],
+    ['.jurassic-modern-photo'], ['.jurassic-fossil-photo'],
+    ['.jurassic-animal-art'], ['.jurassic-comparison-figure'], []
   ];
   const SPECIMEN_FROM = 10; // bridge → reconstruction; skeleton is scene 10
 
@@ -520,7 +526,15 @@
       { run: skeletonToBridge, cover: true },                    // skeleton → reflection on reconstruction
       { run: specimenWipe, cover: false },                       // visible-area specimen wipe
       { run: specimenToScale, cover: false },                    // same animal moves to human scale
-      { run: c => lift({ ...c, limit: true }), cover: false }    // scale → Jurassic boundary
+      { run: c => lift({ ...c, limit: true }), cover: false },   // scale → Triassic boundary
+      { run: lift, cover: false },                               // Triassic → Jurassic
+      { run: slab, cover: true },                                // opening → rifting
+      { run: openVertical, cover: true },                        // rifting → Morrison landscape
+      { run: openSides, cover: true },                           // ancient landscape → present rock
+      { run: fossilReveal, cover: true },                        // rock → fossil wall
+      { run: lift, cover: false },                               // evidence → Diplodocus
+      { run: fossilReveal, cover: true },                        // same animal → scale comparison
+      { run: riseUp, cover: true }                               // comparison → Cretaceous boundary
     ];
     if (TRANSITIONS.length !== N - 1) throw new Error('Número de passagens inconsistente');
 

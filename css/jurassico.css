@@ -1,0 +1,147 @@
+/* Capítulo Jurássico: continuidade visual com o Triássico, composições próprias. */
+.stop-jurassic { top: var(--jurassic-top, 47.35%); }
+
+.panel--jurassic {
+  --jurassic-ink: #ecece3;
+  --jurassic-muted: #b9c3ba;
+  --jurassic-accent: #b9c8ae;
+  color: var(--jurassic-ink);
+  background: #111a16;
+}
+.panel--jurassic .jurassic-copy { position: absolute; z-index: 4; max-width: none; padding: 0; }
+.panel--jurassic .jurassic-copy h2 { color: var(--jurassic-ink); font-size: clamp(48px, 6vw, 92px); line-height: 1.04; letter-spacing: -.065em; font-weight: 500; }
+.panel--jurassic .jurassic-copy h2 strong { font-weight: 750; }
+.panel--jurassic .jurassic-copy .eyebrow { display: block; max-width: 48ch; margin: 0 0 23px; color: var(--jurassic-accent); font-size: clamp(14px, 1vw, 16px); font-weight: 600; line-height: 1.4; letter-spacing: 0; text-transform: none; }
+.panel.panel--jurassic .jurassic-copy .scene-prose { max-width: 52ch; margin-top: 24px; }
+.panel.panel--jurassic .jurassic-copy .scene-prose p { max-width: none; margin: 0 0 11px; color: rgba(236,236,227,.86); font-size: clamp(16px, 1.18vw, 19px); line-height: 1.57; font-weight: 400; }
+.panel--jurassic .jurassic-copy i { font-style: italic; }
+.jurassic-visual-note,.jurassic-side-note { position: absolute; z-index: 5; right: 12vw; bottom: 7vh; max-width: 320px; margin: 0; color: rgba(236,236,227,.7); font-size: 13px; line-height: 1.45; text-align: right; }
+
+/* A mesma textura geológica que fecha o Triássico muda de temperatura e cor. */
+.panel--jurassic-entry { background: #131e18; }
+.jurassic-entry-strata { position: absolute; inset: 0 0 0 35%; background: linear-gradient(90deg,#131e18 0%,rgba(19,30,24,.73) 34%,rgba(19,30,24,.33) 100%), url('../assets/images/limite-permiano-triassico-ilustracao.png') center/cover no-repeat; filter: grayscale(.3) saturate(.45); opacity: .52; }
+.panel--jurassic-entry::after { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: radial-gradient(circle at 87% 66%,rgba(148,178,137,.13),transparent 34%),linear-gradient(0deg,rgba(9,16,12,.45),transparent 52%); }
+.jurassic-copy--entry { left: 10vw; top: 30vh; width: min(980px, 76vw); }
+.panel--jurassic-entry .jurassic-copy h2 { font-size: clamp(55px, 7.6vw, 112px); }
+.jurassic-copy--entry .scene-prose { max-width: 620px !important; }
+.jurassic-side-note { left: 10vw; right: auto; text-align: left; }
+
+/* Não é um mapa científico: formas tectônicas abstratas para a passagem. */
+.panel--jurassic-rift { background: radial-gradient(circle at 66% 46%,#263b31 0%,#17271f 44%,#101914 84%); }
+.jurassic-rift-map { position: absolute; z-index: 1; right: 2.5%; top: 11%; width: 68vw; height: 74vh; filter: drop-shadow(0 20px 60px rgba(4,12,8,.35)); }
+.jurassic-rift-map .jurassic-land { fill: #566f5d; stroke: #b5c2ad; stroke-width: 1.2; transition: transform 1.6s cubic-bezier(.2,.7,.2,1); }
+.jurassic-rift-map .jurassic-contour { fill: none; stroke: rgba(221,233,210,.22); stroke-width: 1; }
+.jurassic-rift-map .jurassic-rift-seam { fill: none; stroke: #a6cbb6; stroke-width: 2; stroke-dasharray: 3 10; opacity: .78; }
+.panel--jurassic-rift.is-active .jurassic-land--west { transform: translate(-23px, 9px); }
+.panel--jurassic-rift.is-active .jurassic-land--east { transform: translate(28px, -5px); }
+.panel--jurassic-rift::after { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background: linear-gradient(90deg,#101914 0%,rgba(16,25,20,.92) 27%,rgba(16,25,20,.22) 68%,transparent 100%); }
+.jurassic-copy--rift { left: 8.2vw; bottom: 15vh; width: min(640px, 46vw); }
+.panel--jurassic-rift .jurassic-visual-note { bottom: 6vh; }
+
+/* Paisagem conceitual: imagem ampla, texto em área realmente escura. */
+.panel--jurassic-landscape { background: #243026; }
+.jurassic-landscape-image { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 57%; }
+.jurassic-landscape-shade { position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg,rgba(8,16,11,.82),rgba(8,16,11,.48) 35%,transparent 74%),linear-gradient(0deg,rgba(8,16,11,.68),transparent 54%); }
+.jurassic-copy--landscape { left: 8.2vw; bottom: 16vh; width: min(750px, 54vw); }
+.panel--jurassic-landscape .jurassic-copy h2 { font-size: clamp(52px, 6.3vw, 95px); }
+
+/* Fotografia atual: a imagem ocupa a metade esquerda e se dissolve no texto. */
+.panel--jurassic-morrison { background: #151b17; }
+.jurassic-modern-photo { position: absolute; z-index: 1; inset: 0 39% 0 0; margin: 0; overflow: hidden; }
+.jurassic-modern-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,transparent 34%,rgba(21,27,23,.28) 58%,#151b17 99%),linear-gradient(0deg,rgba(21,27,23,.6),transparent 27%); }
+.jurassic-modern-photo img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 36% center; filter: saturate(.65) brightness(.82); }
+.jurassic-modern-photo figcaption { position: absolute; z-index: 2; left: 8.2vw; bottom: 7vh; max-width: 35vw; color: rgba(236,236,227,.78); font-size: 13px; }
+.jurassic-copy--morrison { right: 13vw; top: 25vh; width: min(590px, 40vw); }
+.panel--jurassic-morrison .jurassic-copy h2 { font-size: clamp(47px, 5vw, 72px); }
+
+/* Parede real de ossos: o foco passa da paisagem atual para a evidência. */
+.panel--jurassic-fossils { background: #24231f; }
+.jurassic-fossil-photo { position: absolute; z-index: 1; inset: 0 36% 0 0; margin: 0; overflow: hidden; }
+.jurassic-fossil-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(25,25,22,.08) 35%,rgba(36,35,31,.58) 70%,#24231f 99%),linear-gradient(0deg,rgba(18,18,16,.62),transparent 34%); }
+.jurassic-fossil-photo img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 28% center; filter: saturate(.58) brightness(.78); }
+.jurassic-fossil-photo figcaption { position: absolute; z-index: 2; left: 8.2vw; bottom: 7vh; max-width: 40vw; color: rgba(236,236,227,.82); font-size: 13px; }
+.jurassic-copy--fossils { right: 12.5vw; top: 24vh; width: min(590px, 41vw); }
+.panel--jurassic-fossils .jurassic-copy h2 { font-size: clamp(52px, 5.6vw, 80px); }
+
+/* Espécime em uma página própria; os dados acompanham a imagem sem cartões. */
+.panel--jurassic-diplodocus,.panel--jurassic-comparison { background: #1a1e1a; }
+.jurassic-specimen-word { position: absolute; z-index: 0; top: 34vh; left: 6vw; color: rgba(236,236,227,.055); font: 800 clamp(100px, 15vw, 240px)/1 "Manrope",Arial,sans-serif; letter-spacing: -.09em; white-space: nowrap; pointer-events: none; }
+.jurassic-copy--diplodocus { left: 8.2vw; top: 13vh; width: min(940px, 72vw); }
+.panel--jurassic-diplodocus .jurassic-copy h2 { font-size: clamp(58px, 6.5vw, 100px); }
+.panel--jurassic-diplodocus .jurassic-copy h2 span { color: #b5baaf; font-weight: 450; }
+.jurassic-copy--diplodocus .scene-prose { max-width: 560px !important; margin-top: 18px !important; }
+.jurassic-animal-art,.jurassic-comparison-diplodocus { position: absolute; z-index: 2; left: 8vw; top: 36vh; width: 76vw; height: 38vh; object-fit: contain; object-position: center; filter: drop-shadow(0 22px 18px rgba(0,0,0,.27)); }
+.jurassic-specimen-facts { position: absolute; z-index: 4; left: 8.2vw; right: 14vw; bottom: 8vh; display: flex; justify-content: space-between; gap: 32px; padding-top: 14px; border-top: 1px solid rgba(236,236,227,.3); }
+.jurassic-specimen-facts span { display: flex; flex-direction: column; gap: 4px; max-width: 360px; }
+.jurassic-specimen-facts strong { font: 600 clamp(26px, 3.3vw, 46px)/1.1 "Manrope",Arial,sans-serif; letter-spacing: -.05em; }
+.jurassic-specimen-facts small { color: #bac4b9; font-size: 14px; line-height: 1.4; }
+.panel--jurassic-diplodocus .jurassic-visual-note { right: 14vw; bottom: 3.3vh; max-width: 520px; }
+
+/* A mesma silhueta conserva posição; só os comprimentos entram na próxima cena. */
+.jurassic-copy--comparison { left: 8.2vw; top: 10vh; width: min(800px, 65vw); }
+.panel--jurassic-comparison .jurassic-copy h2 { font-size: clamp(50px, 5.5vw, 80px); }
+.jurassic-copy--comparison .scene-prose { max-width: 690px !important; margin-top: 14px !important; }
+.panel--jurassic-comparison .jurassic-copy .scene-prose p { font-size: clamp(15px, 1.05vw, 17px); }
+.jurassic-comparison-figure { position: absolute; z-index: 2; inset: 0; }
+.jurassic-comparison-diplodocus { z-index: 1; }
+.jurassic-lengths { position: absolute; z-index: 3; left: 8.2vw; right: 16vw; bottom: 6.5vh; display: grid; gap: 28px; }
+.jurassic-length { position: relative; height: 20px; border-top: 2px solid #d4dfd2; }
+.jurassic-length::before,.jurassic-length::after { content: ""; position: absolute; top: -7px; width: 2px; height: 14px; background: #d4dfd2; }
+.jurassic-length::before { left: 0; }.jurassic-length::after { right: 0; }
+.jurassic-length span { position: absolute; top: 8px; left: 0; font-size: 14px; white-space: nowrap; color: #f0f2e9; }
+.jurassic-length--eoraptor { width: 5%; border-color: #d4b88f; }
+.jurassic-length--eoraptor::before,.jurassic-length--eoraptor::after { background: #d4b88f; }
+.jurassic-length--eoraptor span { left: calc(100% + 12px); top: -11px; }
+
+.panel--jurassic-end { background: #0e1513; }
+.jurassic-end-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 48%,rgba(121,156,135,.16),transparent 40%),linear-gradient(135deg,rgba(95,111,101,.08),transparent 54%); }
+.panel--jurassic-end::before { content: "143,1"; position: absolute; right: -2vw; bottom: 4vh; color: rgba(236,236,227,.055); font: 750 clamp(180px, 28vw, 460px)/.9 "Manrope",Arial,sans-serif; letter-spacing: -.1em; pointer-events: none; }
+.jurassic-copy--end { left: 12vw; top: 27vh; width: min(990px, 70vw); }
+.panel--jurassic-end .jurassic-copy h2 { font-size: clamp(57px, 7vw, 105px); }
+.jurassic-end-actions { display: flex; align-items: center; gap: 46px; margin-top: 26px; }
+.panel--jurassic-end .restart-journey,.panel--jurassic-end .credits-trigger--end { margin: 0; }
+
+@media (max-width: 1050px) {
+  .jurassic-copy--morrison,.jurassic-copy--fossils { right: 12vw; width: 47vw; }
+  .jurassic-modern-photo { right: 36%; }
+  .jurassic-fossil-photo { right: 33%; }
+  .jurassic-specimen-word { top: 39vh; }
+}
+@media (max-width: 700px) {
+  .panel--jurassic { padding: 95px 8vw 78px; }
+  .panel--jurassic .jurassic-copy { left: 8vw; right: 8vw; top: 18vh; bottom: auto; width: 84vw; }
+  .panel--jurassic .jurassic-copy h2 { font-size: clamp(38px, 10vw, 62px); }
+  .panel--jurassic .jurassic-copy .eyebrow { margin-bottom: 12px; }
+  .panel.panel--jurassic .jurassic-copy .scene-prose { margin-top: 13px; }
+  .panel.panel--jurassic .jurassic-copy .scene-prose p { font-size: 15px; line-height: 1.46; }
+  .jurassic-visual-note,.jurassic-side-note { display: none; }
+  .jurassic-entry-strata { inset: 29% 0 0 0; opacity: .32; }
+  .panel--jurassic-entry .jurassic-copy { top: 25vh; }
+  .panel--jurassic-rift .jurassic-copy { top: 14vh; }
+  .jurassic-rift-map { top: 42%; right: -19%; width: 118vw; height: 57vh; opacity: .6; }
+  .panel--jurassic-rift::after { background: linear-gradient(180deg,#101914 0%,rgba(16,25,20,.9) 30%,transparent 78%); }
+  .jurassic-landscape-image { object-position: 61% center; }
+  .jurassic-landscape-shade { background: linear-gradient(180deg,rgba(8,16,11,.85),rgba(8,16,11,.55) 37%,transparent 73%),linear-gradient(0deg,rgba(8,16,11,.62),transparent 32%); }
+  .panel--jurassic-landscape .jurassic-copy { top: 16vh; }
+  .jurassic-modern-photo,.jurassic-fossil-photo { inset: 42% 0 0; }
+  .jurassic-modern-photo::after,.jurassic-fossil-photo::after { background: linear-gradient(180deg,#151b17 0%,transparent 33%,rgba(12,16,13,.54) 100%); }
+  .jurassic-fossil-photo::after { background: linear-gradient(180deg,#24231f 0%,transparent 33%,rgba(18,18,16,.6) 100%); }
+  .jurassic-modern-photo figcaption,.jurassic-fossil-photo figcaption { left: 8vw; bottom: 4vh; max-width: 76vw; }
+  .panel--jurassic-morrison .jurassic-copy,.panel--jurassic-fossils .jurassic-copy { top: 13vh; }
+  .panel--jurassic-morrison .jurassic-copy h2,.panel--jurassic-fossils .jurassic-copy h2 { font-size: clamp(38px, 9vw, 56px); }
+  .panel--jurassic-diplodocus .jurassic-copy,.panel--jurassic-comparison .jurassic-copy { top: 12vh; }
+  .panel--jurassic-diplodocus .jurassic-copy h2 { font-size: clamp(39px, 10vw, 64px); }
+  .jurassic-animal-art,.jurassic-comparison-diplodocus { left: 3vw; top: 43vh; width: 94vw; height: 28vh; }
+  .jurassic-specimen-word { top: 49vh; left: 0; font-size: 20vw; }
+  .jurassic-specimen-facts { left: 8vw; right: 8vw; bottom: 6vh; gap: 12px; }
+  .jurassic-specimen-facts strong { font-size: 22px; }
+  .jurassic-specimen-facts small { font-size: 11px; }
+  .panel--jurassic-comparison .jurassic-copy h2 { font-size: clamp(39px, 9vw, 58px); }
+  .jurassic-lengths { left: 8vw; right: 8vw; bottom: 7vh; gap: 26px; }
+  .jurassic-length span { font-size: 12px; }
+  .panel--jurassic-end .jurassic-copy { top: 27vh; }
+  .jurassic-end-actions { flex-wrap: wrap; gap: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jurassic-rift-map .jurassic-land { transition: none; }
+}

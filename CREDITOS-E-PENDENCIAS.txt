@@ -1,21 +1,25 @@
 MESOZOICO — créditos e pendências desta versão
 
-Escopo: abertura + capítulo do Triássico. O conteúdo para no limite Triássico–Jurássico (cerca de 201,4 Ma); não há cenas do Jurássico ou do Cretáceo.
+Escopo desta pasta local: abertura, Triássico e prévia completa do capítulo do Jurássico. O site público ainda contém somente o Triássico, enquanto o novo capítulo aguarda avaliação.
 
-ASSETS INCLUÍDOS
+ARQUIVOS ATIVOS E REFERÊNCIAS GUARDADAS NO REPOSITÓRIO
 - assets/video/opening.mp4 — vídeo fornecido pelo usuário; autoria e licença a confirmar.
-- assets/images/terra-poster.png — poster anterior, preservado como referência e não utilizado.
+- assets/images/terra-poster.png — poster anterior, preservado como referência no repositório; não utilizado nem incluído no ZIP de avaliação.
 - assets/images/opening-poster.jpg — quadro extraído de opening.mp4 em 1,0 segundo; mesmos créditos do vídeo fornecido.
 - assets/images/pangeia-mapa-250ma-provisorio.webp — mapa paleogeográfico de cerca de 250 Ma; reconstrução provisória, fonte/licença a confirmar. Não marca Ischigualasto.
 - assets/images/limite-permiano-triassico-ilustracao.png — imagem fornecida pelo usuário; ilustração de camadas sedimentares genéricas, não representa um afloramento real específico.
 - assets/images/fossil-fronde-ilustrativo.png — imagem ilustrativa gerada por IA para a cena de fossilização; não representa um espécime ou localidade real.
 - assets/images/triassico-arido.png, triassico-agua.png, triassico-floresta.png — artes de ambiente fornecidas pelo usuário; créditos e licenças a confirmar. São reconstruções, não fotografias nem registros de uma localidade específica.
 - assets/images/ischigualasto-atual.jpg — fotografia atual do local; origem/licença a confirmar. Não representa o Triássico.
-- assets/images/permo-triassic-coalcliff-frontiers-figure4.webp — recorte do painel B da Figura 4, fotografia da seção de Coalcliff; McLoughlin et al. (2021), Frontiers in Earth Science, CC BY 4.0: https://doi.org/10.3389/feart.2020.600976. Preservado no repositório, sem uso na cena atual.
+- assets/images/permo-triassic-coalcliff-frontiers-figure4.webp — recorte do painel B da Figura 4, fotografia da seção de Coalcliff; McLoughlin et al. (2021), Frontiers in Earth Science, CC BY 4.0: https://doi.org/10.3389/feart.2020.600976. Preservado no repositório, sem uso na cena atual nem no ZIP de avaliação.
 - assets/images/eoraptor-reconstrucao.png — reconstrução fornecida pelo usuário; origem/licença a confirmar.
 - assets/images/eoraptor-fossil-ischigualasto.jpg — fotografia de fóssil de Eoraptor exposto na rocha em Ischigualasto; Eamezaga, Wikimedia Commons, domínio público declarado pelo autor: https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg. Dimensões e metadados do arquivo local coincidem com os do original na página.
 - assets/images/eoraptor-esqueleto.png — representação esquelética fornecida pelo usuário; origem/licença a confirmar. Pose diferente da reconstrução, mantida provisoriamente para ajuste posterior.
 - assets/images/humano.png — figura de escala fornecida pelo usuário; origem/licença a confirmar. É comparação visual aproximada, não uma medida publicada.
+- assets/images/jurassico-morrison-reconstrucao.png — paisagem conceitual da Formação Morrison, gerada com a ferramenta de imagens para este projeto. Não representa um local exato.
+- assets/images/jurassico-diplodocus-reconstrucao.png — reconstrução artística gerada com a ferramenta de imagens para este projeto. O contorno geral segue referências científicas; aparência externa e postura são interpretações visuais.
+- assets/images/jurassico-morrison-atual-nps.jpg — fotografia atual de afloramento da Formação Morrison, NPS / Dan Johnson: https://www.nps.gov/places/morrison-formation.htm.
+- assets/images/jurassico-parede-fosseis-nps-hd.jpg — fotografia da parede de fósseis no Quarry Exhibit Hall, NPS. O registro marca domínio público: https://npgallery.nps.gov/AssetDetail/a11f4a50-2bee-4fdc-aaa3-a3d666d9fe75. A parede contém fósseis de várias espécies; a foto não identifica um indivíduo específico de Diplodocus.
 - js/vendor/gsap.min.js e js/vendor/ScrollTrigger.min.js — GSAP 3.15.0, distribuição minificada local.
 - docs/MESOZOICO-base-cientifica-editorial.pdf — documento de referência científica fornecido para o projeto.
 
@@ -26,12 +30,17 @@ CRITÉRIOS CIENTÍFICOS APLICADOS
 - Eoraptor: conhecido por fósseis de Ischigualasto, no Triássico Superior. O esqueleto descrito originalmente tinha cerca de 1 m; a escala da reconstrução é apresentada como estimativa visual. Dieta e posição filogenética têm incertezas; não atribuímos peso corporal.
 - O mapa de 250 Ma é aproximado e não é usado para assinalar San Juan/Ischigualasto.
 - Limite Triássico–Jurássico: ~201,4 Ma. O vulcanismo da Província Magmática do Atlântico Central é relacionado à crise, mas mecanismos e efeitos específicos continuam em estudo.
+- Formação Morrison: ambiente fluvial e planícies quentes do Jurássico tardio no oeste dos Estados Unidos; a paisagem antiga é ilustrativa.
+- Diplodocus longus: fósseis na pedreira do Dinosaur National Monument; o NPS informa cerca de 24,3 m para um adulto médio. A cena arredonda para 24 m.
+- A comparação com a ilustração de Eoraptor é apenas de comprimento: 24 m / 1,2 m = 20.
+- Limite Jurássico–Cretáceo: 143,1 ± 0,6 Ma na carta ICS 2026/06. Fontes educativas ainda podem exibir ~145 Ma.
 
 PENDÊNCIAS
 - Confirmar autoria, atribuição e licenças para vídeo, mapas, fotografia e imagens.
 - O site já está público. A documentação de proveniência ainda não confirma autorização de republicação dos arquivos acima marcados como pendentes; o crédito confirmado do fóssil não se estende às outras imagens.
 - Corrigir/alinhar a pose do esqueleto do Eoraptor numa etapa futura, como combinado.
 - Fazer a revisão mobile completa no final do projeto.
+- O novo capítulo do Jurássico aguarda avaliação editorial e visual antes da publicação.
 
 REFERÊNCIAS CIENTÍFICAS USADAS NO TEXTO
 - International Chronostratigraphic Chart, versão 2026/06: https://stratigraphy.org/chart/
@@ -43,3 +52,8 @@ REFERÊNCIAS CIENTÍFICAS USADAS NO TEXTO
 - Descrição original de Eoraptor: https://www.nature.com/articles/361064a0
 - Datação de camadas fossilíferas de Ischigualasto: https://pubmed.ncbi.nlm.nih.gov/32728077/
 - Atividade vulcânica e extinção do fim do Triássico: https://pmc.ncbi.nlm.nih.gov/articles/PMC7275695/
+- Formação Morrison: https://www.nps.gov/subjects/fossils/the-morrison-formation.htm
+- Afloramento atual: https://www.nps.gov/places/morrison-formation.htm
+- Diplodocus longus: https://www.nps.gov/dino/learn/nature/diplodocus-longus.htm
+- Fragmentação de Pangeia: https://www.nhm.ac.uk/discover/the-jurassic-period.html
+- Parede de fósseis (arquivo e direitos): https://npgallery.nps.gov/AssetDetail/a11f4a50-2bee-4fdc-aaa3-a3d666d9fe75

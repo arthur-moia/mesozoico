@@ -36,7 +36,17 @@ A dieta e a posição exata de dinossauros iniciais na árvore evolutiva seguem 
 
 ## 201,4 Ma — limite Triássico–Jurássico
 
-Uma crise de extinção marca a passagem para o Jurássico. O vulcanismo associado à Província Magmática do Atlântico Central é uma parte importante das explicações científicas; seus mecanismos e efeitos seguem em estudo. Esta versão termina no limite e não desenvolve o Jurássico.
+Uma crise de extinção marca a passagem para o Jurássico. O vulcanismo associado à Província Magmática do Atlântico Central é uma parte importante das explicações científicas; seus mecanismos e efeitos seguem em estudo.
+
+## Jurássico — capítulo em revisão
+
+A passagem é contínua: o Jurássico começa em cerca de 201,4 Ma, depois da crise do fim do Triássico. Pangeia se fragmentou gradualmente durante o período; o gráfico do site é um esquema de afastamento, não uma reconstrução paleogeográfica.
+
+A Formação Morrison registra ambientes do Jurássico tardio do oeste dos Estados Unidos. No setor de Dinosaur National Monument, uma parte dos depósitos tem aproximadamente 150 milhões de anos. Havia rios e planícies de inundação em clima quente e semiárido, com samambaias, cavalinhas, coníferas e outras plantas sem flores. A fotografia do afloramento mostra o presente; a paisagem antiga é arte conceitual.
+
+A parede de fósseis do Quarry Exhibit Hall reúne ossos de diferentes animais. Fósseis de *Diplodocus longus* foram encontrados na pedreira. O National Park Service descreve um comprimento adulto médio de cerca de 24,3 m; o site arredonda para 24 m. A comparação com Eoraptor usa os 1,2 m da ilustração anterior: 24 ÷ 1,2 = 20. A comparação se refere a comprimento, não a altura, massa ou parentesco direto.
+
+Na carta ICS 2026/06, o limite Jurássico–Cretáceo está em 143,1 ± 0,6 Ma. Materiais educativos ainda costumam usar aproximadamente 145 Ma; o capítulo adota a carta vigente e explicita a aproximação.
 
 ## Fonte editorial
 

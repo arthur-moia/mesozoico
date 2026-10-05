@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111815">
-  <meta name="description" content="Uma expedição visual pela abertura do Mesozoico e pelo mundo do Triássico.">
-  <title>MESOZOICO — uma viagem ao Triássico</title>
+  <meta name="description" content="Uma expedição visual pelo Triássico e pelo Jurássico, das primeiras linhagens de dinossauros ao mundo de Diplodocus.">
+  <title>MESOZOICO — do Triássico ao Jurássico</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,9 +17,10 @@
     }, 4000);
   </script>
   <link rel="stylesheet" href="css/site.css?v=20261004-rocha-r1">
+  <link rel="stylesheet" href="css/jurassico.css?v=20261005-capitulo-r1">
   <script defer src="js/vendor/gsap.min.js"></script>
   <script defer src="js/vendor/ScrollTrigger.min.js"></script>
-  <script defer src="js/site.js?v=20261004-conteudo-r1"></script>
+  <script defer src="js/site.js?v=20261005-jurassico-r1"></script>
 </head>
 <body>
   <a class="skip-link" href="#story">Pular para a expedição</a>
@@ -39,12 +40,13 @@
       <span class="time-rail__marker" data-time-marker></span>
       <span class="time-stop stop-start" data-stop="start"><i></i><b>251,9</b></span>
       <span class="time-stop stop-dino" data-stop="dino"><i></i><b data-slot-label>≈ 233</b></span>
-      <span class="time-stop stop-end" data-stop="end"><i></i><b>201,4</b></span>
+      <span class="time-stop stop-jurassic" data-stop="jurassic"><i></i><b>201,4</b></span>
+      <span class="time-stop stop-end" data-stop="end"><i></i><b>143,1</b></span>
     </div>
     <span class="time-rail__unit">milhões de anos atrás</span>
   </aside>
 
-  <main id="story" class="story" aria-label="Expedição pelo Triássico">
+  <main id="story" class="story" aria-label="Expedição pelo Triássico e Jurássico">
     <div class="stage" aria-live="off">
       <section class="panel panel--opening is-active" id="inicio" data-panel data-age="now" data-age-label="Agora" data-stop="now" aria-label="Abertura: o mundo atual">
         <video class="opening-video" id="opening-video" muted playsinline preload="auto" poster="assets/images/opening-poster.jpg"><source src="assets/video/opening.mp4" type="video/mp4"></video>
@@ -162,11 +164,98 @@
       
       </section>
 
-      <section class="panel panel--boundary-end" data-panel data-age="201.4" data-age-label="201,4 Ma" data-stop="end" aria-label="Encerramento do Triássico">
+      <section class="panel panel--boundary-end" data-panel data-age="201.4" data-age-label="201,4 Ma" data-stop="jurassic" aria-label="Encerramento do Triássico">
       
         <div class="end-texture"></div><div class="panel-copy copy-center"><p class="eyebrow"><strong>≈ 201,4 MILHÕES DE ANOS</strong></p><h2><strong>E então, as regras mudam outra vez.</strong></h2><div class="scene-prose"><p>O Triássico termina durante outra grande crise biológica.</p><p>Um episódio de extinção em massa coincide estreitamente com enorme atividade vulcânica associada à abertura inicial do Atlântico.</p><p>Os mecanismos ainda são investigados em detalhe.</p><p>O resultado, não.</p><p>Muitas linhagens desapareceram. Outras permaneceram.</p><p><strong>A vida continuou novamente — não porque o mundo tivesse se tornado mais seguro, mas porque alguma coisa conseguiu sobreviver.</strong></p></div><div class="end-stop"><div class="scene-prose"><p><strong>Aqui termina o Triássico.</strong></p><p>O que acontece depois pertence ao próximo capítulo.</p></div></div>
-        <button class="restart-journey" type="button" data-go-start>Voltar ao início ↑</button><button class="credits-trigger credits-trigger--end" type="button" data-open-credits>Créditos e limites <span>＋</span></button></div>
+        <button class="restart-journey" type="button" data-next>Entrar no Jurássico ↓</button></div>
       
+      </section>
+
+      <section class="panel panel--jurassic panel--jurassic-entry" data-panel data-age="201.4" data-age-label="201,4 Ma" data-stop="jurassic" aria-label="Início do Jurássico">
+        <div class="jurassic-entry-strata" aria-hidden="true"></div>
+        <div class="panel-copy jurassic-copy jurassic-copy--entry">
+          <p class="eyebrow">Jurássico · 201,4 milhões de anos atrás</p>
+          <h2>O mundo seguiu.<br><strong>Mas não do mesmo jeito.</strong></h2>
+          <div class="scene-prose"><p>A crise no fim do Triássico abriu um novo período. Os dinossauros que sobreviveram encontraram paisagens e possibilidades que mudariam por milhões de anos.</p></div>
+        </div>
+        <p class="jurassic-side-note">Uma continuação do mesmo planeta, não um recomeço.</p>
+      </section>
+
+      <section class="panel panel--jurassic panel--jurassic-rift" data-panel data-age="180" data-age-label="≈ 180 Ma" aria-label="Fragmentação de Pangeia">
+        <svg class="jurassic-rift-map" viewBox="0 0 900 650" aria-hidden="true" focusable="false">
+          <g class="jurassic-land jurassic-land--west"><path d="M154 139 221 92 319 99 355 158 402 176 414 240 383 295 414 370 379 446 308 490 264 573 186 560 163 478 99 422 125 341 81 283 120 216Z"/><path class="jurassic-contour" d="M125 270q120 55 234-70M149 394q116-21 223 45M209 530q36-187 141-340"/></g>
+          <g class="jurassic-land jurassic-land--east"><path d="M495 115 571 78 673 121 735 104 814 181 801 272 748 313 789 386 749 474 643 489 604 552 533 516 555 450 491 394 523 299 481 223Z"/><path class="jurassic-contour" d="M515 174q119 68 249 23M523 338q130-3 217 104M608 503q-14-175 119-274"/></g>
+          <path class="jurassic-rift-seam" d="M449 95q-35 128-4 221t-11 251"/>
+        </svg>
+        <div class="panel-copy jurassic-copy jurassic-copy--rift">
+          <p class="eyebrow">Um planeta em movimento</p>
+          <h2>O mapa deixa<br>de ser um só.</h2>
+          <div class="scene-prose"><p>Pangeia começou a se fragmentar. Novas margens e mares alteraram as ligações entre regiões, sem que a mudança acontecesse de uma vez.</p><p>O continente se afasta devagar. A vida responde em seu próprio tempo.</p></div>
+        </div>
+        <p class="jurassic-visual-note">Esquema de separação. As formas não são um mapa paleogeográfico.</p>
+      </section>
+
+      <section class="panel panel--jurassic panel--jurassic-landscape" data-panel data-age="150" data-age-label="≈ 150 Ma" aria-label="Paisagem da Formação Morrison no Jurássico tardio">
+        <img class="jurassic-landscape-image" src="assets/images/jurassico-morrison-reconstrucao.png" alt="Reconstrução artística de uma planície fluvial semiárida do Jurássico tardio, com saurópodes ao longe" loading="eager">
+        <div class="jurassic-landscape-shade" aria-hidden="true"></div>
+        <div class="panel-copy jurassic-copy jurassic-copy--landscape">
+          <p class="eyebrow">Jurássico tardio · oeste da América do Norte</p>
+          <h2>O chão também<br>mudou de escala.</h2>
+          <div class="scene-prose"><p>Na região registrada pela Formação Morrison, rios atravessavam planícies quentes. Samambaias, cavalinhas e coníferas cresciam em torno dos cursos d'água.</p></div>
+        </div>
+        <p class="jurassic-visual-note">Reconstrução conceitual. Não retrata um lugar exato.</p>
+      </section>
+
+      <section class="panel panel--jurassic panel--jurassic-morrison" data-panel data-age="150" data-age-label="rochas de ≈ 150 Ma" aria-label="A Formação Morrison no presente">
+        <figure class="jurassic-modern-photo"><img src="assets/images/jurassico-morrison-atual-nps.jpg" alt="Afloramento atual da Formação Morrison no Dinosaur National Monument, Estados Unidos" loading="eager"><figcaption>Formação Morrison, hoje · NPS / Dan Johnson</figcaption></figure>
+        <div class="panel-copy jurassic-copy jurassic-copy--morrison">
+          <p class="eyebrow">Oeste dos Estados Unidos · presente</p>
+          <h2>A paisagem passou.<br>A rocha ficou.</h2>
+          <div class="scene-prose"><p>Onde hoje se vê um afloramento, sedimentos de antigos rios guardaram vestígios do Jurássico tardio.</p><p>Esta foto mostra a formação no presente. A paisagem de 150 milhões de anos atrás precisa ser reconstruída a partir das camadas e dos fósseis.</p></div>
+        </div>
+      </section>
+
+      <section class="panel panel--jurassic panel--jurassic-fossils" data-panel data-age="150" data-age-label="≈ 150 Ma" aria-label="Fósseis da Formação Morrison">
+        <figure class="jurassic-fossil-photo"><img src="assets/images/jurassico-parede-fosseis-nps-hd.jpg" alt="Parede de fósseis do Quarry Exhibit Hall, com ossos de diferentes dinossauros preservados na rocha" loading="eager"><figcaption>Parede de fósseis · Dinosaur National Monument · NPS</figcaption></figure>
+        <div class="panel-copy jurassic-copy jurassic-copy--fossils">
+          <p class="eyebrow">A evidência</p>
+          <h2>Uma parede.<br>Muitas vidas.</h2>
+          <div class="scene-prose"><p>A pedreira do Dinosaur National Monument conserva ossos de várias espécies. A disposição deles conta uma história de transporte, soterramento e preservação — não a pose de um único animal em vida.</p><p>Entre esses fósseis estão restos de <i>Diplodocus</i>.</p></div>
+        </div>
+      </section>
+
+      <section class="panel panel--jurassic panel--jurassic-diplodocus" data-panel data-age="150" data-age-label="≈ 150 Ma" aria-label="Diplodocus longus, reconstrução">
+        <span class="jurassic-specimen-word" aria-hidden="true">DIPLODOCUS</span>
+        <div class="panel-copy jurassic-copy jurassic-copy--diplodocus">
+          <p class="eyebrow">Formação Morrison · Jurássico tardio</p>
+          <h2><i>Diplodocus</i> <span>longus</span></h2>
+          <div class="scene-prose"><p>O pescoço e a cauda ocupavam grande parte de um corpo de cerca de <strong>24 metros</strong>. Os fósseis mostram a estrutura; pele, cor e comportamento continuam sendo reconstruídos.</p></div>
+        </div>
+        <img class="jurassic-animal-art" src="assets/images/jurassico-diplodocus-reconstrucao.png" alt="Reconstrução artística de Diplodocus longus em perfil" loading="eager">
+        <div class="jurassic-specimen-facts"><span><strong>≈ 24 m</strong><small>comprimento de um adulto</small></span><span><strong>Herbívoro</strong><small>dieta inferida dos dentes e de sua anatomia</small></span></div>
+        <p class="jurassic-visual-note">Reconstrução artística gerada para o projeto. Aparência externa hipotética.</p>
+      </section>
+
+      <section class="panel panel--jurassic panel--jurassic-comparison" data-panel data-age="150" data-age-label="≈ 150 Ma" aria-label="Comparação de comprimento entre Diplodocus e Eoraptor">
+        <div class="panel-copy jurassic-copy jurassic-copy--comparison">
+          <p class="eyebrow">Do Triássico ao Jurássico</p>
+          <h2>Vinte vezes<br>mais comprido.</h2>
+          <div class="scene-prose"><p>Uma estimativa de 24 metros para <i>Diplodocus longus</i> equivale a vinte vezes os 1,2 metro usados na ilustração do Eoraptor deste site.</p><p>As duas medidas são aproximações. A comparação abaixo representa comprimento, não altura nem volume.</p></div>
+        </div>
+        <div class="jurassic-comparison-figure" role="img" aria-label="Comparação proporcional de comprimentos: Diplodocus, cerca de 24 metros; Eoraptor ilustrado no site, cerca de 1,2 metro">
+          <img class="jurassic-comparison-diplodocus" src="assets/images/jurassico-diplodocus-reconstrucao.png" alt="" loading="eager">
+          <div class="jurassic-lengths" aria-hidden="true"><div class="jurassic-length jurassic-length--diplodocus"><span>≈ 24 m · <i>Diplodocus</i></span></div><div class="jurassic-length jurassic-length--eoraptor"><span>≈ 1,2 m · <i>Eoraptor</i></span></div></div>
+        </div>
+      </section>
+
+      <section class="panel panel--jurassic panel--jurassic-end" data-panel data-age="143.1" data-age-label="≈ 143,1 Ma" data-stop="end" aria-label="Fim do Jurássico e início do Cretáceo">
+        <div class="jurassic-end-glow" aria-hidden="true"></div>
+        <div class="panel-copy jurassic-copy jurassic-copy--end">
+          <p class="eyebrow">≈ 143,1 milhões de anos atrás</p>
+          <h2>O Jurássico acaba.<br><strong>A história, não.</strong></h2>
+          <div class="scene-prose"><p>A próxima fronteira geológica recebe outro nome: Cretáceo. Os dinossauros continuarão a mudar durante dezenas de milhões de anos.</p></div>
+          <div class="jurassic-end-actions"><button class="restart-journey" type="button" data-go-start>Voltar ao início ↑</button><button class="credits-trigger credits-trigger--end" type="button" data-open-credits>Créditos e limites <span>＋</span></button></div>
+        </div>
       </section>
     </div>
   </main>
@@ -185,6 +274,12 @@
       <li>Imagem da transição Permiano–Triássico: ilustração gerada pelo usuário; representa camadas sedimentares genéricas e não corresponde a um afloramento real específico.</li>
       <li>Reconstrução e esqueleto de <i>Eoraptor</i>, além da figura humana de escala: imagens fornecidas pelo usuário; procedência/licença a confirmar. O esqueleto está em revisão.</li>
       <li>Fotografia do fóssil de <i>Eoraptor</i>: <a href="https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg" target="_blank" rel="noreferrer">Eamezaga, Wikimedia Commons</a>; domínio público declarado pelo autor.</li>
+      <li>Jurássico: paisagem da Formação Morrison e reconstrução de <i>Diplodocus</i> geradas para este projeto; são imagens conceituais, não fotografias nem reconstruções anatômicas validadas.</li>
+      <li>Fotografia atual da Formação Morrison: <a href="https://www.nps.gov/places/morrison-formation.htm" target="_blank" rel="noreferrer">National Park Service / Dan Johnson</a>.</li>
+      <li>Parede de fósseis: <a href="https://npgallery.nps.gov/AssetDetail/a11f4a50-2bee-4fdc-aaa3-a3d666d9fe75" target="_blank" rel="noreferrer">National Park Service</a>; domínio público indicado no registro do arquivo.</li>
+      <li>Formação Morrison e ambiente: <a href="https://www.nps.gov/subjects/fossils/the-morrison-formation.htm" target="_blank" rel="noreferrer">National Park Service</a>. <i>Diplodocus longus</i> e estimativa de comprimento: <a href="https://www.nps.gov/dino/learn/nature/diplodocus-longus.htm" target="_blank" rel="noreferrer">Dinosaur National Monument</a>.</li>
+      <li>Fragmentação de Pangeia durante o Jurássico: <a href="https://www.nhm.ac.uk/discover/the-jurassic-period.html" target="_blank" rel="noreferrer">Natural History Museum</a>. O esquema desta página não é um mapa científico.</li>
+      <li>Limite Jurássico–Cretáceo, 143,1 ± 0,6 Ma: <a href="https://stratigraphy.org/chart/" target="_blank" rel="noreferrer">Carta Cronoestratigráfica Internacional, versão 2026/06</a>.</li>
       <li>Limites do Triássico, 251,9 e 201,4 Ma: <a href="https://stratigraphy.org/chart/" target="_blank" rel="noreferrer">Carta Cronoestratigráfica Internacional, versão 2026/06</a>.</li>
       <li>Recuperação após a extinção Permiano–Triássica: <a href="https://www.nature.com/articles/ngeo1475" target="_blank" rel="noreferrer">Nature Geoscience</a>.</li>
       <li>Clima e sazonalidade em Pangeia: <a href="https://www.journals.uchicago.edu/doi/10.1086/648217" target="_blank" rel="noreferrer">Parrish, The Journal of Geology (1993)</a>.</li>
