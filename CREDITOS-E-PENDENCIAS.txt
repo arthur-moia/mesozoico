@@ -39,7 +39,7 @@ PENDÊNCIAS
 - Confirmar autoria, atribuição e licenças para vídeo, mapas, fotografia e imagens.
 - O site já está público. A documentação de proveniência ainda não confirma autorização de republicação dos arquivos acima marcados como pendentes; o crédito confirmado do fóssil não se estende às outras imagens.
 - Corrigir/alinhar a pose do esqueleto do Eoraptor numa etapa futura, como combinado.
-- Fazer a revisão mobile completa no final do projeto.
+- Revisão de layout e navegação mobile realizada em 05/10/2026; repetir após mudanças futuras nas cenas.
 - O novo capítulo do Jurássico aguarda avaliação editorial e visual antes da publicação.
 
 REFERÊNCIAS CIENTÍFICAS USADAS NO TEXTO

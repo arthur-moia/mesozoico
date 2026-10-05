@@ -14,6 +14,22 @@
   const dialog = document.querySelector(".credits-dialog");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+  // On narrow screens the scale caveat belongs in the readable copy area,
+  // leaving the animal and measurement lines unobstructed.
+  const mobileLayout = window.matchMedia("(max-width: 700px), (max-height: 500px) and (max-width: 950px) and (orientation: landscape)");
+  const scaleCopy = panels[12]?.querySelector('.eoraptor-scale-copy');
+  const scaleNote = panels[12]?.querySelector('.scale-note');
+  const scaleNoteHome = document.createComment('scale-note-home');
+  if (scaleNote && scaleCopy) {
+    scaleNote.parentNode.insertBefore(scaleNoteHome, scaleNote);
+    const placeScaleNote = () => {
+      if (mobileLayout.matches) scaleCopy.appendChild(scaleNote);
+      else scaleNoteHome.parentNode.insertBefore(scaleNote, scaleNoteHome.nextSibling);
+    };
+    placeScaleNote();
+    mobileLayout.addEventListener('change', placeScaleNote);
+  }
+
   let activeIndex = -1;
   let enhanced = false;
   let storyTrigger = null;
@@ -608,6 +624,7 @@
     goToPanel = function (index) {
       const target = Math.max(0, Math.min(N - 1, index));
       pendingWheelStep = 0;
+      panels[target].querySelectorAll('.eoraptor-skeleton-copy, .eoraptor-bridge-copy, .eoraptor-detail-layout, .eoraptor-facts-column, .eoraptor-scale-copy, .copy-center').forEach((area) => { area.scrollTop = 0; });
       const distance = Math.abs(target - storyTrigger.progress * (N - 1));
       scrollTween?.kill();
       scrollTween = null;
@@ -658,6 +675,17 @@
       goToPanel(anchorIndex + direction);
     }
 
+    function canScrollInside(target, direction) {
+      for (let node = target instanceof Element ? target : null; node && node !== story; node = node.parentElement) {
+        const overflow = getComputedStyle(node).overflowY;
+        if (overflow !== 'auto' && overflow !== 'scroll') continue;
+        if (node.scrollHeight <= node.clientHeight + 2) continue;
+        if (direction > 0 && node.scrollTop < node.scrollHeight - node.clientHeight - 2) return true;
+        if (direction < 0 && node.scrollTop > 2) return true;
+      }
+      return false;
+    }
+
     // Roda e trackpad: um gesto avança uma cena. A inércia do gesto é descartada.
     let lastWheel = 0;
     let lastWheelStep = -Infinity;
@@ -666,6 +694,11 @@
       if (event.ctrlKey) return;
       if (guardDialog(event)) return;
       if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+      if (canScrollInside(event.target, event.deltaY)) {
+        armed = false;
+        lastWheel = performance.now();
+        return;
+      }
       event.preventDefault();
       const now = performance.now();
       if (now - lastWheel > 300) armed = true;
@@ -700,6 +733,7 @@
         case "End": jump = N - 1; break;
         default: return;
       }
+      if (direction && canScrollInside(event.target, direction)) return;
       event.preventDefault();
       if (event.repeat) return;
       if (jump !== null) { goToPanel(jump); return; }
@@ -711,13 +745,15 @@
     let touchDone = false;
     window.addEventListener("touchstart", (event) => {
       if (dialog?.open || event.touches.length !== 1) { touchStart = null; return; }
-      touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+      touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY, target: event.target, reading: false };
       touchDone = false;
     }, { passive: true });
     window.addEventListener("touchmove", (event) => {
       if (!touchStart || event.touches.length !== 1) return;
       if (guardDialog(event)) return;
+      if (touchStart.reading) return;
       const dy = touchStart.y - event.touches[0].clientY;
+      if (canScrollInside(touchStart.target, dy)) { touchStart.reading = true; return; }
       event.preventDefault();
       if (touchDone) return;
       const dx = touchStart.x - event.touches[0].clientX;

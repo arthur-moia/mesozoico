@@ -19,7 +19,7 @@
 
 /* A mesma textura geológica que fecha o Triássico muda de temperatura e cor. */
 .panel--jurassic-entry { background: #131e18; }
-.jurassic-entry-strata { position: absolute; inset: 0 0 0 35%; background: linear-gradient(90deg,#131e18 0%,rgba(19,30,24,.73) 34%,rgba(19,30,24,.33) 100%), url('../assets/images/limite-permiano-triassico-ilustracao.png') center/cover no-repeat; filter: grayscale(.3) saturate(.45); opacity: .52; }
+.jurassic-entry-strata { position: absolute; inset: 0 0 0 35%; background: linear-gradient(90deg,#131e18 0%,rgba(19,30,24,.73) 34%,rgba(19,30,24,.33) 100%), url('../assets/images/limite-permiano-triassico-ilustracao.webp') center/cover no-repeat; filter: grayscale(.3) saturate(.45); opacity: .52; }
 .panel--jurassic-entry::after { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: radial-gradient(circle at 87% 66%,rgba(148,178,137,.13),transparent 34%),linear-gradient(0deg,rgba(9,16,12,.45),transparent 52%); }
 .jurassic-copy--entry { left: 10vw; top: 30vh; width: min(980px, 76vw); }
 .panel--jurassic-entry .jurassic-copy h2 { font-size: clamp(55px, 7.6vw, 112px); }

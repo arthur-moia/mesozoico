@@ -8,6 +8,8 @@ A navegação funciona por roda, teclado, toque, botões e barra de rolagem. Os 
 
 O vídeo de abertura toca mudo uma vez e não depende da rolagem. Há um botão caso a reprodução automática seja bloqueada. Com movimento reduzido, o vídeo espera esse botão e as cenas usam rolagem normal.
 
-As fontes científicas e os limites das imagens estão no diálogo **Créditos e limites** do site e em `CREDITOS-E-PENDENCIAS.txt`. A revisão editorial foi atualizada com fontes consultadas até outubro de 2026. A revisão completa para celular, a confirmação da proveniência e dos direitos de uso de parte dos arquivos, e o capítulo do Cretáceo continuam pendentes.
+As fontes científicas e os limites das imagens estão no diálogo **Créditos e limites** do site e em `CREDITOS-E-PENDENCIAS.txt`. A revisão editorial foi atualizada com fontes consultadas até outubro de 2026. A revisão de layout e navegação para celular foi feita em telas pequenas, padrão, tablet e celular na horizontal; deve ser repetida se as cenas mudarem. A confirmação da proveniência e dos direitos de uso de parte dos arquivos e o capítulo do Cretáceo continuam pendentes.
+
+As imagens usadas pelas cenas ganharam versões WebP para reduzir o carregamento. Os arquivos originais permanecem em `assets/images/`.
 
 O capítulo do Jurássico começa no mesmo limite de 201,4 Ma e visita a Formação Morrison, no oeste dos Estados Unidos. A paisagem antiga e o <i>Diplodocus</i> são reconstruções artísticas geradas para esta prévia; a fotografia da formação atual e a da parede de fósseis vêm do National Park Service. O desenho geológico da fragmentação de Pangeia é deliberadamente esquemático. As escolhas e fontes estão em `docs/roteiro-jurassico.md`.

@@ -1279,3 +1279,233 @@ html.is-story-enhanced { scroll-behavior: auto; overscroll-behavior-y: none; }
   .human-height-measure { right: 0; }
   .human-height-measure span { top: -5px; right: 0; transform: translateY(-100%); }
 }
+
+/* Keep the specimen fixed while its longer mobile description can be read. */
+@media (max-width: 700px), (max-height: 500px) and (max-width: 950px) and (orientation: landscape) {
+  .panel--eoraptor-skeleton .eoraptor-skeleton-copy,
+  .panel--eoraptor-bridge .eoraptor-bridge-copy {
+    top: calc(72px + 28svh + 22px);
+    bottom: 72px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .panel--eoraptor-reconstruction .eoraptor-detail-layout {
+    inset: 72px 0 138px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 0 22px 18px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .panel--eoraptor-reconstruction .specimen-stage--wipe {
+    position: sticky;
+    z-index: 3;
+    top: 0;
+    order: 0;
+    flex: 0 0 28svh;
+    width: 100%;
+    height: 28svh;
+    min-height: 0;
+    background: #1b1b1a;
+  }
+  .panel--eoraptor-reconstruction .eoraptor-detail-title {
+    order: 1;
+    align-self: stretch;
+    margin: 0;
+    font-size: clamp(31px, 8vw, 42px);
+    text-align: left;
+  }
+  .panel--eoraptor-reconstruction .eoraptor-facts-column,
+  .panel--eoraptor-reconstruction .eoraptor-context-column {
+    order: 2;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+  }
+  .panel--eoraptor-reconstruction .eoraptor-context-column { order: 3; }
+  .panel--eoraptor-reconstruction .eoraptor-facts-column .eoraptor-support { max-width: 32ch; font-size: 18px; }
+  .panel--eoraptor-reconstruction .eoraptor-facts-column .scene-prose p,
+  .panel--eoraptor-reconstruction .eoraptor-facts-column .scene-prose p:last-child { max-width: 48ch; font-size: 15px; line-height: 1.5; }
+  .panel--eoraptor-reconstruction .eoraptor-context-column .eoraptor-facts dt { font-size: 11px; }
+  .panel--eoraptor-reconstruction .eoraptor-context-column .eoraptor-facts dd { font-size: 15px; }
+  .panel--eoraptor-reconstruction .specimen-disclaimer {
+    right: 22px;
+    bottom: 67px;
+    left: 22px;
+    max-width: none;
+    padding: 5px 0;
+    background: #1b1b1a;
+    font-size: 10px;
+    line-height: 1.35;
+  }
+  .panel--eoraptor-scale .eoraptor-scale-copy {
+    top: 72px;
+    bottom: 49svh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .panel--eoraptor-scale .scale-stage {
+    --human-height: min(30svh, 43vw);
+    top: auto;
+    bottom: 14svh;
+    height: 30svh;
+  }
+  .panel--eoraptor-scale .scale-note {
+    position: static;
+    width: auto;
+    max-width: none;
+    max-height: none;
+    margin: 16px 0 0;
+    padding: 12px 0 0;
+    border-top: 1px solid rgba(232,229,219,.28);
+    background: transparent;
+    font-size: 12px;
+    line-height: 1.45;
+    text-align: left;
+  }
+  .panel--boundary-end .copy-center {
+    width: calc(100% - 44px);
+    max-height: calc(100svh - 148px);
+    margin: 0;
+    padding: 0 0 12px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+}
+
+@media (max-width: 700px) and (max-height: 700px) {
+  .panel--dinosaurs { display: block; padding: 0; }
+  .panel--dinosaurs .panel-copy {
+    position: absolute;
+    top: 72px;
+    right: 24px;
+    bottom: 36svh;
+    left: 24px;
+    height: calc(64svh - 72px);
+    min-height: 0;
+    padding-top: 0;
+    align-self: auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .panel--dinosaurs .dino-fossil-visual {
+    position: absolute;
+    bottom: 8svh;
+    left: 24px;
+    width: 46vw;
+  }
+  .panel--dinosaurs .dino-fossil-visual img { max-height: 18svh; }
+}
+
+@media (min-width: 701px) and (max-width: 1050px) {
+  .panel--site-present {
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+    gap: 4vw;
+    padding-right: 13vw;
+    padding-left: 5vw;
+  }
+  .panel--eoraptor-reconstruction .eoraptor-facts-column {
+    max-height: 62vh !important;
+    overflow-y: auto !important;
+    padding-right: 8px;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (max-width: 359px) {
+  .opening-copy {
+    max-height: calc(100svh - 140px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    padding-bottom: 12px;
+  }
+  .panel--triassic-start .panel-copy,
+  .panel--water .panel-copy {
+    position: absolute;
+    inset: 72px 24px 68px;
+    width: auto;
+    height: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    align-self: auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .panel--water .panel-copy h2 { font-size: clamp(36px, 11vw, 42px); }
+}
+
+/* A short landscape viewport keeps each scene and the timeline, with a
+   readable area for copy instead of clipping it below the screen. */
+@media (max-height: 500px) and (max-width: 950px) and (orientation: landscape) {
+  .site-header { height: 44px; padding: 0 20px; }
+  .header-caption { display: none; }
+  .time-rail { right: 0; transform: translateY(-50%) scale(.72); transform-origin: right center; }
+  .panel:not(.panel--opening):not(.panel--eoraptor) .panel-copy {
+    position: absolute;
+    top: 55px;
+    right: auto;
+    bottom: 24px;
+    left: 5vw;
+    width: min(58vw, 510px);
+    height: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    text-align: left;
+  }
+  .panel:not(.panel--opening):not(.panel--eoraptor) .panel-copy h2 {
+    font-size: clamp(30px, 4.1vw, 42px) !important;
+    line-height: 1.05;
+  }
+  .panel:not(.panel--opening):not(.panel--eoraptor) .panel-copy .scene-prose p {
+    font-size: 14px !important;
+    line-height: 1.43;
+  }
+  .panel:not(.panel--opening):not(.panel--eoraptor) .panel-copy .eyebrow { margin-bottom: 10px; }
+  .panel--opening { padding-top: 48px; }
+  .panel--opening .opening-copy {
+    align-self: start;
+    max-width: min(620px, 76vw);
+    max-height: calc(100svh - 82px);
+    overflow-y: auto;
+    padding: 0 0 12px;
+    overscroll-behavior: contain;
+  }
+  .panel--opening .opening-copy h1 { font-size: clamp(32px, 4.3vw, 44px); }
+  .panel--site-present .site-copy,
+  .panel--pangea .copy-map,
+  .panel--jurassic-morrison .jurassic-copy,
+  .panel--jurassic-fossils .jurassic-copy { right: 13vw !important; left: auto !important; width: 42vw !important; }
+  .panel--boundary-end .copy-center { left: 13vw !important; width: 70vw !important; text-align: center !important; }
+  .panel--eoraptor-reconstruction .eoraptor-detail-layout { inset: 50px 12vw 43px 3vw; }
+  .panel--eoraptor-reconstruction .specimen-stage--wipe { flex-basis: 32svh; height: 32svh; }
+  .panel--eoraptor-reconstruction .eoraptor-facts-column { max-height: none !important; overflow: visible !important; }
+  .panel--eoraptor-skeleton .eoraptor-skeleton-copy,
+  .panel--eoraptor-bridge .eoraptor-bridge-copy {
+    top: calc(50px + 32svh + 12px);
+    right: 15vw;
+    bottom: 35px;
+    left: 3vw;
+    width: auto;
+    max-width: none;
+  }
+  .panel--eoraptor-skeleton .eoraptor-skeleton-copy h2,
+  .panel--eoraptor-bridge .eoraptor-bridge-copy h2,
+  .panel--eoraptor-scale .eoraptor-scale-copy h2 { font-size: 32px; }
+  .panel--eoraptor-reconstruction .specimen-disclaimer { right: 15vw; bottom: 5px; left: 3vw; }
+  .panel--eoraptor-scale .eoraptor-scale-copy { top: 50px; right: 14vw; bottom: 50svh; left: 3vw; }
+  .panel--eoraptor-scale .scale-stage { bottom: 12svh; height: 30svh; }
+}
