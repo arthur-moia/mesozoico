@@ -253,7 +253,13 @@
       if (at + duration > Math.floor(at + 1e-7) + 1 + 1e-7) {
         throw new Error("Animação ultrapassa o intervalo da cena: " + at + " + " + duration);
       }
-      return master.fromTo(target, from, Object.assign({ duration }, to), at);
+      if (target == null) return null;
+      let resolvedTarget = target;
+      if (!target.nodeType && typeof target.length === "number") {
+        resolvedTarget = Array.from(target).filter(Boolean);
+        if (!resolvedTarget.length) return null;
+      }
+      return master.fromTo(resolvedTarget, from, Object.assign({ duration }, to), at);
     };
     const FULL = "inset(0% 0% 0% 0%)";
 
