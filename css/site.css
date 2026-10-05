@@ -877,8 +877,10 @@ html.is-story-enhanced { scroll-behavior: auto; overscroll-behavior-y: none; }
     inset: 0 52vw 0 0;
   }
   .panel--triassic-start .epoch-photo img {
-    object-position: 48% 58%;
-    filter: saturate(.82) brightness(.86);
+    width: 200%;
+    object-position: center 100%;
+    transform: translateX(-50%);
+    filter: saturate(.92) brightness(.9);
   }
   .panel--triassic-start .end-texture {
     background: linear-gradient(90deg, transparent 0%, rgba(23,32,25,.08) 34%, #172019 54%, #172019 100%),
@@ -1021,4 +1023,71 @@ html.is-story-enhanced { scroll-behavior: auto; overscroll-behavior-y: none; }
     line-height: 1.6;
   }
   .panel--boundary-end .end-stop p:first-child { color: #f0e9dd; }
+}
+
+/* Readability pass: keep the cinematic imagery while giving fixed labels and
+   copy a consistent dark edge to sit against across changing backgrounds. */
+.time-rail {
+  isolation: isolate;
+  color: rgba(245, 242, 233, .96);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, .9);
+}
+.time-rail::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -28px -14px;
+  background: linear-gradient(90deg, rgba(8, 12, 10, 0) 0%, rgba(8, 12, 10, .56) 30%, rgba(8, 12, 10, .86) 100%);
+  border-right: 1px solid rgba(232, 229, 219, .08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+.time-rail__heading { color: rgba(245, 242, 233, .88); }
+.time-rail__current { color: #fffaf0; font-weight: 600; }
+.time-rail__track { border-right: 1px solid rgba(245, 242, 233, .58); }
+@media (min-width: 701px) {
+  .time-rail__fill { width: 2px; background: #e7b66f; }
+}
+.time-rail__marker { background: #f0bd73; box-shadow: 0 0 0 3px rgba(12, 15, 12, .76), 0 0 16px rgba(240, 189, 115, .62); }
+.time-stop i { background: rgba(245, 242, 233, .78); }
+.time-stop b { color: rgba(245, 242, 233, .92); font-weight: 600; }
+.time-stop.is-active b { color: #fffaf0; }
+.time-rail__unit { color: rgba(245, 242, 233, .84); }
+
+.panel-copy h1,
+.panel-copy h2,
+.panel-copy p,
+.panel-copy summary,
+.opening-copy h1,
+.opening-copy p,
+.image-caption,
+.panel--eoraptor :is(h2, p, dt, dd) {
+  text-shadow: 0 1px 5px rgba(0, 0, 0, .46);
+}
+.panel--landscape .panel-shade--bottom {
+  background: linear-gradient(0deg, rgba(7, 11, 9, .94) 0%, rgba(7, 11, 9, .68) 32%, rgba(7, 11, 9, .12) 72%),
+              linear-gradient(90deg, rgba(7, 11, 9, .34), transparent 78%);
+}
+.panel--water .panel-shade {
+  background: radial-gradient(ellipse at 68% 24%, rgba(7, 13, 11, .68), transparent 44%),
+              linear-gradient(90deg, rgba(7, 13, 11, .82), rgba(7, 13, 11, .1) 62%, rgba(7, 13, 11, .36)),
+              linear-gradient(0deg, rgba(7, 13, 11, .64), transparent 56%);
+}
+.panel--forest .panel-shade {
+  background: linear-gradient(90deg, rgba(6, 12, 9, .9), rgba(6, 12, 9, .45) 48%, rgba(6, 12, 9, .08) 78%),
+              linear-gradient(0deg, rgba(6, 12, 9, .72), transparent 62%);
+}
+@media (max-width: 700px) {
+  .time-rail { width: auto; }
+  .time-rail::before {
+    inset: 0;
+    border: 0;
+    border-radius: 3px;
+    background: rgba(8, 12, 10, .82);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .time-rail__track { border: 0; }
+  .time-rail__fill { width: var(--rail-position, 0%); }
 }

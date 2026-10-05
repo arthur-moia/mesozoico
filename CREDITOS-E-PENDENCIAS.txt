@@ -9,6 +9,7 @@ ASSETS INCLUÍDOS
 - assets/images/pangeia-mapa-250ma-provisorio.webp — mapa paleogeográfico de cerca de 250 Ma; reconstrução provisória, fonte/licença a confirmar. Não marca Ischigualasto.
 - assets/images/triassico-arido.png, triassico-agua.png, triassico-floresta.png — artes de ambiente fornecidas pelo usuário; créditos e licenças a confirmar. São reconstruções, não fotografias nem registros de uma localidade específica.
 - assets/images/ischigualasto-atual.jpg — fotografia atual do local; origem/licença a confirmar. Não representa o Triássico.
+- assets/images/permo-triassic-coalcliff-frontiers-figure4.webp — recorte do painel B da Figura 4, fotografia da seção de Coalcliff; McLoughlin et al. (2021), Frontiers in Earth Science, CC BY 4.0: https://doi.org/10.3389/feart.2020.600976. Recorte aplicado no CSS.
 - assets/images/eoraptor-reconstrucao.png — reconstrução fornecida pelo usuário; origem/licença a confirmar.
 - assets/images/eoraptor-fossil-ischigualasto.jpg — fotografia de fóssil de Eoraptor exposto na rocha em Ischigualasto; Eamezaga, Wikimedia Commons, domínio público: https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg.
 - assets/images/eoraptor-esqueleto.png — representação esquelética fornecida pelo usuário; origem/licença a confirmar. Pose diferente da reconstrução, mantida provisoriamente para ajuste posterior.
