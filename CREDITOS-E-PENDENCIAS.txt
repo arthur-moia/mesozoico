@@ -7,9 +7,11 @@ ASSETS INCLUÍDOS
 - assets/images/terra-poster.png — poster anterior, preservado como referência e não utilizado.
 - assets/images/opening-poster.jpg — quadro extraído de opening.mp4 em 1,0 segundo; mesmos créditos do vídeo fornecido.
 - assets/images/pangeia-mapa-250ma-provisorio.webp — mapa paleogeográfico de cerca de 250 Ma; reconstrução provisória, fonte/licença a confirmar. Não marca Ischigualasto.
+- assets/images/limite-permiano-triassico-ilustracao.png — imagem fornecida pelo usuário; ilustração de camadas sedimentares genéricas, não representa um afloramento real específico.
+- assets/images/fossil-fronde-ilustrativo.png — imagem ilustrativa gerada por IA para a cena de fossilização; não representa um espécime ou localidade real.
 - assets/images/triassico-arido.png, triassico-agua.png, triassico-floresta.png — artes de ambiente fornecidas pelo usuário; créditos e licenças a confirmar. São reconstruções, não fotografias nem registros de uma localidade específica.
 - assets/images/ischigualasto-atual.jpg — fotografia atual do local; origem/licença a confirmar. Não representa o Triássico.
-- assets/images/permo-triassic-coalcliff-frontiers-figure4.webp — recorte do painel B da Figura 4, fotografia da seção de Coalcliff; McLoughlin et al. (2021), Frontiers in Earth Science, CC BY 4.0: https://doi.org/10.3389/feart.2020.600976. Recorte aplicado no CSS.
+- assets/images/permo-triassic-coalcliff-frontiers-figure4.webp — recorte do painel B da Figura 4, fotografia da seção de Coalcliff; McLoughlin et al. (2021), Frontiers in Earth Science, CC BY 4.0: https://doi.org/10.3389/feart.2020.600976. Preservado no repositório, sem uso na cena atual.
 - assets/images/eoraptor-reconstrucao.png — reconstrução fornecida pelo usuário; origem/licença a confirmar.
 - assets/images/eoraptor-fossil-ischigualasto.jpg — fotografia de fóssil de Eoraptor exposto na rocha em Ischigualasto; Eamezaga, Wikimedia Commons, domínio público: https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg.
 - assets/images/eoraptor-esqueleto.png — representação esquelética fornecida pelo usuário; origem/licença a confirmar. Pose diferente da reconstrução, mantida provisoriamente para ajuste posterior.

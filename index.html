@@ -16,10 +16,10 @@
       document.documentElement.classList.remove("intro-pending");
     }, 4000);
   </script>
-  <link rel="stylesheet" href="css/site.css?v=20261004-contraste-foto-r1">
+  <link rel="stylesheet" href="css/site.css?v=20261004-eoraptor-r4">
   <script defer src="js/vendor/gsap.min.js"></script>
   <script defer src="js/vendor/ScrollTrigger.min.js"></script>
-  <script defer src="js/site.js?v=20261004-14cenas-r2"></script>
+  <script defer src="js/site.js?v=20261004-eoraptor-r4"></script>
 </head>
 <body>
   <a class="skip-link" href="#story">Pular para a expedição</a>
@@ -30,12 +30,13 @@
   </header>
 
   <aside class="time-rail" aria-label="Linha do tempo da expedição">
-    <div class="time-rail__heading"><span>Linha do tempo</span><span class="time-rail__current" data-current-age>Agora</span></div>
+    <div class="time-rail__heading"><span>Tempo geológico</span><span class="time-rail__current" data-current-age>Agora</span></div>
+    <div class="time-rail__present" data-stop="now"><i aria-hidden="true"></i><span>Hoje</span></div>
+    <div class="time-rail__break" aria-hidden="true"><i></i><i></i></div>
     <div class="time-rail__track" aria-hidden="true">
       <span class="time-rail__fill" data-time-fill></span>
       <span class="time-rail__band" data-time-band></span>
       <span class="time-rail__marker" data-time-marker></span>
-      <span class="time-stop stop-now" data-stop="now"><i></i><b>Agora</b></span>
       <span class="time-stop stop-start" data-stop="start"><i></i><b>251,9</b></span>
       <span class="time-stop stop-dino" data-stop="dino"><i></i><b data-slot-label>233–230</b></span>
       <span class="time-stop stop-end" data-stop="end"><i></i><b>201,4</b></span>
@@ -66,7 +67,7 @@
 
       <section class="panel panel--boundary panel--triassic-start" data-panel data-age="251.9" data-age-label="251,9 Ma" data-stop="start" aria-label="Início do Triássico">
       
-        <div class="epoch-photo" aria-hidden="true"><img src="assets/images/permo-triassic-coalcliff-frontiers-figure4.webp" alt="" loading="eager"></div>
+        <div class="epoch-photo" aria-hidden="true"><img src="assets/images/limite-permiano-triassico-ilustracao.png" alt="" loading="eager"></div>
         <div class="end-texture"></div>
         <div class="panel-copy copy-left"><p class="eyebrow"><strong>≈ 251,9 MILHÕES DE ANOS</strong></p><h2><strong>O Triássico não começou do zero. Começou do que restou.</strong></h2><div class="scene-prose"><p>No fim do Permiano, a maior extinção em massa conhecida havia transformado profundamente a vida na Terra.</p><p>Os sobreviventes herdaram o planeta.</p><p>Isso não significa que herdaram estabilidade.</p><p><strong>A vida continuou. Só não voltou ao que era.</strong></p></div><details class="science-note"><summary>Nota</summary><p>A recuperação dos ecossistemas ocorreu em ritmos diferentes. O início do Triássico ainda foi marcado por fortes perturbações ambientais.</p></details></div>
       
@@ -112,7 +113,7 @@
 
       <section class="panel panel--fossil" data-panel data-age="231" data-age-label="≈ 231 Ma" data-stop="dino" aria-label="Evidência fóssil">
       
-        <div class="fossil-closeup"><img src="assets/images/eoraptor-fossil-ischigualasto.jpg" alt="Detalhe do fóssil de Eoraptor em rocha" loading="eager"></div>
+        <div class="fossil-closeup"><img src="assets/images/fossil-fronde-ilustrativo.png" alt="Imagem ilustrativa de uma fronde fossilizada preservada em rocha sedimentar" loading="eager"></div>
         <div class="panel-shade panel-shade--left"></div>
         <div class="panel-copy copy-left copy-mid"><h2><strong>Fossilizar já é improvável. Ser encontrado é pedir ainda mais sorte.</strong></h2><div class="scene-prose"><p>Um organismo precisa morrer nas condições certas, ser enterrado, escapar da destruição, permanecer preservado por milhões de anos...</p><p>e depois ser exposto onde alguém possa encontrá-lo.</p><p>É com esse arquivo incompleto que reconstruímos mundos inteiros.</p><p><strong>Não é pouca informação. Só não é toda ela.</strong></p></div></div>
       
@@ -135,21 +136,27 @@
       <section class="panel panel--eoraptor panel--eoraptor-reconstruction" data-panel data-age="230" data-age-label="≈ 230 Ma" data-stop="dino" data-slot="≈ 230" aria-label="Eoraptor: reconstrução">
       
         <div class="eoraptor-detail-layout">
-          <h2 class="eoraptor-detail-title"><i>Eoraptor lunensis</i></h2>
-          <div class="eoraptor-facts-column" tabindex="0" aria-label="Texto e nota científica sobre Eoraptor"><p class="eoraptor-support"><strong>Um dos primeiros capítulos conhecidos da história dos dinossauros.</strong></p><div class="scene-prose"><p>Há cerca de <strong>230 milhões de anos</strong>, <i>Eoraptor</i> viveu onde hoje está o noroeste da Argentina.</p><p>Era pequeno, bípede e anatomicamente próximo das primeiras grandes ramificações da evolução dos dinossauros.</p><p>Sua posição exata já mudou conforme novas análises foram feitas.</p><p>O fóssil permaneceu o mesmo.</p><p><strong>Nossa interpretação, não.</strong></p></div><details class="science-note"><summary>Nota científica</summary><p><i>Eoraptor</i> já foi interpretado de maneiras diferentes dentro da árvore evolutiva dos dinossauros. Sua posição entre formas próximas à origem dos sauropodomorfos é atualmente bem sustentada por diversas análises, mas relações profundas entre os primeiros dinossauros continuam sendo investigadas.</p></details></div>
+          <span class="eoraptor-backdrop" aria-hidden="true">EORAPTOR</span>
+          <h2 class="eoraptor-detail-title"><strong>EORAPTOR</strong> <i>LUNENSIS</i></h2>
+          <div class="eoraptor-facts-column" tabindex="0" aria-label="Texto e nota científica sobre Eoraptor"><p class="eoraptor-panel-label">Sobre o Eoraptor</p><p class="eoraptor-support"><strong>Um dos primeiros capítulos conhecidos da história dos dinossauros.</strong></p><div class="scene-prose"><p>Há cerca de <strong>230 milhões de anos</strong>, <i>Eoraptor</i> viveu onde hoje está o noroeste da Argentina.</p><p>Era pequeno, bípede e anatomicamente próximo das primeiras grandes ramificações da evolução dos dinossauros.</p><p>Sua posição exata já mudou conforme novas análises foram feitas.</p><p>O fóssil permaneceu o mesmo.</p><p><strong>Nossa interpretação, não.</strong></p></div><details class="science-note"><summary>Nota científica</summary><p><i>Eoraptor</i> já foi interpretado de maneiras diferentes dentro da árvore evolutiva dos dinossauros. Sua posição entre formas próximas à origem dos sauropodomorfos é atualmente bem sustentada por diversas análises, mas relações profundas entre os primeiros dinossauros continuam sendo investigadas.</p></details></div>
           <div class="specimen-stage specimen-stage--wipe"><img class="specimen specimen--reconstruction" src="assets/images/eoraptor-reconstrucao.png" alt="Reconstrução artística do Eoraptor" loading="eager"><span class="specimen-wipe-line" aria-hidden="true"></span></div>
-          <div class="eoraptor-context-column"><dl class="eoraptor-facts"><div><dt>PERÍODO</dt><dd>Triássico Superior</dd></div><div><dt>IDADE</dt><dd>≈ 230 milhões de anos</dd></div><div><dt>LOCALIDADE</dt><dd>Formação Ischigualasto<br>San Juan · Argentina</dd></div><div><dt>LOCOMOÇÃO</dt><dd>Bípede</dd></div><div><dt>DIETA</dt><dd>Incerta</dd></div><div><dt>POSIÇÃO EVOLUTIVA</dt><dd>Frequentemente recuperado entre os sauropodomorfos mais basais.</dd></div></dl></div>
+          <div class="eoraptor-context-column">
+            <section class="eoraptor-context-card"><p class="eoraptor-panel-label">Tempo e local</p><dl class="eoraptor-facts"><div><dt>PERÍODO</dt><dd>Triássico Superior</dd></div><div><dt>IDADE</dt><dd>≈ 230 milhões de anos</dd></div><div><dt>LOCALIDADE</dt><dd>Formação Ischigualasto<br>San Juan · Argentina</dd></div></dl></section>
+            <section class="eoraptor-context-card"><p class="eoraptor-panel-label">Biologia</p><dl class="eoraptor-facts"><div><dt>LOCOMOÇÃO</dt><dd>Bípede</dd></div><div><dt>DIETA</dt><dd>Incerta</dd></div><div><dt>POSIÇÃO EVOLUTIVA</dt><dd>Frequentemente recuperado entre os sauropodomorfos mais basais.</dd></div></dl></section>
+          </div>
         </div>
-        <div class="specimen-disclaimer"><strong><strong>Reconstrução artística.</strong></strong> Anatomia esqueletal fornece a base da imagem. Coloração, tecidos externos e diversos detalhes de aparência permanecem inferidos.</div>
+        <div class="specimen-disclaimer"><strong>Reconstrução artística.</strong> Anatomia esqueletal fornece a base da imagem. Coloração, tecidos externos e diversos detalhes de aparência permanecem inferidos.</div>
       
       </section>
 
       <section class="panel panel--eoraptor panel--eoraptor-scale" data-panel data-age="230" data-age-label="≈ 230 Ma" data-stop="dino" data-slot="≈ 230" aria-label="Eoraptor em comparação de escala">
       
-        <div class="eoraptor-scale-copy"><p class="eoraptor-kicker"><strong>TAMANHO EM PERSPECTIVA</strong></p><h2><strong>A palavra “dinossauro” faz a imaginação crescer.</strong></h2><div class="scene-prose"><p>O animal, nem sempre.</p><p><i>Eoraptor</i> estava muito distante dos gigantes que apareceriam mais tarde na história dos dinossauros.</p><p>Nesta reconstrução, ele é mostrado com aproximadamente <strong>1,2 metro de comprimento</strong> ao lado de uma pessoa de <strong>1,70 metro</strong>.</p><p>Pequeno?</p><p>Comparado ao que viria depois, certamente.</p><p><strong>Irrelevante é outra questão.</strong></p></div></div>
-        <div class="scale-stage" role="img" aria-label="Comparação visual aproximada entre Eoraptor e uma pessoa de 1,70 metro">
+        <div class="eoraptor-scale-copy"><p class="eoraptor-kicker"><strong>TAMANHO EM PERSPECTIVA</strong></p><h2><strong>A palavra “dinossauro” faz a imaginação crescer.</strong></h2><div class="scene-prose"><p>O animal, nem sempre.</p><p><i>Eoraptor</i> estava muito distante dos gigantes que apareceriam mais tarde na história dos dinossauros.</p><p>Nesta reconstrução, ele é mostrado com aproximadamente <strong>1,2 metro de comprimento</strong> e <strong>0,5 metro até o quadril</strong>, ao lado de uma pessoa de <strong>1,70 metro</strong>.</p><p>Pequeno?</p><p>Comparado ao que viria depois, certamente.</p><p><strong>Irrelevante é outra questão.</strong></p></div></div>
+        <div class="scale-stage" role="img" aria-label="Comparação visual aproximada: Eoraptor com cerca de 1,2 metro de comprimento e 0,5 metro até o quadril, ao lado de uma pessoa de 1,70 metro">
           <div class="scale-ground" aria-hidden="true"></div><img class="scale-dinosaur" src="assets/images/eoraptor-reconstrucao.png" alt="" loading="eager"><img class="scale-person" src="assets/images/humano.png" alt="" loading="eager">
           <div class="dino-length-measure" role="img" aria-label="Comprimento ilustrado: aproximadamente 1,2 metro"><span class="dino-length-line" aria-hidden="true"></span><span class="dino-length-label"><strong>≈ 1,2 m</strong></span></div>
+          <div class="height-measure dino-hip-measure" aria-hidden="true"><span><strong>≈ 0,5 m</strong><small>até o quadril</small></span></div>
+          <div class="height-measure human-height-measure" aria-hidden="true"><span><strong>1,70 m</strong><small>pessoa</small></span></div>
         </div>
         <p class="scale-note">Comparação visual aproximada. O holótipo de <i>Eoraptor</i> foi originalmente descrito com cerca de <strong>1 metro de comprimento</strong>. A medida de 1,2 m representa a escala adotada nesta reconstrução gráfica e não uma medição direta confirmada para todos os indivíduos da espécie.</p>
       
@@ -168,19 +175,21 @@
     <button class="dialog-close" type="button" data-close-credits aria-label="Fechar créditos">×</button>
     <p class="eyebrow">Transparência do projeto</p>
     <h2 id="credits-title">Créditos e limites</h2>
-    <p>Os textos distinguem evidência, estimativa e reconstrução. A procedência dos materiais ainda pendentes está indicada abaixo.</p>
+    <p>Os textos distinguem evidência, estimativa e reconstrução. A licença das imagens abaixo ainda precisa ser confirmada antes da publicação pública.</p>
     <ul>
       <li>Vídeo de abertura: arquivo fornecido pelo usuário; autoria/licença a confirmar.</li>
       <li>Mapa paleogeográfico de 250 Ma: provisório; fonte/licença a confirmar. Não marca Ischigualasto.</li>
       <li>Ambientes ilustrados do Triássico: reconstruções artísticas fornecidas pelo usuário; créditos/licenças a confirmar.</li>
+      <li>Fundo da cena sobre fossilização: imagem ilustrativa gerada por IA; não representa um espécime ou localidade real.</li>
       <li>Ischigualasto: fotografia do parque atual; fonte/licença a confirmar.</li>
-      <li>Detalhe das camadas de Coalcliff, na cena de abertura do Triássico: recorte do painel B da Figura 4 de McLoughlin et al. (2021), <a href="https://doi.org/10.3389/feart.2020.600976" target="_blank" rel="noreferrer">Frontiers in Earth Science</a>, licença <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>. O enquadramento foi recortado pela página.</li>
+      <li>Imagem da transição Permiano–Triássico: ilustração gerada pelo usuário; representa camadas sedimentares genéricas e não corresponde a um afloramento real específico.</li>
       <li>Eoraptor e figura de escala: imagens fornecidas pelo usuário; procedência/licença a confirmar. O esqueleto está em revisão.</li>
       <li>Triássico começou há cerca de 251,9 Ma: <a href="https://stratigraphy.org/ICSchart/ChronostratChart2024-12.pdf" target="_blank" rel="noreferrer">Carta Cronoestratigráfica Internacional</a>.</li>
       <li>Recuperação após a extinção Permiano–Triássica: <a href="https://www.nature.com/articles/ngeo1475" target="_blank" rel="noreferrer">Nature Geoscience</a>.</li>
       <li>Clima triássico e Pangeia: <a href="https://www.sciencedirect.com/science/article/pii/S0895981124001998" target="_blank" rel="noreferrer">revisão sobre clima e ecologia do Triássico</a>.</li>
       <li>Primeiros registros inequívocos de dinossauros: <a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1469-185X.2009.00094.x" target="_blank" rel="noreferrer">revisão em Biological Reviews</a>.</li>
       <li>Descrição original do Eoraptor, com esqueleto de cerca de 1 m: <a href="https://www.nature.com/articles/361064a0" target="_blank" rel="noreferrer">Sereno et al., Nature (1993)</a>.</li>
+      <li>Altura aproximada de 0,5 m até o quadril: <a href="https://paulsereno.uchicago.edu/exhibits_casts/early_dinosaurs/eoraptor/" target="_blank" rel="noreferrer">Paul Sereno, Eoraptor</a>.</li>
       <li>Datação de camadas fossilíferas de Ischigualasto: <a href="https://pubmed.ncbi.nlm.nih.gov/32728077/" target="_blank" rel="noreferrer">estudo geocronológico</a>.</li>
       <li>Base científica do projeto: MESOZOICO-base-cientifica-editorial.pdf, incluída em <code>docs/</code>.</li>
     </ul>

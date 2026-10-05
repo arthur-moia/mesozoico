@@ -83,16 +83,13 @@
   /* Linha do tempo: rótulo, marcador e faixa saem da mesma fonte        */
   /* (os atributos data-age* de cada painel).                            */
   /* ------------------------------------------------------------------ */
-  const AGE_PRESENT = 0;      // posição (%) do "agora"
-  const AGE_START = 48;       // posição (%) de 251,9 Ma
-  const AGE_END = 100;        // posição (%) de 201,4 Ma
   const MA_TOP = 251.9;
   const MA_BOTTOM = 201.4;
   const SLOT_DEFAULT_TEXT = slotLabel ? slotLabel.textContent.trim() : "233–230";
 
   function railPosition(age) {
     const clamped = Math.min(MA_TOP, Math.max(MA_BOTTOM, age));
-    return AGE_START + ((MA_TOP - clamped) / (MA_TOP - MA_BOTTOM)) * (AGE_END - AGE_START);
+    return ((MA_TOP - clamped) / (MA_TOP - MA_BOTTOM)) * 100;
   }
   const SLOT_DEFAULT_POS = railPosition((233 + 230) / 2);
 
@@ -102,7 +99,7 @@
     const to = parseFloat(panel.dataset.ageTo);
     const hasBand = Number.isFinite(from) && Number.isFinite(to);
     let pos;
-    if (raw === "now") pos = AGE_PRESENT;
+    if (raw === "now") pos = 0;
     else if (hasBand) pos = railPosition((from + to) / 2);
     else pos = railPosition(parseFloat(raw));
     const slotText = panel.dataset.slot || SLOT_DEFAULT_TEXT;
@@ -154,6 +151,7 @@
     const info = ages[activeIndex];
     setText(currentAge, info.label);
     setText(slotLabel, info.slotText);
+    timeRail?.classList.toggle("is-present", info.stop === "now");
     stopMarks.forEach((mark) => mark.classList.toggle("is-active", mark.dataset.stop === info.stop));
     if (!enhanced) {
       Object.assign(railLive, railState(info));
@@ -205,7 +203,7 @@
       '.opening-copy, .site-copy, .panel--triassic-start .panel-copy, .copy-map, .copy-bottom, .copy-mid, .eoraptor-skeleton-copy, .eoraptor-bridge-copy, .eoraptor-detail-layout, .eoraptor-scale-copy, .copy-center'
     );
     if (!flow) throw new Error('Texto ausente na cena ' + (index + 1));
-    const selector = ':is(h1,h2,.eyebrow,.eoraptor-kicker,.eoraptor-support,.scene-prose > p,.science-note,.eoraptor-facts > div,.restart-journey,.credits-trigger--end,.image-caption)';
+    const selector = ':is(h1,h2,.eyebrow,.eoraptor-kicker,.eoraptor-support,.eoraptor-panel-label,.scene-prose > p,.science-note,.eoraptor-facts > div,.restart-journey,.credits-trigger--end,.image-caption)';
     const steps = Array.from(flow.querySelectorAll(selector)).filter(el =>
       !el.closest('.science-note') || el.classList.contains('science-note')
     ).map(el => [el]);
@@ -216,7 +214,11 @@
     if (index === 12) steps.push([panel.querySelector('.scale-note')]);
     return steps.map(group => group.filter(Boolean)).filter(group => group.length);
   });
-  const VISUALS = [[], ['.site-photo'], [], ['.pangea-frame'], [], [], [], [], ['.fossil-closeup'], ['.skeleton-stage'], [], [], [], []];
+  const VISUALS = [
+    [], ['.site-photo'], [], ['.pangea-frame'], [], [], [], [],
+    ['.fossil-closeup'], ['.skeleton-stage'], [],
+    ['.eoraptor-facts-column', '.eoraptor-context-card'], [], []
+  ];
   const SPECIMEN_FROM = 10; // bridge → reconstruction; skeleton is scene 10
 
   let intro = null;
@@ -253,13 +255,7 @@
       if (at + duration > Math.floor(at + 1e-7) + 1 + 1e-7) {
         throw new Error("Animação ultrapassa o intervalo da cena: " + at + " + " + duration);
       }
-      if (target == null) return null;
-      let resolvedTarget = target;
-      if (!target.nodeType && typeof target.length === "number") {
-        resolvedTarget = Array.from(target).filter(Boolean);
-        if (!resolvedTarget.length) return null;
-      }
-      return master.fromTo(resolvedTarget, from, Object.assign({ duration }, to), at);
+      return master.fromTo(target, from, Object.assign({ duration }, to), at);
     };
     const FULL = "inset(0% 0% 0% 0%)";
 
@@ -488,20 +484,25 @@
     }
 
     function specimenWipe(c) {
-      fromTo(c.P, { backgroundColor: 'rgba(36,29,25,1)' }, { backgroundColor: 'rgba(36,29,25,0)' }, c.i, .001);
       textOut(c.i, c.i);
       fromTo(wipe, { p: 0 }, { p: 1, onUpdate: applyWipe }, c.i + .28, .36);
+      fromTo(c.Q.querySelector('.eoraptor-backdrop'), { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .50, .22);
+      // Os blocos chegam com o texto, depois que a varredura revela o animal.
+      visualIn(c.i + 1, c.i, { y: 12, from: .56, duration: .18 });
       textIn(c.i + 1, c.i);
     }
 
     function specimenToScale(c) {
       // The reconstruction itself moves. Only at the exact settled boundary does the
       // identical scale image take its place; both use the same measured rectangle.
-      fromTo(c.P, { backgroundColor: 'rgba(36,29,25,1)' }, { backgroundColor: 'rgba(36,29,25,0)' }, c.i, .001);
       textOut(c.i, c.i);
+      fromTo(c.P.querySelectorAll('.eoraptor-facts-column, .eoraptor-context-card'),
+        { opacity: 1, y: 0 }, { opacity: 0, y: -12, ease: 'power1.in' }, c.i + .02, .20);
+      fromTo(c.P.querySelector('.eoraptor-backdrop'), { opacity: 1 }, { opacity: 0 }, c.i + .02, .20);
       fromTo(transfer, { p: 0 }, { p: 1, ease: 'power2.inOut', onUpdate: applyTransfer }, c.i + .30, .34);
       fromTo(c.Q.querySelectorAll('.scale-person, .scale-ground'), { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .66, .12);
-      fromTo(c.Q.querySelector('.dino-length-measure'), { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .79, .08);
+      fromTo(c.Q.querySelectorAll('.dino-length-measure, .dino-hip-measure, .human-height-measure'),
+        { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .80, .12);
       textIn(c.i + 1, c.i, { from: .86, dur: .12 });
     }
 
