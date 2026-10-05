@@ -573,6 +573,32 @@
     let pendingWheelStep = 0;
     let scrollTween = null;
     let settleTimer = null;
+    const stage = story.querySelector('.stage');
+    const readingHint = document.createElement('span');
+    readingHint.className = 'mobile-reading-hint';
+    readingHint.setAttribute('aria-hidden', 'true');
+    readingHint.innerHTML = 'Deslize para ler <b>↓</b>';
+    stage.appendChild(readingHint);
+
+    function updateReadingHint() {
+      readingHint.classList.remove('is-visible');
+      if (busy || dialog?.open || !matchMedia('(max-width: 1050px), (max-height: 500px)').matches) return;
+      const panel = panels[activeIndex];
+      if (!panel?.classList.contains('is-active')) return;
+      const area = Array.from(panel.querySelectorAll('*')).find((node) => {
+        const overflow = getComputedStyle(node).overflowY;
+        return (overflow === 'auto' || overflow === 'scroll') && node.scrollHeight > node.clientHeight + 24 && node.scrollTop < 8;
+      });
+      if (!area) return;
+      const box = area.getBoundingClientRect();
+      const frame = stage.getBoundingClientRect();
+      if (box.height < 90 || box.bottom < 40 || box.top > innerHeight - 40) return;
+      readingHint.style.left = `${Math.max(12, box.right - frame.left - 139)}px`;
+      readingHint.style.top = `${Math.min(frame.height - 36, box.bottom - frame.top - 32)}px`;
+      readingHint.classList.add('is-visible');
+    }
+    stage.addEventListener('scroll', () => requestAnimationFrame(updateReadingHint), true);
+    window.addEventListener('resize', () => requestAnimationFrame(updateReadingHint));
 
     function syncState(position) {
       const base = Math.min(N - 1, Math.max(0, Math.floor(position + 1e-6)));
@@ -618,6 +644,7 @@
         measureSpecimen();
         syncState(self.progress * (N - 1));
         if (!busy) alignToActive(self);
+        requestAnimationFrame(updateReadingHint);
       }
     });
 
@@ -628,8 +655,9 @@
       const distance = Math.abs(target - storyTrigger.progress * (N - 1));
       scrollTween?.kill();
       scrollTween = null;
-      if (distance < 0.001) { anchorIndex = target; busy = false; return; }
+      if (distance < 0.001) { anchorIndex = target; busy = false; updateReadingHint(); return; }
       busy = true;
+      readingHint.classList.remove('is-visible');
       const proxy = { y: window.scrollY };
       const origin = nearest();
       const special = Math.min(origin, target);
@@ -649,6 +677,7 @@
           scrollTween = null;
           anchorIndex = target;
           busy = false;
+          updateReadingHint();
           const queuedStep = pendingWheelStep;
           pendingWheelStep = 0;
           if (queuedStep) goToPanel(target + queuedStep);
@@ -773,12 +802,13 @@
         const position = storyTrigger.progress * (N - 1);
         const target = Math.round(position);
         if (Math.abs(position - target) * vh() > 1.5) goToPanel(target);
-        else anchorIndex = target;
+        else { anchorIndex = target; updateReadingHint(); }
       }, 220);
     }, { passive: true });
 
     dialog?.addEventListener("close", () => {
       if (!busy) window.scrollTo(0, yFor(anchorIndex));
+      updateReadingHint();
     });
 
     // Abertura: o vídeo começa sozinho e o texto entra por cima, em etapas.
@@ -794,6 +824,7 @@
     window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
     syncState(0);
     ScrollTrigger.refresh();
+    requestAnimationFrame(updateReadingHint);
   }
 
   function init() {
