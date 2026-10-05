@@ -884,7 +884,7 @@ html.is-story-enhanced { scroll-behavior: auto; overscroll-behavior-y: none; }
     background: #172019;
   }
   .panel--triassic-start .epoch-photo {
-    inset: 0 52vw 0 0;
+    inset: 0 40vw 0 0;
   }
   .panel--triassic-start .epoch-photo img {
     object-position: 48% 58%;
