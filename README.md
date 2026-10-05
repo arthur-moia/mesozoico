@@ -8,4 +8,4 @@ A navegação funciona por roda, teclado, toque, botões e barra de rolagem. Os 
 
 O vídeo de abertura toca mudo uma vez e não depende da rolagem. Há um botão caso a reprodução automática seja bloqueada. Com movimento reduzido, o vídeo espera esse botão e as cenas usam rolagem normal.
 
-As fontes científicas e os limites das imagens estão no diálogo **Créditos e limites** do site e em `CREDITOS-E-PENDENCIAS.txt`. A revisão completa para celular, a confirmação das licenças e os capítulos seguintes continuam pendentes.
+As fontes científicas e os limites das imagens estão no diálogo **Créditos e limites** do site e em `CREDITOS-E-PENDENCIAS.txt`. A revisão editorial foi atualizada com fontes consultadas até outubro de 2026. A revisão completa para celular, a confirmação da proveniência e dos direitos de uso de parte dos arquivos, e os capítulos seguintes continuam pendentes.

@@ -22,7 +22,7 @@ O interior de Pangeia podia ser árido ou semiárido. Ainda assim, o Triássico 
 
 ## Aparecimento dos dinossauros
 
-Os fósseis mais antigos amplamente reconhecidos de dinossauros aparecem no Triássico Superior, por volta de 233–230 milhões de anos atrás. Não há consenso para apontar uma única espécie como “o primeiro dinossauro”. As datas representam o registro conhecido e podem ser revistas conforme novas descobertas.
+Os fósseis mais antigos amplamente reconhecidos de dinossauros aparecem no Triássico Superior, em rochas datadas aproximadamente entre 233 e 227 milhões de anos. A cena destaca o início desse intervalo, em torno de 233 Ma. Não há consenso para apontar uma única espécie como “o primeiro dinossauro”: o registro conhecido estabelece uma idade mínima para o grupo, não o instante de sua origem.
 
 ## Ischigualasto
 
@@ -30,7 +30,7 @@ As rochas de Ischigualasto, na província de San Juan, Argentina, preservam fós
 
 ## Eoraptor lunensis
 
-O Eoraptor foi encontrado em Ischigualasto e viveu no Triássico Superior, aproximadamente entre 231 e 229 milhões de anos atrás. Seu comprimento é estimado em cerca de 1–2 metros e a reconstrução indica locomoção bípede.
+O Eoraptor foi encontrado na Formação Ischigualasto e viveu no Triássico Superior, há cerca de 230 milhões de anos. O esqueleto descrito originalmente tinha cerca de 1 metro de comprimento. A imagem de comparação adota 1,2 metro como escala ilustrativa; a locomoção bípede é sustentada pela anatomia.
 
 A dieta e a posição exata de dinossauros iniciais na árvore evolutiva seguem em debate. Não apresentamos massa corporal como dado confirmado. A imagem do esqueleto está provisória: sua pose difere da reconstrução e deve ser ajustada posteriormente.
 
@@ -40,4 +40,4 @@ Uma crise de extinção marca a passagem para o Jurássico. O vulcanismo associa
 
 ## Fonte editorial
 
-`MESOZOICO-base-cientifica-editorial.pdf`, documento fornecido pelo usuário e incluído em `docs/`. Os intervalos de idade seguem os valores usados pela base científica do projeto. Este texto é uma síntese editorial, não substitui a bibliografia completa do PDF.
+`MESOZOICO-base-cientifica-editorial.pdf`, documento fornecido pelo usuário e incluído em `docs/`. Os limites do Triássico foram conferidos na carta da ICS de 2026/06 (251,902 e 201,4 Ma). A apresentação dos registros iniciais de dinossauros foi atualizada com Martínez et al. (2025), que situa fósseis antigos conhecidos em aproximadamente 233–227 Ma. Este texto é uma síntese editorial, não substitui as publicações citadas.

@@ -85,13 +85,13 @@
   /* ------------------------------------------------------------------ */
   const MA_TOP = 251.9;
   const MA_BOTTOM = 201.4;
-  const SLOT_DEFAULT_TEXT = slotLabel ? slotLabel.textContent.trim() : "233–230";
+  const SLOT_DEFAULT_TEXT = slotLabel ? slotLabel.textContent.trim() : "≈ 233";
 
   function railPosition(age) {
     const clamped = Math.min(MA_TOP, Math.max(MA_BOTTOM, age));
     return ((MA_TOP - clamped) / (MA_TOP - MA_BOTTOM)) * 100;
   }
-  const SLOT_DEFAULT_POS = railPosition((233 + 230) / 2);
+  const SLOT_DEFAULT_POS = railPosition(233);
 
   function readAge(panel) {
     const raw = panel.dataset.age || "now";

@@ -13,7 +13,7 @@ ASSETS INCLUÍDOS
 - assets/images/ischigualasto-atual.jpg — fotografia atual do local; origem/licença a confirmar. Não representa o Triássico.
 - assets/images/permo-triassic-coalcliff-frontiers-figure4.webp — recorte do painel B da Figura 4, fotografia da seção de Coalcliff; McLoughlin et al. (2021), Frontiers in Earth Science, CC BY 4.0: https://doi.org/10.3389/feart.2020.600976. Preservado no repositório, sem uso na cena atual.
 - assets/images/eoraptor-reconstrucao.png — reconstrução fornecida pelo usuário; origem/licença a confirmar.
-- assets/images/eoraptor-fossil-ischigualasto.jpg — fotografia de fóssil de Eoraptor exposto na rocha em Ischigualasto; Eamezaga, Wikimedia Commons, domínio público: https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg.
+- assets/images/eoraptor-fossil-ischigualasto.jpg — fotografia de fóssil de Eoraptor exposto na rocha em Ischigualasto; Eamezaga, Wikimedia Commons, domínio público declarado pelo autor: https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg. Dimensões e metadados do arquivo local coincidem com os do original na página.
 - assets/images/eoraptor-esqueleto.png — representação esquelética fornecida pelo usuário; origem/licença a confirmar. Pose diferente da reconstrução, mantida provisoriamente para ajuste posterior.
 - assets/images/humano.png — figura de escala fornecida pelo usuário; origem/licença a confirmar. É comparação visual aproximada, não uma medida publicada.
 - js/vendor/gsap.min.js e js/vendor/ScrollTrigger.min.js — GSAP 3.15.0, distribuição minificada local.
@@ -22,20 +22,24 @@ ASSETS INCLUÍDOS
 CRITÉRIOS CIENTÍFICOS APLICADOS
 - Limite inicial do Triássico: ~251,9 Ma (escala ICS da base do projeto).
 - O Triássico começou após a extinção Permiano–Triássica; recuperação foi gradual e desigual.
-- O registro fóssil mais antigo amplamente reconhecido de dinossauros situa-se em torno de 233–230 Ma. Não apontamos uma espécie única como “o primeiro dinossauro”.
+- Registros antigos bem sustentados de dinossauros são conhecidos em rochas de cerca de 233–227 Ma. A cena marca aproximadamente 233 Ma, sem apontar uma espécie única como “o primeiro dinossauro”.
 - Eoraptor: conhecido por fósseis de Ischigualasto, no Triássico Superior. O esqueleto descrito originalmente tinha cerca de 1 m; a escala da reconstrução é apresentada como estimativa visual. Dieta e posição filogenética têm incertezas; não atribuímos peso corporal.
 - O mapa de 250 Ma é aproximado e não é usado para assinalar San Juan/Ischigualasto.
 - Limite Triássico–Jurássico: ~201,4 Ma. O vulcanismo da Província Magmática do Atlântico Central é relacionado à crise, mas mecanismos e efeitos específicos continuam em estudo.
 
 PENDÊNCIAS
 - Confirmar autoria, atribuição e licenças para vídeo, mapas, fotografia e imagens.
+- O site já está público. A documentação de proveniência ainda não confirma autorização de republicação dos arquivos acima marcados como pendentes; o crédito confirmado do fóssil não se estende às outras imagens.
 - Corrigir/alinhar a pose do esqueleto do Eoraptor numa etapa futura, como combinado.
 - Fazer a revisão mobile completa no final do projeto.
 
 REFERÊNCIAS CIENTÍFICAS USADAS NO TEXTO
-- International Chronostratigraphic Chart: https://stratigraphy.org/ICSchart/ChronostratChart2024-12.pdf
+- International Chronostratigraphic Chart, versão 2026/06: https://stratigraphy.org/chart/
 - Recuperação após a extinção Permiano–Triássica: https://www.nature.com/articles/ngeo1475
-- Clima triássico e Pangeia: https://www.sciencedirect.com/science/article/pii/S0895981124001998
-- Origem e evolução inicial dos dinossauros: https://onlinelibrary.wiley.com/doi/10.1111/j.1469-185X.2009.00094.x
+- Clima e sazonalidade em Pangeia: https://www.journals.uchicago.edu/doi/10.1086/648217
+- Climas triássicos na América do Sul: https://www.sciencedirect.com/science/article/pii/S0895981124001998
+- Registros iniciais e diversidade de dinossauros (2025): https://www.nature.com/articles/s41559-025-02868-4
+- Osteologia e posição evolutiva de Eoraptor: https://doi.org/10.1080/02724634.2013.820113
 - Descrição original de Eoraptor: https://www.nature.com/articles/361064a0
 - Datação de camadas fossilíferas de Ischigualasto: https://pubmed.ncbi.nlm.nih.gov/32728077/
+- Atividade vulcânica e extinção do fim do Triássico: https://pmc.ncbi.nlm.nih.gov/articles/PMC7275695/

@@ -133,7 +133,7 @@ Regiões mais úmidas coexistiam com áreas abertas, sazonais e secas.
 
 Tudo dentro do mesmo supercontinente.
 
-**Pangeia estava unida geograficamente. A natureza não recebeu o memorando.**
+**A escala do mapa esconde essa variedade.**
 
 ### Legenda
 Reconstrução artística generalizada. A vegetação representada não deve ser interpretada como um inventário exato de espécies de uma única região.
@@ -143,7 +143,9 @@ Reconstrução artística generalizada. A vegetação representada não deve ser
 # CENA 08 — OS PRIMEIROS DINOSSAUROS NO REGISTRO
 
 ### Data
-**TRIÁSSICO SUPERIOR · HÁ POUCO MAIS DE 230 MILHÕES DE ANOS**
+**TRIÁSSICO SUPERIOR · HÁ CERCA DE 233 MILHÕES DE ANOS**
+
+Nota editorial (não exibida): a cena marca o início aproximado do intervalo dos registros antigos bem sustentados, não uma data exata para a origem do grupo.
 
 ### Título
 **Em algum momento, eles começaram.**
@@ -157,7 +159,7 @@ A data.
 
 **Não conhecemos.**
 
-Os fósseis mais antigos bem sustentados aparecem no Triássico Superior.
+Os registros seguros mais antigos datam de cerca de 233 milhões de anos.
 
 Mas existe uma diferença importante entre o primeiro dinossauro que existiu e o primeiro que tivemos a sorte de encontrar.
 
@@ -175,9 +177,9 @@ O registro fóssil é incompleto. Os fósseis mais antigos conhecidos estabelece
 **Fossilizar já é improvável. Ser encontrado é pedir ainda mais sorte.**
 
 ### Texto
-Um organismo precisa morrer nas condições certas, ser enterrado, escapar da destruição, permanecer preservado por milhões de anos...
+Restos e vestígios precisam escapar da destruição. O soterramento por sedimentos é um dos caminhos para sua preservação.
 
-e depois ser exposto onde alguém possa encontrá-lo.
+Depois de milhões de anos, ainda precisam ficar expostos onde alguém possa encontrá-los.
 
 É com esse arquivo incompleto que reconstruímos mundos inteiros.
 
@@ -194,13 +196,11 @@ e depois ser exposto onde alguém possa encontrá-lo.
 **Um animal reduzido ao que permaneceu.**
 
 ### Texto
-Material esqueletal excepcionalmente informativo revelou um pequeno dinossauro bípede de Ischigualasto.
+Um esqueleto amplamente preservado, encontrado em Ischigualasto, revelou um pequeno dinossauro bípede.
 
-Os ossos estabelecem limites.
+Os ossos mostram proporções e articulações.
 
-Proporções. Articulações. Anatomia.
-
-Mas eles não escolhem a pele, a cor ou os detalhes que colocamos sobre o animal.
+Não mostram a pele, a cor ou todos os detalhes que colocamos sobre o animal.
 
 **É aqui que evidência começa a encontrar interpretação.**
 
@@ -234,7 +234,7 @@ Entre uma coisa e outra existem anatomia, comparação, hipóteses...
 ### Texto
 Há cerca de **230 milhões de anos**, *Eoraptor* viveu onde hoje está o noroeste da Argentina.
 
-Era pequeno, bípede e anatomicamente próximo das primeiras grandes ramificações da evolução dos dinossauros.
+Era pequeno e bípede. Sua anatomia ajuda a investigar as primeiras ramificações dos dinossauros.
 
 Sua posição exata já mudou conforme novas análises foram feitas.
 
