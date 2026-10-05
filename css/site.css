@@ -884,15 +884,15 @@ html.is-story-enhanced { scroll-behavior: auto; overscroll-behavior-y: none; }
     background: #172019;
   }
   .panel--triassic-start .epoch-photo {
-    inset: 0 40vw 0 0;
+    inset: 0 38vw 0 0;
   }
   .panel--triassic-start .epoch-photo img {
     object-position: 48% 58%;
     filter: saturate(.82) brightness(.86);
   }
   .panel--triassic-start .end-texture {
-    background: linear-gradient(90deg, transparent 0%, rgba(23,32,25,.08) 34%, #172019 54%, #172019 100%),
-                linear-gradient(0deg, rgba(7,12,9,.24), transparent 45%);
+    background: linear-gradient(90deg, transparent 0%, rgba(23,32,25,.05) 29%, rgba(23,32,25,.65) 45%, #172019 59%, #172019 100%),
+                linear-gradient(0deg, rgba(7,12,9,.20), transparent 45%);
   }
   .panel--triassic-start .panel-copy {
     top: 17vh;

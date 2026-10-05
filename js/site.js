@@ -554,7 +554,7 @@
     const vh = () => window.innerHeight;
     let busy = false;
     let anchorIndex = 0; // última cena em que a rolagem assentou
-    let unlockAt = 0;
+    let pendingWheelStep = 0;
     let scrollTween = null;
     let settleTimer = null;
 
@@ -607,14 +607,17 @@
 
     goToPanel = function (index) {
       const target = Math.max(0, Math.min(N - 1, index));
+      pendingWheelStep = 0;
       const distance = Math.abs(target - storyTrigger.progress * (N - 1));
-      if (distance < 0.001) { anchorIndex = target; return; }
       scrollTween?.kill();
+      scrollTween = null;
+      if (distance < 0.001) { anchorIndex = target; busy = false; return; }
       busy = true;
       const proxy = { y: window.scrollY };
       const origin = nearest();
       const special = Math.min(origin, target);
-      const duration = distance <= 1.01 && (special === 9 || special === 10 || special === 11) ? 3.8 : Math.min(5, 2.2 + 0.3 * (Math.ceil(distance) - 1));
+      const secondsPerScene = distance <= 1.01 && (special === 9 || special === 10 || special === 11) ? 3.2 : 2.3;
+      const duration = Math.min(4.4, Math.max(0.45, secondsPerScene * distance));
       scrollTween = gsap.to(proxy, {
         y: yFor(target),
         duration,
@@ -628,8 +631,10 @@
           ScrollTrigger.update();
           scrollTween = null;
           anchorIndex = target;
-          unlockAt = performance.now() + 140;
           busy = false;
+          const queuedStep = pendingWheelStep;
+          pendingWheelStep = 0;
+          if (queuedStep) goToPanel(target + queuedStep);
         }
       });
     };
@@ -645,14 +650,17 @@
       return true;
     }
 
-    function step(direction) {
-      if (busy || performance.now() < unlockAt) return;
-      goToPanel(nearest() + direction);
+    function step(direction, queueWheel = false) {
+      if (busy) {
+        if (queueWheel) pendingWheelStep = direction;
+        return;
+      }
+      goToPanel(anchorIndex + direction);
     }
 
     // Roda e trackpad: um gesto avança uma cena. A inércia do gesto é descartada.
     let lastWheel = 0;
-    let lastMagnitude = 0;
+    let lastWheelStep = -Infinity;
     let armed = true;
     window.addEventListener("wheel", (event) => {
       if (event.ctrlKey) return;
@@ -660,19 +668,17 @@
       if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
       event.preventDefault();
       const now = performance.now();
-      if (now - lastWheel > 170) armed = true;
+      if (now - lastWheel > 300) armed = true;
       lastWheel = now;
       let delta = event.deltaY;
       if (event.deltaMode === 1) delta *= 16;
       else if (event.deltaMode === 2) delta *= vh();
       const magnitude = Math.abs(delta);
-      const surge = magnitude >= 60 && magnitude > lastMagnitude * 1.9;
-      lastMagnitude = magnitude;
-      if (busy || now < unlockAt) { armed = false; return; }
       if (magnitude < 4) return;
-      if (!armed && !surge) return;
+      if (!armed || now - lastWheelStep < 650) return;
       armed = false;
-      step(delta > 0 ? 1 : -1);
+      lastWheelStep = now;
+      step(delta > 0 ? 1 : -1, true);
     }, { passive: false });
 
     // Teclado
@@ -695,7 +701,8 @@
         default: return;
       }
       event.preventDefault();
-      if (jump !== null) { if (!busy) goToPanel(jump); return; }
+      if (event.repeat) return;
+      if (jump !== null) { goToPanel(jump); return; }
       step(direction);
     });
 
