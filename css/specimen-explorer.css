@@ -69,14 +69,18 @@
   opacity: 0;
 }
 .jurassic-pair-note { position:absolute; z-index:4; left:8.2vw; bottom:8vh; max-width:52ch; font-size:13px; color:#b9c3ba; }
-.panel--jurassic-diplodocus .specimen-choices { left:29vw; right:auto; top:25vh; width:min(800px,55vw); grid-template-columns:repeat(3,minmax(0,1fr)); }
-.panel--jurassic-diplodocus .jurassic-copy--diplodocus { left:8.2vw; top:8vh; width:78vw; }
-.panel--jurassic-diplodocus .jurassic-copy--diplodocus h2 { width:max-content; max-width:65vw; margin:0 0 0 22vw; font-size:clamp(50px,5.3vw,84px); white-space:nowrap; }
-.panel--jurassic-diplodocus .jurassic-copy--diplodocus .scene-prose { position:absolute; left:0; top:19vh; width:min(370px,23vw); margin:0 !important; }
-.panel--jurassic-diplodocus .jurassic-pair-stage { left:19vw; width:min(53vw,980px); }
-.panel--jurassic-diplodocus .jurassic-specimen-facts { left:auto; right:9vw; top:48vh; bottom:auto; width:min(300px,18vw); display:grid; gap:12px; padding:0; border:0; }
-.panel--jurassic-diplodocus .jurassic-specimen-facts span { padding:14px 16px; border:1px solid rgba(236,236,227,.1); border-radius:8px; background:#080808; }
-.panel--jurassic-diplodocus .jurassic-specimen-facts strong { font-size:clamp(25px,2.2vw,34px); }
+.panel--jurassic-diplodocus .specimen-choices { left:29vw; right:auto; top:19vh; width:min(800px,55vw); grid-template-columns:repeat(3,minmax(0,1fr)); }
+.panel--jurassic-diplodocus .jurassic-copy--diplodocus { left:8.2vw; top:0; width:78vw; }
+.panel--jurassic-diplodocus .jurassic-copy--diplodocus .eyebrow { position:absolute; left:0; top:27vh; margin:0; }
+.panel--jurassic-diplodocus .jurassic-copy--diplodocus h2 { position:absolute; top:6.5vh; left:22vw; width:max-content; max-width:65vw; margin:0; font-size:clamp(50px,5.3vw,84px); white-space:nowrap; }
+.panel--jurassic-diplodocus .jurassic-copy--diplodocus .scene-prose { position:absolute; left:0; top:31vh; width:min(370px,23vw); margin:0 !important; }
+.panel--jurassic-diplodocus .jurassic-pair-stage { left:16vw; top:16vh; width:min(56vw,1050px); }
+.panel--jurassic-diplodocus .jurassic-diplodocus-living-detail { top:46%; left:0; width:100%; transform:translateY(-50%); clip-path:none; }
+.panel--jurassic-diplodocus .jurassic-specimen-facts { left:auto; right:9vw; top:27vh; bottom:auto; width:min(330px,20vw); display:grid; gap:14px; padding:0; border:0; }
+.panel--jurassic-diplodocus .jurassic-specimen-facts section { padding:clamp(15px,1.35vw,21px); border:1px solid rgba(236,236,227,.1); border-radius:8px; background:#080808; }
+.panel--jurassic-diplodocus .jurassic-specimen-facts .eoraptor-panel-label { margin:0 0 11px; color:#d6d0c4; font-size:14px; font-weight:700; }
+.panel--jurassic-diplodocus .jurassic-specimen-facts strong { display:block; font-size:clamp(25px,2.2vw,34px); line-height:1.15; }
+.panel--jurassic-diplodocus .jurassic-specimen-facts small { display:block; margin-top:4px; color:#bac4b9; font-size:14px; line-height:1.4; }
 .jurassic-comparison-diplodocus { position:absolute; z-index:1; left:22vw; top:18vh; width:min(60vw,1120px,140vh); aspect-ratio:1086 / 724; height:auto; overflow:hidden; }
 .jurassic-comparison-figure .jurassic-comparison-diplodocus img { max-width:none; }
 .panel--jurassic-comparison .jurassic-lengths { bottom:5vh; }
@@ -171,10 +175,12 @@
   .jurassic-copy--specimen-skeleton,.jurassic-copy--specimen-bridge { top:16vh !important; }
   .jurassic-pair-stage,.panel--jurassic-diplodocus .jurassic-pair-stage,.jurassic-comparison-diplodocus { left:3vw; top:36vh; width:94vw; height:auto; }
   .panel--jurassic-diplodocus .jurassic-copy--diplodocus { left:8vw; top:12vh; width:84vw; }
-  .panel--jurassic-diplodocus .jurassic-copy--diplodocus h2 { margin:0; max-width:84vw; font-size:clamp(39px,10vw,64px); }
+  .panel--jurassic-diplodocus .jurassic-copy--diplodocus .eyebrow { position:static; }
+  .panel--jurassic-diplodocus .jurassic-copy--diplodocus h2 { position:static; margin:0; max-width:84vw; font-size:clamp(39px,10vw,64px); }
   .panel--jurassic-diplodocus .jurassic-copy--diplodocus .scene-prose { position:static; width:84vw; margin-top:13px !important; }
+  .panel--jurassic-diplodocus .jurassic-diplodocus-living-detail { top:46%; left:0; width:100%; }
   .panel--jurassic-diplodocus .jurassic-specimen-facts { left:8vw; right:8vw; top:auto; bottom:8vh; width:auto; display:flex; gap:18px; }
-  .panel--jurassic-diplodocus .jurassic-specimen-facts span { flex:1; padding:8px 0 0; border:0; border-top:1px solid rgba(236,236,227,.3); border-radius:0; background:transparent; }
+  .panel--jurassic-diplodocus .jurassic-specimen-facts section { flex:1; padding:8px 0 0; border:0; border-top:1px solid rgba(236,236,227,.3); border-radius:0; background:transparent; }
   .panel--jurassic-comparison .jurassic-lengths { bottom:7vh; }
   .jurassic-pair-note { left:8vw; right:8vw; bottom:9vh; font-size:11px; }
   .specimen-explorer__header { top:20px; left:6vw; right:6vw; }.specimen-explorer__chapter { font-size:12px; }
