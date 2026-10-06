@@ -53,12 +53,15 @@
   const parts = {
     chapter: q('[data-specimen-chapter]'), phase: q('[data-specimen-phase]'), name: q('[data-specimen-name]'),
     epithet: q('[data-specimen-epithet]'),
-    subtitle: q('[data-specimen-subtitle]'), bones: q('.specimen-explorer__bones'),
-    living: q('.specimen-explorer__living'), fact: q('[data-specimen-fact]'),
+    subtitle: q('[data-specimen-subtitle]'), backdrop: q('[data-specimen-backdrop]'),
+    about: q('[data-specimen-about]'), bones: q('.specimen-explorer__bones'),
+    living: q('.specimen-explorer__living'), factLead: q('[data-specimen-fact-lead]'),
+    factRest: q('[data-specimen-fact-rest]'),
     period: q('[data-specimen-period]'), place: q('[data-specimen-place]'), length: q('[data-specimen-length]'),
     caveat: q('[data-specimen-caveat]'), source: q('[data-specimen-source]'),
     scale: q('.specimen-explorer__scale'), scaleAnimal: q('.specimen-explorer__scale-animal'),
-    scaleLabel: q('[data-specimen-scale-label]'), previous: q('[data-specimen-prev]'),
+    scaleLabel: q('[data-specimen-scale-label]'), animalMeasure: q('[data-specimen-animal-measure]'),
+    referenceMeasure: q('[data-specimen-reference-measure]'), previous: q('[data-specimen-prev]'),
     next: q('[data-specimen-next]'), progress: Array.from(explorer.querySelectorAll('.specimen-explorer__progress span'))
   };
   const phases = ['skeleton', 'reconstruction', 'information', 'scale'];
@@ -67,8 +70,12 @@
     herrerasaurus: [2172, 724], eodromaeus: [1983, 793], panphagia: [2058, 764],
     allosaurus: [2103, 748], stegosaurus: [2048, 768], brachiosaurus: [2048, 768]
   };
-  // The generated cutouts carry transparent padding below the feet.
-  const footPadding = { herrerasaurus: .17, eodromaeus: .15, panphagia: .15, allosaurus: .15, stegosaurus: .15, brachiosaurus: .035 };
+  const livingDimensions = {
+    herrerasaurus: [2172, 724], eodromaeus: [1983, 793], panphagia: [2058, 764],
+    allosaurus: [2103, 748], stegosaurus: [1768, 889], brachiosaurus: [1774, 887]
+  };
+  // Transparent padding beneath each new cutout, measured from the saved PNGs.
+  const footPadding = { herrerasaurus: .033, eodromaeus: .026, panphagia: .004, allosaurus: .016, stegosaurus: .015, brachiosaurus: .012 };
   let current = null;
   let stage = 0;
   let locked = false;
@@ -104,14 +111,18 @@
   function playInformationEntrance() {
     clearEntrance();
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const details = [parts.fact, ...q('.specimen-explorer__information dl').children, parts.caveat, parts.source];
+    const details = [parts.factLead, parts.factRest, ...q('.specimen-explorer__context').children, parts.source].filter((element) => !element.hidden);
     details.forEach((element, index) => enter(element,
       [{ opacity: 0, transform: 'translateY(9px)' }, { opacity: 1, transform: 'translateY(0)' }],
       340, index * 65));
   }
 
-  function imageUrl(item) {
+  function pairUrl(item) {
     return new URL(`assets/images/${item.id}-par.png`, document.baseURI).href;
+  }
+
+  function livingUrl(item) {
+    return new URL(`assets/images/${item.id}-cinematic.png`, document.baseURI).href;
   }
 
   function halfAspect(item) {
@@ -119,12 +130,17 @@
     return width / (2 * height);
   }
 
+  function livingAspect(item) {
+    const [width, height] = livingDimensions[item.id];
+    return width / height;
+  }
+
   function fitPair() {
     if (!current || !dialog.open) return;
     const aspect = halfAspect(current);
     const mobile = innerWidth <= 700;
     const tablet = innerWidth <= 1050 && !mobile;
-    const width = Math.min(innerWidth * (mobile ? .94 : tablet ? .88 : .80),
+    const width = Math.min(innerWidth * (mobile ? .94 : tablet ? .88 : .44),
       innerHeight * (mobile ? .33 : tablet ? .43 : .60) * aspect, 1120);
     const pair = q('.specimen-explorer__pair');
     pair.style.setProperty('--pair-width', `${width}px`);
@@ -136,7 +152,7 @@
     button.type = 'button';
     button.className = 'specimen-choice';
     button.setAttribute('aria-label', `Explorar ${item.name} ${item.species}`);
-    button.style.setProperty('--pair', `url("${imageUrl(item)}")`);
+    button.style.setProperty('--pair', `url("${livingUrl(item)}")`);
     const thumb = document.createElement('span');
     thumb.className = 'specimen-choice__thumb';
     thumb.setAttribute('aria-hidden', 'true');
@@ -158,10 +174,10 @@
     if (!current || !dialog.open) return;
     const bus = current.length >= 15;
     const referenceLength = bus ? 12 : 1.7;
-    const aspect = halfAspect(current);
+    const aspect = livingAspect(current);
     const unit = Math.min(140,
-      (parts.scale.clientWidth - 36) / (current.length + referenceLength),
-      parts.scale.clientHeight * .73 * aspect / current.length);
+      parts.scale.clientWidth * .91 / (current.length + referenceLength),
+      parts.scale.clientHeight * .63 * aspect / current.length);
     const animalWidth = current.length * unit;
     const referenceWidth = referenceLength * unit;
     parts.scale.dataset.reference = bus ? 'bus' : 'human';
@@ -170,9 +186,11 @@
     parts.scale.style.setProperty('--foot-offset', `${animalWidth / aspect * footPadding[current.id]}px`);
     parts.scale.style.setProperty('--reference-width', `${referenceWidth}px`);
     parts.scale.style.setProperty('--reference-height', `${(bus ? 3 : 1.7) * unit}px`);
-    const reference = bus ? 'ônibus ilustrativo de 12 m' : 'pessoa de 1,70 m';
+    const reference = bus ? 'ônibus ilustrativo de 12 m de comprimento' : 'pessoa de 1,70 m de altura';
     const animal = `${current.name}: ≈ ${String(current.length).replace('.', ',')} m de comprimento`;
-    parts.scaleLabel.textContent = `${animal} · ${reference}. Comprimentos aproximados na mesma escala.`;
+    parts.animalMeasure.textContent = `≈ ${String(current.length).replace('.', ',')} m`;
+    parts.referenceMeasure.textContent = bus ? '12 m' : '1,70 m';
+    parts.scaleLabel.textContent = `${animal} · ${reference}. Medidas aproximadas na mesma escala.`;
     parts.scale.setAttribute('aria-label', `${animal}, comparado a ${reference}.`);
   }
 
@@ -251,15 +269,20 @@
     parts.chapter.textContent = item.group === 'triassic' ? 'Triássico · Ischigualasto' : 'Jurássico · Formação Morrison';
     parts.name.textContent = item.name;
     parts.epithet.textContent = item.species;
-    parts.fact.textContent = item.fact;
+    parts.backdrop.textContent = item.name.toUpperCase();
+    parts.about.textContent = item.name;
+    const firstSentence = item.fact.match(/^.*?[.!?](?=\s|$)/)?.[0] || item.fact;
+    parts.factLead.textContent = firstSentence;
+    parts.factRest.textContent = item.fact.slice(firstSentence.length).trim();
+    parts.factRest.hidden = !parts.factRest.textContent;
     parts.period.textContent = item.period;
     parts.place.textContent = item.place;
     parts.length.textContent = `≈ ${String(item.length).replace('.', ',')} m`;
     parts.caveat.textContent = item.caveat;
     parts.source.href = item.source;
-    parts.bones.src = imageUrl(item);
-    parts.living.src = imageUrl(item);
-    parts.scaleAnimal.querySelector('img').src = imageUrl(item);
+    parts.bones.src = pairUrl(item);
+    parts.living.src = livingUrl(item);
+    parts.scaleAnimal.querySelector('img').src = livingUrl(item);
     parts.bones.alt = `Representação esquelética interpretativa de ${item.name} ${item.species}`;
     parts.living.alt = `Reconstrução artística de ${item.name} ${item.species}`;
     q('.specimen-explorer__visual').setAttribute('aria-label', `Esqueleto e reconstrução artística de ${item.name}`);

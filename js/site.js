@@ -537,6 +537,32 @@
     const jurassicBones = jurassicRecon.querySelector('.jurassic-pair-bones-frame');
     const jurassicLiving = jurassicRecon.querySelector('.jurassic-pair-living-frame');
     const jurassicLine = jurassicRecon.querySelector('.jurassic-pair-line');
+    const jurassicTransfer = { p: 0 };
+    const jurassicTarget = story.querySelector('.panel--jurassic-comparison .jurassic-comparison-diplodocus');
+    const jurassicGeometry = { ready: false };
+    function applyJurassicTransfer() {
+      if (!jurassicGeometry.ready) return;
+      const p = jurassicTransfer.p;
+      const scale = 1 + (jurassicGeometry.ratio - 1) * p;
+      jurassicRecon.style.transformOrigin = '0 0';
+      jurassicRecon.style.transform = `translate(${jurassicGeometry.dx * p}px, ${jurassicGeometry.dy * p}px) scale(${scale})`;
+    }
+    function measureJurassicTransfer() {
+      const previous = jurassicRecon.style.transform;
+      jurassicRecon.style.transform = 'none';
+      const stageBox = jurassicRecon.getBoundingClientRect();
+      const source = jurassicRecon.querySelector('.jurassic-pair-living').getBoundingClientRect();
+      const target = jurassicTarget.getBoundingClientRect();
+      if (stageBox.width && source.width && target.width) {
+        const ratio = target.width / source.width;
+        jurassicGeometry.ratio = ratio;
+        jurassicGeometry.dx = target.left - stageBox.left - (source.left - stageBox.left) * ratio;
+        jurassicGeometry.dy = target.top - stageBox.top - (source.top - stageBox.top) * ratio;
+        jurassicGeometry.ready = true;
+      }
+      jurassicRecon.style.transform = previous;
+      applyJurassicTransfer();
+    }
     function applyJurassicReveal() {
       const p = Math.max(0, Math.min(1, jurassicReveal.p));
       jurassicLiving.style.clipPath = `inset(0 ${100 * (1 - p)}% 0 0)`;
@@ -555,6 +581,13 @@
       fromTo(jurassicReveal, { p: 0 }, { p: 1, ease:'none', onUpdate: applyJurassicReveal }, c.i + .14, .73);
       fromTo(c.Q.querySelector('.jurassic-specimen-word'), { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .66, .16);
       textIn(c.i + 1, c.i);
+    }
+    function jurassicSpecimenToScale(c) {
+      textOut(c.i, c.i);
+      fromTo(c.P.querySelectorAll('.jurassic-specimen-facts, .jurassic-visual-note'),
+        { opacity: 1, y: 0 }, { opacity: 0, y: -12, ease: 'power1.in' }, c.i + .02, .20);
+      fromTo(jurassicTransfer, { p: 0 }, { p: 1, ease: 'power2.inOut', onUpdate: applyJurassicTransfer }, c.i + .30, .42);
+      textIn(c.i + 1, c.i, { from: .83, dur: .14 });
     }
 
     // Uma assinatura de movimento por passagem. "cover": a próxima cena fica por cima.
@@ -580,7 +613,7 @@
       { run: lift, cover: false },                               // evidence → Diplodocus skeleton
       { run: jurassicSkeletonToBridge, cover: true },           // skeleton → interpretation
       { run: jurassicSpecimenWipe, cover: true },               // visible-area Jurassic wipe
-      { run: fossilReveal, cover: true },                        // same animal → scale comparison
+      { run: jurassicSpecimenToScale, cover: false },            // same animal moves to the length comparison
       { run: riseUp, cover: true }                               // comparison → Cretaceous boundary
     ];
     if (TRANSITIONS.length !== N - 1) throw new Error('Número de passagens inconsistente');
@@ -673,6 +706,7 @@
       },
       onRefresh: (self) => {
         measureSpecimen();
+        measureJurassicTransfer();
         syncState(self.progress * (N - 1));
         if (!busy) alignToActive(self);
         requestAnimationFrame(updateReadingHint);

@@ -18,11 +18,11 @@
   </script>
   <link rel="stylesheet" href="css/site.css?v=20261006-specimens-r3">
   <link rel="stylesheet" href="css/jurassico.css?v=20261006-specimens-r3">
-  <link rel="stylesheet" href="css/specimen-explorer.css?v=20261006-specimens-r8">
+  <link rel="stylesheet" href="css/specimen-explorer.css?v=20261006-specimens-r9">
   <script defer src="js/vendor/gsap.min.js"></script>
   <script defer src="js/vendor/ScrollTrigger.min.js"></script>
-  <script defer src="js/site.js?v=20261006-specimens-r3"></script>
-  <script defer src="js/specimen-explorer.js?v=20261006-specimens-r4"></script>
+  <script defer src="js/site.js?v=20261006-specimens-r4"></script>
+  <script defer src="js/specimen-explorer.js?v=20261006-specimens-r5"></script>
 </head>
 <body>
   <a class="skip-link" href="#story">Pular para a expedição</a>
@@ -243,12 +243,12 @@
         <div class="panel-copy jurassic-copy jurassic-copy--diplodocus">
           <p class="eyebrow">Formação Morrison · Jurássico tardio</p>
           <h2><i>Diplodocus</i> <span>longus</span></h2>
-          <div class="scene-prose"><p>O pescoço e a cauda ocupavam grande parte de um corpo de cerca de <strong>24 metros</strong>. Os fósseis mostram a estrutura; pele, cor e comportamento continuam sendo reconstruídos.</p></div>
+          <div class="scene-prose"><p class="jurassic-support">O pescoço e a cauda ocupavam grande parte de um corpo de cerca de <strong>24 metros</strong>.</p><p>Os fósseis mostram a estrutura; pele, cor e comportamento continuam sendo reconstruídos.</p></div>
         </div>
-        <div class="jurassic-pair-stage jurassic-pair-stage--wipe" role="img" aria-label="Passagem do esqueleto à reconstrução artística de Diplodocus"><span class="jurassic-pair-bones-frame"><img class="jurassic-pair-bones" src="assets/images/diplodocus-par.png" alt="" loading="eager"></span><span class="jurassic-pair-living-frame"><img class="jurassic-pair-living jurassic-diplodocus-living-detail" src="assets/images/jurassico-diplodocus-reconstrucao.png" alt="" loading="eager"></span><span class="jurassic-pair-line" aria-hidden="true"></span></div>
+        <div class="jurassic-pair-stage jurassic-pair-stage--wipe" role="img" aria-label="Passagem do esqueleto à reconstrução artística de Diplodocus"><span class="jurassic-pair-bones-frame"><img class="jurassic-pair-bones" src="assets/images/diplodocus-par.png" alt="" loading="eager"></span><span class="jurassic-pair-living-frame"><img class="jurassic-pair-living jurassic-diplodocus-living-detail" src="assets/images/diplodocus-cinematic.png" alt="" loading="eager"></span><span class="jurassic-pair-line" aria-hidden="true"></span></div>
         <div class="jurassic-specimen-facts">
-          <section><p class="eoraptor-panel-label">Dimensão</p><strong>≈ 24 m</strong><small>comprimento de um adulto</small></section>
-          <section><p class="eoraptor-panel-label">Biologia</p><strong>Herbívoro</strong><small>dieta inferida dos dentes e de sua anatomia</small></section>
+          <section><p class="eoraptor-panel-label">Tempo e local</p><dl><div><dt>PERÍODO</dt><dd>Jurássico tardio</dd></div><div><dt>LOCALIDADE</dt><dd>Formação Morrison</dd></div></dl></section>
+          <section><p class="eoraptor-panel-label">Biologia</p><dl><div><dt>COMPRIMENTO</dt><dd>≈ 24 m</dd><small>comprimento de um adulto</small></div><div><dt>DIETA</dt><dd>Herbívoro</dd><small>dieta inferida dos dentes e de sua anatomia</small></div></dl></section>
         </div>
         <p class="jurassic-visual-note">Reconstrução artística gerada para o projeto. Aparência externa hipotética.</p>
         <div class="specimen-choices" data-specimen-group="jurassic" aria-label="Explorar outros dinossauros da Formação Morrison"></div>
@@ -261,8 +261,12 @@
           <div class="scene-prose"><p>Uma estimativa de 24 metros para <i>Diplodocus longus</i> equivale a vinte vezes os 1,2 metro usados na ilustração do Eoraptor deste site.</p><p>As duas medidas são aproximações. A comparação abaixo representa comprimento, não altura nem volume.</p></div>
         </div>
         <div class="jurassic-comparison-figure" role="img" aria-label="Comparação proporcional de comprimentos: Diplodocus, cerca de 24 metros; ônibus ilustrativo de 12 metros; Eoraptor ilustrado no site, cerca de 1,2 metro">
-          <div class="jurassic-comparison-diplodocus"><img class="jurassic-pair-living" src="assets/images/diplodocus-par.png" alt="" loading="eager"></div>
-          <div class="jurassic-lengths" aria-hidden="true"><div class="jurassic-length jurassic-length--diplodocus"><span>≈ 24 m · <i>Diplodocus</i></span></div><div class="jurassic-length jurassic-length--bus"><span>12 m · ônibus ilustrativo</span></div><div class="jurassic-length jurassic-length--eoraptor"><span>≈ 1,2 m · <i>Eoraptor</i></span></div></div>
+          <div class="jurassic-comparison-chart">
+            <img class="jurassic-comparison-diplodocus" src="assets/images/diplodocus-cinematic.png" alt="" loading="eager">
+            <span class="jurassic-comparison-bus" aria-hidden="true"></span>
+            <img class="jurassic-comparison-eoraptor" src="assets/images/eoraptor-reconstrucao.webp" alt="" loading="eager">
+            <div class="jurassic-lengths" aria-hidden="true"><div class="jurassic-length jurassic-length--diplodocus"><span>≈ 24 m · <i>Diplodocus</i></span></div><div class="jurassic-length jurassic-length--bus"><span>12 m · ônibus ilustrativo</span></div><div class="jurassic-length jurassic-length--eoraptor"><span>≈ 1,2 m · <i>Eoraptor</i></span></div></div>
+          </div>
         </div>
       </section>
 
@@ -281,12 +285,19 @@
   <dialog class="specimen-dialog" aria-labelledby="specimen-dialog-title">
     <div class="specimen-explorer" data-specimen-stage="skeleton">
       <header class="specimen-explorer__header"><p class="specimen-explorer__chapter" data-specimen-chapter></p><button class="specimen-explorer__close" type="button" data-specimen-close aria-label="Fechar exploração">×</button></header>
+      <span class="specimen-explorer__backdrop" data-specimen-backdrop aria-hidden="true"></span>
       <div class="specimen-explorer__heading"><p data-specimen-phase>01 / Esqueleto</p><h2 id="specimen-dialog-title"><i data-specimen-name></i> <span data-specimen-epithet></span></h2><p data-specimen-subtitle></p></div>
       <div class="specimen-explorer__visual" role="img" aria-label="">
         <div class="specimen-explorer__pair"><span class="specimen-explorer__bones-frame"><img class="specimen-explorer__bones" alt=""></span><span class="specimen-explorer__living-frame"><img class="specimen-explorer__living" alt=""></span><span class="specimen-explorer__wipe-line" aria-hidden="true"></span></div>
       </div>
-      <div class="specimen-explorer__information"><p class="specimen-explorer__fact" data-specimen-fact></p><dl><div><dt>Período</dt><dd data-specimen-period></dd></div><div><dt>Local</dt><dd data-specimen-place></dd></div><div><dt>Comprimento</dt><dd data-specimen-length></dd></div></dl><p class="specimen-explorer__caveat" data-specimen-caveat></p><a data-specimen-source href="#" target="_blank" rel="noreferrer">Fonte científica ↗</a></div>
-      <div class="specimen-explorer__scale" role="img" aria-label=""><div class="specimen-explorer__scale-ground"></div><div class="specimen-explorer__scale-animal"><img alt=""></div><div class="specimen-explorer__scale-reference"><span class="specimen-explorer__human" aria-hidden="true"></span><span class="specimen-explorer__bus" aria-hidden="true"></span></div><p data-specimen-scale-label></p></div>
+      <div class="specimen-explorer__information">
+        <div class="specimen-explorer__narrative"><p class="specimen-explorer__panel-label">Sobre o <span data-specimen-about></span></p><p class="specimen-explorer__fact" data-specimen-fact-lead></p><p class="specimen-explorer__fact-rest" data-specimen-fact-rest></p><a data-specimen-source href="#" target="_blank" rel="noreferrer">Fonte científica ↗</a></div>
+        <div class="specimen-explorer__context">
+          <section class="specimen-explorer__context-card"><p class="specimen-explorer__panel-label">Tempo e local</p><dl><div><dt>PERÍODO</dt><dd data-specimen-period></dd></div><div><dt>LOCALIDADE</dt><dd data-specimen-place></dd></div></dl></section>
+          <section class="specimen-explorer__context-card"><p class="specimen-explorer__panel-label">Dimensão e interpretação</p><dl><div><dt>COMPRIMENTO</dt><dd data-specimen-length></dd></div></dl><p class="specimen-explorer__caveat" data-specimen-caveat></p></section>
+        </div>
+      </div>
+      <div class="specimen-explorer__scale" role="img" aria-label=""><div class="specimen-explorer__scale-ground"></div><div class="specimen-explorer__scale-animal"><img alt=""></div><div class="specimen-explorer__scale-reference"><span class="specimen-explorer__human" aria-hidden="true"></span><span class="specimen-explorer__bus" aria-hidden="true"></span></div><div class="specimen-explorer__scale-measure specimen-explorer__scale-measure--animal"><span data-specimen-animal-measure></span></div><div class="specimen-explorer__scale-measure specimen-explorer__scale-measure--reference"><span data-specimen-reference-measure></span></div><p data-specimen-scale-label></p></div>
       <footer class="specimen-explorer__controls"><button type="button" data-specimen-prev>← Voltar</button><div class="specimen-explorer__progress" aria-label="Etapas"><span></span><span></span><span></span><span></span></div><button type="button" data-specimen-next>Continuar →</button></footer>
     </div>
   </dialog>
@@ -306,7 +317,7 @@
       <li>Reconstrução e esqueleto de <i>Eoraptor</i>, além da figura humana de escala: imagens fornecidas pelo usuário; procedência/licença a confirmar. O esqueleto está em revisão.</li>
       <li>Fotografia do fóssil de <i>Eoraptor</i>: <a href="https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis.jpg" target="_blank" rel="noreferrer">Eamezaga, Wikimedia Commons</a>; domínio público declarado pelo autor.</li>
       <li>Jurássico: paisagem da Formação Morrison e reconstrução de <i>Diplodocus</i> geradas para este projeto; são imagens conceituais, não fotografias nem reconstruções anatômicas validadas.</li>
-      <li>Pares visuais de esqueleto e reconstrução de <i>Herrerasaurus</i>, <i>Eodromaeus</i>, <i>Panphagia</i>, <i>Allosaurus</i>, <i>Stegosaurus</i>, <i>Brachiosaurus</i> e <i>Diplodocus</i>: imagens geradas para o projeto. São interpretações artísticas, não digitalizações de espécimes. Em <i>Panphagia</i> e <i>Brachiosaurus</i>, partes importantes do esqueleto são inferidas.</li>
+      <li>Pares visuais de esqueleto e reconstruções individuais de <i>Herrerasaurus</i>, <i>Eodromaeus</i>, <i>Panphagia</i>, <i>Allosaurus</i>, <i>Stegosaurus</i>, <i>Brachiosaurus</i> e <i>Diplodocus</i>: imagens geradas para o projeto. São interpretações artísticas, não digitalizações de espécimes. Em <i>Panphagia</i> e <i>Brachiosaurus</i>, partes importantes do esqueleto são inferidas.</li>
       <li>Informações dos animais opcionais: as fontes específicas podem ser abertas na etapa “Informações” de cada exploração.</li>
       <li>Fotografia atual da Formação Morrison: <a href="https://www.nps.gov/places/morrison-formation.htm" target="_blank" rel="noreferrer">National Park Service / Dan Johnson</a>.</li>
       <li>Parede de fósseis: <a href="https://npgallery.nps.gov/AssetDetail/a11f4a50-2bee-4fdc-aaa3-a3d666d9fe75" target="_blank" rel="noreferrer">National Park Service</a>; domínio público indicado no registro do arquivo.</li>
