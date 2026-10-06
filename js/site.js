@@ -12,6 +12,8 @@
   const slotLabel = document.querySelector("[data-slot-label]");
   const stopMarks = Array.from(document.querySelectorAll(".time-stop[data-stop]"));
   const dialog = document.querySelector(".credits-dialog");
+  const specimenDialog = document.querySelector('.specimen-dialog');
+  const anyDialogOpen = () => !!(dialog?.open || specimenDialog?.open);
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   // On narrow screens the scale caveat belongs in the readable copy area,
@@ -230,6 +232,8 @@
     if (index === 11) steps.push([panel.querySelector('.specimen-disclaimer')]);
     if (index === 12) steps.push([panel.querySelector('.scale-note')]);
     if (panel.classList.contains('panel--jurassic-diplodocus')) steps.push([panel.querySelector('.jurassic-specimen-facts')], [panel.querySelector('.jurassic-visual-note')]);
+    if (panel.classList.contains('panel--jurassic-diplodocus-skeleton')) steps.push([panel.querySelector('.jurassic-pair-note')]);
+    if (panel.querySelector('.specimen-choices')) steps.push([panel.querySelector('.specimen-choices')]);
     if (panel.classList.contains('panel--jurassic-comparison')) steps.push([panel.querySelector('.jurassic-lengths')]);
     return steps.map(group => group.filter(Boolean)).filter(group => group.length);
   });
@@ -239,7 +243,7 @@
     ['.eoraptor-facts-column', '.eoraptor-context-card'], [], [],
     [], ['.jurassic-rift-map'], ['.jurassic-landscape-image'],
     ['.jurassic-modern-photo'], ['.jurassic-fossil-photo'],
-    ['.jurassic-animal-art'], ['.jurassic-comparison-figure'], []
+    ['.jurassic-pair-stage'], [], [], ['.jurassic-comparison-figure'], []
   ];
   const SPECIMEN_FROM = 10; // bridge → reconstruction; skeleton is scene 10
 
@@ -528,6 +532,31 @@
       textIn(c.i + 1, c.i, { from: .86, dur: .12 });
     }
 
+    const jurassicReveal = { p: 0 };
+    const jurassicRecon = story.querySelector('.panel--jurassic-diplodocus .jurassic-pair-stage--wipe');
+    const jurassicBones = jurassicRecon.querySelector('.jurassic-pair-bones-frame');
+    const jurassicLiving = jurassicRecon.querySelector('.jurassic-pair-living-frame');
+    const jurassicLine = jurassicRecon.querySelector('.jurassic-pair-line');
+    function applyJurassicReveal() {
+      const p = Math.max(0, Math.min(1, jurassicReveal.p));
+      jurassicLiving.style.clipPath = `inset(0 ${100 * (1 - p)}% 0 0)`;
+      jurassicBones.style.clipPath = `inset(0 0 0 ${100 * p}%)`;
+      jurassicLine.style.left = `${100 * p}%`;
+      jurassicLine.style.opacity = p > .025 && p < .975 ? '1' : '0';
+    }
+    function jurassicSkeletonToBridge(c) {
+      fromTo(c.Q, { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .28, .36);
+      textOut(c.i, c.i);
+      textIn(c.i + 1, c.i);
+    }
+    function jurassicSpecimenWipe(c) {
+      fromTo(c.Q, { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .12, .02);
+      textOut(c.i, c.i);
+      fromTo(jurassicReveal, { p: 0 }, { p: 1, ease:'none', onUpdate: applyJurassicReveal }, c.i + .14, .73);
+      fromTo(c.Q.querySelector('.jurassic-specimen-word'), { opacity: 0 }, { opacity: 1, immediateRender: true }, c.i + .66, .16);
+      textIn(c.i + 1, c.i);
+    }
+
     // Uma assinatura de movimento por passagem. "cover": a próxima cena fica por cima.
     const TRANSITIONS = [
       { run: lift, cover: false },                                // opening → Ischigualasto today
@@ -548,7 +577,9 @@
       { run: openVertical, cover: true },                        // rifting → Morrison landscape
       { run: openSides, cover: true },                           // ancient landscape → present rock
       { run: fossilReveal, cover: true },                        // rock → fossil wall
-      { run: lift, cover: false },                               // evidence → Diplodocus
+      { run: lift, cover: false },                               // evidence → Diplodocus skeleton
+      { run: jurassicSkeletonToBridge, cover: true },           // skeleton → interpretation
+      { run: jurassicSpecimenWipe, cover: true },               // visible-area Jurassic wipe
       { run: fossilReveal, cover: true },                        // same animal → scale comparison
       { run: riseUp, cover: true }                               // comparison → Cretaceous boundary
     ];
@@ -582,7 +613,7 @@
 
     function updateReadingHint() {
       readingHint.classList.remove('is-visible');
-      if (busy || dialog?.open || !matchMedia('(max-width: 1050px), (max-height: 500px)').matches) return;
+      if (busy || anyDialogOpen() || !matchMedia('(max-width: 1050px), (max-height: 500px)').matches) return;
       const panel = panels[activeIndex];
       if (!panel?.classList.contains('is-active')) return;
       const area = Array.from(panel.querySelectorAll('*')).find((node) => {
@@ -686,13 +717,17 @@
     };
 
     // Com o diálogo aberto, a rolagem de fundo fica travada; o diálogo só rola se o conteúdo for maior que ele.
-    function dialogCanScroll() {
-      return !!dialog && dialog.scrollHeight > dialog.clientHeight + 1;
+    function activeDialog() {
+      return specimenDialog?.open ? specimenDialog : dialog?.open ? dialog : null;
+    }
+    function dialogCanScroll(openDialog) {
+      return !!openDialog && openDialog.scrollHeight > openDialog.clientHeight + 1;
     }
     function guardDialog(event) {
-      if (!dialog?.open) return false;
-      const inside = event.target instanceof Element && event.target.closest(".credits-dialog");
-      if (!(inside && dialogCanScroll())) event.preventDefault();
+      const openDialog = activeDialog();
+      if (!openDialog) return false;
+      const inside = event.target instanceof Element && openDialog.contains(event.target);
+      if (!(inside && dialogCanScroll(openDialog))) event.preventDefault();
       return true;
     }
 
@@ -746,8 +781,8 @@
     // Teclado
     window.addEventListener("keydown", (event) => {
       if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey) return;
-      if (dialog?.open) {
-        if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End"].includes(event.key) && !dialogCanScroll()) event.preventDefault();
+      if (anyDialogOpen()) {
+        if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End"].includes(event.key) && !dialogCanScroll(activeDialog())) event.preventDefault();
         else if (event.key === " " && !(event.target instanceof Element && event.target.closest("button, a, summary"))) event.preventDefault();
         return;
       }
@@ -773,7 +808,7 @@
     let touchStart = null;
     let touchDone = false;
     window.addEventListener("touchstart", (event) => {
-      if (dialog?.open || event.touches.length !== 1) { touchStart = null; return; }
+      if (anyDialogOpen() || event.touches.length !== 1) { touchStart = null; return; }
       touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY, target: event.target, reading: false };
       touchDone = false;
     }, { passive: true });
@@ -798,7 +833,7 @@
       if (busy) return;
       clearTimeout(settleTimer);
       settleTimer = setTimeout(() => {
-        if (busy || dialog?.open) return;
+        if (busy || anyDialogOpen()) return;
         const position = storyTrigger.progress * (N - 1);
         const target = Math.round(position);
         if (Math.abs(position - target) * vh() > 1.5) goToPanel(target);
@@ -807,6 +842,10 @@
     }, { passive: true });
 
     dialog?.addEventListener("close", () => {
+      if (!busy) window.scrollTo(0, yFor(anchorIndex));
+      updateReadingHint();
+    });
+    specimenDialog?.addEventListener('close', () => {
       if (!busy) window.scrollTo(0, yFor(anchorIndex));
       updateReadingHint();
     });
