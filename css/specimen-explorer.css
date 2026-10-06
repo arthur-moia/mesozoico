@@ -73,8 +73,9 @@
 .panel--jurassic-diplodocus .jurassic-copy--diplodocus { left:8.2vw; top:8vh; width:78vw; }
 .panel--jurassic-diplodocus .jurassic-copy--diplodocus h2 { width:max-content; max-width:65vw; margin:0 0 0 22vw; font-size:clamp(50px,5.3vw,84px); white-space:nowrap; }
 .panel--jurassic-diplodocus .jurassic-copy--diplodocus .scene-prose { position:absolute; left:0; top:19vh; width:min(370px,23vw); margin:0 !important; }
-.panel--jurassic-diplodocus .jurassic-specimen-facts { left:auto; right:11vw; top:54vh; bottom:auto; width:min(220px,16vw); display:grid; gap:16px; padding:0; border:0; }
-.panel--jurassic-diplodocus .jurassic-specimen-facts span { padding:12px 0 0; border:0; border-top:1px solid rgba(236,236,227,.28); border-radius:0; background:transparent; }
+.panel--jurassic-diplodocus .jurassic-pair-stage { left:19vw; width:min(53vw,980px); }
+.panel--jurassic-diplodocus .jurassic-specimen-facts { left:auto; right:9vw; top:48vh; bottom:auto; width:min(300px,18vw); display:grid; gap:12px; padding:0; border:0; }
+.panel--jurassic-diplodocus .jurassic-specimen-facts span { padding:14px 16px; border:1px solid rgba(236,236,227,.1); border-radius:8px; background:#080808; }
 .panel--jurassic-diplodocus .jurassic-specimen-facts strong { font-size:clamp(25px,2.2vw,34px); }
 .jurassic-comparison-diplodocus { position:absolute; z-index:1; left:22vw; top:18vh; width:min(60vw,1120px,140vh); aspect-ratio:1086 / 724; height:auto; overflow:hidden; }
 .jurassic-comparison-figure .jurassic-comparison-diplodocus img { max-width:none; }
@@ -101,28 +102,28 @@
 .specimen-explorer__header { position:absolute; z-index:10; top:28px; left:6vw; right:5vw; display:flex; justify-content:space-between; align-items:center; }
 .specimen-explorer__chapter { margin:0; color:#b7cbb7; font:600 14px "DM Sans",Arial,sans-serif; }
 .specimen-explorer__close { width:42px; height:42px; border:1px solid rgba(240,242,233,.38); border-radius:50%; color:#f0f2e9; background:rgba(6,13,9,.45); font-size:28px; line-height:1; cursor:pointer; }
-.specimen-explorer__heading { position:absolute; z-index:4; top:14vh; left:8vw; width:min(35vw,520px); }
+.specimen-explorer__heading { position:absolute; z-index:4; top:6.5vh; left:12vw; width:76vw; text-align:center; }
 .specimen-explorer__heading p { margin:0 0 8px; color:#b4c8b6; font:600 14px "DM Sans",Arial,sans-serif; }
-.specimen-explorer__heading h2 { margin:0; font:750 clamp(42px,3.8vw,64px)/1.02 "Manrope",Arial,sans-serif; letter-spacing:-.06em; overflow-wrap:anywhere; }
+.specimen-explorer__heading h2 { margin:0; font:750 clamp(46px,4vw,72px)/1.02 "Manrope",Arial,sans-serif; letter-spacing:-.06em; text-transform:uppercase; white-space:nowrap; }
 .specimen-explorer__heading h2 i { font-style:italic; }
 .specimen-explorer__heading h2 span { color:#aeb8ac; font-size:.72em; font-weight:450; letter-spacing:-.04em; }
-.specimen-explorer__heading p:last-child { margin-top:17px; max-width:37ch; color:#d5ddd2; font-size:clamp(15px,1.1vw,18px); line-height:1.5; }
-.specimen-explorer[data-specimen-id="brachiosaurus"] .specimen-explorer__heading h2 { font-size:clamp(37px,3.25vw,54px); }
-.specimen-explorer__visual { position:absolute; z-index:2; left:31vw; right:5vw; top:26vh; height:60vh; display:flex; justify-content:center; align-items:center; transition:opacity .35s,transform .45s; }
+.specimen-explorer__heading p:last-child { margin:12px auto 0; max-width:56ch; color:#d5ddd2; font-size:clamp(15px,1.1vw,18px); line-height:1.5; }
+.specimen-explorer[data-specimen-id="brachiosaurus"] .specimen-explorer__heading h2 { font-size:clamp(42px,4.5vw,74px); }
+.specimen-explorer__visual { position:absolute; z-index:2; left:27vw; right:25vw; top:25vh; height:67vh; display:flex; justify-content:center; align-items:center; transition:opacity .35s,transform .45s; }
 .specimen-explorer__pair { position:relative; flex:none; width:var(--pair-width,700px); height:var(--pair-height,500px); overflow:hidden; transition:transform .55s cubic-bezier(.22,.7,.2,1); }
 .specimen-explorer__pair img { position:absolute; top:0; left:0; display:block; width:200%; height:auto; max-width:none; }
 .specimen-explorer__bones-frame { position:absolute; inset:0; overflow:hidden; }
 .specimen-explorer__living-frame { position:absolute; inset:0; overflow:hidden; clip-path:inset(0 100% 0 0); }
 .specimen-explorer__living { transform:translateX(-50%); clip-path:inset(0 0 0 50.5%); }
 .specimen-explorer__wipe-line { position:absolute; z-index:2; left:0; top:8%; bottom:8%; width:2px; background:#e5f0de; box-shadow:0 0 18px 3px rgba(210,230,202,.7); opacity:0; }
-.specimen-explorer__information { position:absolute; z-index:5; left:8vw; right:8vw; top:37vh; display:grid; grid-template-columns:minmax(200px,23vw) minmax(210px,19vw); justify-content:space-between; align-items:start; gap:10px; opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity .3s,transform .3s,visibility .3s; }
+.specimen-explorer__information { position:absolute; z-index:5; left:8vw; right:2vw; top:34vh; display:grid; grid-template-columns:minmax(260px,23vw) minmax(260px,18vw); justify-content:space-between; align-items:start; gap:10px; opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity .3s,transform .3s,visibility .3s; }
 .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__information { opacity:1; visibility:visible; transform:none; }
-.specimen-explorer[data-specimen-stage="information"] .specimen-explorer__visual { left:25vw; right:25vw; top:35vh; height:53vh; }
-.specimen-explorer[data-specimen-stage="information"] .specimen-explorer__pair { transform:scale(.78); }
+.specimen-explorer[data-specimen-stage="information"] .specimen-explorer__visual { left:27vw; right:25vw; top:25vh; height:67vh; }
+.specimen-explorer[data-specimen-stage="information"] .specimen-explorer__pair { transform:scale(1); }
 .specimen-explorer__fact { margin:0 0 16px; font-size:clamp(16px,1.3vw,20px); line-height:1.5; }
 .specimen-explorer__information .specimen-explorer__fact { grid-column:1; grid-row:1 / span 3; }
-.specimen-explorer__information dl { grid-column:2; grid-row:1; margin:0; padding:0; border:0; background:transparent; }
-.specimen-explorer__information dl div { padding:11px 0; border-top:1px solid rgba(226,236,220,.27); }
+.specimen-explorer__information dl { grid-column:2; grid-row:1; margin:0; padding:14px 18px; border:1px solid rgba(226,236,220,.1); border-radius:8px; background:#080808; }
+.specimen-explorer__information dl div { padding:9px 0; border-top:1px solid rgba(226,236,220,.18); }
 .specimen-explorer__information dt { color:#a7b8a8; font-size:12px; line-height:1.25; }.specimen-explorer__information dd { margin:5px 0 0; text-align:left; font:600 clamp(15px,1.25vw,19px)/1.3 "DM Sans",Arial,sans-serif; }
 .specimen-explorer__caveat { grid-column:2; grid-row:2; margin:8px 0 0; color:#c9d0c7; font-size:12px; line-height:1.45; }
 .specimen-explorer__information a { grid-column:2; grid-row:3; color:#d0e2d0; font-size:12px; text-decoration:underline; text-underline-offset:3px; }
@@ -151,13 +152,14 @@
   .specimen-choice { font-size:12px; }.specimen-choice__thumb { flex-basis:46px; height:35px; }
 }
 @media (min-width: 701px) and (max-width: 1050px) {
-  .specimen-explorer__heading { left:8vw; top:10vh; width:84vw; }
+  .specimen-explorer__heading { left:8vw; top:7vh; width:84vw; }
   .specimen-explorer__heading h2,.specimen-explorer[data-specimen-id="brachiosaurus"] .specimen-explorer__heading h2 { font-size:clamp(38px,5vw,52px); }
   .specimen-explorer__heading p:last-child { max-width:46ch; }
-  .specimen-explorer__visual { left:8vw; right:8vw; top:31vh; height:48vh; }
-  .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__visual { left:8vw; right:8vw; top:29vh; height:34vh; }
-  .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__pair { transform:scale(.85); }
+  .specimen-explorer__visual { left:17vw; right:17vw; top:25vh; height:55vh; }
+  .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__visual { left:17vw; right:17vw; top:25vh; height:55vh; }
+  .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__pair { transform:scale(.88); }
   .specimen-explorer__information { left:8vw; right:8vw; top:auto; bottom:11vh; width:84vw; max-height:27vh; overflow-y:auto; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:0 24px; scrollbar-width:thin; }
+  .specimen-explorer__information dl { padding:8px 14px; }
   .specimen-explorer__fact { font-size:16px; }
   .specimen-explorer__information dl div { padding:6px 0; }
   .specimen-explorer__information dd { font-size:15px; }
@@ -176,12 +178,12 @@
   .panel--jurassic-comparison .jurassic-lengths { bottom:7vh; }
   .jurassic-pair-note { left:8vw; right:8vw; bottom:9vh; font-size:11px; }
   .specimen-explorer__header { top:20px; left:6vw; right:6vw; }.specimen-explorer__chapter { font-size:12px; }
-  .specimen-explorer__heading { left:7vw; top:12vh; width:86vw; }.specimen-explorer__heading h2 { font-size:clamp(32px,8.6vw,48px); }.specimen-explorer[data-specimen-id="brachiosaurus"] .specimen-explorer__heading h2 { font-size:clamp(28px,7.4vw,42px); }.specimen-explorer__heading p:last-child { font-size:13px; }
+  .specimen-explorer__heading { left:7vw; top:12vh; width:86vw; text-align:left; }.specimen-explorer__heading h2 { font-size:clamp(32px,8.6vw,48px); text-transform:none; white-space:normal; }.specimen-explorer[data-specimen-id="brachiosaurus"] .specimen-explorer__heading h2 { font-size:clamp(28px,7.4vw,42px); }.specimen-explorer__heading p:last-child { margin:17px 0 0; font-size:13px; }
   .specimen-explorer__heading h2 span { font-size:.68em; }
   .specimen-explorer__visual { left:0; right:0; top:36vh; height:34vh; }
   .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__visual { left:0; right:0; top:27vh; height:24vh; }
   .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__pair { transform:scale(.82); }
-  .specimen-explorer__information { left:7vw; right:7vw; top:55vh; bottom:auto; display:block; width:86vw; max-height:34vh; overflow-y:auto; scrollbar-width:thin; }.specimen-explorer__fact { margin-bottom:10px; font-size:14px; line-height:1.4; }.specimen-explorer__information dl div { display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:3px 0; }.specimen-explorer__information dt { font-size:12px; }.specimen-explorer__information dd { margin:0; font-size:12px; text-align:right; }.specimen-explorer__caveat { margin-top:4px; }.specimen-explorer__caveat,.specimen-explorer__information a { font-size:11px; }
+  .specimen-explorer__information { left:7vw; right:7vw; top:55vh; bottom:auto; display:block; width:86vw; max-height:34vh; overflow-y:auto; scrollbar-width:thin; }.specimen-explorer__fact { margin-bottom:10px; font-size:14px; line-height:1.4; }.specimen-explorer__information dl { padding:0; border:0; border-radius:0; border-top:1px solid rgba(226,236,220,.27); background:transparent; }.specimen-explorer__information dl div { display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:3px 0; }.specimen-explorer__information dt { font-size:12px; }.specimen-explorer__information dd { margin:0; font-size:12px; text-align:right; }.specimen-explorer__caveat { margin-top:4px; }.specimen-explorer__caveat,.specimen-explorer__information a { font-size:11px; }
   .specimen-explorer__scale,.specimen-explorer[data-specimen-stage="scale"] .specimen-explorer__scale { left:6vw; right:6vw; top:39vh; height:37vh; }.specimen-explorer__scale p { font-size:12px; }
   .specimen-explorer__controls { left:6vw; right:6vw; bottom:3vh; }.specimen-explorer__controls button { min-width:95px; font-size:12px; }.specimen-explorer__progress span { width:15px; }
 }
