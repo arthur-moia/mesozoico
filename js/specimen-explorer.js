@@ -52,6 +52,7 @@
   const q = (selector) => explorer.querySelector(selector);
   const parts = {
     chapter: q('[data-specimen-chapter]'), phase: q('[data-specimen-phase]'), name: q('[data-specimen-name]'),
+    epithet: q('[data-specimen-epithet]'),
     subtitle: q('[data-specimen-subtitle]'), bones: q('.specimen-explorer__bones'),
     living: q('.specimen-explorer__living'), fact: q('[data-specimen-fact]'),
     period: q('[data-specimen-period]'), place: q('[data-specimen-place]'), length: q('[data-specimen-length]'),
@@ -73,6 +74,41 @@
   let locked = false;
   let returnFocus = null;
   let wipeAnimations = [];
+  let entranceAnimations = [];
+
+  function clearEntrance() {
+    entranceAnimations.forEach((animation) => animation.cancel());
+    entranceAnimations = [];
+  }
+
+  function enter(element, frames, duration, delay = 0) {
+    const animation = element.animate(frames, {
+      duration, delay, easing: 'cubic-bezier(.2,.72,.24,1)', fill: 'both'
+    });
+    entranceAnimations.push(animation);
+    animation.finished.then(() => animation.cancel()).catch(() => {});
+  }
+
+  function playEntrance() {
+    clearEntrance();
+    if (!dialog.open || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    enter(dialog, [{ opacity: 0 }, { opacity: 1 }], 380);
+    enter(q('.specimen-explorer__heading'),
+      [{ opacity: 0, transform: 'translateX(-28px)' }, { opacity: 1, transform: 'translateX(0)' }], 570, 100);
+    enter(q('.specimen-explorer__visual'),
+      [{ opacity: 0, transform: 'translateX(28px) scale(.97)' }, { opacity: 1, transform: 'translateX(0) scale(1)' }], 760, 180);
+    enter(q('.specimen-explorer__controls'),
+      [{ opacity: 0 }, { opacity: 1 }], 380, 370);
+  }
+
+  function playInformationEntrance() {
+    clearEntrance();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const details = [parts.fact, ...q('.specimen-explorer__information dl').children, parts.caveat, parts.source];
+    details.forEach((element, index) => enter(element,
+      [{ opacity: 0, transform: 'translateY(9px)' }, { opacity: 1, transform: 'translateY(0)' }],
+      340, index * 65));
+  }
 
   function imageUrl(item) {
     return new URL(`assets/images/${item.id}-par.png`, document.baseURI).href;
@@ -87,7 +123,9 @@
     if (!current || !dialog.open) return;
     const aspect = halfAspect(current);
     const mobile = innerWidth <= 700;
-    const width = Math.min(innerWidth * (mobile ? .94 : .80), innerHeight * (mobile ? .33 : .53) * aspect, 1120);
+    const tablet = innerWidth <= 1050 && !mobile;
+    const width = Math.min(innerWidth * (mobile ? .94 : tablet ? .88 : .80),
+      innerHeight * (mobile ? .33 : tablet ? .43 : .60) * aspect, 1120);
     const pair = q('.specimen-explorer__pair');
     pair.style.setProperty('--pair-width', `${width}px`);
     pair.style.setProperty('--pair-height', `${width / aspect}px`);
@@ -139,6 +177,7 @@
   }
 
   function updateStage(nextStage, animate) {
+    clearEntrance();
     const oldStage = stage;
     stage = Math.max(0, Math.min(3, nextStage));
     explorer.dataset.specimenStage = phases[stage];
@@ -151,6 +190,7 @@
     parts.next.textContent = stage === 3 ? 'Fechar exploração ×' : stage === 0 ? 'Ver reconstrução →' : stage === 1 ? 'Ver informações →' : 'Comparar tamanho →';
     parts.progress.forEach((dot, index) => dot.classList.toggle('is-current', index === stage));
     if (stage === 3) updateScale();
+    if (animate && stage === 2) playInformationEntrance();
     if (animate && ((oldStage === 0 && stage === 1) || (oldStage === 1 && stage === 0))) {
       locked = true;
       parts.previous.disabled = true;
@@ -210,6 +250,7 @@
     returnFocus = sourceButton;
     parts.chapter.textContent = item.group === 'triassic' ? 'Triássico · Ischigualasto' : 'Jurássico · Formação Morrison';
     parts.name.textContent = item.name;
+    parts.epithet.textContent = item.species;
     parts.fact.textContent = item.fact;
     parts.period.textContent = item.period;
     parts.place.textContent = item.place;
@@ -231,6 +272,7 @@
     fitPair();
     updateScale();
     q('[data-specimen-close]').focus();
+    requestAnimationFrame(playEntrance);
   }
 
   function close() { if (dialog.open) dialog.close(); }
@@ -238,6 +280,6 @@
   parts.previous.addEventListener('click', () => { if (!locked) updateStage(stage - 1, stage === 1); });
   parts.next.addEventListener('click', () => { if (locked) return; if (stage === 3) close(); else updateStage(stage + 1, stage === 0); });
   dialog.addEventListener('click', (event) => { if (event.target === dialog) close(); });
-  dialog.addEventListener('close', () => { wipeAnimations.forEach((animation) => animation.cancel()); wipeAnimations = []; locked = false; returnFocus?.focus({ preventScroll: true }); });
+  dialog.addEventListener('close', () => { clearEntrance(); wipeAnimations.forEach((animation) => animation.cancel()); wipeAnimations = []; locked = false; returnFocus?.focus({ preventScroll: true }); });
   window.addEventListener('resize', () => { fitPair(); updateScale(); });
 })();
