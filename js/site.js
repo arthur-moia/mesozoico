@@ -538,7 +538,7 @@
     const jurassicLiving = jurassicRecon.querySelector('.jurassic-pair-living-frame');
     const jurassicLine = jurassicRecon.querySelector('.jurassic-pair-line');
     const jurassicTransfer = { p: 0 };
-    const jurassicTarget = story.querySelector('.panel--jurassic-comparison .jurassic-comparison-diplodocus');
+    const jurassicTarget = story.querySelector('.panel--jurassic-comparison .jurassic-comparison-animal');
     const jurassicGeometry = { ready: false };
     function applyJurassicTransfer() {
       if (!jurassicGeometry.ready) return;
@@ -551,7 +551,10 @@
       const previous = jurassicRecon.style.transform;
       jurassicRecon.style.transform = 'none';
       const stageBox = jurassicRecon.getBoundingClientRect();
-      const source = jurassicRecon.querySelector('.jurassic-pair-living').getBoundingClientRect();
+      const livingBox = jurassicRecon.getBoundingClientRect();
+      const g3d = (window.MESOZOICO_3D || {}).diplodocus;
+      // a transferência usa a caixa visível do animal (e não a tela com margens) para casar com o recorte justo da comparação
+      const source = g3d ? { left: livingBox.left + g3d.lv[0] * livingBox.width, top: livingBox.top + g3d.lv[1] * livingBox.height, width: (g3d.lv[2] - g3d.lv[0]) * livingBox.width } : livingBox;
       const target = jurassicTarget.getBoundingClientRect();
       if (stageBox.width && source.width && target.width) {
         const ratio = target.width / source.width;
@@ -565,9 +568,14 @@
     }
     function applyJurassicReveal() {
       const p = Math.max(0, Math.min(1, jurassicReveal.p));
-      jurassicLiving.style.clipPath = `inset(0 ${100 * (1 - p)}% 0 0)`;
-      jurassicBones.style.clipPath = `inset(0 0 0 ${100 * p}%)`;
-      jurassicLine.style.left = `${100 * p}%`;
+      const g = (window.MESOZOICO_3D || {}).diplodocus;
+      // a linha percorre só a extensão visível do animal, e não a tela inteira
+      const x0 = g ? Math.min(g.sk[0], g.lv[0]) - .006 : 0, x1 = g ? Math.max(g.sk[2], g.lv[2]) + .006 : 1;
+      const f = x0 + p * (x1 - x0);
+      jurassicLiving.style.clipPath = p <= 0 ? 'inset(0 100% 0 0)' : p >= 1 ? 'none' : `inset(0 ${100 * (1 - f)}% 0 0)`;
+      jurassicBones.style.clipPath = p <= 0 ? 'none' : p >= 1 ? 'inset(0 0 0 100%)' : `inset(0 0 0 ${100 * f}%)`;
+      jurassicLine.style.left = `${100 * f}%`;
+      if (g) { jurassicLine.style.top = `${100 * Math.min(g.sk[1], g.lv[1])}%`; jurassicLine.style.height = `${100 * (Math.max(g.sk[3], g.lv[3]) - Math.min(g.sk[1], g.lv[1]))}%`; }
       jurassicLine.style.opacity = p > .025 && p < .975 ? '1' : '0';
     }
     function jurassicSkeletonToBridge(c) {

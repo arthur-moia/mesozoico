@@ -240,3 +240,96 @@
   .specimen-explorer__controls { left:6vw; right:6vw; bottom:3vh; }.specimen-explorer__controls button { min-width:95px; font-size:12px; }.specimen-explorer__progress span { width:15px; }
 }
 @media (prefers-reduced-motion: reduce) { .specimen-explorer__pair,.specimen-explorer__visual { transition:none; } }
+
+
+/* ===== Pares 3D: o animal é grande, inteiro e constante do esqueleto às informações ===== */
+.specimen-explorer__pair { overflow: visible; transition: none; }
+.specimen-explorer__pair img { top: 0; left: 0; width: 100%; height: 100%; max-width: none; object-fit: contain; transform: none; filter: drop-shadow(0 18px 26px rgba(0,0,0,.34)); }
+.specimen-explorer__bones-frame, .specimen-explorer__living-frame { overflow: hidden; }
+.specimen-explorer__living-frame { clip-path: inset(0 100% 0 0); }
+.specimen-explorer__pair .specimen-explorer__living { top: 0; left: 0; width: 100%; transform: none; }
+.specimen-explorer__wipe-line { z-index: 3; top: 0; bottom: auto; height: 0; background: linear-gradient(180deg, rgba(229,240,222,0), #e5f0de 14%, #e5f0de 86%, rgba(229,240,222,0)); box-shadow: 0 0 16px 2px rgba(210,230,202,.55); }
+.specimen-explorer__scale-animal img { inset: 0; bottom: auto; width: 100%; height: 100%; object-fit: contain; }
+.specimen-explorer__human { left: 0; width: 100%; height: 100%; transform: translateY(var(--human-foot, 0px)); background-position: center bottom; }
+.specimen-explorer__bus { inset: auto 0 0 0; height: var(--bus-height, 25%); }
+.specimen-explorer__scale-measure::before, .specimen-explorer__scale-measure::after { display: none; }
+
+@media (min-width: 1051px) {
+  .specimen-explorer__visual { left: 26vw; right: 26vw; top: 24vh; height: 65vh; }
+  .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__visual { left: 26vw; right: 26vw; top: 24vh; height: 65vh; }
+  .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__pair { transform: none; }
+  .specimen-explorer__information { left: 6vw; right: 6vw; top: 26vh; bottom: 12vh; grid-template-columns: minmax(0,19vw) minmax(0,19vw); align-items: center; gap: 20px; pointer-events: none; }
+  .specimen-explorer[data-specimen-stage="information"] .specimen-explorer__information { pointer-events: auto; }
+  .specimen-explorer__narrative { margin-top: 0; }
+  .specimen-explorer__panel-label { margin-bottom: 14px; font-size: 15px; }
+  .specimen-explorer__fact { max-width: 24ch; margin-bottom: 16px; font-size: clamp(20px,1.5vw,25px); }
+  .specimen-explorer__fact-rest { max-width: 34ch; font-size: clamp(15px,1.1vw,17px); }
+  .specimen-explorer__information a { font-size: 14px; }
+  .specimen-explorer__context { gap: 30px; }
+  .specimen-explorer__context-card { padding: 0; border: 0; border-radius: 0; background: none; }
+  .specimen-explorer__context-card .specimen-explorer__panel-label { margin-bottom: 8px; }
+  .specimen-explorer__information dl div { padding: 0 0 14px; border-bottom: 0; }
+  .specimen-explorer__information dl div:last-child { padding-bottom: 0; }
+  .specimen-explorer__information dt { font-size: 13px; }
+  .specimen-explorer__information dd { margin-top: 3px; font-size: clamp(17px,1.2vw,20px); }
+  .specimen-explorer__caveat { margin-top: 18px; padding-top: 0; border-top: 0; font-size: 14px; }
+
+  .specimen-explorer__scale, .specimen-explorer[data-specimen-stage="scale"] .specimen-explorer__scale { left: 6vw; right: 6vw; top: 23vh; height: 64vh; }
+  .specimen-explorer__scale-ground { bottom: 18%; }
+  .specimen-explorer__scale-animal { left: var(--animal-left, 2%); bottom: 18%; transform: translateY(2px); }
+  .specimen-explorer__scale-reference { left: var(--reference-left, 70%); bottom: 18%; width: var(--reference-width, 8%); height: var(--reference-height, 42%); }
+  .specimen-explorer__scale[data-reference="bus"] .specimen-explorer__scale-reference { height: var(--bus-height, 25%); }
+  .specimen-explorer__scale-measure { bottom: 12%; height: 0; font-size: 15px; }
+  .specimen-explorer__scale-measure span { top: 11px; right: 0; left: 0; text-align: center; }
+  .specimen-explorer__scale-measure--animal { left: var(--animal-left, 2%); width: var(--animal-scale-width, 70%); border-top: 1px solid rgba(240,242,233,.72); }
+  .specimen-explorer__scale-measure--reference { left: var(--reference-left, 70%); bottom: 12%; width: var(--reference-width, 8%); height: 0; border: 0; }
+  .specimen-explorer__scale-measure--reference span { top: 11px; left: 0; }
+  .specimen-explorer__scale[data-reference="bus"] .specimen-explorer__scale-measure--reference { bottom: 12%; width: var(--reference-width, 8%); height: 0; border-top: 1px solid rgba(212,184,143,.9); border-left: 0; }
+  .specimen-explorer__scale[data-reference="bus"] .specimen-explorer__scale-measure--reference span { top: 11px; left: 0; }
+  .specimen-explorer__scale > p { font-size: 14px; }
+}
+
+/* ===== Diplodocus (história principal): mesmas imagens alinhadas, mesma tela ===== */
+.jurassic-pair-stage { aspect-ratio: 1067 / 494; }
+.jurassic-pair-stage img { top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; transform: none; }
+.jurassic-pair-stage .jurassic-pair-bones, .jurassic-pair-stage .jurassic-pair-living { transform: none; }
+.panel--jurassic-diplodocus .jurassic-diplodocus-living-detail { top: 0; left: 0; width: 100%; transform: none; }
+.jurassic-pair-line { top: 0; bottom: auto; height: 0; background: linear-gradient(180deg, rgba(230,239,218,0), #e6efda 14%, #e6efda 86%, rgba(230,239,218,0)); }
+
+/* Diplodocus: mesma caixa nas cenas 19, 20 e 21 (esqueleto, passagem, reconstrução), livre do texto e dos cartões de dados */
+.jurassic-pair-stage, .panel--jurassic-diplodocus .jurassic-pair-stage { left: 17vw; top: 44vh; width: min(53vw, 960px); }
+.jurassic-comparison-chart { left: 27vw; top: 43vh; width: min(38vw, 700px); height: 49vh; }
+
+/* Seven species use their original 3D sheets; source windows are positioned by pairs-renderer. */
+.specimen-choice--sheet .specimen-choice__thumb { position:relative; flex:0 0 auto; overflow:hidden; background:none; }
+.specimen-choice__thumb img { display:block; }
+.specimen-explorer__pair { overflow:hidden; }
+.specimen-explorer__scale-animal { overflow:hidden; bottom:18%; transform:none; }
+.specimen-explorer__scale-reference { bottom:18%; }
+.specimen-explorer__scale-ground { bottom:18%; }
+.specimen-explorer__scale-animal { left:var(--animal-left); }
+.specimen-explorer__scale-reference { left:var(--reference-left); }
+.specimen-explorer__science { margin-top:22px; padding-top:14px; border-top:1px solid rgba(232,229,219,.22); }
+.specimen-explorer__science summary { cursor:pointer; font-size:14px; }
+.specimen-explorer__science .specimen-explorer__caveat { border:0; }
+.specimen-explorer__human { inset:0; width:100%; height:100%; overflow:hidden; background:none; transform:none; }
+.specimen-explorer__human img { filter:none; }
+.specimen-explorer__scale-measure--reference { min-width:110px; transform:translateX(calc(-55px + var(--reference-width) / 2)); }
+.specimen-explorer__scale > p { max-width:900px; margin-inline:auto; }
+.specimen-explorer__context { gap:18px; }
+.specimen-explorer__context-card { padding:16px 18px; background:#0b0d0b; border-radius:8px; }
+.specimen-explorer__information dl div { padding-bottom:9px; }
+.specimen-explorer__caveat { font-size:13px; line-height:1.4; margin-top:8px; }
+.jurassic-pair-stage { overflow:hidden; }
+.jurassic-comparison-chart { left:8vw; top:35vh; width:79vw; height:54vh; }
+.jurassic-comparison-animal,.jurassic-comparison-human { position:absolute; bottom:18%; overflow:hidden; }
+.jurassic-comparison-ground { position:absolute; left:0; right:0; bottom:18%; height:1px; background:rgba(238,239,226,.3); }
+.jurassic-comparison-human img { display:block; }
+.panel--jurassic-comparison .jurassic-length--diplodocus { top:auto; bottom:9%; }
+.panel--jurassic-comparison .jurassic-length--diplodocus span { left:50%; transform:translateX(-50%); white-space:nowrap; }
+.panel--jurassic-comparison .jurassic-length--human { top:auto; bottom:9%; width:0; border:0; }
+.panel--jurassic-comparison .jurassic-length--human span { left:0; transform:translateX(-50%); white-space:nowrap; }
+.panel--jurassic-comparison .jurassic-length--human::before,.panel--jurassic-comparison .jurassic-length--human::after { display:none; }
+.panel--jurassic-comparison .jurassic-copy--comparison { top:12vh; width:min(1100px,76vw); }
+.panel--jurassic-comparison .jurassic-copy--comparison h2 { font-size:clamp(36px,4vw,64px); }
+.panel--jurassic-comparison .jurassic-copy--comparison .scene-prose { max-width:780px; }

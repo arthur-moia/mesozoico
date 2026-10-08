@@ -1,0 +1,44 @@
+[
+  {
+    "species": "herrerasaurus",
+    "asset": "assets/images/3d/herrerasaurus-3d-v2.png",
+    "tool": "image_gen (built-in)",
+    "edits": []
+  },
+  {
+    "species": "eodromaeus",
+    "asset": "assets/images/3d/eodromaeus-3d-v2.png",
+    "tool": "image_gen (built-in)",
+    "edits": []
+  },
+  {
+    "species": "panphagia",
+    "asset": "assets/images/3d/panphagia-3d-v2.png",
+    "tool": "image_gen (built-in)",
+    "edits": []
+  },
+  {
+    "species": "allosaurus",
+    "asset": "assets/images/3d/allosaurus-3d-v2.png",
+    "tool": "image_gen (built-in)",
+    "edits": []
+  },
+  {
+    "species": "stegosaurus",
+    "asset": "assets/images/3d/stegosaurus-3d-v2.png",
+    "tool": "image_gen (built-in)",
+    "edits": []
+  },
+  {
+    "species": "brachiosaurus",
+    "asset": "assets/images/3d/brachiosaurus-3d-v2.png",
+    "tool": "image_gen (built-in)",
+    "edits": []
+  },
+  {
+    "species": "diplodocus",
+    "asset": "assets/images/3d/diplodocus-3d-v2.png",
+    "tool": "image_gen (built-in)",
+    "edits": []
+  }
+]

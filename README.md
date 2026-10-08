@@ -1,15 +1,20 @@
 # MESOZOICO — Triássico e Jurássico
 
-Site público: https://arthur-moia.github.io/mesozoico/ (ainda com o capítulo do Triássico; o Jurássico desta pasta está em revisão local).
+Versão atualizada em 8 de outubro de 2026, a partir do projeto entregue pelo Claude e da revisão dos pares de imagens e comparações de tamanho.
 
-Esta versão local percorre 22 cenas, da abertura ao limite Jurássico–Cretáceo. Para abri-la, mantenha a estrutura de pastas e abra `index.html`. HTML, CSS, JavaScript, GSAP, vídeo e imagens estão na pasta; as fontes web dependem de rede e têm alternativas do sistema.
+O site percorre 22 cenas, com navegação por rolagem, teclado, botões e linha do tempo. Para abrir localmente, mantenha a estrutura de pastas e abra `index.html`. As fontes web dependem de rede e têm alternativas do sistema.
 
-A navegação funciona por roda, teclado, toque, botões e barra de rolagem. Os textos e as imagens fazem transições reversíveis, acompanhadas pela linha do tempo. Na sequência do Eoraptor, o esqueleto passa à reconstrução por uma varredura; depois o animal diminui para a comparação com uma pessoa. A escala mostra aproximadamente 1,2 m de comprimento na ilustração, cerca de 0,5 m até o quadril e uma pessoa de 1,70 m. O esqueleto permanece provisório.
+## O que esta versão inclui
 
-O vídeo de abertura toca mudo uma vez e não depende da rolagem. Há um botão caso a reprodução automática seja bloqueada. Com movimento reduzido, o vídeo espera esse botão e as cenas usam rolagem normal.
+- Sete pares de esqueleto e reconstrução com aparência 3D: Herrerasaurus, Eodromaeus, Panphagia, Allosaurus, Stegosaurus, Brachiosaurus e Diplodocus.
+- Comparações desses animais com uma pessoa de 1,70 m, com medidas e ressalvas documentadas.
+- Informações científicas revisadas e fontes registradas no projeto.
+- Imagens e sequência aprovada do Eoraptor preservadas.
 
-As fontes científicas e os limites das imagens estão no diálogo **Créditos e limites** do site e em `CREDITOS-E-PENDENCIAS.txt`. A revisão editorial foi atualizada com fontes consultadas até outubro de 2026. A revisão de layout e navegação para celular foi feita em telas pequenas, padrão, tablet e celular na horizontal; deve ser repetida se as cenas mudarem. A confirmação da proveniência e dos direitos de uso de parte dos arquivos e o capítulo do Cretáceo continuam pendentes.
+As imagens são reconstruções artísticas em PNG, não modelos 3D editáveis. O alinhamento entre esqueleto e reconstrução é aproximado. A reescrita narrativa inspirada em Ian Malcolm ainda não foi aplicada.
 
-As imagens usadas pelas cenas ganharam versões WebP para reduzir o carregamento. Os arquivos originais permanecem em `assets/images/`.
+## Verificação e documentação
 
-O capítulo do Jurássico começa no mesmo limite de 201,4 Ma e visita a Formação Morrison, no oeste dos Estados Unidos. A paisagem antiga e o <i>Diplodocus</i> são reconstruções artísticas geradas para esta prévia; a fotografia da formação atual e a da parede de fósseis vêm do National Park Service. O desenho geológico da fragmentação de Pangeia é deliberadamente esquemático. As escolhas e fontes estão em `docs/roteiro-jurassico.md`.
+Execute `node docs/verify-3d-v2.cjs` para verificar os mapeamentos de imagens e a matemática das comparações. Esta revisão passou nas verificações estáticas e de sintaxe; a inspeção visual no navegador e uma nova revisão mobile permanecem pendentes.
+
+Consulte [o relatório da revisão](docs/relatorio-3d-v2.md), [os prompts das imagens](docs/prompts-3d-v2.json) e `CREDITOS-E-PENDENCIAS.txt` para fontes, escolhas e limitações.

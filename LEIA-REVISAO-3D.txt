@@ -1,0 +1,12 @@
+MESOZOICO — revisão de 7 de outubro de 2026
+
+Abra index.html para acessar o projeto.
+
+Sete pares de imagens com aparência 3D foram refeitos, preservando o Eoraptor.
+As comparações usam uma pessoa de 1,70 m. Informações científicas e medidas foram revisadas.
+
+Relatório completo: docs/relatorio-3d-v2.md
+Prompts das imagens: docs/prompts-3d-v2.json
+Imagens finais: assets/images/3d/*-3d-v2.png
+
+As verificações de código e cálculos passaram. A revisão visual no navegador ainda é necessária; a ferramenta de navegação bloqueou arquivos locais.

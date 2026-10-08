@@ -57,3 +57,8 @@ REFERÊNCIAS CIENTÍFICAS USADAS NO TEXTO
 - Diplodocus longus: https://www.nps.gov/dino/learn/nature/diplodocus-longus.htm
 - Fragmentação de Pangeia: https://www.nhm.ac.uk/discover/the-jurassic-period.html
 - Parede de fósseis (arquivo e direitos): https://npgallery.nps.gov/AssetDetail/a11f4a50-2bee-4fdc-aaa3-a3d666d9fe75
+
+Pares 3D (2026-10-06)
+- Originais: assets/pose-pairs/*-3d-pair.png (fornecidos como propostas visuais; autoria, ferramenta de geração e licença A CONFIRMAR).
+- Derivados: assets/images/3d/ (recorte e alinhamento por escala uniforme e deslocamento, sem esticar). Relatório: docs/relatorio-pares-3d-2026-10-06.md.
+- A escala dessas imagens não é medição científica; veja as limitações no relatório.
