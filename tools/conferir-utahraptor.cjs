@@ -3,9 +3,9 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('fs'),path=require('path'),assert=require('assert/strict'),cp=require('child_process');
 const root=path.resolve(__dirname,'..'),phase=process.argv[2]||'depois';
-const out=path.join(root,'auditoria','utahraptor-passagem',phase);fs.mkdirSync(out,{recursive:true});
+const out=path.join(root,'auditoria',process.env.AUDIT_RUN||'utahraptor-passagem',phase);fs.mkdirSync(out,{recursive:true});
 const base=process.env.PREVIEW_URL||'http://mesozoico.local/';
-const baseline=phase==='antes'?cp.execFileSync('git',['show','75ab939:site/index.html'],{encoding:'utf8'}):null;
+const baseline=phase==='antes'?cp.execFileSync('git',['show',(process.env.UTAH_BASELINE_REF||'75ab939')+':site/index.html'],{encoding:'utf8'}):null;
 (async()=>{
  const b=await chromium.launch({channel:'msedge',headless:true,args:['--no-proxy-server']});const results=[];
  for(const [width,height]of[[1440,900],[390,844],[360,740]]){
