@@ -30,6 +30,8 @@ Execute o Git na raiz do projeto, ou use `git -C <pasta-do-projeto> status`. Exe
 
 As próximas entregas são feitas por branch/commit e, quando houver fluxo configurado no remoto, pull request. Não gerar novos ZIPs. O `.gitignore` exclui pacotes antigos, backups, maquetes, pesquisas auxiliares, capturas temporárias e arquivos privados. Nenhum remoto é escolhido automaticamente.
 
+Remoto confirmado: `https://github.com/arthur-moia/mesozoico.git`. GitHub Pages publica a raiz de `codex/mesozoico-checkpoint-2026-10-04`. O `index.html` da raiz encaminha para `site/`, preservando query e hash; `.nojekyll` mantém a entrega estática. O código editável continua em `site/index.html`. Alterações são propostas por pull request contra essa branch de publicação, sem substituir seu histórico.
+
 ## Fontes e direitos
 
 Conteúdo científico, distinções de certeza e créditos estão no painel **Fontes e certezas**, nos detalhes de cada cena e em `site/decisoes.md`. As imagens têm licenças próprias; não existe uma licença única que substitua essas condições. DM Sans e Manrope são distribuídas com suas licenças SIL OFL em `site/assets/fonts/`. Pendências de procedência do material antigo continuam declaradas no produto; a revisão técnica não constitui confirmação dessas licenças.
