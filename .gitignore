@@ -11,6 +11,7 @@
 !/tools/inventariar-site.py
 !/tools/conferir-interacoes.cjs
 !/tools/preview.py
+!/tools/conferir-eoraptor.cjs
 /site/capturas/
 /site/estudos-movimento/
 /site/AVALIAR*.html
