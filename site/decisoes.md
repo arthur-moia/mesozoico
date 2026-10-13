@@ -605,3 +605,11 @@ Percorridas as dez cenas do principal, inclusive Utahraptor, em 1440×900, 390×
 A fotografia da abertura está íntegra e carregou em HTTP nos três tamanhos; a falha por arquivo relatada não foi reproduzida nesse contexto. A prévia passa a ter servidor HTTP documentado para reproduzir a hospedagem. Pendências antigas de autoria/licença continuam explícitas.
 
 Git existente auditado sem apagar objetos nem reinicializar. Pacotes, backups, maquetes e evidências temporárias ignorados. Novas entregas somente por GitHub; nenhum ZIP novo. Relatório por cena e limites em REVISAO-2026-10-13.md.
+
+## 13/10/2026 · Eoraptor: esquema original e passagem estável
+
+Comparadas a figura provisória, o desenho CC BY-SA 4.0 de Maurissauro e a fotografia CC BY 3.0 de Eduard Solà Vázquez. A primeira tinha autoria/licença desconhecidas; as candidatas abertas têm perspectivas ou enquadramento inadequados à dupla atual. Produzida uma ilustração original assistida por IA, orientada pela osteologia de Sereno, Martínez e Alcober (2013), sem copiar suas figuras. Selecionada a segunda proposta, em vista oblíqua, com cauda elevada e cabeça à direita. O esquema não é fotografia, molde ou modelo anatômico validado. Cinza sinaliza aproximadamente regiões completadas; detalhes explicitam lacunas do holótipo PVSJ 512 e limites da geração. Reutilização da contribuição liberada por dedicação CC0 dos direitos eventualmente existentes, com origem assistida por IA declarada. Não há promessa de encaixe osso a osso com a reconstrução em vida.
+
+O branco relatado não foi reproduzido no Edge antes da correção; os arquivos possuem transparência real. Corrigidas fragilidades de renderização: decodificação agora aguardada, fundo permanente no palco, isolamento da composição e máscaras em contêineres que não alternam entre clip-path e none. Reversão e cancelamento de pedidos concorrentes preservam continuidade. Não se alteram posição ou escala durante o movimento. Espera inicial, controles, memória na sessão e movimento reduzido mantidos. Reconstrução em vida, dados, texto principal e demais cenas preservados.
+
+Fontes, candidatas, créditos, condições de reutilização, limitações e conferência em [EORAPTOR-FONTES.md](EORAPTOR-FONTES.md). Capturas e vídeos de avaliação permanecem locais, fora do commit. Entrega pelo GitHub, sem ZIP.

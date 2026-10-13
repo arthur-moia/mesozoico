@@ -188,8 +188,9 @@ button.ev:hover{color:var(--fg);text-decoration-color:var(--line-3)}
 
 /* ===== Cena 2 · Eoraptor: parede escura; o exemplar num nicho claro em arco ===== */
 .niche{position:fixed;z-index:0;top:0;right:0;bottom:calc(var(--hud-bottom) + env(safe-area-inset-bottom,0px) - 6px);left:var(--split-px,46vw);background:var(--nicho);border-top-left-radius:min(300px,24vw)}
-.niche .fig-box{position:absolute;z-index:1;left:0;bottom:0;width:600px;height:450px}
-.fig-box img{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+.niche .fig-box{position:absolute;z-index:1;left:0;bottom:0;width:600px;height:450px;isolation:isolate}
+.fig-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;clip-path:inset(0);background:transparent}
+.fig-box img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
 /* esqueleto → reconstrução por varredura: à esquerda da linha, a reconstrução; à direita, o esqueleto.
    Só a figura muda; nome, dados, nicho e rodapé ficam parados. O recorte é escrito pelo script. */
 .wipe-line{position:absolute;z-index:2;top:0;width:1.5px;margin-left:-.75px;opacity:0;pointer-events:none;background:linear-gradient(180deg,transparent,var(--tinta) 12%,var(--tinta) 88%,transparent)}
@@ -210,6 +211,7 @@ button.ev:hover{color:var(--fg);text-decoration-color:var(--line-3)}
 .fig-switch button[aria-pressed="true"]{background:var(--tinta);color:var(--nicho)}
 .fig-switch button:focus-visible{outline:2px solid var(--cobalto);outline-offset:2px}
 .fig-cap .ev{color:var(--tinta);--inc:var(--inc-l)}
+.fig-cap a{color:inherit;text-underline-offset:3px}
 /* o único movimento: o arco do nicho se abre da direita para a esquerda, com o Eoraptor já de pé */
 .play .niche{animation:openNiche 1.15s var(--ease-io) both .3s}
 @keyframes openNiche{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
@@ -320,6 +322,7 @@ button.ev:hover{color:var(--fg);text-decoration-color:var(--line-3)}
   .t-first{justify-items:start;text-align:left}
 
   .niche{position:relative;left:auto;bottom:auto;right:auto;margin:6px calc(-1 * var(--gr)) 0 calc(-1 * var(--gl));aspect-ratio:1/.95;border-top-left-radius:38vw}
+  .niche{min-height:calc(66vw + 130px)}
   .niche .fig-box{position:absolute;left:6%;right:6%;bottom:118px;width:auto!important;height:auto!important;aspect-ratio:1448/1086}
   .fig-cap{left:var(--gl);right:var(--gr);bottom:10px;flex-direction:column;align-items:flex-start;gap:10px}
   .cap-stack{justify-items:start;text-align:left;flex:none}
@@ -812,8 +815,8 @@ body[data-scene="cretaceo-utahraptor"]{--ground:#dedbce}
             <div class="fig-box" id="figBox">
               <span class="floor" aria-hidden="true"></span>
               <span class="wipe-line" id="wipeLine" aria-hidden="true"></span>
-              <img class="fig fig-skel" src="assets/eoraptor-esqueleto.webp" alt="Representação esquelética provisória do Eoraptor: ilustração de um esqueleto bípede, de pescoço longo e cauda erguida em curva, olhando para a direita." width="1448" height="1086" decoding="async">
-              <img class="fig fig-life" src="assets/eoraptor.webp" alt="Reconstrução em vida do Eoraptor: pequeno dinossauro bípede de corpo marrom-avermelhado, pescoço longo e cauda listrada, olhando para a direita." width="1448" height="1086" decoding="async">
+              <div class="fig-layer" id="eoraptorSkelLayer"><img class="fig fig-skel" src="assets/eoraptor-esquema-original.png" alt="Esquema esquelético reconstruído de Eoraptor, produzido com assistência de IA: vista oblíqua para a direita, cauda elevada; cinza indica regiões completadas, não ossos fotografados." width="1448" height="1086" decoding="async"></div>
+              <div class="fig-layer" id="eoraptorLifeLayer"><img class="fig fig-life" src="assets/eoraptor.webp" alt="Reconstrução em vida do Eoraptor: pequeno dinossauro bípede de corpo marrom-avermelhado, pescoço longo e cauda listrada, olhando para a direita." width="1448" height="1086" decoding="async"></div>
               <svg class="callouts" viewBox="0 0 1448 1086" aria-hidden="true">
                 <g class="letter"><circle cx="1290" cy="119" r="30"/><text x="1290" y="133">a</text></g>
               </svg>
@@ -821,7 +824,7 @@ body[data-scene="cretaceo-utahraptor"]{--ground:#dedbce}
             <figcaption class="fig-cap" id="figCap">
               <span class="fig-switch" role="group" aria-label="Figura do Eoraptor"><button type="button" data-view="skel" aria-pressed="false">Ver esqueleto</button><button type="button" data-view="life" aria-pressed="true">Ver reconstrução</button></span>
               <span class="cap-stack">
-                <span class="cap-v" data-for="skel"><button class="ev inc" type="button" data-src="eoraptor:figesq">Representação esquelética provisória</button><span>Ilustração, não fóssil. Origem e licença a confirmar.</span></span>
+                <span class="cap-v" data-for="skel"><button class="ev inc" type="button" data-src="eoraptor:figesq">Esquema esquelético · não é fóssil</button><span>MESOZOICO · assistência de IA · <a href="EORAPTOR-FONTES.md">fontes e limites</a></span></span>
                 <span class="cap-v" data-for="life"><button class="ev inc" type="button" data-src="eoraptor:pele">Reconstrução em vida</button><span>Só o esqueleto é evidência. Cor, padrão e pele são suposições.</span></span>
               </span>
             </figcaption>
@@ -1031,7 +1034,7 @@ const SRC = {
     ["onde", "fato", "Membro Cancha de Bochas, na parte de baixo da Formação Ischigualasto, no extremo sul do Valle de la Luna, província de San Juan, Argentina.", "Sereno, Martínez e Alcober 2013, Osteology of Eoraptor lunensis (Dinosauria, Sauropodomorpha), JVP Memoir 12 (resumo e legendas lidos); Sereno e colegas 1993 (resumo lido).", "https://doi.org/10.1080/02724634.2013.820113"],
     ["pele", "inc", "Cor, padrão e pele são desconhecidos: nenhum osso registra isso. Na imagem, são escolhas do ilustrador.", "Base científica do projeto, seção 1.4.", ""],
     ["bracos", "inc", "Nota sobre a imagem: pelo resumo de 1993, os braços têm menos da metade do comprimento das pernas, com mão funcionalmente de três dedos. Nas duas ilustrações usadas nesta etapa, a representação esquelética e a reconstrução em vida, eles parecem longos demais.", "Sereno e colegas 1993, Nature (resumo lido). Imagem fornecida pelo projeto, mantida nesta etapa.", "https://doi.org/10.1038/361064a0"],
-    ["figesq", "inc", "A primeira figura é uma representação esquelética provisória: uma ilustração, não a fotografia nem o molde de um exemplar, e não reproduz os ossos do holótipo peça por peça. A pose difere da reconstrução em vida (cauda, pernas e braços); as duas figuras foram só alinhadas por posição e escala, sem deformar nenhum osso.", "Arquivo eoraptor-esqueleto.png, vindo do projeto anterior. Autor, origem e licença ainda a confirmar.", ""],
+    ["figesq", "inc", "Esquema original produzido para MESOZOICO com assistência de IA, orientado pela descrição de Eoraptor lunensis. Não é fotografia, molde, modelo científico validado nem inventário osso por osso. Crânio e grande parte do esqueleto são documentados em PVSJ 512; faltam a cauda após a vértebra 17, grande parte da cintura escapular esquerda e falanges da mão esquerda. Cinza sinaliza aproximadamente regiões completadas; não é um mapa exato de preservação. Pose, articulação e perspectiva são propostas. A linha alterna representações, sem demonstrar encaixe anatômico.", "Base: Sereno, Martínez e Alcober (2013), tabela 1, descrição e discussão da figura 93. Ilustração original assistida por IA; arquivo integral, sem deformação. Reutilização liberada; dedicação CC0 dos direitos eventualmente existentes: <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\">CC0 1.0</a>. <a href=\"EORAPTOR-FONTES.md\">Comparação, processo e limites</a>.", "https://doi.org/10.1080/02724634.2013.820113"],
     ["holotipo", "fato", "O holótipo é o exemplar PVSJ 512, do Museo de Ciencias Naturales da Universidad Nacional de San Juan.", "Digimorph, Universidade do Texas em Austin, ficha de Eoraptor lunensis (lida). Sereno, Martínez e Alcober 2013 descrevem o esqueleto.", "https://digimorph.ctlab.geo.utexas.edu/specimens/Eoraptor_lunensis"],
     ["bipede", "hip", "Andava só sobre duas pernas: os autores deduzem isso das proporções dos membros.", "Sereno e colegas 1993, Nature (resumo lido).", "https://doi.org/10.1038/361064a0"],
     ["dieta", "hip", "Dieta onívora, inferida pelos dentes.", "Sereno e colegas 1993 e 2013.", ""],
@@ -1678,16 +1681,18 @@ if (growIO) growIO.observe($("#rulerBox"));
    Com movimento reduzido, a troca é instantânea. */
 const nicheEl = $("#niche"), figBtns = [...document.querySelectorAll(".fig-switch button")];
 const figSkel = nicheEl.querySelector(".fig-skel"), figLife = nicheEl.querySelector(".fig-life"), wipeLine = $("#wipeLine");
-// extensão visível das duas figuras juntas, em fração do quadro 1448 × 1086 (cauda do esqueleto a 4,5 %, focinho a 95,3 %)
-const WIPE_L = .04, WIPE_R = .96, WIPE_T = .005, WIPE_B = .98;
-let figView = null, figT = 0, wipeP = 1, wipeRaf = 0;
-// as duas figuras são decodificadas de antemão, para a troca não piscar em branco
-[figSkel, figLife].forEach(i => i.decode && i.decode().catch(() => {}));
+const skelLayer = $("#eoraptorSkelLayer"), lifeLayer = $("#eoraptorLifeLayer");
+// A linha cobre a união das figuras, sem deslocar nem redimensionar as camadas.
+const WIPE_L = .005, WIPE_R = .995, WIPE_T = .005, WIPE_B = .995;
+let figView = null, figT = 0, wipeP = 0, wipeRaf = 0, figRequest = 0;
+// A espera faz parte da troca: chamar decode sem aguardar não garantia prontidão.
+const figuresReady = Promise.all([figSkel, figLife].map(i => i.decode().catch(() => {})));
 function drawWipe() {
   const x = (WIPE_L + wipeP * (WIPE_R - WIPE_L)) * 100;
   const cut = wipeP >= 1 ? 100 : wipeP <= 0 ? 0 : x;   // nas pontas, uma figura inteira e a outra escondida
-  figLife.style.clipPath = cut >= 100 ? "none" : `inset(0 ${100 - cut}% 0 0)`;
-  figSkel.style.clipPath = cut <= 0 ? "none" : `inset(0 0 0 ${cut}%)`;
+  // Recortar contêineres estáveis, nunca alternar a camada raster entre clip-path e none.
+  lifeLayer.style.clipPath = `inset(0 ${100 - cut}% 0 0)`;
+  skelLayer.style.clipPath = `inset(0 0 0 ${cut}%)`;
   wipeLine.style.left = x + "%";
   wipeLine.style.top = WIPE_T * 100 + "%";
   wipeLine.style.height = (WIPE_B - WIPE_T) * 100 + "%";
@@ -1705,24 +1710,29 @@ function wipeTo(target, instant) {
     if (k < 1) wipeRaf = requestAnimationFrame(step);
   })(t0);
 }
-function setFig(v, animate) {
+async function setFig(v, animate) {
+  const request = ++figRequest;
+  await figuresReady;
+  if (request !== figRequest) return false;
   nicheEl.dataset.view = v;
   figBtns.forEach(b => b.setAttribute("aria-pressed", b.dataset.view === v ? "true" : "false"));
   figSkel.setAttribute("aria-hidden", v === "skel" ? "false" : "true");
   figLife.setAttribute("aria-hidden", v === "life" ? "false" : "true");
   nicheEl.querySelectorAll(".cap-v").forEach(c => c.toggleAttribute("inert", c.dataset.for !== v));
   wipeTo(v === "life" ? 1 : 0, !animate);
+  return true;
 }
-function enterFig() {
+async function enterFig() {
   clearTimeout(figT);
   if (figView || reduced) { figView = figView || "life"; return setFig(figView, false); }
   figView = "life";   // a espera acontece uma vez só
-  setFig("skel", false);
+  if (!(await setFig("skel", false))) return;
+  if (STOPS[cur].id !== "eoraptor") return;
   figT = setTimeout(() => { setFig("life", true); live.textContent = "A figura agora mostra a reconstrução em vida."; }, 3800);
 }
 function leaveFig() {
   // ao sair no meio de uma passagem, a cena guarda a versão escolhida já completa
-  clearTimeout(figT); cancelAnimationFrame(wipeRaf);
+  clearTimeout(figT); cancelAnimationFrame(wipeRaf); ++figRequest;
   if (figView) { wipeP = figView === "life" ? 1 : 0; drawWipe(); }
 }
 figBtns.forEach(b => b.addEventListener("click", () => { clearTimeout(figT); figView = b.dataset.view; setFig(figView, true); }));
