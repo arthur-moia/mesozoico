@@ -1,6 +1,25 @@
+# Somente produto, documentação e ferramentas reproduzíveis entram no repositório.
+/*
+!/.gitignore
+!/README.md
+!/site/
+!/tools/
+/tools/*
+!/tools/auditar-site.cjs
+!/tools/inventariar-site.py
+!/tools/conferir-interacoes.cjs
+!/tools/preview.py
+/site/capturas/
+/site/estudos-movimento/
+/site/AVALIAR*.html
+/site/_baseline.html
+/site/assets/eoraptor-esqueleto.png
+/site/assets/fossil-*.webp
+*.zip
 node_modules/
-.pnpm-store/
-
-# Exported duplicate packages; the editable source and assets are tracked below.
-/MESOZOICO
-/MESOZOICO-abertura-triassico-inicial.zip
+__pycache__/
+.env
+.env.*
+*.log
+Thumbs.db
+.DS_Store

@@ -1,20 +1,35 @@
-# MESOZOICO — Triássico e Jurássico
+# MESOZOICO
 
-Versão atualizada em 8 de outubro de 2026, a partir do projeto entregue pelo Claude e da revisão dos pares de imagens e comparações de tamanho.
+Expedição visual em português. O produto está em `site/index.html`; imagens, fontes e licenças ficam em `site/assets/`. Não há build nem dependência de rede para carregar o conteúdo.
 
-O site percorre 22 cenas, com navegação por rolagem, teclado, botões e linha do tempo. Para abrir localmente, mantenha a estrutura de pastas e abra `index.html`. As fontes web dependem de rede e têm alternativas do sistema.
+## Prévia local
 
-## O que esta versão inclui
+Na raiz do projeto:
 
-- Sete pares de esqueleto e reconstrução com aparência 3D: Herrerasaurus, Eodromaeus, Panphagia, Allosaurus, Stegosaurus, Brachiosaurus e Diplodocus.
-- Comparações desses animais com uma pessoa de 1,70 m, com medidas e ressalvas documentadas.
-- Informações científicas revisadas e fontes registradas no projeto.
-- Imagens e sequência aprovada do Eoraptor preservadas.
+```sh
+python tools/preview.py
+```
 
-As imagens são reconstruções artísticas em PNG, não modelos 3D editáveis. O alinhamento entre esqueleto e reconstrução é aproximado. A reescrita narrativa inspirada em Ian Malcolm ainda não foi aplicada.
+Abra **http://127.0.0.1:8781/**. Para outra porta, use `--port 8782`. Servir `site/` por HTTP reproduz a resolução de URLs da hospedagem e evita restrições do navegador para `file:`. A página e a pasta `assets/` precisam ser publicadas juntas, mantendo nomes e maiúsculas/minúsculas. Todos os caminhos do produto são relativos; ele pode ser servido também em um subdiretório.
 
-## Verificação e documentação
+## Conferência
 
-Execute `node docs/verify-3d-v2.cjs` para verificar os mapeamentos de imagens e a matemática das comparações. Esta revisão passou nas verificações estáticas e de sintaxe; a inspeção visual no navegador e uma nova revisão mobile permanecem pendentes.
+O relatório está em [site/REVISAO-2026-10-13.md](site/REVISAO-2026-10-13.md). Os scripts de desenvolvimento requerem Python com Pillow e Node com Playwright; o site não requer essas ferramentas. Com a prévia ativa:
 
-Consulte [o relatório da revisão](docs/relatorio-3d-v2.md), [os prompts das imagens](docs/prompts-3d-v2.json) e `CREDITOS-E-PENDENCIAS.txt` para fontes, escolhas e limitações.
+```sh
+python tools/inventariar-site.py
+node tools/auditar-site.cjs
+node tools/conferir-interacoes.cjs
+```
+
+O navegador padrão é Edge no Windows e Chromium nos demais sistemas. `PREVIEW_URL`, `BROWSER_CHANNEL`, `PLAYWRIGHT_MODULE` e `AUDIT_RUN` permitem ajustar o ambiente. Capturas e resultados são gerados em `auditoria/`, ignorada pelo Git. O percurso cobre 1440×900, 390×844 e 360×740, imagens, detalhes, controles e fontes.
+
+## Git e entrega
+
+Execute o Git na raiz do projeto, ou use `git -C <pasta-do-projeto> status`. Executá-lo dentro de `.git` não equivale a trabalhar na árvore do produto. Não apague nem reinicialize `.git` para contornar esse erro.
+
+As próximas entregas são feitas por branch/commit e, quando houver fluxo configurado no remoto, pull request. Não gerar novos ZIPs. O `.gitignore` exclui pacotes antigos, backups, maquetes, pesquisas auxiliares, capturas temporárias e arquivos privados. Nenhum remoto é escolhido automaticamente.
+
+## Fontes e direitos
+
+Conteúdo científico, distinções de certeza e créditos estão no painel **Fontes e certezas**, nos detalhes de cada cena e em `site/decisoes.md`. As imagens têm licenças próprias; não existe uma licença única que substitua essas condições. DM Sans e Manrope são distribuídas com suas licenças SIL OFL em `site/assets/fonts/`. Pendências de procedência do material antigo continuam declaradas no produto; a revisão técnica não constitui confirmação dessas licenças.
