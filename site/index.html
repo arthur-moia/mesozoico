@@ -655,9 +655,9 @@ body[data-scene="cretaceo-utahraptor"]{--ground:#dedbce}
 #utahExhibit .utah-exhibition{display:grid;grid-template-columns:minmax(0,1fr) minmax(265px,320px);grid-template-areas:'figure message' 'figure evidence' 'tools evidence' 'credit credit';column-gap:clamp(24px,3.2vw,48px);align-items:start}
 #utahExhibit .utah-art{grid-area:figure;min-width:0}
 #utahExhibit .utah-stage{height:clamp(310px,52vh,520px);position:relative;overflow:hidden;background:#dedbce;isolation:isolate}
-#utahExhibit .utah-skeleton,#utahExhibit .utah-life{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .22s ease}
+#utahExhibit .utah-skeleton,#utahExhibit .utah-life{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:opacity;pointer-events:none}
 #utahExhibit .utah-skeleton img,#utahExhibit .utah-life img{display:block;width:100%;height:100%;object-fit:contain}
-#utahExhibit .utah-life img{mix-blend-mode:multiply}
+#utahExhibit .utah-life{opacity:0;mix-blend-mode:multiply}
 #utahExhibit .utah-image-label{position:absolute;top:12px;left:12px;z-index:2;padding:5px 7px;background:#dedbcecc;font-size:10px;letter-spacing:.07em;text-transform:uppercase;line-height:1.35}
 #utahExhibit .utah-image-label span{display:block;color:var(--u-muted);font-size:9px;letter-spacing:0;text-transform:none}
 #utahExhibit .utah-note{min-height:49px;padding-top:8px;color:var(--u-muted);font-size:12px;line-height:1.45}
@@ -917,8 +917,9 @@ body[data-scene="cretaceo-utahraptor"]{--ground:#dedbce}
         <header class="utah-head"><div><p class="utah-eyebrow">Cretáceo Inferior · Dromaeosauridae</p><h2 id="t-cretaceo-utahraptor" tabindex="-1">Utahraptor</h2></div><p class="utah-location"><strong>Utah, Estados Unidos</strong>Formação Cedar Mountain<br>membro Yellow Cat</p></header>
         <div class="utah-exhibition">
           <figure class="utah-art"><div class="utah-stage" id="utahStage" aria-label="Montagem de moldes e reconstrução artística de Utahraptor">
-            <div class="utah-skeleton" id="utahSkeleton"><img src="assets/cretaceo/utahraptor-montagem-recorte.png" width="1441" height="1091" alt="Recorte digital da fotografia de uma montagem de moldes de Utahraptor, de perfil oblíquo, com cabeça à direita e garra curva no pé apoiado. O fundo foi removido; a fotografia original está nos créditos." decoding="async"><span class="utah-image-label">Montagem de moldes · recorte<span>Museu de Paleontologia da BYU</span></span></div>
-            <div class="utah-life" id="utahLife" hidden><img src="assets/cretaceo/utahraptor-vida-original.png" width="6581" height="2640" alt="Reconstrução artística de Utahraptor por Fred Wierum, de perfil e cabeça à esquerda, com penas no corpo e na cauda." decoding="async"><span class="utah-image-label">Reconstrução artística<span>Fred Wierum · 2017</span></span></div>
+            <div class="utah-skeleton" id="utahSkeleton" aria-hidden="false"><img src="assets/cretaceo/utahraptor-montagem-recorte.png" width="1441" height="1091" alt="Recorte digital da fotografia de uma montagem de moldes de Utahraptor, de perfil oblíquo, com cabeça à direita e garra curva no pé apoiado. O fundo foi removido; a fotografia original está nos créditos." decoding="async"></div>
+            <div class="utah-life" id="utahLife" aria-hidden="true"><img src="assets/cretaceo/utahraptor-vida-original.png" width="6581" height="2640" alt="Reconstrução artística de Utahraptor por Fred Wierum, de perfil e cabeça à esquerda, com penas no corpo e na cauda." decoding="async"></div>
+            <span class="utah-image-label" id="utahImageLabel">Montagem de moldes · recorte<span>Museu de Paleontologia da BYU</span></span>
           </div><figcaption class="utah-note" id="utahNote" aria-live="polite"><strong>Garra curva, função em estudo.</strong> Montagem de moldes; veja a fotografia original nos créditos.</figcaption></figure>
           <div class="utah-message"><h3>Os ossos orientam.<span>A aparência é proposta.</span></h3></div>
           <dl class="utah-evidence" aria-label="O que se conhece e o que foi reconstruído"><div class="bones"><dt>Ossos conhecidos</dt><dd>Base anatômica da montagem.<br>Moldes; peças completadas não discriminadas.</dd></div><div class="feathers"><dt>Penas inferidas</dt><dd>Propostas por parentesco.<br>Não são penas fossilizadas de Utahraptor.</dd></div><div class="choices"><dt>Escolhas artísticas</dt><dd>Cores, tecidos moles e pose.<br>A aparência exata continua incerta.</dd></div></dl>
@@ -1164,38 +1165,56 @@ function setJurMenu(on) { jurassicoMenu.hidden = !on; jurassicoStop.setAttribute
 jurassicoStop.addEventListener('click', () => { const on = jurassicoMenu.hidden; setCarnianoMenu(false); setJurMenu(on); if(on) jurassicoMenu.querySelector('button').focus(); });
 document.addEventListener('click', e => { if (!jurassicoMenu.contains(e.target) && !jurassicoStop.contains(e.target)) setJurMenu(false); });
 
-/* Utahraptor: duas representações sem encaixe anatômico; fade curto entre elas. */
+/* Utahraptor: sobreposição breve entre poses diferentes; somente troca manual.
+   As duas camadas ficam montadas e decodificadas. Um único progresso controla
+   opacidades complementares, inclusive ao inverter a troca no meio. */
 const utahSkeleton = $('#utahSkeleton'), utahLife = $('#utahLife');
 const utahSkeletonButton = $('#utahSkeletonButton'), utahLifeButton = $('#utahLifeButton'), utahNote = $('#utahNote');
-let utahView = 'skeleton', utahChanging = false;
+const utahImageLabel = $('#utahImageLabel');
+const utahMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const utahImagesReady = Promise.all([utahSkeleton, utahLife].map(layer => {
+  const img = layer.querySelector('img');
+  return img.decode().then(() => true, () => false);
+}));
+let utahProgress = 0, utahRaf = 0, utahRequest = 0;
+function drawUtah(progress) {
+  utahProgress = progress;
+  utahSkeleton.style.opacity = String(1 - progress);
+  utahLife.style.opacity = String(progress);
+}
 function commitUtah(next) {
-  utahView = next;
   const life = next === 'life';
-  utahSkeleton.hidden = life;
-  utahLife.hidden = !life;
+  utahSkeleton.setAttribute('aria-hidden', String(life));
+  utahLife.setAttribute('aria-hidden', String(!life));
   utahSkeletonButton.setAttribute('aria-pressed', String(!life));
   utahLifeButton.setAttribute('aria-pressed', String(life));
+  utahImageLabel.innerHTML = life
+    ? 'Reconstrução artística<span>Fred Wierum · 2017</span>'
+    : 'Montagem de moldes · recorte<span>Museu de Paleontologia da BYU</span>';
   utahNote.innerHTML = life
     ? '<strong>Aparência proposta.</strong> Penas inferidas por parentesco; cor e detalhes são escolhas do artista.'
     : '<strong>Garra curva, função em estudo.</strong> Montagem de moldes; veja a fotografia original nos créditos.';
 }
 async function setUtah(next) {
-  if (next === utahView || utahChanging) return;
-  if (reduced) { commitUtah(next); return; }
-  utahChanging = true;
-  const leaving = utahView === 'life' ? utahLife : utahSkeleton;
-  const entering = next === 'life' ? utahLife : utahSkeleton;
-  leaving.style.opacity = '0';
-  await wait(220);
-  leaving.hidden = true;
-  leaving.style.opacity = '1';
-  entering.hidden = false;
-  entering.style.opacity = '0';
-  void entering.offsetWidth;
+  const request = ++utahRequest;
+  const ready = await utahImagesReady;
+  if (request !== utahRequest) return;
+  // Em falha de carregamento, conservar a representação anterior.
+  if (!ready.every(Boolean)) return;
+  cancelAnimationFrame(utahRaf);
   commitUtah(next);
-  entering.style.opacity = '1';
-  await wait(280);
-  utahChanging = false;
+  const target = next === 'life' ? 1 : 0, from = utahProgress;
+  const duration = 480 * Math.abs(target - from);
+  if (utahMotion.matches || duration < 16) { drawUtah(target); return; }
+  const start = performance.now();
+  function step(time) {
+    if (request !== utahRequest) return;
+    if (utahMotion.matches) { drawUtah(target); return; }
+    const k = Math.min(1, (time - start) / duration), ease = k * k * (3 - 2 * k);
+    drawUtah(from + (target - from) * ease);
+    if (k < 1) utahRaf = requestAnimationFrame(step);
+  }
+  utahRaf = requestAnimationFrame(step);
 }
 utahSkeletonButton.addEventListener('click', () => setUtah('skeleton'));
 utahLifeButton.addEventListener('click', () => setUtah('life'));
