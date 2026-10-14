@@ -1,6 +1,6 @@
-# Psittacosaurus no Cretáceo · plano, sem implementação
+# Psittacosaurus no Cretáceo · plano e integração aprovada
 
-Atualização em 13/10/2026: Utahraptor foi integrado como primeira cena do Cretáceo Inferior. A proposta de Psittacosaurus abaixo permanece para uma cena posterior; ainda não foi implementada.
+Atualização em 14/10/2026: a base `48437a4` inclui Utahraptor e Yutyrannus aprovados. A integração de Psittacosaurus, depois de Yutyrannus, foi **validada pelo usuário**, incluindo o recorte do modelo de pesquisa. Publicação autorizada sem nova revisão de design. A ligação agora parte dos filamentos do Yutyrannus para a pele escamosa e a pesquisa sobre pigmentação de SMF R 4970. A maquete de 12/10 foi reaproveitada, com tipografia, régua, navegação e composição adaptadas ao site atual. [Pesquisa e créditos da integração](PSITTACOSAURUS-FONTES.md). O plano original abaixo documenta o ponto de partida.
 
 Proposta: **Psittacosaurus sp., exemplar SMF R 4970: “A pele também deixou pistas.”** A ligação parte da última cena jurássica: diferentes depósitos preservam diferentes informações. Na Carnegie Quarry, ossos e madeira; no registro de Jehol, um caso de pele e pigmentação. É mudança de lugar, tempo e tipo de evidência; não sugere que a passagem entre períodos criou essa preservação ou extinguiu todos os animais anteriores.
 
