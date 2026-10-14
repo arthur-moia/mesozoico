@@ -12,6 +12,10 @@
 !/tools/conferir-interacoes.cjs
 !/tools/preview.py
 !/tools/conferir-utahraptor.cjs
+!/tools/conferir-yutyrannus.cjs
+# Fontes vetoriais e imagens rejeitadas do patch ficam só como referência local.
+/site/assets/cretaceo/yutyrannus-esqueleto.webp
+/site/assets/cretaceo/yutyrannus-vida.webp
 /site/capturas/
 /site/estudos-movimento/
 /site/AVALIAR*.html

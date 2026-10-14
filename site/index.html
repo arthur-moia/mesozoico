@@ -697,6 +697,93 @@ body[data-scene="cretaceo-utahraptor"]{--ground:#dedbce}
 @media(max-width:370px){#utahExhibit .utah-stage{height:210px}}
 @media(prefers-reduced-motion:reduce){#utahExhibit .utah-skeleton,#utahExhibit .utah-life{transition:none}}
 
+/* ---------- Cretáceo Inferior · Yutyrannus: folhelho escuro e frio; o animal ocupa a largura toda ---------- */
+body[data-scene="cretaceo-yutyrannus"],#s-cretaceo-yutyrannus{--ground:#141a1f}
+body[data-scene="cretaceo-yutyrannus"] .hud-top{background:linear-gradient(#141a1f 78%,transparent)}
+#yutExhibit{--y-ink:#efeee9;--y-2:#b9bdb8;--y-3:#8b9290;--y-line:rgba(239,238,233,.16);--y-bone:#ece5d4;max-width:1600px;margin:0 auto;padding:0 var(--gr) 32px var(--gl);color:var(--y-ink)}
+#yutExhibit a{color:inherit;text-underline-offset:3px}
+#yutExhibit .yut-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap}
+#yutExhibit .yut-eyebrow{font:700 11px/1.3 var(--text);letter-spacing:.12em;text-transform:uppercase;color:var(--y-2)}
+#yutExhibit h2{font:800 clamp(64px,9.6vw,150px)/.84 var(--display);letter-spacing:-.065em;margin:12px 0 0 -.04em}
+#yutExhibit .yut-bin{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin-top:clamp(18px,2.2vw,30px);color:var(--y-2);font-size:var(--t-small)}
+#yutExhibit .yut-bin .sci{color:var(--y-ink)}
+#yutExhibit .yut-stats{display:flex;gap:clamp(22px,3.2vw,52px);padding-bottom:4px}
+#yutExhibit .yut-stats dd{margin:0}
+#yutExhibit .yut-stats .n{font:800 clamp(36px,3.8vw,58px)/.95 var(--display);letter-spacing:-.045em;font-variant-numeric:lining-nums}
+#yutExhibit .yut-stats .n small{font-size:.42em;font-weight:700;letter-spacing:0;margin-left:3px}
+#yutExhibit .yut-stats .l{margin:7px 0 3px;color:var(--y-2);font-size:12px;line-height:1.3;max-width:15ch}
+#yutExhibit .yut-stage{position:relative;margin-top:clamp(6px,1.6vh,20px)}
+#yutExhibit .yut-box{position:relative;width:100%;aspect-ratio:2640/1023;isolation:isolate;background:#141a1f}
+#yutExhibit .yut-layer{position:absolute;inset:0;pointer-events:none;will-change:clip-path}
+#yutExhibit .yut-box img{position:absolute;display:block;pointer-events:none;user-select:none;height:auto}
+#yutExhibit .yut-skel img{width:95%;left:2.5%;top:18%}
+#yutExhibit .yut-life img{width:95%;left:2.5%;top:13%}
+#yutExhibit .yut-short-credit{position:absolute;top:0;left:63.5%;right:0;font-size:11px;line-height:1.5;color:var(--y-2);margin:0;max-width:95ch}
+#yutExhibit .yut-scale{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:-1}
+#yutExhibit .yut-scale .ruler path{stroke:var(--y-3);stroke-width:2;fill:none;vector-effect:non-scaling-stroke}
+#yutExhibit .yut-scale .human{fill:#2c353c;stroke:#6f7b80;stroke-width:1.2;vector-effect:non-scaling-stroke}
+#yutExhibit .yut-human-l{position:absolute;left:10.2%;top:68%;font:700 12px/1 var(--display);color:var(--y-2);white-space:nowrap}
+#yutExhibit .yut-ticks{position:absolute;left:0;right:0;top:92.1%;height:14px}
+#yutExhibit .yut-ticks i{position:absolute;transform:translateX(-50%);font:700 11px/1 var(--display);font-style:normal;color:var(--y-3);white-space:nowrap}
+#yutExhibit .yut-ticks i:last-child{color:var(--y-ink)}
+#yutExhibit .yut-wipe{position:absolute;width:1px;margin-left:-.5px;background:rgba(236,229,212,.8);opacity:0;pointer-events:none;z-index:2}
+#yutExhibit .yut-mark{position:absolute;z-index:3;width:28px;height:28px;margin:-14px 0 0 -14px;display:grid;place-items:center;border-radius:50%;border:1.5px solid var(--y-bone);background:#141a1f;color:var(--y-ink);font:800 12px/1 var(--display);cursor:pointer;padding:0;transition:background .2s,color .2s}
+#yutExhibit .yut-mark::after{content:"";position:absolute;left:50%;top:100%;width:1.5px;height:12px;background:var(--y-bone);opacity:.7}
+#yutExhibit .yut-mark:hover{background:var(--y-bone);color:#141a1f}
+#yutExhibit .yut-read{position:absolute;left:63.5%;right:0;top:46%;z-index:3}
+#yutExhibit .yut-read h3{font:700 clamp(21px,1.85vw,29px)/1.12 var(--display);letter-spacing:-.035em;max-width:20ch}
+#yutExhibit .yut-read h3 span{display:block;margin-top:10px;font:400 clamp(14px,1.08vw,16px)/1.45 var(--text);letter-spacing:0;color:var(--y-2);max-width:40ch}
+#yutExhibit .yut-legend{display:grid;grid-template-columns:repeat(3,minmax(0,auto));justify-content:start;gap:6px 20px;margin-top:16px}
+#yutExhibit .yut-legend li{display:grid;grid-template-columns:18px auto;column-gap:7px;font-size:12px;line-height:1.35;font-weight:600}
+#yutExhibit .yut-legend li span{grid-column:2}
+#yutExhibit .yut-legend li b{display:inline-grid;place-items:center;flex:none;width:18px;height:18px;border-radius:50%;background:var(--y-bone);color:#141a1f;font:800 10px/1 var(--display);transform:translateY(-1px)}
+#yutExhibit .yut-legend li span{display:block;color:var(--y-3);font-weight:400}
+#yutExhibit .yut-bar{display:flex;align-items:center;gap:14px 28px;margin-top:4px;flex-wrap:wrap}
+#yutExhibit .yut-switch{display:flex;gap:2px;padding:3px;border:1px solid rgba(239,238,233,.32);border-radius:28px;flex:none}
+#yutExhibit .yut-switch button{min-height:42px;padding:9px 19px;border:0;border-radius:23px;background:transparent;color:var(--y-ink);font:600 13px/1 var(--text);cursor:pointer}
+#yutExhibit .yut-switch button[aria-pressed="true"]{background:var(--y-bone);color:#141a1f}
+#yutExhibit .yut-cap{flex:1 1 300px;color:var(--y-2);font-size:13px;line-height:1.45;max-width:62ch}
+#yutExhibit .yut-cap b{color:var(--y-ink);font-weight:600}
+#yutExhibit .yut-lens{display:inline-flex;align-items:center;gap:9px;padding:9px 15px 9px 11px;min-height:42px;border:1.5px solid var(--y-ink);border-radius:999px;background:none;color:var(--y-ink);font:600 var(--t-label)/1.1 var(--text);cursor:pointer;flex:none;margin-left:auto}
+#yutExhibit .yut-lens svg{width:16px;height:16px}
+#yutExhibit .yut-lens[aria-expanded="true"] .v{display:none}
+#yutExhibit .yut-lens:hover{background:var(--y-ink);color:#141a1f}
+#yutExhibit .yut-ev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px clamp(20px,3vw,48px);margin-top:26px;padding-top:22px;border-top:1px solid var(--y-line);animation:fade .4s ease both}
+#yutExhibit .yut-ev h3{margin-bottom:8px}
+#yutExhibit .yut-ev h3 .ev{font:700 var(--t-small)/1.2 var(--display);color:var(--y-ink)}
+#yutExhibit .yut-ev li{font-size:var(--t-small);line-height:1.5;color:var(--y-2);padding:3px 0}
+#yutExhibit .yut-ev li b{color:var(--y-ink);font-weight:500}
+#yutExhibit .yut-credit{grid-column:1/-1;max-width:96ch;color:var(--y-3);font-size:12.5px;line-height:1.6}
+@media (max-width:1180px) and (min-aspect-ratio:1/1){#yutExhibit .yut-read{position:static;margin-top:12px}#yutExhibit .yut-read h3{max-width:none}}
+@media (max-aspect-ratio:1/1),(max-width:760px) and (min-height:501px){
+  #yutExhibit{padding-bottom:24px}
+  #yutExhibit .yut-head{display:block}
+  #yutExhibit .yut-eyebrow{font-size:10px;letter-spacing:.1em}
+  #yutExhibit h2{font-size:clamp(52px,16.4vw,96px);margin-top:10px}
+  #yutExhibit .yut-bin{font-size:14px;margin-top:10px}
+  #yutExhibit .yut-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+  #yutExhibit .yut-stats .n{font-size:clamp(28px,8.6vw,40px)}
+  #yutExhibit .yut-stats .l{font-size:11.5px}
+  #yutExhibit .yut-stage{margin:22px calc(-1 * var(--gr)) 0 calc(-1 * var(--gl))}
+  #yutExhibit .yut-box{width:100%}
+  #yutExhibit .yut-mark{width:24px;height:24px;margin:-12px 0 0 -12px;font-size:11px}
+  #yutExhibit .yut-mark::after{height:7px}
+  #yutExhibit .yut-human-l{font-size:10px;top:42%}
+  #yutExhibit .yut-ticks i{font-size:9.5px}
+  #yutExhibit .yut-read{position:static;padding:18px var(--gr) 0 var(--gl)}
+  #yutExhibit .yut-read h3{font-size:clamp(22px,6.4vw,28px);max-width:none}
+  #yutExhibit .yut-legend{grid-template-columns:1fr;gap:9px;margin-top:16px}
+  #yutExhibit .yut-legend li{display:block;padding-left:25px;position:relative}
+  #yutExhibit .yut-legend li b{position:absolute;left:0;top:0}
+  #yutExhibit .yut-legend li span{display:inline;margin-left:6px}
+  #yutExhibit .yut-bar{display:grid;padding:16px var(--gr) 0 var(--gl);gap:12px}
+  #yutExhibit .yut-short-credit{position:static;padding:12px var(--gr) 0 var(--gl)}
+  #yutExhibit .yut-switch{display:grid;grid-template-columns:1fr 1fr}
+  #yutExhibit .yut-lens{margin:2px 0 0;justify-self:start}
+  #yutExhibit .yut-ev{grid-template-columns:1fr;gap:20px}
+}
+@media (max-height:500px) and (min-aspect-ratio:1/1){#yutExhibit h2{font-size:64px}#yutExhibit .yut-read{position:static;margin-top:10px}}
+@media (prefers-reduced-motion:reduce){#yutExhibit .yut-ev{animation:none}}
 </style>
 </head>
 <body>
@@ -933,6 +1020,76 @@ body[data-scene="cretaceo-utahraptor"]{--ground:#dedbce}
         <details class="utah-sources"><summary>Evidências, fontes e créditos completos</summary><p><span class="ev hip">Reconstrução</span> Os fósseis de Utahraptor são incompletos. A grande garra pedal e elementos cranianos e pós-cranianos fundamentam a identificação; isso não significa que exista um esqueleto inteiro, articulado, igual ao desenho. A nova peça é uma reconstrução ilustrada original, produzida para MESOZOICO com assistência de IA e conferência visual da anatomia geral. Continuidade da coluna e da cauda, caixa torácica, lados ausentes, partes do crânio, articulações e pose foram completados ou interpretados por comparação. Os tons não constituem um mapa de preservação. Não é fotografia nem a montagem de moldes da BYU, e não serve para medir ou identificar cada osso. <a href="UTAHRAPTOR-ESQUELETO.md">Ler a base científica e a conferência anatômica</a>. <button class="ev fato" type="button" data-src="cretaceo-utahraptor:montagem">Ver fonte</button></p><p><span class="ev hip">Hipótese</span> A grande garra do segundo dedo é conhecida, mas sua função não é observada diretamente nos fósseis. Estudos sobre dromaeossaurídeos investigam seu possível papel na contenção de presas; não demonstram uma única forma de uso por Utahraptor. <button class="ev hip" type="button" data-src="cretaceo-utahraptor:garra">Ver estudo</button></p><p><span class="ev hip">Hipótese</span> Penas são inferidas por parentesco com outros dromaeossaurídeos que preservaram evidências delas. As cores, a distribuição exata da cobertura e a pose são escolhas da reconstrução de Fred Wierum, criada em 2017 e revista no arquivo em 2018. As duas ilustrações têm enquadramentos próprios; a aproximação editorial não estabelece encaixe anatômico ponto a ponto. <button class="ev hip" type="button" data-src="cretaceo-utahraptor:aparencia">Ver fontes</button></p><p><span class="ev est">Estimativa</span> A cena situa Utahraptor no Cretáceo Inferior. A posição aproximada da parada na régua não data a ilustração nem um indivíduo. Atribuições para as rochas do membro Yellow Cat divergem entre estudos; uma medida geológica não deve ser aplicada diretamente a um indivíduo representado. <button class="ev est" type="button" data-src="cretaceo-utahraptor:tempo">Ver contexto</button></p><p>Esqueleto ilustrado: contribuição original de MESOZOICO, assistida por IA; direitos eventualmente existentes dedicados por <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0</a>. PNG integral transparente, sem deformação, espelhamento ou retoque de ossos fotografados. A conferência visual não equivale a validação osteológica especializada. Reconstrução em vida de Fred Wierum: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, arquivo original mantido; apresentação multiply sobre o fundo mineral. Como evidência complementar, permanece a <a href="assets/cretaceo/utahraptor-montagem-original.jpg" target="_blank" rel="noopener">fotografia integral de Jaren Wilkey / BYU (2018)</a>, <a href="https://commons.wikimedia.org/wiki/File:BYU_Utahraptor_skeletal_mount.jpg" target="_blank" rel="noopener">página original</a>, CC BY-SA 4.0. Ela mostra uma montagem de moldes, não um original completo; peças completadas e indivíduos não são discriminados na ficha. Não é a base fotográfica da nova ilustração.</p></details>
       </article></div>
     </section>
+    <section class="scene" id="s-cretaceo-yutyrannus" data-id="cretaceo-yutyrannus" data-tone="dark" aria-labelledby="t-cretaceo-yutyrannus">
+      <div class="scroll"><article id="yutExhibit">
+        <header class="yut-head">
+          <div class="yut-title">
+            <p class="yut-eyebrow">Cretáceo Inferior · Tyrannosauroidea</p>
+            <h2 id="t-cretaceo-yutyrannus" tabindex="-1">Yutyrannus</h2>
+            <p class="yut-bin"><span class="sci">Yutyrannus huali</span> · Liaoning, China <button class="ev fato" type="button" data-src="cretaceo-yutyrannus:onde">Fato</button></p>
+          </div>
+          <dl class="yut-stats">
+            <div><dt class="sr">Idade</dt><dd class="n">≈125</dd><dd class="l">milhões de anos atrás</dd><dd><button class="ev est" type="button" data-src="cretaceo-yutyrannus:idade">Estimativa</button></dd></div>
+            <div><dt class="sr">Comprimento</dt><dd class="n">≈9<small>m</small></dd><dd class="l">de comprimento</dd><dd><button class="ev est" type="button" data-src="cretaceo-yutyrannus:tamanho">Estimativa</button></dd></div>
+            <div><dt class="sr">Fêmur</dt><dd class="n">85<small>cm</small></dd><dd class="l">de fêmur, no maior exemplar</dd><dd><button class="ev fato" type="button" data-src="cretaceo-yutyrannus:femur">Fato</button></dd></div>
+          </dl>
+        </header>
+        <figure class="yut-stage" id="yutStage" data-view="life">
+          <div class="yut-box" id="yutBox">
+            <div class="yut-layer yut-skel" id="yutSkel"><img src="assets/cretaceo/yutyrannus-esqueleto-revisado.png" width="2172" height="724" decoding="async" alt="Ilustração esquelética interpretativa de Yutyrannus huali, cabeça à esquerda, crista baixa, mãos de três dedos, costelas e cauda longa. Partes articuladas e completadas por interpretação; não é um fóssil fotografado."></div>
+            <div class="yut-layer yut-life" id="yutLife"><img src="assets/cretaceo/yutyrannus-vida-original.png" width="2172" height="724" decoding="async" alt="Ilustração original de Yutyrannus huali em vida, com assistência de IA: crista baixa, mãos de três dedos e cobertura filamentosa variável. Cores, densidade, exposição da pele, pose e completamentos são interpretativos."></div>
+            <svg class="yut-scale" viewBox="0 0 2640 1023" aria-hidden="true"><g class="ruler" transform="translate(0 110)"><path d="M40.0,822.0 H2560.0"/><path d="M40.0,822.0 v18"/><path d="M320.0,822.0 v12"/><path d="M600.0,822.0 v12"/><path d="M880.0,822.0 v12"/><path d="M1160.0,822.0 v12"/><path d="M1440.0,822.0 v12"/><path d="M1720.0,822.0 v12"/><path d="M2000.0,822.0 v12"/><path d="M2280.0,822.0 v12"/><path d="M2560.0,822.0 v18"/></g><g class="human" transform="translate(-1243 134)"><path d="M1468.0,382.8 L1501.6,394.0 L1511.4,413.6 L1516.2,486.4 L1519.0,564.8 L1512.2,576.0 L1507.8,508.8 L1502.2,452.8 L1496.6,514.4 L1499.4,548.0 L1496.0,660.0 L1489.8,774.8 L1496.0,800.0 L1462.4,800.0 L1465.2,774.8 L1463.8,660.0 L1454.0,559.2 L1454.0,559.2 L1444.2,660.0 L1442.8,774.8 L1445.6,800.0 L1412.0,800.0 L1418.2,774.8 L1412.0,660.0 L1408.6,548.0 L1411.4,514.4 L1405.8,452.8 L1400.2,508.8 L1395.8,576.0 L1389.0,564.8 L1391.8,486.4 L1396.6,413.6 L1406.4,394.0 L1440.0,382.8Z"/><circle cx="1454.0" cy="342.2" r="30.8"/></g></svg>
+            <span class="yut-wipe" id="yutLine" aria-hidden="true"></span>
+            <span class="yut-human-l" aria-hidden="true">1,75 m</span>
+            <span class="yut-ticks" aria-hidden="true"><i style="left:1.52%">0</i><i style="left:12.12%">1</i><i style="left:22.73%">2</i><i style="left:33.33%">3</i><i style="left:43.94%">4</i><i style="left:54.55%">5</i><i style="left:65.15%">6</i><i style="left:75.76%">7</i><i style="left:86.36%">8</i><i style="left:96.97%">9 m</i></span>
+            <button class="yut-mark" type="button" style="left:18%;top:29%" data-src="cretaceo-yutyrannus:penas" aria-label="1: filamentos no pescoço e no braço, exemplar ELDM V1001. Abrir fonte">1</button>
+            <button class="yut-mark" type="button" style="left:39%;top:31%" data-src="cretaceo-yutyrannus:penas" aria-label="2: filamentos junto ao quadril e ao pé, exemplar ZCDM V5001. Abrir fonte">2</button>
+            <button class="yut-mark" type="button" style="left:83%;top:34%" data-src="cretaceo-yutyrannus:penas" aria-label="3: filamentos na parte final da cauda, exemplar ZCDM V5000. Abrir fonte">3</button>
+          </div>
+          <div class="yut-read">
+            <h3>Penas num predador de nove metros.<span>Não é licença artística: os filamentos ficaram na rocha. A cor, essa ninguém viu.</span></h3>
+            <ol class="yut-legend" aria-label="Onde a rocha guardou filamentos">
+              <li><b>1</b>Pescoço e braço<span>mais de 20 cm no pescoço · jovem</span></li>
+              <li><b>2</b>Quadril e pé<span>exemplar menor</span></li>
+              <li><b>3</b>Cauda<span>15 cm ou mais · maior exemplar</span></li>
+            </ol>
+          </div>
+          <figcaption class="yut-bar">
+            <span class="yut-switch" id="yutSwitch" role="group" aria-label="Figura do Yutyrannus"><button type="button" data-view="skel" aria-pressed="false">Esqueleto</button><button type="button" data-view="life" aria-pressed="true">Em vida</button></span>
+            <span class="yut-cap" id="yutCap" aria-live="polite"><b>Esqueleto e animal em vida.</b> Ilustrações interpretativas, com poses diferentes e sem encaixe anatômico exato.</span>
+            <button class="yut-lens" type="button" id="yutLens" aria-expanded="false" aria-controls="yutEv"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M5 8h6"/><path class="v" d="M8 5v6"/></svg><span class="lbl">Mostrar evidências e incertezas</span></button>
+          </figcaption>
+          <p class="yut-short-credit">Ilustrações originais: MESOZOICO · assistência de IA · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0</a>. Duas representações interpretativas; poses diferentes.</p>
+        </figure>
+        <section class="yut-ev" id="yutEv" hidden aria-label="Evidências e incertezas">
+          <div>
+            <h3><button class="ev fato" type="button" data-src="cretaceo-yutyrannus:exemplares">O que a rocha mostra</button></h3>
+            <ul>
+              <li><b>Três esqueletos quase completos,</b> descritos em 2012 por Xu Xing e colegas. O maior tem fêmur de 85 cm.</li>
+              <li><b>Filamentos preservados</b> no pescoço, no braço, junto ao quadril e ao pé, e na cauda, em exemplares diferentes.</li>
+              <li><b>Uma crista rugosa e cheia de aberturas</b> sobre o focinho, um dos traços que definem a espécie.</li>
+            </ul>
+          </div>
+          <div>
+            <h3><button class="ev hip" type="button" data-src="cretaceo-yutyrannus:isolamento">O que se deduz</button></h3>
+            <ul>
+              <li><b>Uma cobertura extensa,</b> provavelmente isolante. Os autores lembram que o intervalo foi frio para o Cretáceo.</li>
+              <li><b>Cerca de 9 m e 1,4 t</b> para o maior exemplar, por cálculo a partir dos ossos.</li>
+              <li><b>Parente distante do T. rex,</b> num ramo mais antigo da mesma linhagem; não é seu ancestral.</li>
+            </ul>
+          </div>
+          <div>
+            <h3><button class="ev inc" type="button" data-src="cretaceo-yutyrannus:cor">O que ninguém sabe</button></h3>
+            <ul>
+              <li><b>A cor e o padrão.</b> Cor, padrão e distribuição da cobertura na ilustração são propostas, não resultados de análise de pigmentos.</li>
+              <li><b>Se a cobertura era contínua.</b> Só partes dela ficaram preservadas; os autores não descartam que fosse restrita.</li>
+              <li><b>A idade exata.</b> ≈125 milhões de anos é o contexto da formação, não uma data medida nos esqueletos.</li>
+            </ul>
+          </div>
+          <p class="yut-credit">Ilustrações originais: MESOZOICO, 2026, com assistência de IA. Eventuais direitos do projeto dedicados por <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0</a>. Orientadas pelas medidas e fotografias de Xu e colegas (2012), suplemento. Não são fotografias de fósseis, moldes ou inventários dos ossos preservados. Crânio, mãos/dedos, braços, cintura, pernas/pés, costelas e cauda foram inspecionados visualmente; isso não equivale a revisão por osteólogo. Articulação, elementos encobertos, séries completas e tecidos moles são interpretativos. Cor, padrão, densidade e distribuição completa dos filamentos não são conhecidos. Fundo isolado com ferramenta de imagem; os contornos foram novamente conferidos, sem promessa de reprodução pixel a pixel de uma etapa anterior. Sem espelhamento ou deformação na página, apenas escala proporcional e posição próprias para cada estado. A linha revela duas representações da espécie, sem encaixe anatômico. A régua e a pessoa de 1,75 m são contextuais, não instrumentos de medição. <a href="YUTYRANNUS-FONTES.md">Fontes, candidatas, autoria e limites</a>. <button class="ev hip" type="button" data-src="cretaceo-yutyrannus:ilustracao">Ver fonte</button></p>
+        </section>
+      </article></div>
+    </section>
 
   </main>
 
@@ -945,6 +1102,7 @@ body[data-scene="cretaceo-utahraptor"]{--ground:#dedbce}
     <div class="controls">
       <button class="navbtn" type="button" id="prev" aria-label="Cena anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M14 8H3M7 4 3 8l4 4"/></svg><span class="lbl">Voltar</span></button>
       <nav class="tl" aria-label="Linha do tempo da viagem">
+<div id="cretaceoMenu" class="carniano-menu cretaceo-menu" hidden aria-label="Cenas do Cretáceo Inferior"><button type="button" data-go="9">Utahraptor · Cretáceo Inferior</button><button type="button" data-go="10">Yutyrannus · ≈125 Ma</button></div>
 <div id="morrisonMenu" class="carniano-menu morrison-menu" hidden aria-label="Cenas de cerca de 150 milhões de anos"><button type="button" data-go="7">Stegosaurus · Sophie · ≈150 Ma</button><button type="button" data-go="8">Tronco e ossos · Utah · ≈150 Ma</button></div>
         <div id="jurassicoMenu" class="carniano-menu jur-menu" hidden aria-label="Cenas do Jurássico Inicial"><button type="button" data-go="5">Rastros · ≈201 Ma</button><button type="button" data-go="6">Saurópodes na Patagônia · ≈179 Ma</button></div>
         <div id="carnianoMenu" class="carniano-menu" hidden aria-label="Cenas de cerca de 230 milhões de anos"><button type="button" data-go="2">Eoraptor</button><button type="button" data-go="3">O mundo ao redor do Eoraptor</button></div>
@@ -1006,7 +1164,8 @@ const STOPS = [
   { id: "jurassico-gigantes", age: 179, name: "Na Patagônia, os saurópodes ganham espaço", period: "Jurássico Inicial · saurópodes", now: "cerca de 179 milhões de anos atrás" },
   { id: "jurassico-sophie", age: 150, name: "Stegosaurus · Sophie", period: "Jurássico Superior · Sophie", now: "cerca de 150 milhões de anos atrás, contexto aproximado" },
   { id: "jurassico-mundo", age: 150, name: "As rochas guardaram mais que dinossauros", period: "Jurássico Superior", now: "cerca de 150 milhões de anos atrás" },
-  { id: "cretaceo-utahraptor", age: 130, name: "Utahraptor", period: "Cretáceo Inferior · Utahraptor", now: "posição aproximada no Cretáceo Inferior; não é a idade da montagem" }
+  { id: "cretaceo-utahraptor", age: 130, name: "Utahraptor", period: "Cretáceo Inferior · Utahraptor", now: "posição aproximada no Cretáceo Inferior; não é a idade da montagem" },
+  { id: "cretaceo-yutyrannus", age: 125, name: "Yutyrannus", period: "Cretáceo Inferior · Yutyrannus", now: "cerca de 125 milhões de anos atrás, contexto aproximado da formação" }
 ];
 const TOTAL = 251.902;
 const pct = age => ((TOTAL - age) / TOTAL) * 100;
@@ -1053,6 +1212,16 @@ const srcBody = $("#srcBody");
 SRC["jurassico-sophie"] = [["registro", "fato", "Sophie, NHMUK PV R36730, Stegosaurus stenops, Red Canyon Ranch Quarry perto de Shell, Wyoming, Formação Morrison. O indivíduo não era plenamente maduro; a montagem tem partes completadas.", "Maidment, Brassey e Barrett (2015), PLOS ONE 10:e0138352.", "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0138352"], ["preservacao", "hip", "Articulação, moluscos de água doce e sedimentos finos sustentam soterramento rápido em água parada, possivelmente lagoa ou meandro abandonado. É interpretação tafonômica.", "Maidment, Brassey e Barrett (2015).", "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0138352"], ["placas", "hip", "Placas ósseas são conhecidas; exibição e troca de calor são hipóteses de função. Cor e tecidos moles da reconstrução são propostas artísticas.", "Hayashi et al. (2012), Palaeontology, DOI 10.1111/j.1475-4983.2011.01122.x.", "https://doi.org/10.1111/j.1475-4983.2011.01122.x"], ["idade", "est", "≈150 Ma contextualiza o Jurássico Superior, sem datar o indivíduo. A correlação estratigráfica é provável e limitada pela exposição e falhas. Sophie é de Wyoming; o depósito seguinte é de Utah.", "Maidment, Brassey e Barrett (2015).", "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0138352"], ["foto", "fato", "Fotografia integral Maidment e colaboradores / NHM, CC BY 4.0. Espelhamento CSS e multiply sobre fundo mineral alteram a apresentação; arquivo intacto.", "Figura 1A de Maidment et al. (2015).", "https://commons.wikimedia.org/wiki/File:Stegosaurus_stenops_mounted_skeleton.jpg"], ["vida", "hip", "Fred Wierum (2022), reconstrução identificada como Sophie, CC BY-SA 4.0. Original integral, composição CSS multiply, apresentação sob a mesma licença. Poses diferentes: a linha não estabelece correspondência anatômica ponto a ponto.", "Ficha individual, autoria e licença; originais acessíveis nos detalhes.", "https://commons.wikimedia.org/wiki/File:Stegosaurus_stenops_Life_Reconstruction.png"]];
 
 SRC["cretaceo-utahraptor"] = [["montagem", "hip", "A peça principal é uma reconstrução esquelética ilustrada original de Utahraptor, assistida por IA; não é fotografia, molde ou inventário validado de um espécime. Material incompleto orienta a anatomia geral; coluna e cauda completas, caixa torácica, lados ausentes, partes do crânio, articulações e pose exigem completamento por comparação. Os tons não codificam preservação. A fotografia BYU permanece nos detalhes como documento complementar de uma montagem de moldes.", "MESOZOICO, 2026; contribuição original assistida por IA, PNG integral transparente, reutilização liberada por dedicação CC0 dos direitos eventualmente existentes. Base: Kirkland, Burge e Gaston (1993, resumo consultado); Kirkland e Madsen (2007); registros do Utah Geological Survey. <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\">CC0</a>. Foto complementar: Jaren Wilkey / BYU, CC BY-SA 4.0, sem mudança.", "UTAHRAPTOR-ESQUELETO.md"], ["garra", "hip", "A grande garra do segundo dedo é conhecida. Seu possível uso na contenção de presas é uma hipótese de estudos sobre dromaeossaurídeos, sobretudo Deinonychus, não uma observação de Utahraptor caçando.", "Fowler et al. (2011), PLOS ONE 6:e28964.", "https://doi.org/10.1371/journal.pone.0028964"], ["aparencia", "hip", "Penas em Utahraptor são inferidas por parentesco; esta cena não mostra penas fossilizadas desse animal. A ilustração de Fred Wierum é uma interpretação de cor, cobertura, tecidos moles e pose, sem correspondência ponto a ponto com a reconstrução esquelética ilustrada.", "Fred Wierum, 2017, Wikimedia Commons, CC BY-SA 4.0. Evidência comparativa: Turner et al. (2007), Velociraptor; Lü e Brusatte (2015), Zhenyuanlong.", "https://commons.wikimedia.org/wiki/File:Utahraptor_Restoration.png"], ["tempo", "est", "A cena situa Utahraptor no Cretáceo Inferior. A posição da parada na régua é contextual e aproximada, não a idade de um osso ou da montagem. Estimativas publicadas para o membro Yellow Cat diferem; datações de rochas não devem ser aplicadas diretamente aos moldes fotografados.", "Joeckel et al. (2023), Geosciences 13:32; carta ICS 2026/06 para o limite do Cretáceo.", "https://doi.org/10.3390/geosciences13020032"]];
+SRC["cretaceo-yutyrannus"] = [["onde", "fato", "Os três exemplares são atribuídos a Batuyingzi, Beipiao, Liaoning, China. Segundo o suplemento de Xu e colegas (2012), foram adquiridos de um comerciante e a pedreira exata não foi registrada. A atribuição à Formação Yixian, no Cretáceo Inferior, é sustentada pelas características das rochas e da preservação.", "Xu, Wang, Zhang, Ma, Xing, Sullivan, Hu, Cheng e Wang (2012), A gigantic feathered dinosaur from the Lower Cretaceous of China, Nature 484:92–95. DOI 10.1038/nature10906 (texto lido).", "https://doi.org/10.1038/nature10906"],
+  ["idade", "est", "Cerca de 125 milhões de anos é o contexto da Formação Yixian, não uma data medida junto dos esqueletos. Xu e colegas situam o intervalo no Barremiano–Albiano inicial e falam em exemplares de cerca de 125 milhões de anos. Datações da formação em Liaoning ficam próximas de 125,8 milhões de anos, mas não foram feitas nas camadas destes fósseis. O Cretáceo começa há 143,1 milhões de anos (ICS 2026/06).", "Xu e colegas (2012), Nature 484:92–95 (texto lido); MacLennan e colegas (2024), PNAS, DOI 10.1073/pnas.2322875121, já usado no plano do Cretáceo; ICS, Carta Cronoestratigráfica v2026/06.", "https://doi.org/10.1038/nature10906"],
+  ["exemplares", "fato", "Holótipo ZCDM V5000: esqueleto quase completo e semiarticulado. Parátipos: ZCDM V5001, quase completo e articulado, na mesma placa; ELDM V1001, articulado e sem a cauda, pelo menos 8 anos mais jovem que o holótipo. Crânio grande e alto, com crista mediana rugosa e muito fenestrada formada pelas pré-maxilas e pelos nasais; mão de três dedos.", "Xu e colegas (2012), Nature 484:92–95, diagnose e descrição (texto lido).", "https://doi.org/10.1038/nature10906"],
+  ["femur", "fato", "O fêmur do holótipo, ZCDM V5000, mede 85 cm. É uma medida publicada; a prancha é ilustrativa e não permite medir ossos.", "Xu e colegas (2012), Nature 484:92–95 (texto lido).", "https://doi.org/10.1038/nature10906"],
+  ["tamanho", "est", "Cerca de 9 m e 1,4 t para o maior exemplar são estimativas. A massa, de cerca de 1.414 kg, vem de uma equação empírica aplicada aos ossos; os dois exemplares menores ficam em cerca de 596 e 493 kg. O comprimento de cerca de nove metros foi divulgado pela equipe na apresentação do achado. Outros métodos dão valores diferentes.", "Xu e colegas (2012), Nature 484:92–95 (texto lido); University of Alberta, Folio, abril de 2012, entrevista com Lida Xing, coautor.", "https://www.ualberta.ca/folio/2012/04/the-art-of-the-dinosaur-find.html"],
+  ["penas", "fato", "Filamentos preservados em três exemplares: no holótipo ZCDM V5000, associados às vértebras finais da cauda, com pelo menos 15 cm e cerca de 30° em relação ao eixo da cauda; em ZCDM V5001, perto da pelve e do pé; em ELDM V1001, no dorso do pescoço, com mais de 20 cm, e junto a um osso provavelmente identificado como úmero, com pelo menos 16 cm. Os números 1, 2 e 3 marcam regiões equivalentes num só desenho; os exemplares têm tamanhos diferentes.", "Xu e colegas (2012), Nature 484:92–95, descrição do tegumento e figura 2 (texto lido).", "https://doi.org/10.1038/nature10906"],
+  ["isolamento", "hip", "Os autores interpretam a cobertura como extensa e isolante, e relacionam isso a um intervalo mais frio que o resto do Cretáceo, com temperatura média anual estimada em cerca de 10 °C no oeste de Liaoning. Eles mesmos ressalvam que a plumagem está só em parte preservada e que uma distribuição restrita não pode ser descartada.", "Xu e colegas (2012), Nature 484:92–95 (texto lido).", "https://doi.org/10.1038/nature10906"],
+  ["parentesco", "fato", "Tiranossauroide basal: do mesmo grande grupo do Tyrannosaurus, num ramo mais antigo. Parentesco não é ascendência; Yutyrannus não é antepassado do T. rex.", "Xu e colegas (2012), Nature 484:92–95, análise filogenética (texto lido).", "https://doi.org/10.1038/nature10906"],
+  ["cor", "inc", "Os fósseis descritos não informam a cor nem o padrão. Os tons castanhos, o padrão e a distribuição da cobertura na nova ilustração são escolhas artísticas, não resultados de análise de pigmentos.", "Xu e colegas (2012) descrevem forma, posição e comprimento dos filamentos, não pigmentos.", ""],
+  ["ilustracao", "hip", "Duas ilustrações originais MESOZOICO (2026), com assistência de IA; CC0 1.0 para eventuais direitos do projeto. Base: medidas e fotografias de Xu et al. (2012), suplemento. Não são fotografias, moldes nem mapas dos ossos preservados. Articulação, elementos encobertos, séries completas e completamentos são interpretativos. Cores, densidade e distribuição completa dos filamentos, pele exposta e pose são propostas. Sem espelhamento ou deformação; somente escala proporcional e posição próprias. As imagens não têm encaixe anatômico: a linha conduz a passagem entre representações. Pessoa de 1,75 m e régua dão contexto, sem medir a anatomia desenhada.", "MESOZOICO, YUTYRANNUS-FONTES.md; Xu et al. (2012), informações suplementares. TotalDino foi considerado e rejeitado visualmente pelo usuário, deixando de ser recurso da cena.", "YUTYRANNUS-FONTES.md"]];
 
 function renderSources(id, focusKey) {
   const items = SRC[id] || [];
@@ -1072,7 +1241,7 @@ const prevBtn = $("#prev"), nextBtn = $("#next"), nextLbl = $("#nextLbl");
 
 const bar = $("#tlBar");
 STOPS.forEach((s, i) => {
-  if (s.id === "jurassico-rastros") return;
+  if (s.id === "jurassico-rastros" || s.id === "cretaceo-yutyrannus") return;
   if (i > 0 && s.age === STOPS[i - 1].age) return;
   const b = document.createElement("button");
   b.type = "button"; b.className = "tl-stop"; b.style.left = pct(s.age) + "%";
@@ -1094,6 +1263,11 @@ STOPS.forEach((s, i) => {
     b.removeAttribute("data-go"); b.id = "morrisonStop";
     b.setAttribute("aria-label", "Cerca de 150 milhões de anos: escolher Sophie ou tronco e ossos de Utah");
     b.setAttribute("aria-controls", "morrisonMenu"); b.setAttribute("aria-expanded", "false");
+  }
+  if (s.id === "cretaceo-utahraptor") {
+    b.removeAttribute("data-go"); b.id = "cretaceoStop";
+    b.setAttribute("aria-label", "Cretáceo Inferior: escolher Utahraptor ou Yutyrannus");
+    b.setAttribute("aria-controls", "cretaceoMenu"); b.setAttribute("aria-expanded", "false");
   }
   bar.insertBefore(b, tlPin);
 });
@@ -1223,6 +1397,88 @@ async function setUtah(next) {
 utahSkeletonButton.addEventListener('click', () => setUtah('skeleton'));
 utahLifeButton.addEventListener('click', () => setUtah('life'));
 
+/* ---------- Yutyrannus: revelação por linha entre poses diferentes ----------
+   As duas imagens decodificadas permanecem no palco, com enquadramentos independentes.
+   Máscaras complementares revelam uma figura de cada lado da linha, sem fundo vazio.
+   A linha acompanha a altura do animal, calculada a partir do alfa das duas imagens.
+   Não representa encaixe anatômico; escala, marcadores e textos ficam imóveis.
+   Primeira visita: 3,2 s no esqueleto. Depois vale a escolha manual; movimento reduzido é direto. */
+const yutSkel = $('#yutSkel'), yutLife = $('#yutLife'), yutLine = $('#yutLine'), yutStage = $('#yutStage');
+const yutBtns = [...document.querySelectorAll('#yutSwitch button')], yutCap = $('#yutCap');
+const yutLens = $('#yutLens'), yutEv = $('#yutEv');
+// União das silhuetas exibidas no quadro 2640 × 1023; arquivos originais intactos.
+const YUT_L = .033, YUT_R = .970;
+const YUT_BOUNDS = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0.3437,0.3779],[0.3324,0.3862],[0.329,0.3896],[0.3257,0.3918],[0.3211,0.3963],[0.3178,0.3997],[0.3155,0.402],[0.3121,0.4031],[0.3076,0.4121],[0.3053,0.4166],[0.3053,0.42],[0.3042,0.4234],[0.2986,0.4268],[0.2963,0.4279],[0.2963,0.4291],[0.2963,0.4313],[0.2963,0.4325],[0.2907,0.4325],[0.2884,0.4336],[0.2884,0.4336],[0.2873,0.4336],[0.2862,0.4336],[0.2805,0.4336],[0.2794,0.4336],[0.2794,0.4336],[0.2794,0.4336],[0.2783,0.4325],[0.2749,0.4325],[0.2703,0.4325],[0.2658,0.4325],[0.2647,0.4313],[0.2647,0.4313],[0.2647,0.4302],[0.2658,0.4302],[0.2658,0.4302],[0.2624,0.4291],[0.2624,0.4291],[0.2624,0.4291],[0.2624,0.4279],[0.2602,0.4279],[0.2591,0.4279],[0.2602,0.4268],[0.2579,0.4268],[0.2557,0.4268],[0.2557,0.4257],[0.2545,0.4257],[0.2523,0.4245],[0.25,0.4245],[0.2466,0.4245],[0.2444,0.4245],[0.2376,0.4234],[0.2354,0.4234],[0.2342,0.4234],[0.2342,0.4234],[0.2342,0.4234],[0.2342,0.4234],[0.2331,0.4223],[0.2308,0.4223],[0.2263,0.4223],[0.2241,0.4223],[0.2229,0.4223],[0.2229,0.4223],[0.2207,0.4223],[0.2184,0.4223],[0.2173,0.4234],[0.2139,0.4234],[0.2139,0.4234],[0.2128,0.4234],[0.2128,0.4234],[0.2105,0.4245],[0.2094,0.4245],[0.2094,0.4245],[0.2071,0.4257],[0.2071,0.4257],[0.206,0.4268],[0.2015,0.4268],[0.1992,0.4268],[0.1992,0.4279],[0.1981,0.4279],[0.1959,0.4279],[0.1913,0.4279],[0.1902,0.4279],[0.1857,0.4279],[0.1857,0.4279],[0.1902,0.4279],[0.1834,0.4276],[0.1789,0.4276],[0.1755,0.4257],[0.1733,0.4265],[0.1733,0.4276],[0.1834,0.4287],[0.1801,0.431],[0.1755,0.431],[0.1733,0.4299],[0.1676,0.4299],[0.1676,0.4299],[0.1665,0.4276],[0.1642,0.4287],[0.162,0.431],[0.1597,0.4332],[0.1575,0.4344],[0.1563,0.4344],[0.1541,0.4287],[0.162,0.4299],[0.162,0.4299],[0.1676,0.431],[0.1563,0.4321],[0.1563,0.4287],[0.1541,0.4276],[0.1609,0.4276],[0.1597,0.4242],[0.1597,0.4253],[0.1755,0.4265],[0.1733,0.4299],[0.1721,0.4299],[0.1721,0.4299],[0.171,0.4321],[0.171,0.4332],[0.1699,0.4366],[0.1699,0.44],[0.1676,0.44],[0.1676,0.4355],[0.1665,0.4378],[0.1665,0.4434],[0.1665,0.4457],[0.1654,0.4468],[0.1654,0.4434],[0.1654,0.4502],[0.1642,0.4513],[0.1642,0.4479],[0.1642,0.4513],[0.1631,0.4569],[0.1631,0.4581],[0.1642,0.4592],[0.1642,0.4626],[0.1642,0.466],[0.1846,0.4694],[0.1846,0.4705],[0.1846,0.4716],[0.1857,0.4739],[0.1857,0.4761],[0.1857,0.4795],[0.1857,0.4818],[0.1857,0.4761],[0.1868,0.659],[0.1868,0.6838],[0.1891,0.6951],[0.1891,0.6996],[0.1891,0.7041],[0.1891,0.7064],[0.1891,0.7075],[0.1902,0.7098],[0.1902,0.7109],[0.197,0.712],[0.2015,0.712],[0.2026,0.712],[0.2026,0.712],[0.2038,0.712],[0.2049,0.718],[0.206,0.7248],[0.2139,0.7282],[0.215,0.7316],[0.2162,0.735],[0.2162,0.7372],[0.215,0.7383],[0.215,0.7395],[0.2139,0.7395],[0.2139,0.7406],[0.2128,0.7406],[0.2128,0.7406],[0.2117,0.7406],[0.2117,0.7395],[0.2117,0.7395],[0.2387,0.7135],[0.2444,0.7146],[0.2444,0.7146],[0.2444,0.7146],[0.2433,0.7135],[0.2433,0.7256],[0.2433,0.7324],[0.2624,0.7346],[0.2624,0.7357],[0.2624,0.7369],[0.2613,0.7391],[0.2726,0.7391],[0.2726,0.7391],[0.2715,0.7391],[0.2715,0.7391],[0.2715,0.7158],[0.2715,0.7158],[0.2749,0.7564],[0.2783,0.7575],[0.2771,0.7587],[0.2749,0.7587],[0.2726,0.7587],[0.2715,0.7587],[0.2703,0.7575],[0.2681,0.7564],[0.267,0.7553],[0.267,0.7541],[0.2726,0.7519],[0.2715,0.7474],[0.2715,0.7429],[0.2749,0.7383],[0.2737,0.7338],[0.2726,0.7203],[0.2715,0.718],[0.2692,0.7158],[0.2681,0.709],[0.267,0.6977],[0.2658,0.6695],[0.2647,0.6571],[0.2636,0.6511],[0.2636,0.6545],[0.2624,0.659],[0.2613,0.6624],[0.2613,0.6658],[0.2602,0.6658],[0.2602,0.6398],[0.276,0.8994],[0.2749,0.9017],[0.2737,0.9017],[0.2726,0.8983],[0.2726,0.896],[0.2715,0.8949],[0.2703,0.8938],[0.2692,0.8938],[0.2692,0.8938],[0.2681,0.8938],[0.2681,0.8994],[0.2681,0.9005],[0.267,0.9017],[0.267,0.9017],[0.267,0.9017],[0.2658,0.9017],[0.2658,0.9017],[0.2658,0.9017],[0.2658,0.9017],[0.2658,0.9017],[0.2647,0.9017],[0.2647,0.9017],[0.2647,0.9017],[0.2636,0.9017],[0.2636,0.9017],[0.2636,0.9017],[0.2624,0.9017],[0.2624,0.904],[0.2613,0.904],[0.2613,0.9039],[0.2613,0.9028],[0.267,0.9028],[0.2726,0.9017],[0.2681,0.9028],[0.2681,0.9028],[0.2715,0.9039],[0.2715,0.904],[0.2703,0.904],[0.2703,0.904],[0.2703,0.904],[0.2692,0.904],[0.2692,0.904],[0.2681,0.904],[0.2681,0.904],[0.267,0.904],[0.267,0.904],[0.267,0.904],[0.267,0.904],[0.2737,0.9039],[0.2658,0.9039],[0.2658,0.9039],[0.2658,0.9028],[0.2805,0.9017],[0.2805,0.9017],[0.2805,0.9005],[0.2805,0.9005],[0.2805,0.9005],[0.2805,0.8994],[0.2805,0.8994],[0.2805,0.8994],[0.2805,0.8994],[0.2805,0.8983],[0.2794,0.8972],[0.2783,0.896],[0.2783,0.8938],[0.2783,0.887],[0.2794,0.8814],[0.2805,0.8768],[0.2794,0.8746],[0.2794,0.8622],[0.2794,0.8565],[0.2783,0.8452],[0.2783,0.8486],[0.2816,0.8509],[0.2816,0.852],[0.2816,0.8531],[0.2805,0.8531],[0.2805,0.8531],[0.2794,0.8531],[0.2794,0.852],[0.2816,0.8509],[0.2816,0.8918],[0.2816,0.8918],[0.2816,0.8896],[0.2805,0.8885],[0.2805,0.8873],[0.2805,0.8862],[0.2816,0.8839],[0.2816,0.8839],[0.2805,0.8839],[0.2805,0.8839],[0.2794,0.8839],[0.2794,0.8851],[0.2794,0.8907],[0.2816,0.8918],[0.2816,0.893],[0.2816,0.893],[0.2805,0.893],[0.2805,0.893],[0.2794,0.893],[0.2783,0.893],[0.2783,0.8918],[0.2816,0.893],[0.2816,0.893],[0.2816,0.893],[0.2805,0.893],[0.2805,0.8918],[0.2805,0.8907],[0.2805,0.8885],[0.2805,0.8873],[0.2794,0.8873],[0.2794,0.8862],[0.2794,0.9031],[0.2794,0.9031],[0.2816,0.9009],[0.2816,0.8986],[0.2816,0.8964],[0.2816,0.8964],[0.2816,0.8975],[0.2816,0.8986],[0.2816,0.8986],[0.2828,0.8986],[0.2828,0.8986],[0.2828,0.8986],[0.2828,0.8964],[0.2828,0.8964],[0.2828,0.8964],[0.2839,0.8952],[0.285,0.893],[0.2862,0.8907],[0.2862,0.8907],[0.2873,0.8896],[0.2873,0.8885],[0.2884,0.8885],[0.2884,0.8873],[0.2884,0.8862],[0.2895,0.8817],[0.2895,0.9028],[0.2895,0.9028],[0.2918,0.9017],[0.2929,0.9005],[0.2929,0.904],[0.2929,0.904],[0.2921,0.9039],[0.2921,0.9039],[0.2921,0.9028],[0.2921,0.9028],[0.2921,0.9039],[0.2933,0.904],[0.2933,0.904],[0.2933,0.904],[0.2944,0.904],[0.2944,0.904],[0.2955,0.904],[0.2966,0.904],[0.302,0.904],[0.2997,0.904],[0.3031,0.904],[0.3031,0.904],[0.2989,0.904],[0.2989,0.904],[0.2989,0.904],[0.2978,0.904],[0.2978,0.9039],[0.2978,0.9039],[0.2989,0.904],[0.2989,0.904],[0.2989,0.904],[0.3,0.9039],[0.3,0.9039],[0.311,0.9039],[0.3121,0.9028],[0.3121,0.9028],[0.3121,0.9017],[0.3132,0.9017],[0.3057,0.904],[0.3045,0.904],[0.3045,0.904],[0.3045,0.904],[0.3045,0.904],[0.3045,0.904],[0.3057,0.904],[0.3057,0.904],[0.3068,0.904],[0.3079,0.904],[0.3234,0.904],[0.3234,0.904],[0.3234,0.904],[0.3245,0.904],[0.3147,0.904],[0.3136,0.904],[0.3124,0.904],[0.3136,0.904],[0.3136,0.8986],[0.3147,0.8972],[0.3147,0.8952],[0.3158,0.8941],[0.3158,0.8941],[0.3192,0.8941],[0.3302,0.8941],[0.3302,0.8964],[0.3226,0.9009],[0.3203,0.902],[0.3203,0.9031],[0.3203,0.9031],[0.3215,0.9031],[0.3215,0.9031],[0.3215,0.9031],[0.3226,0.902],[0.3347,0.902],[0.3347,0.902],[0.3358,0.902],[0.3271,0.9009],[0.3271,0.8986],[0.3271,0.8952],[0.3271,0.8952],[0.3283,0.8952],[0.3283,0.8941],[0.3294,0.8941],[0.3392,0.893],[0.3392,0.8941],[0.3392,0.8941],[0.3328,0.8941],[0.3328,0.893],[0.3328,0.8918],[0.3328,0.8896],[0.3339,0.8806],[0.3339,0.904],[0.335,0.904],[0.3415,0.904],[0.3415,0.904],[0.3403,0.904],[0.3403,0.904],[0.3392,0.904],[0.3381,0.904],[0.3381,0.904],[0.3369,0.902],[0.3369,0.8997],[0.3358,0.8975],[0.3358,0.8896],[0.3418,0.8806],[0.3448,0.8794],[0.3448,0.8738],[0.3437,0.8241],[0.3437,0.8241],[0.3426,0.8253],[0.3426,0.8275],[0.3415,0.8332],[0.3403,0.8354],[0.3403,0.8343],[0.3392,0.5348],[0.3381,0.5348],[0.3369,0.5371],[0.3369,0.5371],[0.3347,0.5405],[0.3347,0.5416],[0.3336,0.5427],[0.3324,0.545],[0.3448,0.545],[0.3448,0.5484],[0.3448,0.5484],[0.3448,0.5439],[0.3448,0.5382],[0.3437,0.5393],[0.3437,0.5405],[0.3437,0.5405],[0.3437,0.5405],[0.3426,0.5416],[0.3426,0.5427],[0.3426,0.5439],[0.346,0.545],[0.3448,0.5472],[0.3437,0.5484],[0.3437,0.5506],[0.3437,0.5518],[0.3494,0.5348],[0.3494,0.5348],[0.3494,0.5348],[0.3494,0.5371],[0.3494,0.5393],[0.3494,0.5393],[0.3494,0.5224],[0.3494,0.5235],[0.3505,0.5258],[0.3505,0.5269],[0.3505,0.5258],[0.3505,0.5258],[0.3505,0.5281],[0.3494,0.5292],[0.3482,0.5326],[0.3471,0.5337],[0.3471,0.5337],[0.346,0.5292],[0.346,0.5326],[0.3448,0.5348],[0.3448,0.536],[0.3437,0.5281],[0.3437,0.5224],[0.3437,0.519],[0.3437,0.5168],[0.3426,0.5168],[0.3426,0.5156],[0.3426,0.5145],[0.3584,0.5145],[0.3561,0.5168],[0.3561,0.5179],[0.3561,0.5179],[0.3561,0.5145],[0.3561,0.5156],[0.3561,0.5179],[0.355,0.5224],[0.355,0.5258],[0.355,0.5281],[0.3539,0.5292],[0.3539,0.5111],[0.3539,0.5044],[0.3539,0.5044],[0.3584,0.5044],[0.3584,0.5044],[0.3595,0.5044],[0.3595,0.5077],[0.3595,0.51],[0.3595,0.5111],[0.3584,0.5077],[0.3584,0.5089],[0.3584,0.5066],[0.3584,0.5077],[0.3573,0.5044],[0.3561,0.5055],[0.3561,0.5066],[0.3561,0.5077],[0.355,0.51],[0.355,0.5111],[0.3539,0.5111],[0.3539,0.4998],[0.3539,0.4919],[0.3527,0.4908],[0.3527,0.4908],[0.3527,0.4897],[0.3561,0.49],[0.355,0.49],[0.3539,0.4908],[0.3539,0.4908],[0.3527,0.4919],[0.3527,0.4931],[0.3516,0.4931],[0.3516,0.4908],[0.3516,0.4942],[0.3539,0.4942],[0.3527,0.4908],[0.3527,0.4908],[0.3516,0.4919],[0.3516,0.4931],[0.3505,0.4931],[0.3505,0.4942],[0.3516,0.4953],[0.3516,0.4965],[0.3516,0.4976],[0.3505,0.4987],[0.3494,0.4998],[0.3494,0.4998],[0.3494,0.4852],[0.3505,0.484],[0.3505,0.4874],[0.3494,0.4874],[0.3482,0.481],[0.3482,0.4784],[0.3482,0.4784],[0.3482,0.4784],[0.3471,0.4818],[0.3482,0.4852],[0.3471,0.4874],[0.3471,0.4874],[0.346,0.4818],[0.346,0.484],[0.346,0.4886],[0.346,0.4897],[0.346,0.4742],[0.3448,0.4705],[0.3448,0.4705],[0.3437,0.4694],[0.3437,0.4648],[0.3437,0.4671],[0.3437,0.4739],[0.3426,0.4761],[0.3426,0.4761],[0.3415,0.4694],[0.3415,0.4705],[0.3426,0.4716],[0.3426,0.4727],[0.3415,0.4727],[0.3415,0.4739],[0.3415,0.4761],[0.3403,0.4761],[0.3403,0.4716],[0.3392,0.4581],[0.3392,0.4584],[0.3381,0.4607],[0.3381,0.4618],[0.3369,0.4629],[0.3369,0.4629],[0.3369,0.4629],[0.3381,0.4626],[0.3369,0.4558],[0.3358,0.4569],[0.3358,0.4581],[0.3347,0.4592],[0.3336,0.4603],[0.3336,0.4615],[0.3324,0.4626],[0.3324,0.4637],[0.3347,0.4648],[0.3336,0.4671],[0.3336,0.4682],[0.3313,0.4694],[0.3302,0.4513],[0.3302,0.449],[0.3302,0.4513],[0.3302,0.4502],[0.3302,0.4513],[0.329,0.4513],[0.3279,0.4524],[0.3279,0.4524],[0.329,0.4524],[0.329,0.4536],[0.329,0.4558],[0.3279,0.4569],[0.3268,0.4592],[0.3257,0.4626],[0.3257,0.466],[0.3245,0.4694],[0.3245,0.4694],[0.3245,0.4536],[0.3234,0.4569],[0.3234,0.4592],[0.3223,0.4592],[0.3223,0.449],[0.3234,0.4513],[0.3234,0.4411],[0.3223,0.4434],[0.3211,0.4445],[0.3211,0.4468],[0.32,0.4479],[0.32,0.4502],[0.3189,0.4524],[0.3178,0.4524],[0.3166,0.4536],[0.3155,0.4434],[0.3155,0.4457],[0.3178,0.4468],[0.3178,0.449],[0.3166,0.4513],[0.3155,0.4524],[0.3144,0.4536],[0.3144,0.4536],[0.3132,0.4378],[0.3121,0.44],[0.311,0.4434],[0.311,0.4457],[0.3099,0.4457],[0.3121,0.4355],[0.311,0.4378],[0.3121,0.4378],[0.311,0.4366],[0.311,0.4321],[0.3099,0.4355],[0.3099,0.44],[0.3087,0.4457],[0.3076,0.449],[0.3076,0.4524],[0.3065,0.4276],[0.3053,0.4299],[0.3053,0.4332],[0.3053,0.4366],[0.3053,0.4411],[0.3053,0.4445],[0.3042,0.4457],[0.3031,0.4242],[0.302,0.4253],[0.302,0.4276],[0.302,0.431],[0.3008,0.4355],[0.302,0.4378],[0.3008,0.4411],[0.2997,0.4468],[0.2997,0.4468],[0.2986,0.4265],[0.2997,0.4276],[0.2997,0.4299],[0.2997,0.431],[0.2986,0.4321],[0.2963,0.4344],[0.2963,0.4366],[0.2952,0.4389],[0.2941,0.4389],[0.2941,0.4095],[0.2986,0.4107],[0.2974,0.4118],[0.2963,0.4141],[0.2952,0.4163],[0.2929,0.4174],[0.2918,0.4208],[0.2907,0.4253],[0.2895,0.4299],[0.2895,0.4344],[0.2873,0.4344],[0.2873,0.4095],[0.2862,0.4095],[0.285,0.3926],[0.285,0.3949],[0.2941,0.3949],[0.2929,0.3949],[0.2929,0.396],[0.2929,0.3971],[0.2918,0.3971],[0.2907,0.3983],[0.2895,0.4005],[0.2895,0.4016],[0.2884,0.4028],[0.2862,0.405],[0.285,0.405],[0.285,0.4073],[0.2839,0.4107],[0.2828,0.4152],[0.2816,0.4186],[0.2816,0.4186],[0.2794,0.4107],[0.2783,0.4005],[0.2771,0.4028],[0.276,0.4028],[0.2749,0.3971],[0.2737,0.3983],[0.2726,0.3994],[0.2715,0.4016],[0.2715,0.4039],[0.2703,0.4084],[0.2703,0.4118],[0.285,0.4174],[0.2839,0.422],[0.2828,0.422],[0.2828,0.3994],[0.2816,0.3994],[0.2816,0.4005],[0.2805,0.4016],[0.2794,0.4062],[0.2794,0.4062],[0.2783,0.4073],[0.2771,0.4107],[0.2771,0.4107],[0.2771,0.4073],[0.2783,0.4084],[0.2771,0.3847],[0.2771,0.3858],[0.2771,0.3791],[0.276,0.3813],[0.276,0.3825],[0.2783,0.3836],[0.2783,0.3847],[0.2771,0.3858],[0.2771,0.387],[0.276,0.3881],[0.276,0.3892],[0.276,0.3892],[0.276,0.3926],[0.276,0.3949],[0.276,0.3971],[0.276,0.3994],[0.2783,0.4005],[0.2783,0.3915],[0.2771,0.3813],[0.2771,0.3813],[0.276,0.3825],[0.276,0.3836],[0.276,0.3847],[0.276,0.3858],[0.2749,0.3881],[0.2749,0.3892],[0.2749,0.3926],[0.2749,0.3994],[0.2749,0.4039],[0.2749,0.405],[0.2794,0.3949],[0.2794,0.3971],[0.2783,0.3994],[0.2783,0.4005],[0.2771,0.4005],[0.2771,0.3791],[0.2771,0.3813],[0.2771,0.3825],[0.2771,0.3836],[0.276,0.3847],[0.276,0.3858],[0.276,0.387],[0.276,0.3881],[0.2771,0.3904],[0.2771,0.3915],[0.276,0.3915],[0.276,0.3825],[0.276,0.3847],[0.2749,0.3858],[0.2749,0.387],[0.2749,0.3881],[0.2749,0.3904],[0.2783,0.3949],[0.2783,0.3971],[0.2783,0.3971],[0.2783,0.3949],[0.2783,0.3971],[0.2805,0.3983],[0.2805,0.4005],[0.2771,0.4028],[0.2771,0.4039],[0.2805,0.405],[0.2783,0.3881],[0.2783,0.387],[0.2816,0.3881],[0.2816,0.3881],[0.2816,0.3892],[0.2805,0.3915],[0.2805,0.396],[0.2805,0.3971],[0.2805,0.3892],[0.2805,0.3915],[0.2805,0.3937],[0.2805,0.3983],[0.2794,0.4016],[0.2794,0.405],[0.2783,0.4095],[0.2783,0.4141],[0.2771,0.4152],[0.276,0.4039],[0.2749,0.4062],[0.2749,0.4062],[0.2737,0.4028],[0.2737,0.4073],[0.2918,0.4073],[0.2918,0.3915],[0.2929,0.3937],[0.2929,0.396],[0.2929,0.396],[0.2929,0.3971],[0.2929,0.4005],[0.2929,0.4028],[0.2929,0.4062],[0.2929,0.4073],[0.2929,0.4028],[0.2929,0.405],[0.2929,0.4073],[0.2918,0.4095],[0.2918,0.4107],[0.2918,0.4118],[0.2918,0.4152],[0.2918,0.4186],[0.2918,0.4141],[0.2918,0.4163],[0.2918,0.4208],[0.2929,0.4231],[0.2929,0.4265],[0.2929,0.4287],[0.2941,0.4276],[0.2941,0.4332],[0.2941,0.4332],[0.3045,0.4208],[0.3057,0.4186],[0.3057,0.4231],[0.3057,0.4253],[0.3068,0.431],[0.3068,0.4366],[0.3079,0.4423],[0.3079,0.4502],[0.3091,0.4569],[0.3091,0.4569],[0.3102,0.4355],[0.3102,0.4389],[0.3113,0.4411],[0.3113,0.4411],[0.3124,0.44],[0.3136,0.4434],[0.3136,0.4468],[0.3147,0.4502],[0.3147,0.4524],[0.3158,0.4287],[0.3158,0.431],[0.317,0.4332],[0.317,0.4355],[0.3181,0.4355],[0.3192,0.4231],[0.3192,0.4253],[0.3203,0.4265],[0.3215,0.4276],[0.3215,0.4299],[0.3226,0.431],[0.3237,0.4332],[0.3237,0.4344],[0.3249,0.4355],[0.326,0.4355],[0.326,0.4355],[0.3271,0.422],[0.3283,0.4242],[0.3283,0.4265],[0.3294,0.4287],[0.3305,0.4321],[0.3305,0.4321],[0.3316,0.3433],[0.3328,0.3433],[0.3339,0.3433],[0.335,0.3433],[0.3362,0.3433],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+let yutView = null, yutP = 1, yutRaf = 0, yutT = 0, yutReq = 0;
+const yutReady = Promise.all([yutSkel, yutLife].map(n => n.querySelector('img')).map(i => i.decode ? i.decode().then(() => true, () => false) : Promise.resolve(true)));
+function drawYut() {
+  const x = (YUT_L + yutP * (YUT_R - YUT_L)) * 100;
+  const cut = yutP <= 0 ? 0 : yutP >= 1 ? 100 : x;
+  // Complementary masks are applied to fixed full-stage layers, not to moved images.
+  yutLife.style.opacity = yutSkel.style.opacity = 1;
+  yutLife.style.clipPath = cut >= 100 ? 'none' : `inset(0 ${100-cut}% 0 0)`;
+  yutSkel.style.clipPath = cut <= 0 ? 'none' : `inset(0 0 0 ${cut}%)`;
+  const i = Math.min(999, Math.floor(x*10)), k = x*10-i;
+  const a = YUT_BOUNDS[i], b = YUT_BOUNDS[i+1];
+  const top = a[0]+(b[0]-a[0])*k, bottom = a[1]+(b[1]-a[1])*k;
+  yutLine.style.left = x+'%';
+  yutLine.style.top = top*100+'%';
+  yutLine.style.height = Math.max(0,bottom-top)*100+'%';
+  yutLine.style.opacity = !reduced && yutP>0 && yutP<1 && bottom>top ? 1 : 0;
+}
+function yutTo(target, instant) {
+  cancelAnimationFrame(yutRaf);
+  if (instant || reduced) { yutP = target; return drawYut(); }
+  const from = yutP, D = 1200 * Math.abs(target - from);
+  if (D < 16) { yutP = target; return drawYut(); }
+  const t0 = performance.now(), ease = k => k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+  (function step(t) {
+    const k = Math.min(1, (t - t0) / D);
+    yutP = from + (target - from) * ease(k); drawYut();
+    if (k < 1) yutRaf = requestAnimationFrame(step);
+  })(t0);
+}
+async function setYut(v, animate) {
+  const req = ++yutReq;
+  yutStage.dataset.view = v;
+  yutBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+  yutSkel.setAttribute('aria-hidden', String(v !== 'skel'));
+  yutLife.setAttribute('aria-hidden', String(v !== 'life'));
+  // Caption stays fixed: the selected representation is announced by its button.
+  // a linha só anda com as duas figuras prontas: nunca há quadro vazio
+  if (animate && !(await yutReady).every(Boolean)) animate = false;
+  if (req !== yutReq) return;
+  yutTo(v === 'life' ? 1 : 0, !animate);
+}
+function enterYut() {
+  clearTimeout(yutT);
+  if (yutView || reduced) { yutView = yutView || 'life'; return setYut(yutView, false); }
+  yutView = 'life';   // a espera acontece uma vez só
+  setYut('skel', false);
+  yutT = setTimeout(() => { setYut('life', true); live.textContent = 'A figura agora mostra o Yutyrannus em vida.'; }, 3200);
+}
+function leaveYut() {
+  // ao sair no meio da passagem, a cena guarda a versão escolhida já completa
+  clearTimeout(yutT); cancelAnimationFrame(yutRaf); yutReq++;
+  if (yutView) { yutP = yutView === 'life' ? 1 : 0; drawYut(); }
+}
+yutBtns.forEach(b => b.addEventListener('click', () => { clearTimeout(yutT); yutView = b.dataset.view; setYut(yutView, true); }));
+function setYutEv(on) {
+  yutEv.hidden = !on;
+  yutLens.setAttribute('aria-expanded', String(on));
+  yutLens.querySelector('.lbl').textContent = on ? 'Ocultar evidências e incertezas' : 'Mostrar evidências e incertezas';
+}
+yutLens.addEventListener('click', () => {
+  const on = yutEv.hidden; setYutEv(on);
+  if (on) requestAnimationFrame(() => yutEv.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' }));
+});
+drawYut();
+const cretaceoStop = $('#cretaceoStop'), cretaceoMenu = $('#cretaceoMenu');
+function setCretaceoMenu(on) { cretaceoMenu.hidden = !on; cretaceoStop.setAttribute('aria-expanded', String(on)); }
+cretaceoStop.addEventListener('click', () => { const on = cretaceoMenu.hidden; setCarnianoMenu(false); setJurMenu(false); setMorrisonMenu(false); setCretaceoMenu(on); if (on) cretaceoMenu.querySelector('button').focus(); });
+document.addEventListener('click', e => { if (!cretaceoMenu.contains(e.target) && !cretaceoStop.contains(e.target)) setCretaceoMenu(false); });
+
+
 /* ---------- Lentes: o aprofundamento abre no lugar e some quando a pessoa sai da cena ---------- */
 const triEl = $("#tri"), triLens = $("#triLens"), plateEl = $("#plate"), plateEv = $("#plateEv"), eoLens = $("#eoLens"), wallSvg = $("#wallSvg");
 function setTriDetail(on) {
@@ -1319,15 +1575,16 @@ function show(n, { instant = false } = {}) {
   document.body.dataset.scene = st.id;
   document.body.dataset.tone = scenes[n].dataset.tone;
   // cada visita começa pela leitura principal
-  setTriDetail(false); setEvidence(false); setFaunaDetails(false); setFimDetails(false); setCarnianoMenu(false); jurLenses.forEach(b => setJurDetails(b, false)); setJurMenu(false); setMorrisonMenu(false); jurReset();
+  setTriDetail(false); setEvidence(false); setFaunaDetails(false); setFimDetails(false); setCarnianoMenu(false); jurLenses.forEach(b => setJurDetails(b, false)); setJurMenu(false); setMorrisonMenu(false); setCretaceoMenu(false); setYutEv(false); jurReset();
   if (st.id === "triassico") armGrow(); else endGrow();   // a entrada da cena faz a coluna se depositar
   if (st.id === "eoraptor") enterFig(); else leaveFig();   // e a do Eoraptor mostra o esqueleto antes da reconstrução
+  if (st.id === "cretaceo-yutyrannus") enterYut(); else leaveYut();
   const p = pct(st.age);
   tlPin.style.left = p + "%";
   tlHere.style.left = p + "%";
   tlHere.dataset.align = p < 12 ? "start" : p > 88 ? "end" : "mid";
   tlPeriod.textContent = st.period;
-  bar.querySelectorAll(".tl-stop").forEach((b, i) => { b.removeAttribute("aria-current"); if (+b.dataset.go === n || (b.id === "carnianoStop" && (n === 2 || n === 3)) || (b.id === "jurassicoStop" && (n === 5 || n === 6)) || (b.id === "morrisonStop" && (n === 7 || n === 8))) b.setAttribute("aria-current", "step"); });
+  bar.querySelectorAll(".tl-stop").forEach((b, i) => { b.removeAttribute("aria-current"); if (+b.dataset.go === n || (b.id === "carnianoStop" && (n === 2 || n === 3)) || (b.id === "jurassicoStop" && (n === 5 || n === 6)) || (b.id === "morrisonStop" && (n === 7 || n === 8)) || (b.id === "cretaceoStop" && (n === 9 || n === 10))) b.setAttribute("aria-current", "step"); });
   prevBtn.disabled = n === 0;
   nextBtn.hidden = n === 0;               // na abertura, o único botão principal é "Iniciar expedição"
   nextBtn.disabled = n === scenes.length - 1;
@@ -1365,7 +1622,7 @@ const passEl = $("#passage"), passV = $("#passV"), passK = $("#passK"), passU = 
 function passage(n, from) {
   const a = STOPS[from].age, b = STOPS[n].age;
   passK.textContent = (b < a ? "Avançando no tempo até o " : "Recuando no tempo até o ") + STOPS[n].period;
-  passU.textContent = (STOPS[n].id.startsWith("jurassico-") || STOPS[n].id === "cretaceo-utahraptor") ? "milhões de anos atrás · posição aproximada" : "milhões de anos atrás";
+  passU.textContent = (STOPS[n].id.startsWith("jurassico-") || STOPS[n].id.startsWith("cretaceo-")) ? "milhões de anos atrás · posição aproximada" : "milhões de anos atrás";
   passV.textContent = fmt(a);
   passEl.classList.remove("out"); void passEl.offsetWidth;
   passEl.classList.add("in");
@@ -1795,7 +2052,9 @@ addEventListener("keydown", e => {
   }
   // Esc também fecha a lente aberta e devolve o foco ao botão dela
   if (e.key === "Escape") {
+    if (!cretaceoMenu.hidden) { setCretaceoMenu(false); cretaceoStop.focus(); return; }
     if (!morrisonMenu.hidden) { setMorrisonMenu(false); morrisonStop.focus(); return; }
+    if (!yutEv.hidden) { setYutEv(false); yutLens.focus(); return; }
     if (!jurassicoMenu.hidden) { setJurMenu(false); jurassicoStop.focus(); return; }
     if (mStage.dataset.zoom) { setMundoZoom(''); return; }
     const jurOpen = jurLenses.find(b => b.getAttribute('aria-expanded') === 'true');

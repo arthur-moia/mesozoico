@@ -4,6 +4,6 @@ A prévia principal está em index.html. Use HTTP: na raiz do projeto execute py
 
 Fontes e imagens são locais. Créditos e ressalvas continuam nos detalhes e no painel Fontes e certezas.
 
-A revisão integral está em REVISAO-2026-10-13.md; decisoes.md conserva o histórico. PLANO-CRETACEO.md permanece como proposta para Psittacosaurus. O principal contém dez cenas, até Utahraptor.
+A revisão integral está em REVISAO-2026-10-13.md; decisoes.md conserva o histórico. PLANO-CRETACEO.md permanece como proposta para Psittacosaurus. O principal contém onze cenas, até Yutyrannus; fontes e limites da cena nova em YUTYRANNUS-FONTES.md.
 
 As entregas passam a ser feitas por GitHub, sem novos ZIPs. Consulte o README da raiz para prévia, conferência e Git.
