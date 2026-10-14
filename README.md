@@ -20,6 +20,7 @@ O relatório está em [site/REVISAO-2026-10-13.md](site/REVISAO-2026-10-13.md). 
 python tools/inventariar-site.py
 node tools/auditar-site.cjs
 node tools/conferir-interacoes.cjs
+node tools/conferir-yutyrannus.cjs
 ```
 
 O navegador padrão é Edge no Windows e Chromium nos demais sistemas. `PREVIEW_URL`, `BROWSER_CHANNEL`, `PLAYWRIGHT_MODULE` e `AUDIT_RUN` permitem ajustar o ambiente. Capturas e resultados são gerados em `auditoria/`, ignorada pelo Git. O percurso cobre 1440×900, 390×844 e 360×740, imagens, detalhes, controles e fontes.
