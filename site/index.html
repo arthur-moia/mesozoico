@@ -784,6 +784,84 @@ body[data-scene="cretaceo-yutyrannus"] .hud-top{background:linear-gradient(#141a
 }
 @media (max-height:500px) and (min-aspect-ratio:1/1){#yutExhibit h2{font-size:64px}#yutExhibit .yut-read{position:static;margin-top:10px}}
 @media (prefers-reduced-motion:reduce){#yutExhibit .yut-ev{animation:none}}
+
+/* Psittacosaurus · observar uma fotografia, depois consultar um modelo. */
+#s-cretaceo-psittacosaurus{--ground:var(--gesso)}
+body[data-scene="cretaceo-psittacosaurus"] .hud-top{background:linear-gradient(var(--gesso) 80%,transparent)}
+.ps-exhibit{max-width:1500px;margin:0 auto;padding-top:12px}
+.ps-exhibit button{-webkit-tap-highlight-color:transparent}
+.ps-intro{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:40px;align-items:end;margin-bottom:26px}
+.ps-kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);margin-bottom:12px}
+.ps-intro h2{font-size:clamp(46px,5.1vw,78px);line-height:1.05;letter-spacing:-.065em;max-width:900px}
+.ps-context{font-size:15px;color:var(--fg-2);padding-bottom:4px}
+.ps-context strong{display:block;font-size:20px;color:var(--fg);font-weight:600;margin-bottom:3px}
+.ps-tabs{display:flex;gap:28px;margin-bottom:16px}
+.ps-tabs button{border:0;border-bottom:2px solid transparent;background:none;min-height:44px;padding:6px 0;font-size:14px;font-weight:700;cursor:pointer;touch-action:manipulation}
+.ps-tabs button[aria-selected="true"]{color:var(--accent);border-color:var(--accent)}
+.ps-layout{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:40px;align-items:start}
+.ps-figure{min-width:0}
+.ps-image-label{display:flex;justify-content:space-between;gap:16px;margin-bottom:8px;font-size:12px;color:var(--fg-2)}
+.ps-photo,.ps-model{position:relative;aspect-ratio:2234/952;overflow:hidden;background:#080808}
+.ps-crop{position:absolute;inset:0;overflow:hidden;transform-origin:49% 64%;transition:transform .5s var(--ease)}
+.ps-crop img{position:absolute;top:-2px;left:-2px;width:calc(100% + 4px);height:auto;max-width:none;display:block}
+.ps-photo.is-close .ps-crop{transform:translate(1%,-14%) scale(2.8)}
+.ps-hotspot{position:absolute;left:49%;top:64%;transform:translate(-50%,-50%);width:46px;height:46px;border:1.5px solid #efeee9;border-radius:50%;background:#161b1dc9;color:#fff;font-size:26px;cursor:pointer;touch-action:manipulation}
+.ps-photo.is-close .ps-hotspot{visibility:hidden}
+.ps-model{background:#fff;aspect-ratio:1.8}
+/* Recorte de apresentação de S16: exclui o detalhe inserido, sem tocar o animal principal. */
+.ps-model img{position:absolute;display:block;width:102%;max-width:none;height:auto;left:-2%;top:-7%;clip-path:polygon(.2% .2%,99.8% .2%,99.8% 55%,73% 55%,73% 87.5%,99.8% 87.5%,99.8% 99.8%,.2% 99.8%)}
+#psModelPanel .ps-tools{min-height:0}
+#psModelPanel .ps-note,#psModelPanel .ps-caption{font-size:13px;line-height:1.6}
+#psModelPanel .ps-image-label{font-size:12px}
+.ps-model-original{max-width:720px;margin:24px 0}
+.ps-model-original img{display:block;width:100%;height:auto}
+.ps-model-original figcaption{font-size:13px;line-height:1.6;margin-top:10px;color:var(--fg-2)}
+.ps-tools{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:12px;min-height:44px}
+.ps-zoom{background:none;border:1px solid var(--fg-2);border-radius:4px;padding:9px 13px;min-height:44px;cursor:pointer;font-size:14px;font-weight:600;touch-action:manipulation}
+.ps-note{font-size:12px;color:var(--fg-2);max-width:240px;line-height:1.4}
+.ps-caption{font-size:12px;color:var(--fg-2);line-height:1.55;margin-top:12px}
+.ps-exhibit a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+.ps-reading{padding-top:20px}
+.ps-reading h3{font-size:28px;letter-spacing:-.04em;line-height:1.15;margin:12px 0 16px}
+.ps-reading p{font-size:16px;line-height:1.55;margin-bottom:22px}
+.ps-reading .ps-bridge{color:var(--fg-2);font-size:14px}
+.ps-details{margin-top:26px;max-width:1080px}
+.ps-details summary{display:inline-flex;align-items:center;gap:9px;cursor:pointer;min-height:44px;font-size:14px;font-weight:600;list-style:none;border:1px solid var(--fg-2);border-radius:24px;padding:8px 15px}
+.ps-details summary::-webkit-details-marker{display:none}
+.ps-details summary::before{content:"+";font-size:22px;line-height:1}
+.ps-details[open] summary::before{content:"−"}
+.ps-evidence{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin:26px 0}
+.ps-evidence h3{font-size:20px;letter-spacing:-.025em;margin:10px 0}
+.ps-evidence p,.ps-full-credit p{font-size:14px;line-height:1.6;margin-bottom:14px}
+.ps-full-credit{max-width:900px;overflow-wrap:anywhere;color:var(--fg-2)}
+.ps-full-credit h3{font-size:20px;color:var(--fg);margin-bottom:12px}
+@media(min-width:951px){.ps-intro h2{font-size:clamp(46px,4.4vw,70px);max-width:none}.ps-intro h2 br{display:none}}
+@media(max-width:950px){
+ .ps-intro{grid-template-columns:1fr;gap:16px;margin-bottom:18px}
+ .ps-context strong{display:inline;font-size:17px}.ps-context{font-size:14px}
+ .ps-layout{grid-template-columns:1fr;gap:16px}.ps-reading{padding-top:8px;max-width:650px}
+ .ps-reading h3{font-size:25px}.ps-reading p{margin-bottom:14px}
+ .ps-evidence{grid-template-columns:1fr;gap:12px}
+}
+@media(max-width:600px){
+ .ps-exhibit{padding-top:4px}.ps-kicker{font-size:10px;letter-spacing:.1em;margin-bottom:10px}
+ .ps-intro h2{font-size:clamp(36px,10.25vw,48px);max-width:440px;line-height:1.07;letter-spacing:-.055em}
+ .ps-intro{gap:13px;margin-bottom:15px}.ps-context strong{display:block;font-size:17px;margin-bottom:1px}.ps-context{font-size:13px}
+ .ps-tabs{gap:22px;margin-bottom:13px}.ps-tabs button{font-size:13px}
+ .ps-image-label{font-size:11px;gap:8px}.ps-image-label span:last-child{white-space:nowrap}
+ .ps-photo,.ps-model{aspect-ratio:1.45}
+ .ps-model{aspect-ratio:1.6}
+ .ps-model img{width:110%;left:-5%;top:-6%}
+ .ps-crop{width:162%;height:auto;aspect-ratio:2234/952;left:-28%;right:auto;bottom:auto}
+ .ps-photo.is-close .ps-crop{transform:translate(0,-14%) scale(2.2)}
+ .ps-hotspot{left:51.4%;top:64%}
+ .ps-tools{align-items:start;gap:12px;margin-top:10px}.ps-zoom{font-size:13px;padding-inline:10px;flex-shrink:0}
+ .ps-note{font-size:11px;max-width:120px}.ps-caption{font-size:11px;margin-top:10px}
+ .ps-reading{padding-top:2px}.ps-reading h3{font-size:24px;margin-bottom:12px}.ps-reading p{font-size:15px}
+ .ps-reading .ps-bridge{font-size:13px}.ps-details{margin-top:18px}
+}
+@media(prefers-reduced-motion:reduce){.ps-crop{transition:none}}
+
 </style>
 </head>
 <body>
@@ -1091,6 +1169,49 @@ body[data-scene="cretaceo-yutyrannus"] .hud-top{background:linear-gradient(#141a
       </article></div>
     </section>
 
+
+    <section class="scene" id="s-cretaceo-psittacosaurus" data-id="cretaceo-psittacosaurus" data-tone="light" aria-labelledby="t-cretaceo-psittacosaurus">
+      <div class="scroll"><article class="ps-exhibit" id="psExhibit">
+        <header class="ps-intro">
+          <div><p class="ps-kicker">Cretáceo Inferior / vestígios da cobertura corporal</p><h2 id="t-cretaceo-psittacosaurus" tabindex="-1">A pele também <br>deixou pistas.</h2></div>
+          <p class="ps-context"><strong><i>Psittacosaurus</i> sp.</strong>SMF R 4970 · Liaoning, China<br>Um exemplar do registro de Jehol. <button class="ev fato" type="button" data-src="cretaceo-psittacosaurus:origem">Fonte</button></p>
+        </header>
+        <div class="ps-tabs" role="tablist" aria-label="Representações de SMF R 4970">
+          <button type="button" id="psFossilTab" role="tab" aria-selected="true" aria-controls="psFossilPanel" tabindex="0">Fóssil fotografado</button>
+          <button type="button" id="psModelTab" role="tab" aria-selected="false" aria-controls="psModelPanel" tabindex="-1">Modelo de pesquisa</button>
+        </div>
+        <section class="ps-layout" id="psFossilPanel" role="tabpanel" aria-labelledby="psFossilTab">
+          <figure class="ps-figure">
+            <div class="ps-image-label"><span id="psPhotoLabel">Fotografia · luz polarizada</span><span><a href="https://commons.wikimedia.org/wiki/File:Psittacosaurus_SMF_R_4970.jpg" target="_blank" rel="noopener">Vinther et al.</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span></div>
+            <div class="ps-photo" id="psPhoto"><div class="ps-crop"><img src="assets/cretaceo/psittacosaurus-smf-r4970-figura.jpg" width="2234" height="2095" alt="Fóssil fotografado: ossos e vestígios de pele sobre a rocha, com a cauda à esquerda e a cabeça à direita."></div><button class="ps-hotspot" id="psHotspot" type="button" aria-label="Aproximar a pele ao redor da coxa" aria-controls="psPhoto">+</button></div>
+            <div class="ps-tools"><button class="ps-zoom" id="psZoom" type="button" aria-pressed="false" aria-controls="psPhoto">＋ Aproximar a pele</button><p class="ps-note">Mesma fotografia. Ampliar não acrescenta detalhes.</p></div>
+            <figcaption class="ps-caption"><a href="https://commons.wikimedia.org/wiki/File:Psittacosaurus_SMF_R_4970.jpg" target="_blank" rel="noopener">Vinther e colaboradores, 2016</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a><br>Painel A enquadrado; aproximação por recorte. <a href="assets/cretaceo/psittacosaurus-smf-r4970-figura.jpg" target="_blank" rel="noopener">Figura integral A/B ↗</a></figcaption>
+          </figure>
+          <div class="ps-reading"><button class="ev fato" type="button" data-src="cretaceo-psittacosaurus:pele">Preservado no fóssil</button><h3>Pele junto aos ossos.</h3><p>Vestígios da cobertura do corpo ficaram registrados neste exemplar. Observe a região ao redor da coxa.</p><p class="ps-bridge">No Yutyrannus, filamentos. Aqui, pele escamosa e resíduos que permitem investigar a pigmentação.</p><button class="ev hip" type="button" data-src="cretaceo-psittacosaurus:pigmento">Como isso foi estudado</button></div>
+        </section>
+        <section class="ps-layout" id="psModelPanel" role="tabpanel" aria-labelledby="psModelTab" hidden>
+          <figure class="ps-figure">
+            <div class="ps-image-label"><span>Modelo de pesquisa · 2016</span><span><a href="https://commons.wikimedia.org/wiki/File:Psittacosaurus_model_(SMF_R_4970).png" target="_blank" rel="noopener">Vinther et al.</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span></div>
+            <div class="ps-model"><img src="assets/cretaceo/psittacosaurus-smf-r4970-modelo.png" width="2953" height="1794" alt="Recorte da fotografia do modelo pintado de pesquisa: animal inteiro com dorso mais escuro e ventre mais claro. O detalhe inserido da cabeça está na figura integral nos detalhes."></div>
+            <div class="ps-tools"><p class="ps-note" style="max-width:100%">Outra vista, outra representação. Este modelo não é um fóssil.</p></div>
+            <figcaption class="ps-caption"><a href="https://commons.wikimedia.org/wiki/File:Psittacosaurus_model_(SMF_R_4970).png" target="_blank" rel="noopener">Vinther e colaboradores, 2016 · modelo de Robert Nicholls</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a><br>Recorte de apresentação da figura S16, sem retoque anatômico. <a href="assets/cretaceo/psittacosaurus-smf-r4970-modelo.png" target="_blank" rel="noopener">Original integral ↗</a></figcaption>
+          </figure>
+          <div class="ps-reading"><button class="ev hip" type="button" data-src="cretaceo-psittacosaurus:modelo">Interpretação testada</button><h3>Uma proposta posta à luz.</h3><p>O estudo propõe um dorso mais escuro e um ventre mais claro. Um modelo permitiu testar esse padrão sob diferentes iluminações.</p><p class="ps-bridge">A distribuição da pigmentação é interpretada a partir do fóssil. Tons exatos, volume e partes não expostas exigem escolhas na reconstrução.</p><button class="ev inc" type="button" data-src="cretaceo-psittacosaurus:limites">Limites do modelo</button></div>
+        </section>
+        <details class="ps-details" id="psDetails"><summary>Mostrar detalhes</summary>
+          <div class="ps-evidence">
+            <div><span class="ev fato">Preservado</span><h3>O corpo deixou mais que ossos.</h3><p>SMF R 4970 preserva pele escamosa, resíduos orgânicos e filamentos na cauda. A fotografia é sob polarização cruzada; a cor que vemos na rocha não equivale às cores do animal em vida. A região indicada é a pele junto ao membro posterior esquerdo.</p><p>A aproximação amplia o mesmo JPEG, sem revelar estruturas microscópicas ou criar informação nova. No celular, a vista inicial já recorta as extremidades da fotografia. A figura integral contém a escala original de 0,25 m no painel B, que é um desenho interpretativo.</p></div>
+            <div><span class="ev hip">Medido e interpretado</span><h3>Dos resíduos ao padrão.</h3><p>Vinther e colegas (2016) combinaram fotografia, fluorescência e microscopia. Interpretaram resíduos escuros e microestruturas como evidências de pigmentação associada à melanina; isso não depende apenas desta imagem ampliada.</p><p>Propuseram dorso mais pigmentado e ventre mais claro. A relação entre forma de melanossomos e tons específicos fora de aves e mamíferos tem limites: não se trata de uma paleta exata recuperada do fóssil.</p></div>
+            <div><span class="ev inc">Modelo e hipótese</span><h3>A aparência foi completada.</h3><p>O modelo de 2016 usa medidas e contornos de SMF R 4970, mas completa áreas não expostas, assume simetria em parte do padrão e emprega detalhes cranianos de outro exemplar. O volume, olhos e tons pintados não são todos observações diretas.</p><p>Testes de iluminação favoreceram camuflagem sob luz difusa, compatível com ambiente florestado. Isso é uma hipótese ecológica, não a identificação de uma floresta específica. Bell e colegas (2022) detalharam novas interpretações da pele; o modelo é o do estudo de 2016.</p></div>
+          </div>
+          <div class="ps-full-credit"><h3>Origem, tempo e créditos</h3><p><i>Psittacosaurus</i> sp., exemplar SMF R 4970. Jehol, Liaoning, China; Bell e colegas consideram provável a origem no conjunto de camadas Jianshangou da Formação Yixian, perto de Sihetun. A procedência estratigráfica individual é incompleta. Usamos Cretáceo Inferior, sem datação exata do indivíduo. Na régua, compartilha com Yutyrannus uma posição regional aproximada; a ordem da visita não estabelece qual exemplar é mais antigo. O início do Cretáceo permanece em 143,1 Ma.</p>
+          <p>Fotografia e desenho A/B: <a href="https://commons.wikimedia.org/wiki/File:Psittacosaurus_SMF_R_4970.jpg" target="_blank" rel="noopener">Vinther et al., figura 1 (2016)</a>. Modelo pintado por Robert Nicholls, figura S16 do suplemento: <a href="https://commons.wikimedia.org/wiki/File:Psittacosaurus_model_(SMF_R_4970).png" target="_blank" rel="noopener">Jakob Vinther, Robert Nicholls, Stephan Lautenschlager, Michael Pittman, Thomas G. Kaye, Emily Rayfield, Gerald Mayr e Innes C. Cuthill</a>. Ambas as imagens sob <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>, via Wikimedia Commons. Arquivos integrais preservados. Adaptações: enquadramento do painel A, remoção visual da margem branca e aproximação por CSS; no celular, recorte lateral inicial. No modelo, recorte de apresentação por CSS remove margens, parte do pedestal e o detalhe inserido da cabeça, sem cortar a figura principal do animal; escala proporcional, sem alterações nos pixels, geração de partes, espelhamento ou deformação. A figura integral abaixo preserva o detalhe da cabeça como material do estudo.</p>
+          <figure class="ps-model-original"><a href="assets/cretaceo/psittacosaurus-smf-r4970-modelo.png" target="_blank" rel="noopener"><img src="assets/cretaceo/psittacosaurus-smf-r4970-modelo.png" width="2953" height="1794" loading="lazy" alt="Figura S16 integral: fotografia do modelo de pesquisa, pedestal e detalhe inserido da cabeça."></a><figcaption>Figura S16 integral · o quadro à direita é uma vista de detalhe da cabeça do modelo de pesquisa, não outra peça fóssil. Vinther e colaboradores, 2016; modelo de Robert Nicholls · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <a href="assets/cretaceo/psittacosaurus-smf-r4970-modelo.png" target="_blank" rel="noopener">Abrir original integral ↗</a></figcaption></figure>
+          <p><a href="https://doi.org/10.1016/j.cub.2016.06.065" target="_blank" rel="noopener">Vinther et al. (2016), 3D Camouflage in an Ornithischian Dinosaur</a> · <a href="https://doi.org/10.1038/s42003-022-03749-3" target="_blank" rel="noopener">Bell et al. (2022), estudo do tegumento</a> · <a href="PSITTACOSAURUS-FONTES.md" target="_blank" rel="noopener">Pesquisa, créditos e limites completos</a>.</p></div>
+        </details>
+      </article></div>
+    </section>
+
   </main>
 
   <canvas id="warp" aria-hidden="true"></canvas>
@@ -1102,7 +1223,7 @@ body[data-scene="cretaceo-yutyrannus"] .hud-top{background:linear-gradient(#141a
     <div class="controls">
       <button class="navbtn" type="button" id="prev" aria-label="Cena anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M14 8H3M7 4 3 8l4 4"/></svg><span class="lbl">Voltar</span></button>
       <nav class="tl" aria-label="Linha do tempo da viagem">
-<div id="cretaceoMenu" class="carniano-menu cretaceo-menu" hidden aria-label="Cenas do Cretáceo Inferior"><button type="button" data-go="9">Utahraptor · Cretáceo Inferior</button><button type="button" data-go="10">Yutyrannus · ≈125 Ma</button></div>
+<div id="cretaceoMenu" class="carniano-menu cretaceo-menu" hidden aria-label="Cenas do Cretáceo Inferior"><button type="button" data-go="9">Utahraptor · Cretáceo Inferior</button><button type="button" data-go="10">Yutyrannus · ≈125 Ma</button><button type="button" data-go="11">Psittacosaurus · pele preservada</button></div>
 <div id="morrisonMenu" class="carniano-menu morrison-menu" hidden aria-label="Cenas de cerca de 150 milhões de anos"><button type="button" data-go="7">Stegosaurus · Sophie · ≈150 Ma</button><button type="button" data-go="8">Tronco e ossos · Utah · ≈150 Ma</button></div>
         <div id="jurassicoMenu" class="carniano-menu jur-menu" hidden aria-label="Cenas do Jurássico Inicial"><button type="button" data-go="5">Rastros · ≈201 Ma</button><button type="button" data-go="6">Saurópodes na Patagônia · ≈179 Ma</button></div>
         <div id="carnianoMenu" class="carniano-menu" hidden aria-label="Cenas de cerca de 230 milhões de anos"><button type="button" data-go="2">Eoraptor</button><button type="button" data-go="3">O mundo ao redor do Eoraptor</button></div>
@@ -1165,7 +1286,8 @@ const STOPS = [
   { id: "jurassico-sophie", age: 150, name: "Stegosaurus · Sophie", period: "Jurássico Superior · Sophie", now: "cerca de 150 milhões de anos atrás, contexto aproximado" },
   { id: "jurassico-mundo", age: 150, name: "As rochas guardaram mais que dinossauros", period: "Jurássico Superior", now: "cerca de 150 milhões de anos atrás" },
   { id: "cretaceo-utahraptor", age: 130, name: "Utahraptor", period: "Cretáceo Inferior · Utahraptor", now: "posição aproximada no Cretáceo Inferior; não é a idade da montagem" },
-  { id: "cretaceo-yutyrannus", age: 125, name: "Yutyrannus", period: "Cretáceo Inferior · Yutyrannus", now: "cerca de 125 milhões de anos atrás, contexto aproximado da formação" }
+  { id: "cretaceo-yutyrannus", age: 125, name: "Yutyrannus", period: "Cretáceo Inferior · Yutyrannus", now: "cerca de 125 milhões de anos atrás, contexto aproximado da formação" },
+  { id: "cretaceo-psittacosaurus", age: 125, name: "Psittacosaurus · pele preservada", period: "Cretáceo Inferior · Psittacosaurus", now: "contexto regional aproximado de Jehol, sem datação individual" }
 ];
 const TOTAL = 251.902;
 const pct = age => ((TOTAL - age) / TOTAL) * 100;
@@ -1223,6 +1345,16 @@ SRC["cretaceo-yutyrannus"] = [["onde", "fato", "Os três exemplares são atribu�
   ["cor", "inc", "Os fósseis descritos não informam a cor nem o padrão. Os tons castanhos, o padrão e a distribuição da cobertura na nova ilustração são escolhas artísticas, não resultados de análise de pigmentos.", "Xu e colegas (2012) descrevem forma, posição e comprimento dos filamentos, não pigmentos.", ""],
   ["ilustracao", "hip", "Duas ilustrações originais MESOZOICO (2026), com assistência de IA; CC0 1.0 para eventuais direitos do projeto. Base: medidas e fotografias de Xu et al. (2012), suplemento. Não são fotografias, moldes nem mapas dos ossos preservados. Articulação, elementos encobertos, séries completas e completamentos são interpretativos. Cores, densidade e distribuição completa dos filamentos, pele exposta e pose são propostas. Sem espelhamento ou deformação; somente escala proporcional e posição próprias. As imagens não têm encaixe anatômico: a linha conduz a passagem entre representações. Pessoa de 1,75 m e régua dão contexto, sem medir a anatomia desenhada.", "MESOZOICO, YUTYRANNUS-FONTES.md; Xu et al. (2012), informações suplementares. TotalDino foi considerado e rejeitado visualmente pelo usuário, deixando de ser recurso da cena.", "YUTYRANNUS-FONTES.md"]];
 
+SRC["cretaceo-psittacosaurus"] = [
+ ["origem","fato","Psittacosaurus sp., SMF R 4970, do registro de Jehol, Liaoning. A origem em Jianshangou/Yixian, perto de Sihetun, é considerada provável; a procedência estratigráfica individual é incompleta. Cretáceo Inferior é o contexto, não uma data medida neste indivíduo. A posição compartilhada na régua é regional e não estabelece ordem cronológica entre ele e Yutyrannus.","Bell, Hendrickx, Pittman, Kaye e Mayr (2022), Communications Biology 5, 809.","https://doi.org/10.1038/s42003-022-03749-3"],
+ ["pele","fato","O exemplar preserva tegumento escamoso, resíduos orgânicos e filamentos na cauda. A região indicada na fotografia corresponde à pele junto ao membro posterior esquerdo. Ampliar o JPEG não acrescenta resolução e não mostra melanossomos individuais.","Vinther et al. (2016), figuras 1A e 2E; Bell et al. (2022).","https://doi.org/10.1016/j.cub.2016.06.065"],
+ ["pigmento","hip","Fotografia sob polarização cruzada, fluorescência e microscopia fundamentam a interpretação dos resíduos e microestruturas como evidências de pigmentação associada à melanina. O padrão dorsal mais escuro e ventral mais claro é interpretado; tons exatos não são uma leitura direta da fotografia.","Vinther et al. (2016), resultados e métodos. A ligação entre forma de melanossomos e tons específicos fora de aves e mamíferos tem limites.","https://doi.org/10.1016/j.cub.2016.06.065"],
+ ["modelo","hip","O modelo pintado representa a proposta de pigmentação. O teste de iluminação foi feito com uma versão cinza do modelo para comparar o padrão previsto sob diferentes condições de luz. Os resultados favoreceram luz difusa, compatível com ambiente florestado, sem identificar uma floresta específica.","Vinther et al. (2016), métodos, figura 4 e suplemento S16.","https://doi.org/10.1016/j.cub.2016.06.065"],
+ ["limites","inc","A reconstrução usa medidas e contornos de SMF R 4970, mas detalhes cranianos de outro exemplar, volumes completados, extrapolações nas regiões não expostas e simetria bilateral em parte do padrão. É o modelo de pesquisa de 2016; novas interpretações do tegumento foram publicadas em 2022. Não equivale à aparência integral demonstrada do animal.","Vinther et al. (2016), métodos e suplemento; Bell et al. (2022).","https://doi.org/10.1038/s42003-022-03749-3"],
+ ["foto","fato","Figura 1: A é fotografia sob polarização cruzada, B é desenho interpretativo. Arquivo integral inalterado; enquadramento de A, margem branca ocultada e aproximação por CSS. No celular há recorte lateral inicial; a escala original está no painel B da figura integral.","Vinther et al. (2016), via Wikimedia Commons, CC BY 4.0. Licença: https://creativecommons.org/licenses/by/4.0/.","https://commons.wikimedia.org/wiki/File:Psittacosaurus_SMF_R_4970.jpg"],
+ ["imagem-modelo","fato","Fotografia do modelo pintado por Robert Nicholls, figura S16. Autoria creditada: Jakob Vinther, Robert Nicholls, Stephan Lautenschlager, Michael Pittman, Thomas G. Kaye, Emily Rayfield, Gerald Mayr e Innes C. Cuthill. Recorte de apresentação na vista principal: margens, parte do pedestal e detalhe inserido da cabeça ficam fora do enquadramento, sem cortar a figura principal do animal. Original integral acessível na legenda e nos detalhes. Escala proporcional; sem retoque, espelhamento ou deformação.","Vinther et al. (2016), via Wikimedia Commons, CC BY 4.0. Licença: https://creativecommons.org/licenses/by/4.0/.","https://commons.wikimedia.org/wiki/File:Psittacosaurus_model_(SMF_R_4970).png"]
+];
+
 function renderSources(id, focusKey) {
   const items = SRC[id] || [];
   srcBody.innerHTML =
@@ -1241,7 +1373,7 @@ const prevBtn = $("#prev"), nextBtn = $("#next"), nextLbl = $("#nextLbl");
 
 const bar = $("#tlBar");
 STOPS.forEach((s, i) => {
-  if (s.id === "jurassico-rastros" || s.id === "cretaceo-yutyrannus") return;
+  if (s.id === "jurassico-rastros" || s.id === "cretaceo-yutyrannus" || s.id === "cretaceo-psittacosaurus") return;
   if (i > 0 && s.age === STOPS[i - 1].age) return;
   const b = document.createElement("button");
   b.type = "button"; b.className = "tl-stop"; b.style.left = pct(s.age) + "%";
@@ -1266,7 +1398,7 @@ STOPS.forEach((s, i) => {
   }
   if (s.id === "cretaceo-utahraptor") {
     b.removeAttribute("data-go"); b.id = "cretaceoStop";
-    b.setAttribute("aria-label", "Cretáceo Inferior: escolher Utahraptor ou Yutyrannus");
+    b.setAttribute("aria-label", "Cretáceo Inferior: escolher Utahraptor, Yutyrannus ou Psittacosaurus");
     b.setAttribute("aria-controls", "cretaceoMenu"); b.setAttribute("aria-expanded", "false");
   }
   bar.insertBefore(b, tlPin);
@@ -1584,7 +1716,7 @@ function show(n, { instant = false } = {}) {
   tlHere.style.left = p + "%";
   tlHere.dataset.align = p < 12 ? "start" : p > 88 ? "end" : "mid";
   tlPeriod.textContent = st.period;
-  bar.querySelectorAll(".tl-stop").forEach((b, i) => { b.removeAttribute("aria-current"); if (+b.dataset.go === n || (b.id === "carnianoStop" && (n === 2 || n === 3)) || (b.id === "jurassicoStop" && (n === 5 || n === 6)) || (b.id === "morrisonStop" && (n === 7 || n === 8)) || (b.id === "cretaceoStop" && (n === 9 || n === 10))) b.setAttribute("aria-current", "step"); });
+  bar.querySelectorAll(".tl-stop").forEach((b, i) => { b.removeAttribute("aria-current"); if (+b.dataset.go === n || (b.id === "carnianoStop" && (n === 2 || n === 3)) || (b.id === "jurassicoStop" && (n === 5 || n === 6)) || (b.id === "morrisonStop" && (n === 7 || n === 8)) || (b.id === "cretaceoStop" && (n === 9 || n === 10 || n === 11))) b.setAttribute("aria-current", "step"); });
   prevBtn.disabled = n === 0;
   nextBtn.hidden = n === 0;               // na abertura, o único botão principal é "Iniciar expedição"
   nextBtn.disabled = n === scenes.length - 1;
@@ -2028,6 +2160,37 @@ function layoutPlate() {
 }
 
 function layout() { layoutOpening(); layoutWall(); layoutPlate(); }
+
+
+/* Duas vistas independentes: nenhuma transformação anatômica presumida. */
+$("#cretaceoMenu").addEventListener("click", e => { if (e.target.closest("[data-go]")) setCretaceoMenu(false); });
+const psTabs = [$('#psFossilTab'), $('#psModelTab')];
+const psPanels = [$('#psFossilPanel'), $('#psModelPanel')];
+const psPhoto = $('#psPhoto'), psZoom = $('#psZoom'), psHotspot = $('#psHotspot');
+let psClose = false;
+function psSelect(index, focus = false) {
+  psTabs.forEach((tab, i) => { tab.setAttribute('aria-selected', String(i === index)); tab.tabIndex = i === index ? 0 : -1; psPanels[i].hidden = i !== index; });
+  if (focus) psTabs[index].focus({preventScroll:true});
+}
+function psSetClose(on) {
+  psClose = on; psPhoto.classList.toggle('is-close', on);
+  psZoom.setAttribute('aria-pressed', String(on));
+  psZoom.textContent = on ? '− Voltar à vista geral' : '＋ Aproximar a pele';
+  $('#psPhotoLabel').textContent = on ? 'Pele junto à coxa' : 'Fotografia · luz polarizada';
+}
+psTabs.forEach((tab, i) => {
+  tab.addEventListener('click', () => psSelect(i));
+  tab.addEventListener('keydown', e => {
+    if (!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+    e.preventDefault(); e.stopPropagation();
+    psSelect(e.key === 'Home' ? 0 : e.key === 'End' ? 1 : 1-i, true);
+  });
+});
+psZoom.addEventListener('click', () => psSetClose(!psClose));
+psHotspot.addEventListener('click', () => { psSetClose(true); psZoom.focus({preventScroll:true}); });
+$('#psExhibit').addEventListener('keydown', e => {
+  if (e.key === 'Escape' && psClose && !psPanels[0].hidden) { e.preventDefault(); e.stopPropagation(); psSetClose(false); psZoom.focus({preventScroll:true}); }
+});
 
 /* ---------- Entradas: botões, teclado, rolagem, toque ---------- */
 $("#start").addEventListener("click", () => go(1));
