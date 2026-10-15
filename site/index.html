@@ -862,6 +862,285 @@ body[data-scene="cretaceo-psittacosaurus"] .hud-top{background:linear-gradient(v
 }
 @media(prefers-reduced-motion:reduce){.ps-crop{transition:none}}
 
+
+/* Asteriornis · composição B e refinamentos validados */
+#s-cretaceo-asteriornis{--ground:#151b1d;--fg:#efeee9;--muted:#bac0bd;--quiet:#929c99;--accent:#9aabff;--mint:#45c2a5;--display:Manrope,system-ui,sans-serif;--text:"DM Sans",system-ui,sans-serif;--pad:clamp(16px,3.9vw,56px);--top:64px;--bottom:104px;color-scheme:dark}
+#s-cretaceo-asteriornis *{box-sizing:border-box}
+#s-cretaceo-asteriornis{scroll-padding-top:calc(var(--top) + 16px);scroll-padding-bottom:calc(var(--bottom) + 18px)}
+#s-cretaceo-asteriornis{margin:0;background:var(--ground);color:var(--fg);font:16px/1.5 var(--text);-webkit-font-smoothing:antialiased}
+#s-cretaceo-asteriornis h2,#s-cretaceo-asteriornis h2,#s-cretaceo-asteriornis h3,#s-cretaceo-asteriornis p,#s-cretaceo-asteriornis figure{margin:0}
+#s-cretaceo-asteriornis h2,#s-cretaceo-asteriornis h2,#s-cretaceo-asteriornis h3{font-family:var(--display)}
+#s-cretaceo-asteriornis button,#s-cretaceo-asteriornis a,#s-cretaceo-asteriornis summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#s-cretaceo-asteriornis button{font:inherit;color:inherit;cursor:pointer}
+#s-cretaceo-asteriornis a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+#s-cretaceo-asteriornis button:focus-visible,#s-cretaceo-asteriornis a:focus-visible,#s-cretaceo-asteriornis summary:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+#s-cretaceo-asteriornis button[disabled]{cursor:default;opacity:.4}
+#s-cretaceo-asteriornis [hidden]{display:none!important}
+#s-cretaceo-asteriornis .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+#s-cretaceo-asteriornis .hud-top{position:fixed;z-index:10;inset:0 0 auto;height:var(--top);padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(var(--ground) 82%,transparent)}
+#s-cretaceo-asteriornis .brand{font:800 16px/1 var(--display);text-decoration:none;display:flex;align-items:center;gap:10px}
+#s-cretaceo-asteriornis .brand i{width:13px;height:16px;background:linear-gradient(var(--fg) 0 30%,transparent 30% 40%,#aeb2af 40% 65%,transparent 65% 75%,#777e7b 75%)}
+#s-cretaceo-asteriornis .sources-button{border:0;background:none;padding:12px 0;font-weight:700;font-size:15px;display:flex;gap:10px;align-items:center}
+#s-cretaceo-asteriornis .dots{display:flex;gap:3px}
+#s-cretaceo-asteriornis .dots i{height:8px;width:8px;border-radius:50%;background:var(--mint)}
+#s-cretaceo-asteriornis .dots i+ i{background:none;border:1px solid var(--accent)}
+#s-cretaceo-asteriornis main{padding:calc(var(--top) + 22px) var(--pad) calc(var(--bottom) + 44px);max-width:1640px;margin:auto}
+#s-cretaceo-asteriornis .intro{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:48px;align-items:end;margin-bottom:24px}
+#s-cretaceo-asteriornis .kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+#s-cretaceo-asteriornis h2{font-size:clamp(42px,4.7vw,72px);line-height:1.07;letter-spacing:-.06em;max-width:1000px}
+#s-cretaceo-asteriornis .identity{margin-top:14px;font-size:20px;letter-spacing:-.02em;color:var(--muted)}
+#s-cretaceo-asteriornis .identity i{color:var(--fg)}
+#s-cretaceo-asteriornis .identity span{margin-left:12px;font-size:13px;letter-spacing:0}
+#s-cretaceo-asteriornis .ast-context{font-size:14px;color:var(--muted)}
+#s-cretaceo-asteriornis .ast-context strong{font:700 27px/1.2 var(--display);letter-spacing:-.04em;color:var(--fg)}
+#s-cretaceo-asteriornis .ast-context small{font-size:12px}
+#s-cretaceo-asteriornis .ast-context .ast-place{margin-top:10px}
+#s-cretaceo-asteriornis .ast-context .ast-jump{margin-top:9px;font-size:13px;max-width:300px;color:var(--accent)}
+#s-cretaceo-asteriornis .tabs{display:flex;gap:28px;margin-bottom:18px}
+#s-cretaceo-asteriornis .tabs button{border:0;border-bottom:2px solid transparent;background:none;min-height:44px;padding:8px 0;font-size:14px;font-weight:700}
+#s-cretaceo-asteriornis .tabs button[aria-selected=true]{color:var(--accent);border-color:var(--accent)}
+#s-cretaceo-asteriornis .exhibit{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:48px;align-items:start}
+#s-cretaceo-asteriornis .piece{min-width:0}
+#s-cretaceo-asteriornis .image-label{display:flex;justify-content:space-between;gap:18px;align-items:baseline;font-size:12px;color:var(--muted);margin-bottom:10px}
+#s-cretaceo-asteriornis .image-label a{white-space:nowrap}
+#s-cretaceo-asteriornis .stage{--stage-h:clamp(360px,34vw,490px);height:var(--stage-h);position:relative;background:#000;isolation:isolate}
+#s-cretaceo-asteriornis .representation{position:absolute;inset:0;display:grid;place-items:center}
+#s-cretaceo-asteriornis .matrix-wrap{width:min(100%,calc(var(--stage-h)*2932/2112));aspect-ratio:2932/2112;position:relative}
+#s-cretaceo-asteriornis .matrix-wrap img{display:block;width:100%;height:auto}
+#s-cretaceo-asteriornis .rock-outline{position:absolute;left:3%;top:1.5%;width:48%;height:43%;border:2px solid var(--accent);border-radius:9px;pointer-events:none}
+#s-cretaceo-asteriornis .rock-outline::before{content:"Bloco com o crânio";position:absolute;left:12px;top:12px;padding:5px 9px;background:#151b1dee;color:var(--fg);font-size:12px;font-weight:600}
+#s-cretaceo-asteriornis .ast-ct-crop{position:relative;width:96%;aspect-ratio:2000/980;overflow:hidden}
+#s-cretaceo-asteriornis .ast-ct-crop img{position:absolute;width:106.3%;max-width:none;height:auto;left:-3.5%;top:-102.040816%}
+#s-cretaceo-asteriornis .caption{font-size:13px;line-height:1.55;margin-top:12px;color:var(--muted);min-height:42px}
+#s-cretaceo-asteriornis .caption a{white-space:nowrap}
+#s-cretaceo-asteriornis .reading{padding-top:22px}
+#s-cretaceo-asteriornis .ast-badge{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+#s-cretaceo-asteriornis .ast-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+#s-cretaceo-asteriornis .ast-badge.ast-digital::before{background:none;border:1px solid var(--accent)}
+#s-cretaceo-asteriornis .reading h2{font-size:29px;line-height:1.16;letter-spacing:-.04em;margin:14px 0 18px}
+#s-cretaceo-asteriornis .reading p{font-size:16px;margin-bottom:20px}
+#s-cretaceo-asteriornis .reading .connection{font-size:14px;color:var(--muted)}
+#s-cretaceo-asteriornis .locate{background:none;border:1px solid var(--muted);border-radius:4px;padding:10px 13px;min-height:44px;font-size:14px;font-weight:600;margin:2px 0 12px}
+#s-cretaceo-asteriornis .locate[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
+#s-cretaceo-asteriornis .reading .location-note{font-size:12px;color:var(--muted);margin:0;min-height:36px}
+#s-cretaceo-asteriornis .fixed-idea{font-size:17px;max-width:740px;line-height:1.55;margin-top:24px}
+#s-cretaceo-asteriornis .fixed-idea span{color:var(--muted)}
+#s-cretaceo-asteriornis .ast-details{margin-top:24px;max-width:1100px}
+#s-cretaceo-asteriornis .ast-details summary{display:inline-flex;gap:10px;align-items:center;list-style:none;border:1px solid var(--muted);border-radius:24px;padding:8px 15px;min-height:44px;cursor:pointer;font-size:14px;font-weight:600}
+#s-cretaceo-asteriornis .ast-details summary::-webkit-details-marker{display:none}
+#s-cretaceo-asteriornis .ast-details summary::before{content:"+";font-size:22px;line-height:1}
+#s-cretaceo-asteriornis .ast-details[open] summary::before{content:"−"}
+#s-cretaceo-asteriornis .ast-evidence{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:28px 0}
+#s-cretaceo-asteriornis .ast-evidence h3{font-size:20px;letter-spacing:-.03em;line-height:1.2;margin:10px 0}
+#s-cretaceo-asteriornis .ast-evidence p{font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:12px}
+#s-cretaceo-asteriornis .ast-credit-full{max-width:880px;overflow-wrap:anywhere}
+#s-cretaceo-asteriornis .ast-credit-full h3{font-size:21px;margin:24px 0 12px;letter-spacing:-.025em}
+#s-cretaceo-asteriornis .ast-credit-full p{font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:15px}
+#s-cretaceo-asteriornis .ast-integral{max-width:700px;margin:24px 0}
+#s-cretaceo-asteriornis .ast-integral img{display:block;width:100%;height:auto;background:#000}
+#s-cretaceo-asteriornis .ast-integral figcaption{font-size:13px;line-height:1.6;color:var(--muted);margin-top:12px}
+#s-cretaceo-asteriornis .ast-panel-description{display:flex;gap:24px;margin-bottom:12px;font-size:13px;color:var(--muted)}
+#s-cretaceo-asteriornis .hud-bottom{position:fixed;z-index:10;inset:auto 0 0;padding:24px var(--pad) 15px;background:linear-gradient(transparent,var(--ground) 28%);display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:34px}
+#s-cretaceo-asteriornis .back,#s-cretaceo-asteriornis .future{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;min-height:44px;padding:0 4px;border:0;background:none;text-decoration:none}
+#s-cretaceo-asteriornis .timeline{min-width:0}
+#s-cretaceo-asteriornis .timeline-label{text-align:center;color:var(--accent);font-size:13px;font-weight:700;line-height:1.2;margin-bottom:9px}
+#s-cretaceo-asteriornis .time-bar{height:8px;position:relative;background:linear-gradient(to right,#efeee9 0 20.05%,#b2b7b4 20.05% 43.19%,#7a8582 43.19% 73.8%,#414c49 73.8%)}
+#s-cretaceo-asteriornis .pin{position:absolute;left:73.501389%;top:-4px;width:16px;height:16px;background:var(--accent);border:2px solid var(--ground);border-radius:50%;box-shadow:0 0 0 1px var(--accent);transform:translateX(-50%)}
+#s-cretaceo-asteriornis .ticks{position:relative;height:19px;margin-top:9px;color:var(--muted);font-size:12px}
+#s-cretaceo-asteriornis .ticks span{position:absolute;white-space:nowrap;top:0}
+#s-cretaceo-asteriornis .ticks b{font:800 13px/1 var(--display);color:var(--fg)}
+#s-cretaceo-asteriornis .ticks em{font-size:11px;margin-left:5px}
+#s-cretaceo-asteriornis .ticks .today{right:0}
+#s-cretaceo-asteriornis .ticks .today b{font-size:12px}
+@media(max-width:1000px){#s-cretaceo-asteriornis .intro{grid-template-columns:1fr;gap:20px}
+#s-cretaceo-asteriornis .ast-context{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline}
+#s-cretaceo-asteriornis .ast-context strong{font-size:24px}
+#s-cretaceo-asteriornis .ast-context .ast-place,#s-cretaceo-asteriornis .ast-context .ast-jump{margin:0}
+#s-cretaceo-asteriornis .exhibit{grid-template-columns:1fr;gap:20px}
+#s-cretaceo-asteriornis .stage{--stage-h:420px}
+#s-cretaceo-asteriornis .reading{padding-top:0;max-width:650px}
+#s-cretaceo-asteriornis .reading h2{font-size:27px}
+#s-cretaceo-asteriornis .reading p{margin-bottom:15px}
+#s-cretaceo-asteriornis .fixed-idea{margin-top:20px}
+#s-cretaceo-asteriornis .ast-evidence{grid-template-columns:1fr;gap:14px}
+#s-cretaceo-asteriornis .ticks em{display:none}}
+@media(max-width:600px){#s-cretaceo-asteriornis{--top:56px;--bottom:98px}
+#s-cretaceo-asteriornis .hud-top{gap:14px}
+#s-cretaceo-asteriornis .brand{font-size:15px}
+#s-cretaceo-asteriornis .sources-button{font-size:13px;gap:8px}
+#s-cretaceo-asteriornis main{padding-top:calc(var(--top) + 17px)}
+#s-cretaceo-asteriornis .intro{gap:14px;margin-bottom:16px}
+#s-cretaceo-asteriornis .kicker{font-size:10px;letter-spacing:.07em;margin-bottom:10px}
+#s-cretaceo-asteriornis h2{font-size:clamp(36px,10.5vw,44px);letter-spacing:-.055em}
+#s-cretaceo-asteriornis .identity{font-size:16px;margin-top:12px}
+#s-cretaceo-asteriornis .identity span{display:inline;margin-left:8px;font-size:11px;white-space:nowrap}
+#s-cretaceo-asteriornis .ast-context{display:block;font-size:13px}
+#s-cretaceo-asteriornis .ast-context strong{font-size:23px}
+#s-cretaceo-asteriornis .ast-context small{font-size:11px}
+#s-cretaceo-asteriornis .ast-context .ast-place{margin-top:4px}
+#s-cretaceo-asteriornis .ast-context .ast-jump{font-size:12px;margin-top:7px;max-width:none}
+#s-cretaceo-asteriornis .tabs{gap:26px;margin-bottom:14px}
+#s-cretaceo-asteriornis .tabs button{font-size:13px}
+#s-cretaceo-asteriornis .image-label{font-size:11px;gap:10px;margin-bottom:9px}
+#s-cretaceo-asteriornis .stage{height:auto;aspect-ratio:2932/2112}
+#s-cretaceo-asteriornis .matrix-wrap{width:100%}
+#s-cretaceo-asteriornis .ast-ct-crop{width:100%}
+#s-cretaceo-asteriornis .rock-outline{border-radius:5px}
+#s-cretaceo-asteriornis .rock-outline::before{top:6px;left:6px;font-size:10px;padding:3px 6px}
+#s-cretaceo-asteriornis .caption{font-size:12px;margin-top:10px;min-height:56px}
+#s-cretaceo-asteriornis .reading h2{font-size:26px;margin-top:10px;margin-bottom:14px}
+#s-cretaceo-asteriornis .reading p{font-size:15px}
+#s-cretaceo-asteriornis .reading .connection{font-size:14px}
+#s-cretaceo-asteriornis .fixed-idea{font-size:16px;margin-top:18px}
+#s-cretaceo-asteriornis .ast-details{margin-top:20px}
+#s-cretaceo-asteriornis .hud-bottom{gap:10px;padding-top:22px}
+#s-cretaceo-asteriornis .back,#s-cretaceo-asteriornis .future{width:42px;justify-content:center;padding:0}
+#s-cretaceo-asteriornis .hud-bottom .lbl{display:none}
+#s-cretaceo-asteriornis .timeline-label{font-size:11px;margin-bottom:9px;white-space:nowrap}
+#s-cretaceo-asteriornis .ticks{font-size:11px}
+#s-cretaceo-asteriornis .ticks b{font-size:11px}
+#s-cretaceo-asteriornis .ticks .today b{font-size:10px}
+#s-cretaceo-asteriornis .pin{width:14px;height:14px;top:-3px}
+#s-cretaceo-asteriornis .ast-evidence{margin-top:22px}
+#s-cretaceo-asteriornis .ast-panel-description{flex-direction:column;gap:4px}}
+@media(prefers-reduced-motion:reduce){#s-cretaceo-asteriornis *,#s-cretaceo-asteriornis *::before,#s-cretaceo-asteriornis *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+#s-cretaceo-asteriornis{--ground:#000;--muted:#b8bcb8;--quiet:#8e9893;--pad:clamp(16px,3.9vw,56px)}
+#s-cretaceo-asteriornis{background:#000}
+#s-cretaceo-asteriornis .ast-museum{padding:var(--top) var(--pad) calc(var(--bottom) + 40px);max-width:1640px;margin:auto}
+#s-cretaceo-asteriornis .ast-hero{--hero-h:max(690px,calc(100svh - 164px));height:var(--hero-h);position:relative;isolation:isolate}
+#s-cretaceo-asteriornis .ast-eyebrow{position:absolute;top:20px;left:0;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+#s-cretaceo-asteriornis .ast-headline{position:absolute;left:0;top:52px;font-size:clamp(60px,6.5vw,104px);letter-spacing:-.065em;line-height:1.06;max-width:none;z-index:4;pointer-events:none}
+#s-cretaceo-asteriornis .ast-species{position:absolute;left:0;top:166px;font-size:19px;letter-spacing:-.02em;z-index:4}
+#s-cretaceo-asteriornis .ast-species span{font-size:11px;margin-left:12px;color:var(--muted);letter-spacing:0}
+#s-cretaceo-asteriornis .ast-context{position:absolute;right:0;top:62px;width:260px;font-size:12px;display:block}
+#s-cretaceo-asteriornis .ast-context strong{font-size:24px}
+#s-cretaceo-asteriornis .ast-context small{font-size:11px}
+#s-cretaceo-asteriornis .ast-context .ast-place{margin-top:8px}
+#s-cretaceo-asteriornis .ast-context .ast-jump{font-size:12px;margin-top:10px;color:var(--accent)}
+#s-cretaceo-asteriornis .ast-lead{position:absolute;left:0;top:220px;width:290px;font-size:16px;color:var(--muted);line-height:1.6;z-index:4}
+#s-cretaceo-asteriornis .ast-question{position:absolute;left:0;top:345px;width:265px;font:600 24px/1.2 var(--display);letter-spacing:-.035em;z-index:4}
+#s-cretaceo-asteriornis .ast-question small{display:block;margin-top:12px;color:var(--muted);font:12px/1.5 var(--text);letter-spacing:0}
+#s-cretaceo-asteriornis .ast-visual-set{--piece-h:calc(var(--hero-h) - 245px);position:absolute;left:22%;right:-2%;top:185px;height:var(--piece-h);overflow:hidden;isolation:isolate}
+#s-cretaceo-asteriornis .ast-plate{position:absolute;inset:0;display:grid;place-items:center;will-change:opacity,transform;background:#000}
+#s-cretaceo-asteriornis .ast-rock-plate{z-index:1}
+#s-cretaceo-asteriornis .ast-ct-plate{z-index:2}
+#s-cretaceo-asteriornis .ast-rock-plate img{display:block;width:auto;height:94%;max-width:100%;object-fit:contain}
+#s-cretaceo-asteriornis .ast-ct-crop{width:min(100%,calc(var(--piece-h)*2000/980));aspect-ratio:2000/980}
+#s-cretaceo-asteriornis .ast-ct-crop img{width:106.3%;left:-3.5%;top:-102.040816%;height:auto;max-width:none}
+#s-cretaceo-asteriornis .ast-controls{position:absolute;left:0;bottom:54px;z-index:5}
+#s-cretaceo-asteriornis .ast-portal{display:flex;align-items:center;gap:22px;min-height:52px;border:0;border-bottom:1px solid var(--accent);border-radius:0;background:none;padding:8px 0;color:var(--fg);font:700 17px/1.3 var(--display);letter-spacing:-.025em}
+#s-cretaceo-asteriornis .ast-portal .ast-arrow{font:400 26px/1 var(--text);color:var(--accent)}
+#s-cretaceo-asteriornis .ast-representation-note{position:absolute;left:0;bottom:14px;font-size:12px;color:var(--muted);z-index:5;line-height:1.5;max-width:360px}
+#s-cretaceo-asteriornis .ast-representation-note strong{font-weight:500;color:var(--accent)}
+#s-cretaceo-asteriornis .ast-piece-credit{position:absolute;right:0;bottom:20px;max-width:330px;font-size:12px;text-align:right;color:var(--muted);z-index:5}
+#s-cretaceo-asteriornis .ast-piece-credit p{font-size:11px;margin-top:6px}
+#s-cretaceo-asteriornis .ast-piece-credit a{white-space:nowrap}
+#s-cretaceo-asteriornis .ast-below{max-width:1100px;margin:22px 0 0}
+#s-cretaceo-asteriornis .ast-below>p{max-width:730px;color:var(--muted);font-size:15px;line-height:1.6}
+#s-cretaceo-asteriornis .ast-details{margin-top:22px}
+#s-cretaceo-asteriornis .ast-details summary{border:0;border-bottom:1px solid #6a726d;border-radius:0;padding:8px 0}
+#s-cretaceo-asteriornis .ast-badge{font-size:12px}
+#s-cretaceo-asteriornis .hud-bottom{background:linear-gradient(transparent,#000 28%)}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-visual-set{--piece-h:calc(var(--hero-h) - 240px);left:0;right:0;top:28px;height:var(--piece-h)}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-eyebrow{top:10px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-headline{top:auto;bottom:105px;font-size:clamp(68px,7.5vw,116px)}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-species{top:auto;bottom:64px;font-size:19px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-context{top:38px;width:235px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-context strong{font-size:22px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-lead{top:52px;width:220px;font-size:14px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-question{top:183px;width:190px;font-size:19px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-question small{font-size:11px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-controls{left:auto;right:0;bottom:68px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-representation-note{bottom:17px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-piece-credit{bottom:17px}
+@media(max-width:1000px) and (min-width:601px){#s-cretaceo-asteriornis .ast-hero{--hero-h:860px}
+#s-cretaceo-asteriornis .ast-headline{font-size:70px}
+#s-cretaceo-asteriornis .ast-context{width:225px}
+#s-cretaceo-asteriornis .ast-visual-set{left:6%;top:280px;--piece-h:440px}
+#s-cretaceo-asteriornis .ast-question{top:215px;left:auto;right:0;width:230px}
+#s-cretaceo-asteriornis .ast-lead{top:205px;width:380px}
+#s-cretaceo-asteriornis .ast-species{top:137px}
+#s-cretaceo-asteriornis .ast-controls{bottom:60px}
+#s-cretaceo-asteriornis .ast-piece-credit{max-width:280px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-visual-set{top:180px;--piece-h:450px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-question{top:110px;right:0;left:auto}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-headline{font-size:80px;bottom:130px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-species{bottom:92px}}
+@media(max-width:600px){#s-cretaceo-asteriornis .ast-museum{padding-top:calc(var(--top) + 18px)}
+#s-cretaceo-asteriornis .ast-hero{height:auto;display:flex;flex-direction:column;--piece-h:calc(100vw*.57)}
+#s-cretaceo-asteriornis .ast-eyebrow,#s-cretaceo-asteriornis .ast-headline,#s-cretaceo-asteriornis .ast-species,#s-cretaceo-asteriornis .ast-context,#s-cretaceo-asteriornis .ast-lead,#s-cretaceo-asteriornis .ast-question,#s-cretaceo-asteriornis .ast-visual-set,#s-cretaceo-asteriornis .ast-controls,#s-cretaceo-asteriornis .ast-representation-note,#s-cretaceo-asteriornis .ast-piece-credit{position:relative;inset:auto;width:auto;max-width:none}
+#s-cretaceo-asteriornis .ast-eyebrow{font-size:10px;letter-spacing:.07em;order:0}
+#s-cretaceo-asteriornis .ast-headline{font-size:clamp(48px,13vw,58px);line-height:1.03;margin-top:10px;order:1;max-width:340px}
+#s-cretaceo-asteriornis .ast-species{font-size:16px;margin-top:12px;order:2}
+#s-cretaceo-asteriornis .ast-species span{font-size:10px;margin-left:8px}
+#s-cretaceo-asteriornis .ast-context{margin-top:16px;order:3;font-size:12px}
+#s-cretaceo-asteriornis .ast-context strong{font-size:20px}
+#s-cretaceo-asteriornis .ast-context small{font-size:11px}
+#s-cretaceo-asteriornis .ast-context .ast-place{margin-top:3px}
+#s-cretaceo-asteriornis .ast-context .ast-jump{font-size:11px;margin-top:7px}
+#s-cretaceo-asteriornis .ast-visual-set{left:auto;right:auto;top:auto;order:4;width:calc(100% + 32px);margin:12px -16px 0;height:var(--piece-h)}
+#s-cretaceo-asteriornis .ast-rock-plate img{height:100%;max-width:100%}
+#s-cretaceo-asteriornis .ast-ct-crop{width:100%;aspect-ratio:2000/980}
+#s-cretaceo-asteriornis .ast-controls{order:5;margin-top:6px}
+#s-cretaceo-asteriornis .ast-portal{font-size:16px;gap:18px;min-height:48px}
+#s-cretaceo-asteriornis .ast-representation-note{order:6;margin-top:12px;font-size:12px}
+#s-cretaceo-asteriornis .ast-piece-credit{order:7;text-align:left;font-size:11px;margin-top:12px}
+#s-cretaceo-asteriornis .ast-piece-credit p{font-size:11px;margin-top:4px}
+#s-cretaceo-asteriornis .ast-lead{order:8;font-size:15px;margin-top:22px;line-height:1.6}
+#s-cretaceo-asteriornis .ast-question{order:9;font-size:24px;margin-top:20px;max-width:300px}
+#s-cretaceo-asteriornis .ast-question small{font-size:12px}
+#s-cretaceo-asteriornis .ast-below{margin-top:24px}
+#s-cretaceo-asteriornis .ast-below>p{font-size:14px}
+#s-cretaceo-asteriornis .hud-bottom{padding-top:22px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-eyebrow{top:auto}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-context{order:2;inset:auto;width:auto;margin-top:14px;display:grid;grid-template-columns:1fr auto;gap:2px 8px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-context strong{font-size:19px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-context small{display:block;font-size:10px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-context .ast-place{font-size:11px;text-align:right;margin-top:0;max-width:130px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-context .ast-jump{grid-column:1/-1;font-size:11px;margin-top:5px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-visual-set{order:3;inset:auto;--piece-h:calc(100vw*.61);height:var(--piece-h);margin-top:18px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-headline{order:4;top:auto;bottom:auto;font-size:clamp(41px,11.6vw,48px);max-width:none;margin-top:20px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-species{order:1;inset:auto;font-size:17px;margin-top:12px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-species span{display:block;margin:4px 0 0;font-size:11px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-controls{order:5;inset:auto;margin-top:17px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-representation-note{order:6;inset:auto;margin-top:12px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-piece-credit{order:7;inset:auto;margin-top:12px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-lead{order:8;inset:auto;width:auto;font-size:15px;margin-top:22px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-question{order:9;inset:auto;width:auto;max-width:300px;font-size:24px;margin-top:20px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-question small{font-size:12px}}
+#s-cretaceo-asteriornis .ast-context{z-index:4}
+#s-cretaceo-asteriornis .ast-portal{width:240px;justify-content:space-between}
+#s-cretaceo-asteriornis .ast-representation-note{min-height:54px;display:block}
+#s-cretaceo-asteriornis .ast-piece-credit{min-height:40px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-lead{width:165px;font-size:13px;line-height:1.6}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-question{width:170px;font-size:18px;top:200px}
+@media(max-width:600px){#s-cretaceo-asteriornis .ast-visual-set{--piece-h:calc(100vw*.57)}
+#s-cretaceo-asteriornis .ast-representation-note{min-height:54px}
+#s-cretaceo-asteriornis .ast-piece-credit{min-height:42px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-lead{width:auto;font-size:15px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-question{width:auto;font-size:24px;top:auto}}
+#s-cretaceo-asteriornis .ast-piece-credit{width:330px}
+#s-cretaceo-asteriornis .ast-representation-note{width:360px}
+@media(max-width:600px){#s-cretaceo-asteriornis .ast-piece-credit,#s-cretaceo-asteriornis .ast-representation-note{width:100%}}
+#s-cretaceo-asteriornis .ast-plate{width:100%;height:100%;min-width:0;min-height:0}
+#s-cretaceo-asteriornis .ast-rock-plate img{width:min(100%,calc(var(--piece-h)*2932/2112));height:auto;max-height:100%;object-fit:contain;min-height:0}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-headline{bottom:125px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-species{bottom:74px}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-representation-note{bottom:11px;min-height:42px}
+@media(max-width:600px){#s-cretaceo-asteriornis[data-direction="b"] .ast-headline,#s-cretaceo-asteriornis[data-direction="b"] .ast-species,#s-cretaceo-asteriornis[data-direction="b"] .ast-representation-note{bottom:auto}
+#s-cretaceo-asteriornis[data-direction="b"] .ast-representation-note{min-height:54px}}
+#s-cretaceo-asteriornis .ast-eyebrow-mobile{display:none}
+#s-cretaceo-asteriornis .ast-plate{will-change:clip-path}
+#s-cretaceo-asteriornis .ast-view-boundary{position:absolute;z-index:3;top:0;bottom:0;width:12px;transform:translateX(-50%);background:linear-gradient(to right,#000 0 43%,var(--accent) 43% 57%,#000 57%);pointer-events:none}
+@media(max-width:600px){#s-cretaceo-asteriornis .ast-eyebrow-wide{display:none}
+#s-cretaceo-asteriornis .ast-eyebrow-mobile{display:inline}
+#s-cretaceo-asteriornis .ast-view-boundary{width:8px}}
+body[data-scene="cretaceo-asteriornis"]{--ground:#000}
+body[data-scene="cretaceo-asteriornis"] .hud-top{background:linear-gradient(#000 80%,transparent)}
+#s-cretaceo-asteriornis .scroll{padding:0}
+#s-cretaceo-asteriornis .ast-controls{display:block;padding:0}
+#s-cretaceo-asteriornis :is(h2,h3){text-wrap:initial}
+
 </style>
 </head>
 <body>
@@ -1212,6 +1491,29 @@ body[data-scene="cretaceo-psittacosaurus"] .hud-top{background:linear-gradient(v
       </article></div>
     </section>
 
+
+    <section class="scene" id="s-cretaceo-asteriornis" data-id="astCretaceo-asteriornis" data-direction="b" data-tone="dark" aria-labelledby="t-cretaceo-asteriornis"><div class="scroll"><article class="ast-museum"><section class="ast-hero" aria-labelledby="t-cretaceo-asteriornis">
+<p class="ast-eyebrow"><span class="ast-eyebrow-wide">Fim do Cretáceo · antes do K–Pg</span><span class="ast-eyebrow-mobile">Uma ave do fim do Cretáceo · perto do K–Pg</span></p>
+<h2 class="ast-headline" id="t-cretaceo-asteriornis" tabindex="-1">Antes do limite.</h2>
+<p class="ast-species"><i>Asteriornis maastrichtensis</i><span>NHMM 2013 008</span></p>
+<div class="ast-context"><p><strong>66,8–66,7 Ma</strong> <small>contexto geológico</small></p><p class="ast-place">Bélgica · Formação Maastricht</p><p class="ast-jump">≈60 milhões de anos após o contexto de Psittacosaurus.</p></div>
+<p class="ast-lead">O crânio desta ave estava quase todo oculto. A tomografia tornou seus ossos visíveis.</p>
+<p class="ast-question">Que linhagens de aves atravessariam a crise?<small>Este fóssil é anterior ao limite. Não sabemos se sua espécie sobreviveu.</small></p>
+<div class="ast-visual-set" id="astVisualSet" role="group" aria-busy="true" aria-label="Duas representações do holótipo, em vistas e escalas distintas">
+<figure class="ast-plate ast-rock-plate" id="astRockPlate" aria-hidden="true"><img src="assets/cretaceo/asteriornis-holotipo.png" width="2932" height="2112" alt="Fotografia integral dos quatro blocos de rocha do holótipo NHMM 2013 008. O crânio está no bloco superior esquerdo; escala original de 10 mm."></figure>
+<figure class="ast-plate ast-ct-plate" id="astCtPlate"><div class="ast-ct-crop"><img src="assets/cretaceo/asteriornis-cranio.png" width="2126" height="2016" alt="Visualização cinza do crânio de Asteriornis produzida por tomografia, com bico à direita. Recorte do painel inferior da figura 5."></div></figure>
+<span class="ast-view-boundary" id="astViewBoundary" hidden aria-hidden="true"></span></div>
+<div class="ast-controls"><button class="ast-portal" id="astPortal" type="button" disabled aria-controls="astVisualSet" aria-label="Ver de onde veio: fotografia dos quatro blocos"><span id="astPortalText">Ver de onde veio</span><span class="ast-arrow" id="astPortalArrow" aria-hidden="true">←</span></button></div>
+<p class="ast-representation-note" id="astRepresentationNote" aria-live="polite"><strong>Interior · visualização tomográfica</strong><br>Vistas e escalas diferentes; não é uma transformação.</p>
+<div class="ast-piece-credit"><a id="astImageSource" href="https://commons.wikimedia.org/wiki/File:CT_scan_and_3D_printed_Asteriornis_skull.png" target="_blank" rel="noopener">Field et al. · CC BY 4.0 ↗</a><p id="astImageCrop">Recorte do painel inferior. <a href="assets/cretaceo/asteriornis-cranio.png" target="_blank" rel="noopener">Figura integral ↗</a></p></div>
+</section><div class="ast-below"><p>O crânio ajuda a investigar a origem e o parentesco das aves atuais. A posição na árvore é uma interpretação anatômica; plumagem, cores e aparência completa não estão preservadas neste exemplar.</p><details class="ast-details" id="astDetails"><summary>Mostrar detalhes</summary>
+  <div class="ast-evidence"><div><span class="ast-badge">O que está preservado</span><h3>O exemplar, com suas lacunas.</h3><p>NHMM 2013 008 reúne um crânio quase completo em três dimensões e ossos pós-cranianos parciais, distribuídos em quatro blocos. Não é um esqueleto inteiro. Não há plumagem ou cores preservadas que permitam reconstruir a aparência completa.</p><p>A fotografia mostra a superfície da matriz. O crânio fica no bloco superior esquerdo. Não desenhamos um contorno anatômico sobre a fotografia.</p></div><div><span class="ast-badge ast-digital">O que a técnica produz</span><h3>Visualizar não é completar.</h3><p>A imagem tomográfica resulta da aquisição e do processamento dos dados, com identificação digital dos ossos pelos pesquisadores. Fraturas, deformações e regiões ausentes continuam a limitar a leitura.</p><p>Na figura integral abaixo, a imagem colorida superior é uma fotografia de <strong>impressão 3D</strong>; a cinza inferior é uma <strong>visualização tomográfica</strong>. A impressão não é o fóssil original. A escala da figura e do modelo ampliado não deve ser transferida automaticamente ao tamanho natural do animal.</p></div><div><span class="ast-badge ast-digital">Interpretação de parentesco</span><h3>Próximo das aves atuais.</h3><p>O bico sem dentes e outros caracteres cranianos sustentam sua relação com o grupo das aves atuais. O estudo de 2020 aproxima Asteriornis de Galloanserae, grupo que inclui galinhas e patos; a posição exata depende das análises e dos caracteres disponíveis.</p><p>Não o tratamos como ancestral direto de aves viventes, primeira ave ou espécie comprovadamente sobrevivente ao K–Pg. O fóssil é anterior ao limite; parentesco e sobrevivência da espécie são perguntas diferentes.</p></div></div>
+  <div class="ast-credit-full"><h3>Tempo e procedência</h3><p>Formação Maastricht, nordeste da Bélgica. O intervalo 66,8–66,7 milhões de anos é o contexto geológico atribuído ao material por Field e colaboradores (2020), não uma datação exata do indivíduo. O salto de ≈60 milhões de anos desde Psittacosaurus compara contextos regionais, não idades medidas dos dois indivíduos. A régua usa 66,75 Ma apenas como centro gráfico desse intervalo. O limite K–Pg permanece em 66,0 Ma e o início do Cretáceo em 143,1 Ma.</p>
+  <h3>Figura 5 integral</h3><div class="ast-panel-description"><span>Acima · fotografia da impressão 3D</span><span>Abaixo · visualização tomográfica</span></div><figure class="ast-integral"><a href="assets/cretaceo/asteriornis-cranio.png" target="_blank" rel="noopener"><img src="assets/cretaceo/asteriornis-cranio.png" width="2126" height="2016" loading="lazy" alt="Figura integral: acima, fotografia colorida de uma impressão 3D do crânio; abaixo, visualização digital cinza por tomografia."></a><figcaption>Figura 5 de Field e colaboradores (2024) · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Impressão 3D e tomografia são identificadas separadamente. <a href="assets/cretaceo/asteriornis-cranio.png" target="_blank" rel="noopener">Abrir no tamanho original ↗</a></figcaption></figure>
+  <h3>Créditos e adaptações</h3><p>As duas figuras são de Daniel J. Field, Juan Benito, Sarah Werning, Albert Chen, Pei-Chen Kuo, Abi Crane, Klara E. Widrig, Daniel T. Ksepka e John W. M. Jagt (2024), via Wikimedia Commons, sob <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Asteriornis_holotype_NHMM_2013_008_in_matrix.png" target="_blank" rel="noopener">Fotografia dos blocos</a> e <a href="https://commons.wikimedia.org/wiki/File:CT_scan_and_3D_printed_Asteriornis_skull.png" target="_blank" rel="noopener">painel de impressão 3D/tomografia</a>.</p><p>Arquivos integrais inalterados. Fotografia dos blocos redimensionada proporcionalmente, sem marca anatômica sobreposta. Na vista tomográfica, recorte de apresentação por CSS do painel inferior, com margens negras reduzidas. Sem deformação, recoloração, espelhamento, geração de partes ou retoque anatômico. Os dois originais continuam acessíveis.</p>
+  <h3>Fontes científicas</h3><p><a href="https://doi.org/10.1038/s41586-020-2096-0" target="_blank" rel="noopener">Field et al. (2020), Late Cretaceous neornithine from Europe illuminates the origins of crown birds</a>. <a href="https://doi.org/10.1017/njg.2024.11" target="_blank" rel="noopener">Field et al. (2024), Remarkable insights into modern bird origins from the Maastrichtian type area</a>. <a href="https://doi.org/10.1186/s12862-025-02487-4" target="_blank" rel="noopener">Crane et al., estudo mandibular posterior</a>. <a href="https://stratigraphy.org/ICSchart/ChronostratChart2026-06.pdf" target="_blank" rel="noopener">Carta ICS 2026/06</a>.</p><p><a href="ASTERIORNIS-FONTES.md" target="_blank" rel="noopener">Fontes, créditos e limites da cena</a>.</p></div>
+ </details></div></article></div></section>
+
   </main>
 
   <canvas id="warp" aria-hidden="true"></canvas>
@@ -1287,7 +1589,8 @@ const STOPS = [
   { id: "jurassico-mundo", age: 150, name: "As rochas guardaram mais que dinossauros", period: "Jurássico Superior", now: "cerca de 150 milhões de anos atrás" },
   { id: "cretaceo-utahraptor", age: 130, name: "Utahraptor", period: "Cretáceo Inferior · Utahraptor", now: "posição aproximada no Cretáceo Inferior; não é a idade da montagem" },
   { id: "cretaceo-yutyrannus", age: 125, name: "Yutyrannus", period: "Cretáceo Inferior · Yutyrannus", now: "cerca de 125 milhões de anos atrás, contexto aproximado da formação" },
-  { id: "cretaceo-psittacosaurus", age: 125, name: "Psittacosaurus · pele preservada", period: "Cretáceo Inferior · Psittacosaurus", now: "contexto regional aproximado de Jehol, sem datação individual" }
+  { id: "cretaceo-psittacosaurus", age: 125, name: "Psittacosaurus · pele preservada", period: "Cretáceo Inferior · Psittacosaurus", now: "contexto regional aproximado de Jehol, sem datação individual" },
+  { id: "cretaceo-asteriornis", age: 66.75, name: "Asteriornis · antes do limite", period: "Cretáceo Superior · Asteriornis", now: "66,8–66,7 milhões de anos, contexto geológico do material, não datação individual" }
 ];
 const TOTAL = 251.902;
 const pct = age => ((TOTAL - age) / TOTAL) * 100;
@@ -1354,6 +1657,8 @@ SRC["cretaceo-psittacosaurus"] = [
  ["foto","fato","Figura 1: A é fotografia sob polarização cruzada, B é desenho interpretativo. Arquivo integral inalterado; enquadramento de A, margem branca ocultada e aproximação por CSS. No celular há recorte lateral inicial; a escala original está no painel B da figura integral.","Vinther et al. (2016), via Wikimedia Commons, CC BY 4.0. Licença: https://creativecommons.org/licenses/by/4.0/.","https://commons.wikimedia.org/wiki/File:Psittacosaurus_SMF_R_4970.jpg"],
  ["imagem-modelo","fato","Fotografia do modelo pintado por Robert Nicholls, figura S16. Autoria creditada: Jakob Vinther, Robert Nicholls, Stephan Lautenschlager, Michael Pittman, Thomas G. Kaye, Emily Rayfield, Gerald Mayr e Innes C. Cuthill. Recorte de apresentação na vista principal: margens, parte do pedestal e detalhe inserido da cabeça ficam fora do enquadramento, sem cortar a figura principal do animal. Original integral acessível na legenda e nos detalhes. Escala proporcional; sem retoque, espelhamento ou deformação.","Vinther et al. (2016), via Wikimedia Commons, CC BY 4.0. Licença: https://creativecommons.org/licenses/by/4.0/.","https://commons.wikimedia.org/wiki/File:Psittacosaurus_model_(SMF_R_4970).png"]
 ];
+
+SRC["cretaceo-asteriornis"] = [["material", "fato", "NHMM 2013 008: holótipo de Asteriornis maastrichtensis, com crânio quase completo tridimensional e pós-crânio parcial em quatro blocos. O crânio está no bloco superior esquerdo. Não é um esqueleto inteiro.", "Field et al. (2020, 2024).", "https://doi.org/10.1017/njg.2024.11"], ["tempo", "est", "66,8–66,7 Ma é o contexto geológico da Formação Maastricht, nordeste da Bélgica, não a idade medida do indivíduo. O marcador em 66,75 Ma é apenas o centro gráfico do intervalo. O salto de cerca de 60 milhões de anos compara contextos com Psittacosaurus.", "Field et al. (2020). Início do Cretáceo: 143,1 Ma; K–Pg: 66,0 Ma, ICS 2026/06.", "https://doi.org/10.1038/s41586-020-2096-0"], ["tecnica", "fato", "A tomografia e a segmentação digital permitem estudar ossos encobertos pela matriz. Na figura 5 integral, acima há fotografia de impressão 3D; abaixo, visualização tomográfica. A impressão não é o fóssil original; sua escala não é transferida ao tamanho natural da ave.", "Field et al. (2024), figura 5.", "https://doi.org/10.1017/njg.2024.11"], ["parentesco", "hip", "Caracteres anatômicos e análises filogenéticas informam o parentesco das aves atuais. A posição fina perto de Galloanserae depende de dados e métodos. Asteriornis não é apresentado como ancestral direto ou espécie comprovadamente sobrevivente ao K–Pg.", "Field et al. (2020, 2024); Crane et al., estudo mandibular posterior.", "https://doi.org/10.1186/s12862-025-02487-4"], ["aparencia", "inc", "Plumagem, cores e aparência completa não estão preservadas neste exemplar. Não foi criada uma reconstrução em vida. As duas imagens têm vistas e escalas diferentes; o limite móvel separa representações opacas, sem alinhamento anatômico.", "Limites do exemplar e da apresentação.", "ASTERIORNIS-FONTES.md"], ["imagens", "fato", "Figuras de Daniel J. Field, Juan Benito, Sarah Werning, Albert Chen, Pei-Chen Kuo, Abi Crane, Klara E. Widrig, Daniel T. Ksepka e John W. M. Jagt (2024), CC BY 4.0, via Wikimedia Commons. Fotografia dos quatro blocos integral. Tomografia: recorte CSS do painel inferior da figura 5; original integral acessível. Arquivos inalterados, sem retoque, espelhamento ou deformação. Licença: https://creativecommons.org/licenses/by/4.0/.", "Autoria, origem e adaptações completas em ASTERIORNIS-FONTES.md.", "ASTERIORNIS-FONTES.md"]];
 
 function renderSources(id, focusKey) {
   const items = SRC[id] || [];
@@ -2191,6 +2496,14 @@ psHotspot.addEventListener('click', () => { psSetClose(true); psZoom.focus({prev
 $('#psExhibit').addEventListener('keydown', e => {
   if (e.key === 'Escape' && psClose && !psPanels[0].hidden) { e.preventDefault(); e.stopPropagation(); psSetClose(false); psZoom.focus({preventScroll:true}); }
 });
+
+/* ---------- Asteriornis · passagem entre representações separadas ---------- */
+(()=>{'use strict';const astRoot=document.querySelector('#s-cretaceo-asteriornis'),aq=s=>astRoot.querySelector(s);const button=aq('#astPortal'),ct=aq('#astCtPlate'),rock=aq('#astRockPlate'),media=matchMedia('(prefers-reduced-motion: reduce)');let progress=1,target=1,frame=0;const urls=['https://commons.wikimedia.org/wiki/File:Asteriornis_holotype_NHMM_2013_008_in_matrix.png','https://commons.wikimedia.org/wiki/File:CT_scan_and_3D_printed_Asteriornis_skull.png'];
+function paint(){const width=aq('#astVisualSet').getBoundingClientRect().width,boundary=Math.round(width*progress);ct.style.opacity='1';rock.style.opacity='1';ct.style.transform='none';rock.style.transform='none';ct.style.clipPath=`inset(0 ${width-boundary}px 0 0)`;rock.style.clipPath=`inset(0 0 0 ${boundary}px)`;const line=aq('#astViewBoundary');line.hidden=progress===0||progress===1;line.style.left=boundary+'px';window.asteriornisProgress=progress;}
+function describe(){const inside=target===1;astRoot.dataset.view=inside?'ct':'rock';ct.setAttribute('aria-hidden',String(!inside));rock.setAttribute('aria-hidden',String(inside));aq('#astPortalText').textContent=inside?'Ver de onde veio':'Investigar o interior';aq('#astPortalArrow').textContent=inside?'←':'→';button.setAttribute('aria-label',inside?'Ver de onde veio: fotografia dos quatro blocos':'Investigar o interior: visualização tomográfica');aq('#astRepresentationNote').innerHTML=inside?'<strong>Interior · visualização tomográfica</strong><br>Vistas e escalas diferentes; não é uma transformação.':'<strong>Superfície · fóssil fotografado</strong><br>O crânio está no bloco superior esquerdo.';aq('#astImageSource').href=urls[target];aq('#astImageCrop').innerHTML=inside?'Recorte do painel inferior. <a href="assets/cretaceo/asteriornis-cranio.png" target="_blank" rel="noopener">Figura integral ↗</a>':'Fotografia integral · escala original: 10 mm. <a href="assets/cretaceo/asteriornis-holotipo.png" target="_blank" rel="noopener">Original ↗</a>';}
+function select(next){cancelAnimationFrame(frame);target=next;describe();if(media.matches){progress=target;paint();return;}const from=progress,start=performance.now(),duration=720*Math.abs(target-from);function step(now){const t=duration?Math.min(1,(now-start)/duration):1,e=t*t*(3-2*t);progress=from+(target-from)*e;paint();if(t<1)frame=requestAnimationFrame(step);}frame=requestAnimationFrame(step);}
+button.addEventListener('click',()=>select(1-target));button.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();e.stopPropagation();select(['ArrowLeft','Home'].includes(e.key)?0:1)}});media.addEventListener('change',()=>{if(media.matches){cancelAnimationFrame(frame);progress=target;paint();}});paint();describe();new ResizeObserver(()=>paint()).observe(aq('#astVisualSet'));
+Promise.all([...astRoot.querySelectorAll('.ast-visual-set img')].map(i=>i.decode())).then(()=>{button.disabled=false;aq('#astVisualSet').setAttribute('aria-busy','false')}).catch(()=>{aq('#astRepresentationNote').textContent='A imagem não carregou. Reabra a página para observar a peça.'});})();
 
 /* ---------- Entradas: botões, teclado, rolagem, toque ---------- */
 $("#start").addEventListener("click", () => go(1));
